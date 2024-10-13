@@ -129,7 +129,7 @@ const projects = [
         descricao:
             "",
         ano: "2024",
-        cidade: "Recife",
+        cidade: "Ipojuca",
         outrasFotos: [
             "assets/images/projects/ape-abraco/images/1.webp",
             "assets/images/projects/ape-abraco/images/2.webp",
