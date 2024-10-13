@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "All Round Gothic";
+  src: url("../../../assets/fonts/title/AllRoundGothic-Lig.otf") format("opentype"), url("../../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff"), url("../../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff2");
+}
+@font-face {
+  font-family: "Kantumruy Pro Regular";
+  src: url("../../../assets/fonts/subtitle/KantumruyPro-Regular.ttf") format("truetype");
+}
+body header {
+  padding: 80px 0 20px;
+  position: relative;
+}
+body header a i {
+  color: #b7b7b7;
+  font-size: 48px;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+}
+body header #projectTitle {
+  color: #c56e51;
+  font-family: "All Round Gothic", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+body header #projectLocationAndYear {
+  font-family: "Kantumruy Pro Regular", sans-serif;
+  font-size: 1.25rem;
+  padding: 10px 0 20px;
+  text-transform: lowercase;
+}
+body header #projectDescription {
+  font-size: 1.125rem;
+  padding: 0 28px;
+  text-align: center;
+}
+body main #projectImages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+body main #projectImages div {
+  height: 250px;
+  width: 100%;
+}
+body main #projectImages div img {
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+body main #cellphoneWhatsappCta {
+  font-family: "Kantumruy Pro Regular", sans-serif;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #c56e51;
+  color: #fcfcfa;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 10px;
+  gap: 10px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+body main #cellphoneWhatsappCta i {
+  font-size: 2rem;
+}
+body main #cellphoneWhatsappCta p {
+  text-transform: uppercase;
+}/*# sourceMappingURL=project.css.map */

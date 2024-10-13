@@ -1,0 +1,47 @@
+body main #sectionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+body main #sectionsContainer section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+body main #sectionsContainer section h2 {
+  color: #c56e51;
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+body main #sectionsContainer section div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body main #sectionsContainer section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+body main #sectionsContainer section p {
+  font-size: 1.125rem;
+}
+body main #sectionsContainer section p span {
+  font-weight: 600;
+}
+body main #sectionsContainer section #imageContainer {
+  position: relative;
+}
+body main #sectionsContainer section #imageContainer #orangeBox {
+  bottom: 0;
+  background-color: #c56e51;
+  border-radius: 16px;
+  height: 200px;
+  position: absolute;
+  width: 100%;
+  z-index: -9999;
+}
+body main #sectionsContainer section #videoContainer {
+  border: 1px solid transparent !important;
+  border-radius: 10px;
+  overflow: hidden;
+}/*# sourceMappingURL=about.css.map */

@@ -1,0 +1,29 @@
+@import "./colors";
+
+@font-face {
+    font-family: "All Round Gothic";
+    src: url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("opentype"), url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff"), url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff2");
+}
+
+body {
+    main {
+        #pageInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin: 30px 0 50px;
+
+            h1 {
+                color: $vermelhoRecife;
+                font-family: "All Round Gothic", sans-serif;
+                font-size: 3rem;
+                text-align: center;
+            }
+            p {
+                font-size: 1.125rem;
+                text-align: center;
+            }
+        }
+    }
+}

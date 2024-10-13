@@ -1,0 +1,92 @@
+@import "../../shared/colors";
+
+@font-face {
+    font-family: "All Round Gothic";
+    src: url("../../../assets/fonts/title/AllRoundGothic-Lig.otf") format("opentype"), url("../../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff"), url("../../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff2");
+}
+
+@font-face {
+    font-family: "Kantumruy Pro Regular";
+    src: url("../../../assets/fonts/subtitle/KantumruyPro-Regular.ttf") format("truetype");
+}
+
+body {
+    header {
+        padding: 80px 0 20px;
+        position: relative;
+
+        a {
+            i {
+                color: #b7b7b7;
+                font-size: 48px;
+                position: absolute;
+                top: 3%;
+                right: 3%;
+            }
+        }
+
+        #projectTitle {
+            color: $vermelhoRecife;
+            font-family: "All Round Gothic", sans-serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        #projectLocationAndYear {
+            font-family: "Kantumruy Pro Regular", sans-serif;
+            font-size: 1.25rem;
+            padding: 10px 0 20px;
+            text-transform: lowercase;
+        }
+
+        #projectDescription {
+            font-size: 1.125rem;
+            padding: 0 28px;
+            text-align: center;
+        }
+    }
+
+    main {
+        #projectImages {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+
+            div {
+                height: 250px;
+                width: 100%;
+
+                img {
+                    border-radius: 5px;
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        #cellphoneWhatsappCta {
+            font-family: "Kantumruy Pro Regular", sans-serif;
+            display: flex;
+            box-sizing: border-box;
+            background-color: $vermelhoRecife;
+            color: $begeDelicado;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 8px 10px;
+            gap: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+
+            i {
+                font-size: 2rem;
+            }
+
+            p {
+                text-transform: uppercase;
+            }
+        }
+    }
+}

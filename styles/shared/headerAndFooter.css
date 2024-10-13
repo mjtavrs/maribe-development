@@ -1,0 +1,53 @@
+body header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body header #indexReferrer img {
+  margin-bottom: 40px;
+  width: 300px;
+}
+body header nav ul {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+}
+body footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  border-top: 1px solid #3c3c3b;
+  padding: 30px;
+}
+body footer #socialLinks ul {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+body footer #socialLinks ul li a i {
+  font-size: 28px;
+  color: #3c3c3b;
+  padding: 5px;
+  border: 1px solid #3c3c3b;
+  border-radius: 6px;
+}
+body footer #legalInformation {
+  font-size: 0.975rem;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+body footer #legalInformation p span {
+  font-weight: bold;
+}
+body footer #legalInformation a {
+  padding-top: 10px;
+  font-weight: bold;
+  transition: 500ms color;
+}
+body footer #legalInformation a:hover {
+  color: #c56e51;
+}/*# sourceMappingURL=headerAndFooter.css.map */

@@ -1,0 +1,62 @@
+@import "../../shared/colors";
+
+body {
+    main {
+        #sectionsContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            
+            section {
+                display: flex;
+                flex-direction: column;
+                gap: 22px;
+    
+                h2 {
+                    color: $vermelhoRecife;
+                    font-size: 1.375rem;
+                    font-weight: 600;
+                }
+    
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+    
+                h3 {
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                }
+    
+                p {
+                    font-size: 1.125rem;
+    
+                    span {
+                        font-weight: 600;
+                    }
+                }
+
+                #imageContainer {
+                    position: relative;
+
+                    #orangeBox {
+                        bottom: 0;
+                        background-color: $vermelhoRecife;
+                        border-radius: 16px;
+                        height: 200px;
+                        position: absolute;
+                        width: 100%;
+                        z-index: -9999;
+                    }
+                }
+
+                #videoContainer {
+                    border: 1px solid transparent !important;
+                    border-radius: 10px;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}

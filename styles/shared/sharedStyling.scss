@@ -1,0 +1,31 @@
+@import "./colors";
+
+@font-face{
+    font-family: "Source Sans 3";
+    src: url("../../assets/fonts/common/SourceSans3-VariableFont_wght.ttf") format("truetype");
+    font-weight: 200 700;
+}
+
+body {
+    background-color: $begeDelicado;
+    color: $cinzaElegante;
+    display: flex;
+    flex-direction: column;
+    font-family: "Source Sans 3", sans-serif;
+    gap: 2rem;
+    min-height: 100dvh;
+    
+    main {
+        flex: 1 0 auto;
+        padding: 0 28px;
+    }
+
+    p {
+        line-height: 22px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $cinzaElegante;
+}

@@ -1,0 +1,77 @@
+@import "./colors";
+
+body {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #indexReferrer {
+            img {
+                margin-bottom: 40px;
+                width: 300px;
+            }
+        }
+
+        nav {
+            ul {
+                display: flex;
+                gap: 16px;
+                margin: 20px 0;
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        border-top: 1px solid $cinzaElegante;
+        padding: 30px;
+
+        #socialLinks {
+            ul {
+                display: flex;
+                flex-direction: row;
+                gap: 16px;
+
+                li {
+                    a {
+                        i {
+                            font-size: 28px;
+                            color: $cinzaElegante;
+                            padding: 5px;
+                            border: 1px solid $cinzaElegante;
+                            border-radius: 6px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #legalInformation {
+            font-size: 0.975rem;
+            display: flex;
+            gap: 5px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            p {
+                span {
+                    font-weight: bold;
+                }
+            }
+            a {
+                padding-top: 10px;
+                font-weight: bold;
+                transition: 500ms color;
+            }
+
+            a:hover {
+                color: $vermelhoRecife;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+main {
+  text-align: justify;
+}
+main #policies {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+main #policies span {
+  font-weight: 700;
+}
+main #policies .policy h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+main #policies .policy .policyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+main #policies .policy .policyInfo ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style-type: disc;
+  padding-left: 28px;
+}
+main #policies .policy .policyInfo span {
+  font-weight: 700;
+  padding-top: 10px;
+}
+main #separatorBox {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  width: 100%;
+}
+main #separatorBox #separator {
+  border-top: 1px solid #3c3c3b;
+  width: 30%;
+}
+main #contactInformationIfDoubt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+main #contactInformationIfDoubt h2 {
+  font-family: "All Round Gothic", sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  text-transform: lowercase;
+  color: #c56e51;
+}
+main #contactInformationIfDoubt p a {
+  font-weight: 600;
+  color: #c56e51;
+}/*# sourceMappingURL=privacyPolicies.css.map */
