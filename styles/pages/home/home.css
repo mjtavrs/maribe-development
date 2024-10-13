@@ -6,6 +6,9 @@ body main {
   justify-content: center;
   height: 100dvh;
 }
+body main img {
+  width: 250px;
+}
 body main nav ul {
   display: flex;
   flex-direction: column;
