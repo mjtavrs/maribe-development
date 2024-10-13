@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "All Round Gothic";
+  src: url("../../../assets/fonts/title/AllRoundGothic-Lig.otf") format("opentype"), url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff"), url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff2");
+}
+body main div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+body main div i {
+  color: #c56e51;
+  font-size: 112px;
+}
+body main div #notFoundText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+body main div #notFoundText h1 {
+  font-family: "All Round Gothic", sans-serif;
+  color: #c56e51;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 35px;
+}
+body main div #notFoundText p {
+  font-size: 1.125rem;
+}/*# sourceMappingURL=404.css.map */

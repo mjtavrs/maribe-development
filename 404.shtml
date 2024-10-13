@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
-    
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/shared/reset.css" />
     <link rel="stylesheet" href="styles/shared/sharedStyling.css" />
     <link rel="stylesheet" href="styles/shared/headerAndFooter.css" />
+    <link rel="stylesheet" href="styles/pages/404/404.css" />
     
     <!-- Scripts -->
 </head>
@@ -62,12 +63,14 @@
     <main>
         <div>
             <i class="ph-fill ph-x-circle"></i>
-            <h1>
-                Ooops, não conseguimos encontrar essa página.
-            </h1>
-            <p>
-                Esse endereço pode não existir ou estar em manutenção. Tente os links do cabeçalho acima.
-            </p>
+            <div id="notFoundText">
+                <h1>
+                    Ooops, não conseguimos encontrar essa página
+                </h1>
+                <p>
+                    Esse endereço pode não existir ou estar em manutenção. Tente os links do cabeçalho acima.
+                </p>
+            </div>
         </div>
     </main>
     <footer>
