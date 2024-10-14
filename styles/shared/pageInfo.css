@@ -19,4 +19,7 @@ body main #pageInfo h1 {
 body main #pageInfo p {
   font-size: 1.125rem;
   text-align: center;
+}
+body main #pageInfo p strong {
+  font-weight: 600;
 }/*# sourceMappingURL=pageInfo.css.map */

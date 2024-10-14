@@ -21,9 +21,14 @@ body {
                 font-weight: bold;
                 text-align: center;
             }
+
             p {
                 font-size: 1.125rem;
                 text-align: center;
+
+                strong {
+                    font-weight: 600;
+                }
             }
         }
     }
