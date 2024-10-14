@@ -23,7 +23,7 @@ body {
                     resize: none;
                 }
 
-                #phoneInput {
+                .inputWithSmallText {
                     display: flex;
                     flex-direction: column;
                     gap: 5px;
@@ -33,6 +33,11 @@ body {
                         opacity: 0.75;
                     }
                 }
+
+                small {
+                        font-size: 0.875rem;
+                        opacity: 0.75;
+                    }
 
                 input:focus, textarea:focus {
                     -webkit-box-shadow: 0px 0px 5px 2px rgba(197, 110, 81, 1);
@@ -54,7 +59,7 @@ body {
                 div {
                     display: flex;
                     align-items: center;
-                    gap: 5px;
+                    gap: 8px;
                 }
             }
 

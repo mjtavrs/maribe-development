@@ -80,7 +80,7 @@
                 <input type="email" name="email" id="email" placeholder="email@email.com" autocomplete="on" required aria-required="true">
             </label>
             <label for="phone">
-                <div id="phoneInput">
+                <div class="inputWithSmallText">
                     <span>Telefone</span>
                     <small>Apenas números, tá? Lembre de colocar o seu DDD!</small>
                 </div>
@@ -97,13 +97,63 @@
                     <label for="answerViaPhone">Telefone</label>
                 </div>
             </fieldset>
-            <label for="subject">
-                <span>Assunto</span>
-                <input type="text" name="subject" id="subject" placeholder="Sobre o que vamos falar?" autocomplete="on" maxlength="20" required aria-required="true">
-            </label>
-            <label for="message">
-                <span>Mensagem</span>
-                <textarea name="message" id="message" rows="5" placeholder="Digite sua mensagem aqui" required aria-required="true"></textarea>
+            <fieldset>
+                <legend>Como chegou até nós?</legend>
+                <div>
+                    <input type="radio" name="howYouFoundUs" id="instagram" value="instagram" value="Instagram" required>
+                    <label for="instagram">Instagram</label>
+                </div>
+                <div>
+                    <input type="radio" name="howYouFoundUs" id="indicacao" value="indicacao" value="Indicação de conhecidos" required>
+                    <label for="indicacao">Indicação de conhecidos</label>
+                </div>
+                <div>
+                    <input type="radio" name="howYouFoundUs" id="visitaAProjetado" value="visitaAProjetado" value="Visitei um espaço projetado por vocês" required>
+                    <label for="visitaAProjetado">Visitei um espaço projetado por vocês</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>O que estaremos projetando?</legend>
+                <div>
+                    <input type="radio" name="whatAreWeWorkingOn" id="interioresResidencialCompleto" value="interioresResidencialCompleto" value="Projeto de interiores residencial completo" required>
+                    <label for="interioresResidencialCompleto">Projeto de interiores residencial completo</label>
+                </div>
+                <div>
+                    <input type="radio" name="whatAreWeWorkingOn" id="interioresAlgunsAmbientes" value="interioresAlgunsAmbientes" value="Projeto de interiores para alguns ambientes" required>
+                    <label for="interioresAlgunsAmbientes">Projeto de interiores para alguns ambientes</label>
+                </div>
+                <div>
+                    <input type="radio" name="whatAreWeWorkingOn" id="interioresComercialCompleto" value="interioresComercialCompleto" value="Projeto de interiores comercial completo" required>
+                    <label for="interioresComercialCompleto">Projeto de interiores comercial completo</label>
+                </div>
+                <div>
+                    <input type="radio" name="whatAreWeWorkingOn" id="projetoDeArquitetura" value="projetoDeArquitetura" value="Projeto de arquitetura" required>
+                    <label for="projetoDeArquitetura">Projeto de arquitetura</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Quando você prevê iniciar o projeto?</legend>
+                <div>
+                    <input type="radio" name="whenToBeginTheProject" id="escolhendoMeuNovoLar" value="escolhendoMeuNovoLar" value="Estou no projeto de escolher meu novo lar" required>
+                    <label for="escolhendoMeuNovoLar">Estou no projeto de escolher meu novo lar</label>
+                </div>
+                <div>
+                    <input type="radio" name="whenToBeginTheProject" id="aguardandoAsChaves" value="aguardandoAsChaves" value="Estou aguardando as chaves, mal posso esperar!" required>
+                    <label for="aguardandoAsChaves">Estou aguardando as chaves, mal posso esperar!</label>
+                </div>
+                <div>
+                    <input type="radio" name="whenToBeginTheProject" id="estouSemPressa" value="estouSemPressa" value="Não estou com pressa. Vamos seguir o ritmo natural" required>
+                    <label for="estouSemPressa">Não estou com pressa. Vamos seguir o ritmo natural</label>
+                </div>
+                <div>
+                    <input type="radio" name="whenToBeginTheProject" id="estouApressado" value="estouApressado" value="Estou um pouquinho apressado(a) e gostaria de agilizar as coisas" required>
+                    <label for="estouApressado">Estou um pouquinho apressado(a) e gostaria de agilizar as coisas</label>
+                </div>
+            </fieldset>
+            <label for="objective" class="inputWithSmallText">
+                <span>Qual é o seu objetivo com este projeto? Como podemos te ajudar?</span>
+                <textarea name="objective" id="objective" rows="10" placeholder="Nos conte aqui..." required aria-required="true"></textarea>
+                <small>Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.</small>
             </label>
         </form>
         <div id="separatorBox">
