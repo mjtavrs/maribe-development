@@ -50,24 +50,4 @@ body main #projectImages div img {
      object-fit: cover;
   height: 100%;
   width: 100%;
-}
-body main #cellphoneWhatsappCta {
-  font-family: "Kantumruy Pro Regular", sans-serif;
-  display: flex;
-  box-sizing: border-box;
-  background-color: #c56e51;
-  color: #fcfcfa;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 8px 10px;
-  gap: 10px;
-  border-radius: 5px;
-  margin-top: 30px;
-}
-body main #cellphoneWhatsappCta i {
-  font-size: 2rem;
-}
-body main #cellphoneWhatsappCta p {
-  text-transform: uppercase;
 }/*# sourceMappingURL=project.css.map */

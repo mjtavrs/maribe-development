@@ -5,17 +5,33 @@ body {
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 30px;
 
             label {
                 display: flex;
                 flex-direction: column;
+                font-size: 1.125rem;
                 gap: 10px;
 
                 input, textarea {
+                    background-color: $begeDelicado;
                     border: none;
                     border-bottom: 1px solid $cinzaElegante;
+                    font-family: "Source Sans 3", sans-serif;
+                    font-size: 1.125rem;
                     padding: 5px;
+                    resize: none;
+                }
+
+                #phoneInput {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    small {
+                        font-size: 0.875rem;
+                        opacity: 0.75;
+                    }
                 }
 
                 input:focus, textarea:focus {
@@ -26,10 +42,24 @@ body {
             }
 
             fieldset {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                legend {
+                    font-size: 1.125rem;
+                    padding-bottom: 10px;
+                }
+
                 div {
                     display: flex;
+                    align-items: center;
                     gap: 5px;
                 }
+            }
+
+            ::placeholder {
+                opacity: 0.5;
             }
         }
     }

@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Kantumruy Pro Regular";
+  src: url("../../../assets/fonts/subtitle/KantumruyPro-Regular.ttf") format("truetype");
+}
+#cellphoneWhatsappCta {
+  font-family: "Kantumruy Pro Regular", sans-serif;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #c56e51;
+  color: #fcfcfa;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 10px;
+  gap: 10px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+#cellphoneWhatsappCta i {
+  font-size: 2rem;
+}
+#cellphoneWhatsappCta p {
+  text-transform: uppercase;
+}/*# sourceMappingURL=cellphoneWhatsappCta.css.map */
