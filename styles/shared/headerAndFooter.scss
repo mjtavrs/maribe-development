@@ -16,8 +16,13 @@ body {
         nav {
             ul {
                 display: flex;
+                font-size: 1.125rem;
                 gap: 16px;
-                margin: 20px 0;
+                margin: 20px 0 0;
+
+                #selected {
+                    font-weight: 700;
+                }
             }
         }
     }
