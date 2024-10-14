@@ -53,4 +53,16 @@ body main form ::-moz-placeholder {
 }
 body main form ::placeholder {
   opacity: 0.5;
+}
+body main form button {
+  background-color: #c56e51;
+  color: #fcfcfa;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 0;
+  margin: 10px 0;
+  box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
 }/*# sourceMappingURL=forms.css.map */
