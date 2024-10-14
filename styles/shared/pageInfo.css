@@ -22,4 +22,8 @@ body main #pageInfo p {
 }
 body main #pageInfo p strong {
   font-weight: 600;
+}
+body main #pageInfo p a {
+  font-weight: 500;
+  color: #c56e51;
 }/*# sourceMappingURL=pageInfo.css.map */
