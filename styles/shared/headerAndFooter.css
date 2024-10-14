@@ -54,4 +54,31 @@ body footer #legalInformation a {
 }
 body footer #legalInformation a:hover {
   color: #c56e51;
+}
+
+@media screen and (min-width: 768px) {
+  body header #indexReferrer img {
+    width: 325px;
+  }
+  body header nav ul {
+    display: flex;
+    gap: 30px;
+    margin: 25px 0 20px;
+  }
+  body footer {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 40px;
+  }
+  body footer #legalInformation {
+    font-size: 1rem;
+    gap: 3px;
+    align-items: end;
+    text-align: center;
+  }
+  body footer #legalInformation a {
+    padding-top: 5px;
+  }
 }/*# sourceMappingURL=headerAndFooter.css.map */
