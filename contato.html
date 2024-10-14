@@ -68,7 +68,40 @@
             <p>Tem alguma assunto para tratar conosco? É por aqui que podemos conversar! Caso precise de um orçamento, você pode enviar uma mensagem a partir <a href="orcamento.html">dessa página</a>.</p>
         </div>
         <form action="src/php/contactForm.php" method="POST">
-
+            <label for="name">
+                <span>Nome completo</span>
+                <input type="text" name="name" id="name" placeholder="Digite seu nome aqui" autocomplete="on" required aria-required="true">
+            </label>
+            <label for="email">
+                <span>E-mail</span>
+                <input type="email" name="email" id="email" placeholder="email@email.com" autocomplete="on" required aria-required="true">
+            </label>
+            <label for="phone">
+                <div>
+                    <span>Telefone</span>
+                    <small>Apenas números, tá? Lembre de colocar o seu DDD!</small>
+                </div>
+                <input type="tel" name="phone" id="phone" placeholder="00 123456789" autocomplete="on" required aria-required="true">
+            </label>
+            <fieldset>
+                <legend>Por onde você gostaria de ser respondido(a)?</legend>
+                <div>
+                    <input type="radio" name="answerViaEmail" id="answerViaEmail">
+                    <label for="answerViaEmail">E-mail</label>
+                </div>
+                <div>
+                    <input type="radio" name="answerViaPhone" id="answerViaPhone">
+                    <label for="answerViaPhone">Telefone</label>
+                </div>
+            </fieldset>
+            <label for="subject">
+                <span>Assunto</span>
+                <input type="text" name="subject" id="subject" placeholder="Sobre o que vamos falar?" autocomplete="on" maxlength="20" required aria-required="true">
+            </label>
+            <label for="message">
+                <span>Mensagem</span>
+                <textarea name="message" id="message" rows="5" placeholder="Digite sua mensagem aqui" required aria-required="true"></textarea>
+            </label>
         </form>
     </main>
     <footer>
