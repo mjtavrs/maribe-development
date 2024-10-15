@@ -112,10 +112,6 @@ body {
                     }
 
                     #imageContainer {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-
                         #orangeBox {
                             height: 300px;
                         }
@@ -123,6 +119,39 @@ body {
 
                     #videoContainer {
                         border-radius: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    body {
+        main {
+            #sectionsContainer {
+                section {
+                    h2 {
+                        font-size: 2.125rem;
+                    }
+
+                    h3 {
+                        font-size: 1.5rem;
+                    }
+
+                    #imageContainer {
+                        #orangeBox {
+                            height: 350px;
+                        }
+                    }
+
+                    #videoContainer {
+                        display: flex;
+                        align-items: center;
+
+                        video {
+                            width: 85%;
+                        }
                     }
                 }
             }

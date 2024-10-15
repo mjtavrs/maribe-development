@@ -78,15 +78,28 @@ body main #sectionsContainer section #videoContainer {
   body main #sectionsContainer section div {
     gap: 15px;
   }
-  body main #sectionsContainer section #imageContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
   body main #sectionsContainer section #imageContainer #orangeBox {
     height: 300px;
   }
   body main #sectionsContainer section #videoContainer {
     border-radius: 20px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  body main #sectionsContainer section h2 {
+    font-size: 2.125rem;
+  }
+  body main #sectionsContainer section h3 {
+    font-size: 1.5rem;
+  }
+  body main #sectionsContainer section #imageContainer #orangeBox {
+    height: 350px;
+  }
+  body main #sectionsContainer section #videoContainer {
+    display: flex;
+    align-items: center;
+  }
+  body main #sectionsContainer section #videoContainer video {
+    width: 85%;
   }
 }/*# sourceMappingURL=about.css.map */
