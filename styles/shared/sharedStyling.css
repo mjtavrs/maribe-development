@@ -29,4 +29,9 @@ a {
   body main {
     padding: 0 40px;
   }
+}
+@media screen and (min-width: 1024px) {
+  body main {
+    padding: 0 50px;
+  }
 }/*# sourceMappingURL=sharedStyling.css.map */
