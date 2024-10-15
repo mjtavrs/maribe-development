@@ -54,3 +54,21 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 1024px) {
+    body {
+        main {
+            #pageInfo {
+                h1 {
+                    font-size: 4.5rem;
+                }
+
+                p {
+                    line-height: 26px;
+                    font-size: 1.25rem;
+                    padding: 0 70px;
+                }
+            }
+        }
+    }
+}
