@@ -45,4 +45,14 @@ body main #pageInfo p a {
     font-size: 1.25rem;
     padding: 0 70px;
   }
+}
+@media screen and (min-width: 1366px) {
+  body main #pageInfo h1 {
+    font-size: 5rem;
+  }
+  body main #pageInfo p {
+    font-size: 1.375rem;
+    line-height: 30px;
+    padding: 0 120px;
+  }
 }/*# sourceMappingURL=pageInfo.css.map */
