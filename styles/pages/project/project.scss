@@ -67,3 +67,34 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 768px) {
+    body {
+        header {
+            a {
+                i {
+                    font-size: 52px;
+                }
+            }
+
+            #projectTitle {
+                font-size: 3rem;
+            }
+
+            #projectLocationAndYear {
+                font-size: 1.375rem;
+                padding: 15px 0 20px;
+            }
+        }
+
+        main {
+            #projectImages {
+                gap: 15px;
+
+                div {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}

@@ -50,4 +50,23 @@ body main #projectImages div img {
      object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  body header a i {
+    font-size: 52px;
+  }
+  body header #projectTitle {
+    font-size: 3rem;
+  }
+  body header #projectLocationAndYear {
+    font-size: 1.375rem;
+    padding: 15px 0 20px;
+  }
+  body main #projectImages {
+    gap: 15px;
+  }
+  body main #projectImages div {
+    height: 300px;
+  }
 }/*# sourceMappingURL=project.css.map */
