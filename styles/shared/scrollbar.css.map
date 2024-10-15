@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"scrollbar.css"}
+{"version":3,"sources":["scrollbar.scss","scrollbar.css","colors.scss"],"names":[],"mappings":"AAEA;EACI,iBAAA;EACA,UAAA;ACDJ;;ADIA;EACI,yBEHa;EFIb,mBAAA;ACDJ;;ADIA;EACI,yBEVW;ADSf","file":"scrollbar.css"}
