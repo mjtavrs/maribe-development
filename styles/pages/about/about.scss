@@ -60,3 +60,47 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 768px) {
+    body {
+        main {
+            #sectionsContainer {
+                section {
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+        
+                    div {
+                        gap: 10px;
+                    }
+        
+                    h3 {
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                    }
+
+                    #imageContainer {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        img {
+                            width: 600px;
+                        }
+                        #orangeBox {
+                            height: 250px;
+                            width: 100%;
+                            z-index: -9999;
+                        }
+                    }
+    
+                    #videoContainer {
+                        border: 1px solid transparent !important;
+                        border-radius: 10px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

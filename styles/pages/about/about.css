@@ -44,4 +44,35 @@ body main #sectionsContainer section #videoContainer {
   border: 1px solid transparent !important;
   border-radius: 10px;
   overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  body main #sectionsContainer section h2 {
+    font-size: 1.5rem;
+  }
+  body main #sectionsContainer section div {
+    gap: 10px;
+  }
+  body main #sectionsContainer section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  body main #sectionsContainer section #imageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  body main #sectionsContainer section #imageContainer img {
+    width: 600px;
+  }
+  body main #sectionsContainer section #imageContainer #orangeBox {
+    height: 250px;
+    width: 100%;
+    z-index: -9999;
+  }
+  body main #sectionsContainer section #videoContainer {
+    border: 1px solid transparent !important;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 }/*# sourceMappingURL=about.css.map */
