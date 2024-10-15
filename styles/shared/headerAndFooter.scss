@@ -27,6 +27,7 @@ body {
                 li {
                     a:hover {
                         color: $vermelhoRecife;
+                        transition: 300ms color;
                     }
                 }
             }

@@ -18,6 +18,7 @@ body header nav ul #selected {
 }
 body header nav ul li a:hover {
   color: #c56e51;
+  transition: 300ms color;
 }
 body footer {
   display: flex;
