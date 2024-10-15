@@ -64,4 +64,29 @@ body main #sectionsContainer section #videoContainer {
   body main #sectionsContainer section #imageContainer #orangeBox {
     height: 250px;
   }
+}
+@media screen and (min-width: 1024px) {
+  body main #sectionsContainer {
+    gap: 50px;
+  }
+  body main #sectionsContainer section h2 {
+    font-size: 1.9rem;
+  }
+  body main #sectionsContainer section h3 {
+    font-size: 1.5rem;
+  }
+  body main #sectionsContainer section div {
+    gap: 15px;
+  }
+  body main #sectionsContainer section #imageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  body main #sectionsContainer section #imageContainer #orangeBox {
+    height: 300px;
+  }
+  body main #sectionsContainer section #videoContainer {
+    border-radius: 20px;
+  }
 }/*# sourceMappingURL=about.css.map */
