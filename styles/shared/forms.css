@@ -54,6 +54,15 @@ body main form ::-moz-placeholder {
 body main form ::placeholder {
   opacity: 0.5;
 }
+body main form #privacyLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+body main form #privacyLabel span a {
+  font-weight: 600;
+  color: #c56e51;
+}
 body main form button {
   background-color: #c56e51;
   color: #fcfcfa;
