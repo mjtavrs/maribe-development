@@ -98,4 +98,9 @@ body footer #legalInformation a:hover {
   body footer {
     padding: 30px 50px;
   }
+}
+@media screen and (min-width: 1366px) {
+  body footer {
+    padding: 30px 80px;
+  }
 }/*# sourceMappingURL=headerAndFooter.css.map */

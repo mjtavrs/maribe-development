@@ -151,3 +151,11 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 1366px) {
+    body {
+        footer {
+            padding: 30px 80px;
+        }
+    }
+}
