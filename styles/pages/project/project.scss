@@ -23,6 +23,16 @@ body {
                 top: 3%;
                 right: 3%;
             }
+
+            i:hover {
+                color: #a9a9a9;
+                transition: 150ms color;
+            }
+
+            i:not(hover) {
+                color: #b7b7b7;
+                transition: 150ms color;
+            }
         }
 
         #projectTitle {

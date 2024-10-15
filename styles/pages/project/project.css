@@ -17,6 +17,14 @@ body header a i {
   top: 3%;
   right: 3%;
 }
+body header a i:hover {
+  color: #a9a9a9;
+  transition: 150ms color;
+}
+body header a i:not(hover) {
+  color: #b7b7b7;
+  transition: 150ms color;
+}
 body header #projectTitle {
   color: #c56e51;
   font-family: "All Round Gothic", sans-serif;
