@@ -16,6 +16,9 @@ body header nav ul {
 body header nav ul #selected {
   font-weight: 600;
 }
+body header nav ul li a:hover {
+  color: #c56e51;
+}
 body footer {
   display: flex;
   flex-direction: column;
@@ -80,5 +83,18 @@ body footer #legalInformation a:hover {
   }
   body footer #legalInformation a {
     padding-top: 5px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  body header #indexReferrer img {
+    width: 400px;
+  }
+  body header nav ul {
+    font-size: 1.25rem;
+    gap: 40px;
+    margin: 25px 0 40px;
+  }
+  body footer {
+    padding: 30px 50px;
   }
 }/*# sourceMappingURL=headerAndFooter.css.map */

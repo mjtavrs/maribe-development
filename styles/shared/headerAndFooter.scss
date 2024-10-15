@@ -23,6 +23,12 @@ body {
                 #selected {
                     font-weight: 600;
                 }
+
+                li {
+                    a:hover {
+                        color: $vermelhoRecife;
+                    }
+                }
             }
         }
     }
@@ -117,6 +123,30 @@ body {
                     padding-top: 5px;
                 }
             }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        header {
+            #indexReferrer {
+                img {
+                    width: 400px;
+                }
+            }
+
+            nav {
+                ul {
+                    font-size: 1.25rem;
+                    gap: 40px;
+                    margin: 25px 0 40px;
+                }
+            }
+        }
+
+        footer {
+            padding: 30px 50px;
         }
     }
 }
