@@ -56,4 +56,13 @@ main #contactInformationIfDoubt h2 {
 main #contactInformationIfDoubt p a {
   font-weight: 600;
   color: #c56e51;
+}
+
+@media screen and (min-width: 1366px) {
+  main #contactInformationIfDoubt h2 {
+    font-size: 2.25rem;
+  }
+  main #contactInformationIfDoubt p {
+    margin-bottom: 20px;
+  }
 }/*# sourceMappingURL=privacyPolicies.css.map */
