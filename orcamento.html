@@ -88,17 +88,6 @@
             </label>
             <div class="twoColumnsInForm">
                 <fieldset>
-                    <legend>Por onde você gostaria de ser respondido(a)?</legend>
-                    <div>
-                        <input type="radio" name="answerVia" id="answerViaEmail" value="answerViaEmail" required aria-required="true">
-                        <label for="answerViaEmail">E-mail</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="answerVia" id="answerViaPhone" value="answerViaPhone" required aria-required="true">
-                        <label for="answerViaPhone">Telefone</label>
-                    </div>
-                </fieldset>
-                <fieldset>
                     <legend>Como chegou até nós?</legend>
                     <div>
                         <input type="radio" name="howYouFoundUs" id="instagram" value="instagram" value="Instagram" required aria-required="true">
@@ -113,8 +102,6 @@
                         <label for="visitaAProjetado">Visitei um espaço projetado por vocês</label>
                     </div>
                 </fieldset>
-            </div>
-            <div class="twoColumnsInForm">
                 <fieldset>
                     <legend>O que estaremos projetando?</legend>
                     <div>
@@ -134,6 +121,8 @@
                         <label for="projetoDeArquitetura">Projeto de arquitetura</label>
                     </div>
                 </fieldset>
+            </div>
+            <div class="twoColumnsInForm">
                 <fieldset>
                     <legend>Quando você prevê iniciar o projeto?</legend>
                     <div>
@@ -153,12 +142,12 @@
                         <label for="estouApressado">Estou um pouquinho apressado(a) e gostaria de agilizar as coisas</label>
                     </div>
                 </fieldset>
+                <label for="objective" class="inputWithSmallText">
+                    <span>Qual é o seu objetivo com este projeto? Como podemos te ajudar?</span>
+                    <textarea name="objective" id="objective" rows="5" placeholder="Nos conte aqui..." required aria-required="true"></textarea>
+                    <small>Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.</small>
+                </label>
             </div>
-            <label for="objective" class="inputWithSmallText">
-                <span>Qual é o seu objetivo com este projeto? Como podemos te ajudar?</span>
-                <textarea name="objective" id="objective" rows="10" placeholder="Nos conte aqui..." required aria-required="true"></textarea>
-                <small>Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.</small>
-            </label>
             <label for="privacy" id="privacyLabel">
                 <input type="checkbox" name="privacy" id="privacy" required aria-required="true">
                 <span>Eu concordo com o envio dos dados segundo a <a href="politica-de-privacidade.html">política de privacidade</a> da Maribe Arquitetura.</span>
