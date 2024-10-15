@@ -1,0 +1,25 @@
+@import "./colors";
+
+
+#whatsappFloatingButton {
+    background-color: $vermelhoRecife;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 9999px;
+
+    span {
+        color: $begeDelicado;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    i {
+        color: $begeDelicado;
+        font-size: 40px;
+    }
+}
