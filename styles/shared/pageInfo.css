@@ -57,4 +57,14 @@ body main #pageInfo p a {
     line-height: 30px;
     padding: 0 120px;
   }
+}
+@media screen and (min-width: 1768px) {
+  body main #pageInfo h1 {
+    font-size: 5rem;
+    padding: 0 120px;
+  }
+  body main #pageInfo p {
+    line-height: 30px;
+    padding: 0 150px;
+  }
 }/*# sourceMappingURL=pageInfo.css.map */
