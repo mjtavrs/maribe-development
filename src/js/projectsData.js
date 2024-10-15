@@ -195,7 +195,7 @@ const projects = [
             "Esse quarto de criança foi pensado para dois irmãos cheios de personalidade e que amam a natureza! Idealizamos uma arte para o projeto que foi pintada pelos próprios clientes, permitindo criar memórias afetivas desse novo quarto. A família tem planos de mudar para um apê maior, pensando nisso, fizemos uma marcenaria solta, podendo gerar vários layouts que se adequem ao novo espaço.",
         ano: "2023",
         cidade: "Recife",
-        outrasFotos: ["assets/images/projects/quarto-selva/images/1.webp", "assets/images/projects/quarto-selva/images/2.webp", "assets/images/projects/quarto-selva/images/3.webp"],
+        outrasFotos: ["assets/images/projects/quarto-selva/images/1.webp", "assets/images/projects/quarto-selva/images/2.webp", "assets/images/projects/quarto-selva/images/3.webp", "assets/images/projects/quarto-selva/images/4.webp", "assets/images/projects/quarto-selva/images/5.webp"],
     },
     {
         id: 9,
@@ -205,10 +205,31 @@ const projects = [
             "Esse é um quartinho de bebê desenvolvido com base na filosofia Montessoriana. Buscamos trazer a sensação de refúgio para a bebê, com um projeto que acompanhasse seu crescimento e aumento de autonomia. Apostamos em tons suaves, mobiliário baixo e bastante revestimento natural. A arte na parede foi desenvolvida pela maribe e pintada pela cliente trazendo bastante memória afetiva para o espaço!",
         ano: "2023",
         cidade: "Recife",
-        outrasFotos: ["assets/images/projects/quarto-tete/images/1.webp", "assets/images/projects/quarto-tete/images/2.webp", "assets/images/projects/quarto-tete/images/3.webp", "assets/images/projects/quarto-tete/images/4.webp"],
+        outrasFotos: ["assets/images/projects/quarto-tete/images/1.webp", "assets/images/projects/quarto-tete/images/2.webp", "assets/images/projects/quarto-tete/images/3.webp", "assets/images/projects/quarto-tete/images/4.webp", "assets/images/projects/quarto-tete/images/5.webp", "assets/images/projects/quarto-tete/images/6.webp", "assets/images/projects/quarto-tete/images/7.webp"],
     },
     {
         id: 10,
+        cover: "assets/images/projects/espaco-otorrino/espaco-otorrino-cover.webp",
+        titulo: "espaço otorrino",
+        descricao:
+            "",
+        ano: "2024",
+        cidade: "Recife",
+        outrasFotos: [
+            "assets/images/projects/espaco-otorrino/images/1.webp",
+            "assets/images/projects/espaco-otorrino/images/2.webp",
+            "assets/images/projects/espaco-otorrino/images/3.webp",
+            "assets/images/projects/espaco-otorrino/images/4.webp",
+            "assets/images/projects/espaco-otorrino/images/5.webp",
+            "assets/images/projects/espaco-otorrino/images/6.webp",
+            "assets/images/projects/espaco-otorrino/images/7.webp",
+            "assets/images/projects/espaco-otorrino/images/8.webp",
+            "assets/images/projects/espaco-otorrino/images/9.webp",
+            "assets/images/projects/espaco-otorrino/images/10.webp",
+        ],
+    },
+    {
+        id: 11,
         cover: "assets/images/projects/projeto-marias/projeto-marias-cover.webp",
         titulo: "projeto marias",
         descricao:
@@ -228,7 +249,7 @@ const projects = [
         ],
     },
     {
-        id: 11,
+        id: 12,
         cover: "assets/images/projects/agencia-166/agencia-166-cover.webp",
         titulo: "agência 166",
         descricao:
