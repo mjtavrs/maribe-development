@@ -32,4 +32,24 @@ body main div #notFoundText p {
 body main div #notFoundText p a {
   color: #c56e51;
   font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  body main div {
+    gap: 15px;
+  }
+  body main div i {
+    font-size: 130px;
+  }
+  body main div #notFoundText {
+    gap: 25px;
+  }
+  body main div #notFoundText h1 {
+    font-size: 2.25rem;
+    padding: 0 45px;
+    line-height: 45px;
+  }
+  body main div #notFoundText p {
+    padding: 0 50px;
+  }
 }/*# sourceMappingURL=404.css.map */

@@ -45,3 +45,31 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 768px) {
+    body {
+        main {
+            div {
+                gap: 15px;
+
+                i {
+                    font-size: 130px;
+                }
+
+                #notFoundText {
+                    gap: 25px;
+
+                    h1 {
+                        font-size: 2.25rem;
+                        padding: 0 45px;
+                        line-height: 45px;
+                    }
+
+                    p {
+                        padding: 0 50px;
+                    }
+                }
+            }
+        }
+    }
+}
