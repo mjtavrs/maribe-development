@@ -86,70 +86,74 @@
                 </div>
                 <input type="tel" name="phone" id="phone" placeholder="00 123456789" autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
             </label>
-            <fieldset>
-                <legend>Por onde você gostaria de ser respondido(a)?</legend>
-                <div>
-                    <input type="radio" name="answerVia" id="answerViaEmail" value="answerViaEmail" required aria-required="true">
-                    <label for="answerViaEmail">E-mail</label>
-                </div>
-                <div>
-                    <input type="radio" name="answerVia" id="answerViaPhone" value="answerViaPhone" required aria-required="true">
-                    <label for="answerViaPhone">Telefone</label>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Como chegou até nós?</legend>
-                <div>
-                    <input type="radio" name="howYouFoundUs" id="instagram" value="instagram" value="Instagram" required aria-required="true">
-                    <label for="instagram">Instagram</label>
-                </div>
-                <div>
-                    <input type="radio" name="howYouFoundUs" id="indicacao" value="indicacao" value="Indicação de conhecidos" required aria-required="true">
-                    <label for="indicacao">Indicação de conhecidos</label>
-                </div>
-                <div>
-                    <input type="radio" name="howYouFoundUs" id="visitaAProjetado" value="visitaAProjetado" value="Visitei um espaço projetado por vocês" required aria-required="true">
-                    <label for="visitaAProjetado">Visitei um espaço projetado por vocês</label>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>O que estaremos projetando?</legend>
-                <div>
-                    <input type="radio" name="whatAreWeWorkingOn" id="interioresResidencialCompleto" value="interioresResidencialCompleto" value="Projeto de interiores residencial completo" required aria-required="true">
-                    <label for="interioresResidencialCompleto">Projeto de interiores residencial completo</label>
-                </div>
-                <div>
-                    <input type="radio" name="whatAreWeWorkingOn" id="interioresAlgunsAmbientes" value="interioresAlgunsAmbientes" value="Projeto de interiores para alguns ambientes" required aria-required="true">
-                    <label for="interioresAlgunsAmbientes">Projeto de interiores para alguns ambientes</label>
-                </div>
-                <div>
-                    <input type="radio" name="whatAreWeWorkingOn" id="interioresComercialCompleto" value="interioresComercialCompleto" value="Projeto de interiores comercial completo" required aria-required="true">
-                    <label for="interioresComercialCompleto">Projeto de interiores comercial completo</label>
-                </div>
-                <div>
-                    <input type="radio" name="whatAreWeWorkingOn" id="projetoDeArquitetura" value="projetoDeArquitetura" value="Projeto de arquitetura" required aria-required="true">
-                    <label for="projetoDeArquitetura">Projeto de arquitetura</label>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Quando você prevê iniciar o projeto?</legend>
-                <div>
-                    <input type="radio" name="whenToBeginTheProject" id="escolhendoMeuNovoLar" value="escolhendoMeuNovoLar" value="Estou no projeto de escolher meu novo lar" required aria-required="true">
-                    <label for="escolhendoMeuNovoLar">Estou no projeto de escolher meu novo lar</label>
-                </div>
-                <div>
-                    <input type="radio" name="whenToBeginTheProject" id="aguardandoAsChaves" value="aguardandoAsChaves" value="Estou aguardando as chaves, mal posso esperar!" required aria-required="true">
-                    <label for="aguardandoAsChaves">Estou aguardando as chaves, mal posso esperar!</label>
-                </div>
-                <div>
-                    <input type="radio" name="whenToBeginTheProject" id="estouSemPressa" value="estouSemPressa" value="Não estou com pressa. Vamos seguir o ritmo natural" required aria-required="true">
-                    <label for="estouSemPressa">Não estou com pressa. Vamos seguir o ritmo natural</label>
-                </div>
-                <div>
-                    <input type="radio" name="whenToBeginTheProject" id="estouApressado" value="estouApressado" value="Estou um pouquinho apressado(a) e gostaria de agilizar as coisas" required aria-required="true">
-                    <label for="estouApressado">Estou um pouquinho apressado(a) e gostaria de agilizar as coisas</label>
-                </div>
-            </fieldset>
+            <div class="twoColumnsInForm">
+                <fieldset>
+                    <legend>Por onde você gostaria de ser respondido(a)?</legend>
+                    <div>
+                        <input type="radio" name="answerVia" id="answerViaEmail" value="answerViaEmail" required aria-required="true">
+                        <label for="answerViaEmail">E-mail</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="answerVia" id="answerViaPhone" value="answerViaPhone" required aria-required="true">
+                        <label for="answerViaPhone">Telefone</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Como chegou até nós?</legend>
+                    <div>
+                        <input type="radio" name="howYouFoundUs" id="instagram" value="instagram" value="Instagram" required aria-required="true">
+                        <label for="instagram">Instagram</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="howYouFoundUs" id="indicacao" value="indicacao" value="Indicação de conhecidos" required aria-required="true">
+                        <label for="indicacao">Indicação de conhecidos</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="howYouFoundUs" id="visitaAProjetado" value="visitaAProjetado" value="Visitei um espaço projetado por vocês" required aria-required="true">
+                        <label for="visitaAProjetado">Visitei um espaço projetado por vocês</label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="twoColumnsInForm">
+                <fieldset>
+                    <legend>O que estaremos projetando?</legend>
+                    <div>
+                        <input type="radio" name="whatAreWeWorkingOn" id="interioresResidencialCompleto" value="interioresResidencialCompleto" value="Projeto de interiores residencial completo" required aria-required="true">
+                        <label for="interioresResidencialCompleto">Projeto de interiores residencial completo</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="whatAreWeWorkingOn" id="interioresAlgunsAmbientes" value="interioresAlgunsAmbientes" value="Projeto de interiores para alguns ambientes" required aria-required="true">
+                        <label for="interioresAlgunsAmbientes">Projeto de interiores para alguns ambientes</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="whatAreWeWorkingOn" id="interioresComercialCompleto" value="interioresComercialCompleto" value="Projeto de interiores comercial completo" required aria-required="true">
+                        <label for="interioresComercialCompleto">Projeto de interiores comercial completo</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="whatAreWeWorkingOn" id="projetoDeArquitetura" value="projetoDeArquitetura" value="Projeto de arquitetura" required aria-required="true">
+                        <label for="projetoDeArquitetura">Projeto de arquitetura</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Quando você prevê iniciar o projeto?</legend>
+                    <div>
+                        <input type="radio" name="whenToBeginTheProject" id="escolhendoMeuNovoLar" value="escolhendoMeuNovoLar" value="Estou no projeto de escolher meu novo lar" required aria-required="true">
+                        <label for="escolhendoMeuNovoLar">Estou no projeto de escolher meu novo lar</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="whenToBeginTheProject" id="aguardandoAsChaves" value="aguardandoAsChaves" value="Estou aguardando as chaves, mal posso esperar!" required aria-required="true">
+                        <label for="aguardandoAsChaves">Estou aguardando as chaves, mal posso esperar!</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="whenToBeginTheProject" id="estouSemPressa" value="estouSemPressa" value="Não estou com pressa. Vamos seguir o ritmo natural" required aria-required="true">
+                        <label for="estouSemPressa">Não estou com pressa. Vamos seguir o ritmo natural</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="whenToBeginTheProject" id="estouApressado" value="estouApressado" value="Estou um pouquinho apressado(a) e gostaria de agilizar as coisas" required aria-required="true">
+                        <label for="estouApressado">Estou um pouquinho apressado(a) e gostaria de agilizar as coisas</label>
+                    </div>
+                </fieldset>
+            </div>
             <label for="objective" class="inputWithSmallText">
                 <span>Qual é o seu objetivo com este projeto? Como podemos te ajudar?</span>
                 <textarea name="objective" id="objective" rows="10" placeholder="Nos conte aqui..." required aria-required="true"></textarea>
