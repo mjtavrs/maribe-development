@@ -82,3 +82,21 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 1366px) {
+    body {
+        main {
+            #projectsContainer {
+                article {
+                    height: 400px;
+
+                    a {
+                        img {
+                            height: 400px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

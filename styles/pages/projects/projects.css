@@ -62,4 +62,12 @@ body main #projectsContainer article a img {
   body main #projectsContainer article a img {
     border-radius: 8px;
   }
+}
+@media screen and (min-width: 1366px) {
+  body main #projectsContainer article {
+    height: 400px;
+  }
+  body main #projectsContainer article a img {
+    height: 400px;
+  }
 }/*# sourceMappingURL=projects.css.map */
