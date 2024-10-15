@@ -34,6 +34,27 @@ body {
                         color: $cinzaElegante;
                         text-decoration: none;
                     }
+
+                    a:hover {
+                        color: $vermelhoRecife;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        main {
+            img {
+                width: 300px;
+            }
+
+            nav {
+                ul {
+                    font-size: 1.25rem;
+                    gap: 30px;
                 }
             }
         }
