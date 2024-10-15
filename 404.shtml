@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/shared/reset.css" />
     <link rel="stylesheet" href="styles/shared/sharedStyling.css" />
     <link rel="stylesheet" href="styles/shared/headerAndFooter.css" />
+    <link rel="stylesheet" href="styles/shared/scrollbar.css" />
     <link rel="stylesheet" href="styles/pages/404/404.css" />
     
     <!-- Scripts -->
