@@ -55,7 +55,6 @@ body main #sectionsContainer section #videoContainer {
   }
   body main #sectionsContainer section h3 {
     font-size: 1.25rem;
-    font-weight: 600;
   }
   body main #sectionsContainer section #imageContainer {
     display: flex;
