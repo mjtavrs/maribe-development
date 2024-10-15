@@ -57,3 +57,28 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 1024px) {
+    body {
+        main {
+            #projectsContainer {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0;
+                justify-content: space-between;
+                row-gap: 20px;
+                width: 100%;
+
+                article {
+                    min-width: 49%;
+
+                    a {
+                        img {
+                            border-radius: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
