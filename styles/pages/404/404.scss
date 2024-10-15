@@ -73,3 +73,24 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 1024px) {
+    body {
+        main {
+            div {
+                #notFoundText {
+                    h1 {
+                        font-size: 2.5rem;
+                        padding: 0 50px;
+                    }
+
+                    p {
+                        font-size: 1.25rem;
+                        line-height: 30px;
+                        padding: 0 150px;
+                    }
+                }
+            }
+        }
+    }
+}
