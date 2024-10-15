@@ -28,6 +28,16 @@
     }
 }
 
+#cellphoneWhatsappCta:hover {
+    background-color: $amareloTarsila;
+    transition: 300ms background-color;
+}
+
+#cellphoneWhatsappCta:not(hover) {
+    background-color: $vermelhoRecife;
+    transition: 300ms background-color;
+}
+
 @media screen and (min-width: 768px) {
     #cellphoneWhatsappCta {
         padding: 15px 10px;

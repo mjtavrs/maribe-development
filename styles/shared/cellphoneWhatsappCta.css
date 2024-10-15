@@ -23,6 +23,16 @@
   text-transform: uppercase;
 }
 
+#cellphoneWhatsappCta:hover {
+  background-color: #e2af58;
+  transition: 300ms background-color;
+}
+
+#cellphoneWhatsappCta:not(hover) {
+  background-color: #c56e51;
+  transition: 300ms background-color;
+}
+
 @media screen and (min-width: 768px) {
   #cellphoneWhatsappCta {
     padding: 15px 10px;
