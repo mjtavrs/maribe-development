@@ -73,10 +73,6 @@ body {
                     div {
                         gap: 10px;
                     }
-        
-                    h3 {
-                        font-size: 1.25rem;
-                    }
 
                     #imageContainer {
                         display: flex;
@@ -88,15 +84,7 @@ body {
                         }
                         #orangeBox {
                             height: 250px;
-                            width: 100%;
-                            z-index: -9999;
                         }
-                    }
-    
-                    #videoContainer {
-                        border: 1px solid transparent !important;
-                        border-radius: 10px;
-                        overflow: hidden;
                     }
                 }
             }
