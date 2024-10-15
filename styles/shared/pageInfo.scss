@@ -59,13 +59,14 @@ body {
     body {
         main {
             #pageInfo {
+                gap: 30px;
+
                 h1 {
                     font-size: 4.5rem;
                 }
 
                 p {
                     line-height: 26px;
-                    font-size: 1.25rem;
                     padding: 0 70px;
                 }
             }
@@ -79,10 +80,10 @@ body {
             #pageInfo {
                 h1 {
                     font-size: 5rem;
+                    padding: 0 120px;
                 }
 
                 p {
-                    font-size: 1.375rem;
                     line-height: 30px;
                     padding: 0 120px;
                 }
