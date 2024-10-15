@@ -26,4 +26,13 @@ body main #pageInfo p strong {
 body main #pageInfo p a {
   font-weight: 500;
   color: #c56e51;
+}
+
+@media screen and (min-width: 768px) {
+  body main #pageInfo h1 {
+    font-size: 4rem;
+  }
+  body main #pageInfo p {
+    padding: 0 50px;
+  }
 }/*# sourceMappingURL=pageInfo.css.map */
