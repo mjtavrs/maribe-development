@@ -63,4 +63,9 @@ body main div #notFoundText p a {
     line-height: 30px;
     padding: 0 150px;
   }
+}
+@media screen and (min-width: 1366px) {
+  body main div #notFoundText p {
+    padding: 0 150px 50px;
+  }
 }/*# sourceMappingURL=404.css.map */

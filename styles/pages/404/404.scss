@@ -94,3 +94,17 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 1366px) {
+    body {
+        main {
+            div {
+                #notFoundText {
+                    p {
+                        padding: 0 150px 50px;
+                    }
+                }
+            }
+        }
+    }
+}
