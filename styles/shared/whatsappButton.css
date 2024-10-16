@@ -1,20 +1,24 @@
 #whatsappFloatingButton {
+  z-index: 9999;
+}
+#whatsappFloatingButton div {
   background-color: #c56e51;
   display: flex;
   align-items: center;
   gap: 10px;
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 20px;
-  padding: 10px 10px 10px 20px;
-  border-radius: 9999px;
+  padding: 8px 10px;
+  border: 2px solid #fcfcfa;
+  border-radius: 5px;
 }
-#whatsappFloatingButton span {
+#whatsappFloatingButton div span {
   color: #fcfcfa;
   font-size: 0.9rem;
   font-weight: 500;
 }
-#whatsappFloatingButton i {
+#whatsappFloatingButton div i {
   color: #fcfcfa;
   font-size: 40px;
 }/*# sourceMappingURL=whatsappButton.css.map */
