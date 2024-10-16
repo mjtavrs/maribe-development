@@ -1,5 +1,9 @@
 @import "./colors";
 
+@font-face {
+    font-family: "Kantumruy Pro Regular";
+    src: url("../../assets/fonts/subtitle/KantumruyPro-SemiBold.ttf") format("truetype");
+}
 
 #whatsappFloatingButton {
     z-index: 9999;
@@ -8,23 +12,24 @@
         background-color: $vermelhoRecife;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         position: fixed;
-        right: 20px;
+        right: 15px;
         top: 20px;
         padding: 8px 10px;
         border: 2px solid $begeDelicado;
         border-radius: 5px;
-
+        
         span {
+            font-family: "Kantumruy Pro Regular", sans-serif;
             color: $begeDelicado;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 500;
         }
     
         i {
             color: $begeDelicado;
-            font-size: 40px;
+            font-size: 32px;
         }
     }
 }

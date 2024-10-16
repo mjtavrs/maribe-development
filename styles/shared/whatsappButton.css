@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Kantumruy Pro Regular";
+  src: url("../../assets/fonts/subtitle/KantumruyPro-SemiBold.ttf") format("truetype");
+}
 #whatsappFloatingButton {
   z-index: 9999;
 }
@@ -5,20 +9,21 @@
   background-color: #c56e51;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   position: fixed;
-  right: 20px;
+  right: 15px;
   top: 20px;
   padding: 8px 10px;
   border: 2px solid #fcfcfa;
   border-radius: 5px;
 }
 #whatsappFloatingButton div span {
+  font-family: "Kantumruy Pro Regular", sans-serif;
   color: #fcfcfa;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 #whatsappFloatingButton div i {
   color: #fcfcfa;
-  font-size: 40px;
+  font-size: 32px;
 }/*# sourceMappingURL=whatsappButton.css.map */
