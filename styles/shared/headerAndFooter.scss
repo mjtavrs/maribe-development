@@ -8,12 +8,13 @@ body {
 
         #indexReferrer {
             img {
-                margin-bottom: 40px;
                 width: 300px;
             }
         }
 
         nav {
+            margin-top: 60px;
+
             ul {
                 display: flex;
                 font-size: 1.125rem;
@@ -24,10 +25,15 @@ body {
                     font-weight: 600;
                 }
 
-                li {
+                li:not(#selected) {
+                    opacity: 0.8;
+                }
+
+                li:not(#selected) {
                     a:hover {
                         color: $vermelhoRecife;
                         transition: 300ms color;
+                        opacity: 1;
                     }
                 }
             }

@@ -4,8 +4,10 @@ body header {
   align-items: center;
 }
 body header #indexReferrer img {
-  margin-bottom: 40px;
   width: 300px;
+}
+body header nav {
+  margin-top: 60px;
 }
 body header nav ul {
   display: flex;
@@ -16,9 +18,13 @@ body header nav ul {
 body header nav ul #selected {
   font-weight: 600;
 }
-body header nav ul li a:hover {
+body header nav ul li:not(#selected) {
+  opacity: 0.8;
+}
+body header nav ul li:not(#selected) a:hover {
   color: #c56e51;
   transition: 300ms color;
+  opacity: 1;
 }
 body footer {
   display: flex;
