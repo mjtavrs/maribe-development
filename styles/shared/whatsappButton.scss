@@ -8,6 +8,7 @@
 #whatsappFloatingButton {
     display: none;
     z-index: 9999;
+    position: relative;
     
     div {
         background-color: $vermelhoRecife;
@@ -15,16 +16,28 @@
         align-items: center;
         gap: 8px;
         position: fixed;
-        right: 25px;
+        right: -265px;
         top: 70%;
-        padding: 8px 10px;
+        padding: 8px 10px 8px 20px;
         border: 2px solid $begeDelicado;
         border-radius: 5px;
+        transition: 300ms right ease;
 
         -webkit-box-shadow: 0px 0px 15px 5px rgba(197, 110, 81, 0.4);
         -moz-box-shadow: 0px 0px 15px 5px rgba(197, 110, 81, 0.4);
         box-shadow: 0px 0px 15px 5px rgba(197, 110, 81, 0.4);
         
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50px;
+            bottom: 0;
+            width: 50px;
+            background: transparent;
+            z-index: 0;
+        }
+
         span {
             font-family: "Kantumruy Pro Regular", sans-serif;
             color: $begeDelicado;
@@ -36,6 +49,12 @@
             color: $begeDelicado;
             font-size: 32px;
         }
+    }
+}
+
+#whatsappFloatingButton:hover {
+    div {
+        right: 15px;
     }
 }
 
