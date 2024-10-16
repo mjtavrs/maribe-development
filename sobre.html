@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles/shared/headerAndFooter.css" />
     <link rel="stylesheet" href="styles/shared/whatsappButton.css" />
     <link rel="stylesheet" href="styles/shared/scrollbar.css" />
+    <link rel="stylesheet" href="styles/shared/smoothOpening.css" />
     <link rel="stylesheet" href="styles/pages/about/about.css" />
     
     <!-- Scripts -->
@@ -35,129 +36,131 @@
             <i class="ph ph-whatsapp-logo"></i>
         </div>
     </a>
-    <header>
-        <a href="index.html" id="indexReferrer">
-            <img src="assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura">
-        </a>
-        <div>
-            <nav>
+    <div id="smoothOpening">
+        <header>
+            <a href="index.html" id="indexReferrer">
+                <img src="assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura">
+            </a>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                início
+                            </a>
+                        </li>
+                        <li id="selected">
+                            <a href="sobre.html">
+                                sobre
+                            </a>
+                        </li>
+                        <li>
+                            <a href="projetos.html">
+                                projetos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orcamento.html">
+                                orçamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contato.html">
+                                contato
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div id="pageInfo">
+                <h1>quem somos</h1>
+                <p><strong>A arquitetura vai além de construir espaços; ela transforma vidas</strong>. Na Maribe Arquitetura, acreditamos no poder de criar ambientes que refletem histórias e emoções. Nossa missão é proporcionar bem-estar, harmonia e personalidade em cada projeto, sempre unindo o funcional ao belo, o novo ao tradicional. <strong>Cada espaço conta uma história, e estamos aqui para ajudar a contar a sua</strong>.</p>
+            </div>
+            <div id="sectionsContainer">
+                <section>
+                    <h2>sobre nós</h2>
+                    <div>
+                        <h3>Heloísa Marletti</h3>
+                        <p>
+                            <span>Helô</span> é arquiteta e urbanista formada pela Universidade Católica de Pernambuco (UNICAP) e pós-graduanda em <span>Neuroarquitetura</span>. Possui experiência em <span>arquitetura de interiores</span>, <span>arquitetura social</span> e pesquisa na área acadêmica. Adora trabalhar com modelagens e vídeos, trazendo realismo na apresentação dos projetos. Intensa, adora arte, viagens e bons vinhos.
+                        </p>
+                    </div>
+                    <div>
+                        <h3>Nathalia Ribeiro</h3>
+                        <p>
+                            <span>Nath</span> é arquiteta e urbanista formada pela Universidade Católica de Pernambuco (UNICAP), com experiência em <span>arquitetura de interiores</span>, <span>projetos comerciais</span> e <span>design gráfico</span>. Apaixonada por marcenaria, faz tudo para deixar os projetos bem detalhados e executivos completos. Adora yoga, atividades ao ar livre e apreciar bons cafés.
+                        </p>
+                    </div>
+                    <p>
+                        Juntas, gerimos a Maribe Arquitetura, sendo responsáveis por todo criativo dos projetos.
+                    </p>
+                    <div id="imageContainer">
+                        <img src="assets/images/public/meninas_foto_sem_bg.webp" alt="Foto de Nathalia Ribeiro e Heloisa Marletti">
+                        <div id="orangeBox">
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>nosso símbolo</h2>
+                        <p>
+                            O conceito do símbolo <span>une a arquitetura e história de Recife</span> à referências a artistas que nós admiramos. Composição em mosaico, inspirada por obras de <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span>, remete à união do antigo com o novo, referência à nossa linha de trabalho.
+                        </p>
+                        <p>
+                            O símbolo da Maribe utiliza recortes do desenho do <span>Marco Zero</span> para formar a paisagem da <span>Rua do Bom Jesus</span>, eleita a 3ª rua mais bonita do mundo. E faz referência ao urbanismo da cidade com as ruas partindo do Marco, representado pelo círculo vermelho.
+                        </p>
+                        <p>
+                            Formas divididas por dois tons de azul fazem alusão ao encontro das águas. O <span>Rio Capibaribe</span> que encontra com o <span>Rio Beberibe</span> e desemboca no Oceano Atlântico, unindo a água salgada com a doce, o mar com o rio, Marletti com Ribeiro, Maribe!
+                        </p>
+                        <div id="videoContainer">
+                            <video src="assets/videos/logoHistorySquared.MOV" autoplay loop muted defaultmuted playsinline preload="auto"></video>
+                        </div>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <div id="socialLinks">
                 <ul>
                     <li>
-                        <a href="index.html">
-                            início
-                        </a>
-                    </li>
-                    <li id="selected">
-                        <a href="sobre.html">
-                            sobre
+                        <a href="https://www.instagram.com/maribe.arquitetura" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Instagram" class="ph-light ph-instagram-logo"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="projetos.html">
-                            projetos
+                        <a href="https://web.facebook.com/people/Maribe-Arquitetura/100089975852864/" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Facebook" class="ph-light ph-facebook-logo"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="orcamento.html">
-                            orçamento
+                        <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" aria-hidden="true">
+                            <i title="Converse conosco no WhatsApp" class="ph-light ph-whatsapp-logo"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="contato.html">
-                            contato
+                        <a href="https://www.tiktok.com/@maribe.arquitetura" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Tiktok" class="ph-light ph-tiktok-logo"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://br.pinterest.com/maribearquitetura/" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Pinterest" class="ph-light ph-pinterest-logo"></i>
                         </a>
                     </li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div id="pageInfo">
-            <h1>quem somos</h1>
-            <p><strong>A arquitetura vai além de construir espaços; ela transforma vidas</strong>. Na Maribe Arquitetura, acreditamos no poder de criar ambientes que refletem histórias e emoções. Nossa missão é proporcionar bem-estar, harmonia e personalidade em cada projeto, sempre unindo o funcional ao belo, o novo ao tradicional. <strong>Cada espaço conta uma história, e estamos aqui para ajudar a contar a sua</strong>.</p>
-        </div>
-        <div id="sectionsContainer">
-            <section>
-                <h2>sobre nós</h2>
-                <div>
-                    <h3>Heloísa Marletti</h3>
-                    <p>
-                        <span>Helô</span> é arquiteta e urbanista formada pela Universidade Católica de Pernambuco (UNICAP) e pós-graduanda em <span>Neuroarquitetura</span>. Possui experiência em <span>arquitetura de interiores</span>, <span>arquitetura social</span> e pesquisa na área acadêmica. Adora trabalhar com modelagens e vídeos, trazendo realismo na apresentação dos projetos. Intensa, adora arte, viagens e bons vinhos.
-                    </p>
-                </div>
-                <div>
-                    <h3>Nathalia Ribeiro</h3>
-                    <p>
-                        <span>Nath</span> é arquiteta e urbanista formada pela Universidade Católica de Pernambuco (UNICAP), com experiência em <span>arquitetura de interiores</span>, <span>projetos comerciais</span> e <span>design gráfico</span>. Apaixonada por marcenaria, faz tudo para deixar os projetos bem detalhados e executivos completos. Adora yoga, atividades ao ar livre e apreciar bons cafés.
-                    </p>
-                </div>
+            </div>
+            <div id="legalInformation">
                 <p>
-                    Juntas, gerimos a Maribe Arquitetura, sendo responsáveis por todo criativo dos projetos.
+                    <span>maribe arquitetura</span> • todos os direitos reservados &copy; 2024
                 </p>
-                <div id="imageContainer">
-                    <img src="assets/images/public/meninas_foto_sem_bg.webp" alt="Foto de Nathalia Ribeiro e Heloisa Marletti">
-                    <div id="orangeBox">
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h2>nosso símbolo</h2>
-                    <p>
-                        O conceito do símbolo <span>une a arquitetura e história de Recife</span> à referências a artistas que nós admiramos. Composição em mosaico, inspirada por obras de <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span>, remete à união do antigo com o novo, referência à nossa linha de trabalho.
-                    </p>
-                    <p>
-                        O símbolo da Maribe utiliza recortes do desenho do <span>Marco Zero</span> para formar a paisagem da <span>Rua do Bom Jesus</span>, eleita a 3ª rua mais bonita do mundo. E faz referência ao urbanismo da cidade com as ruas partindo do Marco, representado pelo círculo vermelho.
-                    </p>
-                    <p>
-                        Formas divididas por dois tons de azul fazem alusão ao encontro das águas. O <span>Rio Capibaribe</span> que encontra com o <span>Rio Beberibe</span> e desemboca no Oceano Atlântico, unindo a água salgada com a doce, o mar com o rio, Marletti com Ribeiro, Maribe!
-                    </p>
-                    <div id="videoContainer">
-                        <video src="assets/videos/logoHistorySquared.MOV" autoplay loop muted defaultmuted playsinline preload="auto"></video>
-                    </div>
-            </section>
-        </div>
-    </main>
-    <footer>
-        <div id="socialLinks">
-            <ul>
-                <li>
-                    <a href="https://www.instagram.com/maribe.arquitetura" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Instagram" class="ph-light ph-instagram-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://web.facebook.com/people/Maribe-Arquitetura/100089975852864/" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Facebook" class="ph-light ph-facebook-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" aria-hidden="true">
-                        <i title="Converse conosco no WhatsApp" class="ph-light ph-whatsapp-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.tiktok.com/@maribe.arquitetura" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Tiktok" class="ph-light ph-tiktok-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://br.pinterest.com/maribearquitetura/" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Pinterest" class="ph-light ph-pinterest-logo"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div id="legalInformation">
-            <p>
-                <span>maribe arquitetura</span> • todos os direitos reservados &copy; 2024
-            </p>
-            <p>
-                feito com 🧡 por marcos tavares
-            </p>
-            <a href="/politica-de-privacidade.html">
-                política de privacidade
-            </a>
-        </div>
-    </footer>
+                <p>
+                    feito com 🧡 por marcos tavares
+                </p>
+                <a href="/politica-de-privacidade.html">
+                    política de privacidade
+                </a>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>

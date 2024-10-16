@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="styles/shared/separator.css" />
     <link rel="stylesheet" href="styles/shared/cellphoneWhatsappCta.css" />
     <link rel="stylesheet" href="styles/shared/scrollbar.css" />
+    <link rel="stylesheet" href="styles/shared/smoothOpening.css" />
     <link rel="stylesheet" href="styles/shared/forms.css" />
     
     <!-- Scripts -->
@@ -37,186 +38,188 @@
             <i class="ph ph-whatsapp-logo"></i>
         </div>
     </a>
-    <header>
-        <a href="index.html" id="indexReferrer">
-            <img src="assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura">
-        </a>
-        <div>
-            <nav>
+    <div id="smoothOpening">
+        <header>
+            <a href="index.html" id="indexReferrer">
+                <img src="assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura">
+            </a>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                início
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sobre.html">
+                                sobre
+                            </a>
+                        </li>
+                        <li>
+                            <a href="projetos.html">
+                                projetos
+                            </a>
+                        </li>
+                        <li id="selected">
+                            <a href="orcamento.html">
+                                orçamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contato.html">
+                                contato
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div id="pageInfo">
+                <h1>vamos começar o seu projeto juntos!</h1>
+                <p><strong>Bem-vindo(a) ao nosso mundo de possibilidades</strong>! Estamos ansiosas para criarmos juntos o seu projeto dos sonhos. Cada detalhe será pensado de acordo com a sua personalidade e memórias afetivas, <strong>transformando casas em lares únicos</strong>, cheios de significado e com muito aconchego.</p>
+                <p>Para que isso seja possível, precisamos de algumas informações para entender melhor suas necessidades, você pode preencher suas informações no formulário a seguir. Esperamos que você ame a jornada conosco! 🧡</p>
+            </div>
+            <form action="src/php/contactForm.php" method="POST">
+                <label for="name">
+                    <span>Nome completo</span>
+                    <input type="text" name="name" id="name" placeholder="Digite seu nome aqui" autocomplete="on" required aria-required="true">
+                </label>
+                <label for="email">
+                    <span>E-mail</span>
+                    <input type="email" name="email" id="email" placeholder="email@email.com" autocomplete="on" required aria-required="true">
+                </label>
+                <label for="phone">
+                    <div class="inputWithSmallText">
+                        <span>Telefone</span>
+                        <small>Apenas números, tá? Lembre de colocar o seu DDD!</small>
+                    </div>
+                    <input type="tel" name="phone" id="phone" placeholder="00 123456789" autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
+                </label>
+                <div class="twoColumnsInForm">
+                    <fieldset>
+                        <legend>Como chegou até nós?</legend>
+                        <div>
+                            <input type="radio" name="howYouFoundUs" id="instagram" value="instagram" value="Instagram" required aria-required="true">
+                            <label for="instagram">Instagram</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="howYouFoundUs" id="indicacao" value="indicacao" value="Indicação de conhecidos" required aria-required="true">
+                            <label for="indicacao">Indicação de conhecidos</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="howYouFoundUs" id="visitaAProjetado" value="visitaAProjetado" value="Visitei um espaço projetado por vocês" required aria-required="true">
+                            <label for="visitaAProjetado">Visitei um espaço projetado por vocês</label>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>O que estaremos projetando?</legend>
+                        <div>
+                            <input type="radio" name="whatAreWeWorkingOn" id="interioresResidencialCompleto" value="interioresResidencialCompleto" value="Projeto de interiores residencial completo" required aria-required="true">
+                            <label for="interioresResidencialCompleto">Projeto de interiores residencial completo</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="whatAreWeWorkingOn" id="interioresAlgunsAmbientes" value="interioresAlgunsAmbientes" value="Projeto de interiores para alguns ambientes" required aria-required="true">
+                            <label for="interioresAlgunsAmbientes">Projeto de interiores para alguns ambientes</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="whatAreWeWorkingOn" id="interioresComercialCompleto" value="interioresComercialCompleto" value="Projeto de interiores comercial completo" required aria-required="true">
+                            <label for="interioresComercialCompleto">Projeto de interiores comercial completo</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="whatAreWeWorkingOn" id="projetoDeArquitetura" value="projetoDeArquitetura" value="Projeto de arquitetura" required aria-required="true">
+                            <label for="projetoDeArquitetura">Projeto de arquitetura</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="twoColumnsInForm">
+                    <fieldset>
+                        <legend>Quando você prevê iniciar o projeto?</legend>
+                        <div>
+                            <input type="radio" name="whenToBeginTheProject" id="escolhendoMeuNovoLar" value="escolhendoMeuNovoLar" value="Estou no projeto de escolher meu novo lar" required aria-required="true">
+                            <label for="escolhendoMeuNovoLar">Estou no projeto de escolher meu novo lar</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="whenToBeginTheProject" id="aguardandoAsChaves" value="aguardandoAsChaves" value="Estou aguardando as chaves, mal posso esperar!" required aria-required="true">
+                            <label for="aguardandoAsChaves">Estou aguardando as chaves, mal posso esperar!</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="whenToBeginTheProject" id="estouSemPressa" value="estouSemPressa" value="Não estou com pressa. Vamos seguir o ritmo natural" required aria-required="true">
+                            <label for="estouSemPressa">Não estou com pressa. Vamos seguir o ritmo natural</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="whenToBeginTheProject" id="estouApressado" value="estouApressado" value="Estou um pouquinho apressado(a) e gostaria de agilizar as coisas" required aria-required="true">
+                            <label for="estouApressado">Estou um pouquinho apressado(a) e gostaria de agilizar as coisas</label>
+                        </div>
+                    </fieldset>
+                    <label for="objective" class="inputWithSmallText">
+                        <span>Qual é o seu objetivo com este projeto? Como podemos te ajudar?</span>
+                        <textarea name="objective" id="objective" rows="5" placeholder="Nos conte aqui..." required aria-required="true"></textarea>
+                        <small>Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.</small>
+                    </label>
+                </div>
+                <label for="privacy" id="privacyLabel">
+                    <input type="checkbox" name="privacy" id="privacy" required aria-required="true">
+                    <span>Eu concordo com o envio dos dados segundo a <a href="politica-de-privacidade.html">política de privacidade</a> da Maribe Arquitetura.</span>
+                </label>
+                <button type="submit">
+                    Enviar mensagem
+                </button>
+            </form>
+            <div id="separatorBox">
+                <div id="separator">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" id="cellphoneWhatsappCta">
+                <i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>
+                <p>
+                    Nos chame no WhatsApp!
+                </p>
+            </a>
+        </main>
+        <footer>
+            <div id="socialLinks">
                 <ul>
                     <li>
-                        <a href="index.html">
-                            início
+                        <a href="https://www.instagram.com/maribe.arquitetura" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Instagram" class="ph-light ph-instagram-logo"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="sobre.html">
-                            sobre
+                        <a href="https://web.facebook.com/people/Maribe-Arquitetura/100089975852864/" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Facebook" class="ph-light ph-facebook-logo"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="projetos.html">
-                            projetos
-                        </a>
-                    </li>
-                    <li id="selected">
-                        <a href="orcamento.html">
-                            orçamento
+                        <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" aria-hidden="true">
+                            <i title="Converse conosco no WhatsApp" class="ph-light ph-whatsapp-logo"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="contato.html">
-                            contato
+                        <a href="https://www.tiktok.com/@maribe.arquitetura" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Tiktok" class="ph-light ph-tiktok-logo"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://br.pinterest.com/maribearquitetura/" target="_blank" aria-hidden="true">
+                            <i title="Acesse nosso Pinterest" class="ph-light ph-pinterest-logo"></i>
                         </a>
                     </li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div id="pageInfo">
-            <h1>vamos começar o seu projeto juntos!</h1>
-            <p><strong>Bem-vindo(a) ao nosso mundo de possibilidades</strong>! Estamos ansiosas para criarmos juntos o seu projeto dos sonhos. Cada detalhe será pensado de acordo com a sua personalidade e memórias afetivas, <strong>transformando casas em lares únicos</strong>, cheios de significado e com muito aconchego.</p>
-            <p>Para que isso seja possível, precisamos de algumas informações para entender melhor suas necessidades, você pode preencher suas informações no formulário a seguir. Esperamos que você ame a jornada conosco! 🧡</p>
-        </div>
-        <form action="src/php/contactForm.php" method="POST">
-            <label for="name">
-                <span>Nome completo</span>
-                <input type="text" name="name" id="name" placeholder="Digite seu nome aqui" autocomplete="on" required aria-required="true">
-            </label>
-            <label for="email">
-                <span>E-mail</span>
-                <input type="email" name="email" id="email" placeholder="email@email.com" autocomplete="on" required aria-required="true">
-            </label>
-            <label for="phone">
-                <div class="inputWithSmallText">
-                    <span>Telefone</span>
-                    <small>Apenas números, tá? Lembre de colocar o seu DDD!</small>
-                </div>
-                <input type="tel" name="phone" id="phone" placeholder="00 123456789" autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
-            </label>
-            <div class="twoColumnsInForm">
-                <fieldset>
-                    <legend>Como chegou até nós?</legend>
-                    <div>
-                        <input type="radio" name="howYouFoundUs" id="instagram" value="instagram" value="Instagram" required aria-required="true">
-                        <label for="instagram">Instagram</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="howYouFoundUs" id="indicacao" value="indicacao" value="Indicação de conhecidos" required aria-required="true">
-                        <label for="indicacao">Indicação de conhecidos</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="howYouFoundUs" id="visitaAProjetado" value="visitaAProjetado" value="Visitei um espaço projetado por vocês" required aria-required="true">
-                        <label for="visitaAProjetado">Visitei um espaço projetado por vocês</label>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>O que estaremos projetando?</legend>
-                    <div>
-                        <input type="radio" name="whatAreWeWorkingOn" id="interioresResidencialCompleto" value="interioresResidencialCompleto" value="Projeto de interiores residencial completo" required aria-required="true">
-                        <label for="interioresResidencialCompleto">Projeto de interiores residencial completo</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="whatAreWeWorkingOn" id="interioresAlgunsAmbientes" value="interioresAlgunsAmbientes" value="Projeto de interiores para alguns ambientes" required aria-required="true">
-                        <label for="interioresAlgunsAmbientes">Projeto de interiores para alguns ambientes</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="whatAreWeWorkingOn" id="interioresComercialCompleto" value="interioresComercialCompleto" value="Projeto de interiores comercial completo" required aria-required="true">
-                        <label for="interioresComercialCompleto">Projeto de interiores comercial completo</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="whatAreWeWorkingOn" id="projetoDeArquitetura" value="projetoDeArquitetura" value="Projeto de arquitetura" required aria-required="true">
-                        <label for="projetoDeArquitetura">Projeto de arquitetura</label>
-                    </div>
-                </fieldset>
             </div>
-            <div class="twoColumnsInForm">
-                <fieldset>
-                    <legend>Quando você prevê iniciar o projeto?</legend>
-                    <div>
-                        <input type="radio" name="whenToBeginTheProject" id="escolhendoMeuNovoLar" value="escolhendoMeuNovoLar" value="Estou no projeto de escolher meu novo lar" required aria-required="true">
-                        <label for="escolhendoMeuNovoLar">Estou no projeto de escolher meu novo lar</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="whenToBeginTheProject" id="aguardandoAsChaves" value="aguardandoAsChaves" value="Estou aguardando as chaves, mal posso esperar!" required aria-required="true">
-                        <label for="aguardandoAsChaves">Estou aguardando as chaves, mal posso esperar!</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="whenToBeginTheProject" id="estouSemPressa" value="estouSemPressa" value="Não estou com pressa. Vamos seguir o ritmo natural" required aria-required="true">
-                        <label for="estouSemPressa">Não estou com pressa. Vamos seguir o ritmo natural</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="whenToBeginTheProject" id="estouApressado" value="estouApressado" value="Estou um pouquinho apressado(a) e gostaria de agilizar as coisas" required aria-required="true">
-                        <label for="estouApressado">Estou um pouquinho apressado(a) e gostaria de agilizar as coisas</label>
-                    </div>
-                </fieldset>
-                <label for="objective" class="inputWithSmallText">
-                    <span>Qual é o seu objetivo com este projeto? Como podemos te ajudar?</span>
-                    <textarea name="objective" id="objective" rows="5" placeholder="Nos conte aqui..." required aria-required="true"></textarea>
-                    <small>Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.</small>
-                </label>
+            <div id="legalInformation">
+                <p>
+                    <span>maribe arquitetura</span> • todos os direitos reservados &copy; 2024
+                </p>
+                <p>
+                    feito com 🧡 por marcos tavares
+                </p>
+                <a href="/politica-de-privacidade.html">
+                    política de privacidade
+                </a>
             </div>
-            <label for="privacy" id="privacyLabel">
-                <input type="checkbox" name="privacy" id="privacy" required aria-required="true">
-                <span>Eu concordo com o envio dos dados segundo a <a href="politica-de-privacidade.html">política de privacidade</a> da Maribe Arquitetura.</span>
-            </label>
-            <button type="submit">
-                Enviar mensagem
-            </button>
-        </form>
-        <div id="separatorBox">
-            <div id="separator">
-            </div>
-        </div>
-        <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" id="cellphoneWhatsappCta">
-            <i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>
-            <p>
-                Nos chame no WhatsApp!
-            </p>
-        </a>
-    </main>
-    <footer>
-        <div id="socialLinks">
-            <ul>
-                <li>
-                    <a href="https://www.instagram.com/maribe.arquitetura" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Instagram" class="ph-light ph-instagram-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://web.facebook.com/people/Maribe-Arquitetura/100089975852864/" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Facebook" class="ph-light ph-facebook-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" aria-hidden="true">
-                        <i title="Converse conosco no WhatsApp" class="ph-light ph-whatsapp-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.tiktok.com/@maribe.arquitetura" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Tiktok" class="ph-light ph-tiktok-logo"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://br.pinterest.com/maribearquitetura/" target="_blank" aria-hidden="true">
-                        <i title="Acesse nosso Pinterest" class="ph-light ph-pinterest-logo"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div id="legalInformation">
-            <p>
-                <span>maribe arquitetura</span> • todos os direitos reservados &copy; 2024
-            </p>
-            <p>
-                feito com 🧡 por marcos tavares
-            </p>
-            <a href="/politica-de-privacidade.html">
-                política de privacidade
-            </a>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </body>
 </html>
