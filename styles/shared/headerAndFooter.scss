@@ -22,12 +22,17 @@ body {
                 margin: 20px 0;
 
                 #selected {
-                    color: $vermelhoRecife;
-                    font-weight: 600;
+                    a {
+                        color: $vermelhoRecife;
+                        font-weight: 600;
+                    }
                 }
 
                 li:not(#selected) {
-                    opacity: 0.8;
+                    a {
+                        opacity: 0.8;
+                        color: $cinzaElegante;
+                    }
                 }
 
                 li:not(#selected) {
@@ -84,6 +89,7 @@ body {
             }
 
             a {
+                color: $cinzaElegante;
                 padding-top: 10px;
                 font-weight: bold;
                 transition: 500ms color;

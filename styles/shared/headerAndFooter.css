@@ -15,12 +15,13 @@ body header nav ul {
   gap: 16px;
   margin: 20px 0;
 }
-body header nav ul #selected {
+body header nav ul #selected a {
   color: #c56e51;
   font-weight: 600;
 }
-body header nav ul li:not(#selected) {
+body header nav ul li:not(#selected) a {
   opacity: 0.8;
+  color: #3c3c3b;
 }
 body header nav ul li:not(#selected) a:hover {
   color: #c56e51;
@@ -59,6 +60,7 @@ body footer #legalInformation p span {
   font-weight: bold;
 }
 body footer #legalInformation a {
+  color: #3c3c3b;
   padding-top: 10px;
   font-weight: bold;
   transition: 500ms color;

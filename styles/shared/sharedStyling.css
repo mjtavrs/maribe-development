@@ -3,6 +3,10 @@
   src: url("../../assets/fonts/common/SourceSans3-VariableFont_wght.ttf") format("truetype");
   font-weight: 200 700;
 }
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: #fcfcfa;
   color: #3c3c3b;
@@ -12,17 +16,15 @@ body {
   gap: 2rem;
   min-height: 100dvh;
 }
+body header nav #selected {
+  color: #c56e51;
+}
 body main {
   flex: 1 0 auto;
   padding: 0 28px;
 }
 body p {
   line-height: 22px;
-}
-
-a {
-  text-decoration: none;
-  color: #3c3c3b;
 }
 
 @media screen and (min-width: 768px) {
