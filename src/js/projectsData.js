@@ -127,7 +127,7 @@ const projects = [
         cover: "assets/images/projects/ape-abraco/ape-abraco-cover.webp",
         titulo: "apê abraço",
         descricao:
-            "",
+            "O apê abraço é um flat à beira mar de 35m² que foi pensado para comportar toda uma família de dois adultos e três crianças, mas que possa ser utilizado também como Airbnb. Criamos um projeto neutro, trazendo amplitude para o ambiente, uma cama suspensa otimizando o espaço, tricama que serve como um sofá, closet com privacidade adaptável e bastante área social, em especial, a cozinha pois amam cozinhar!",
         ano: "2024",
         cidade: "Ipojuca",
         outrasFotos: [
@@ -212,7 +212,7 @@ const projects = [
         cover: "assets/images/projects/espaco-otorrino/espaco-otorrino-cover.webp",
         titulo: "espaço otorrino",
         descricao:
-            "",
+            "O Espaço Otorrino é uma clínica de otorrinolaringologia com dois consultórios, uma recepção com área de espera e uma copa voltada para os funcionários. O projeto trouxe formas orgânicas, materiais naturais e iluminação indireta, buscando leveza e aconchego para os pacientes. Através da biofilia e dos conceitos de neuroarquitetura, o espaço visa promover saúde mental e acolhimento para os pacientes e funcionários.",
         ano: "2024",
         cidade: "Recife",
         outrasFotos: [

@@ -108,4 +108,9 @@ body main #projectImages div img {
     height: 350px;
     max-width: 49%;
   }
+}
+@media screen and (min-width: 1366px) {
+  body header #projectDescription {
+    padding: 0 80px;
+  }
 }/*# sourceMappingURL=project.css.map */
