@@ -107,13 +107,12 @@ body {
         header {
             #indexReferrer {
                 img {
-                    width: 325px;
+                    width: 320px;
                 }
             }
 
             nav {
                 ul {
-                    display: flex;
                     gap: 30px;
                     margin: 25px 0 20px;
                 }
@@ -144,16 +143,9 @@ body {
 @media screen and (min-width: 1024px) {
     body {
         header {
-            #indexReferrer {
-                img {
-                    width: 350px;
-                }
-            }
-
             nav {
                 ul {
                     font-size: 1.2rem;
-                    gap: 40px;
                     margin: 25px 0 40px;
                 }
             }

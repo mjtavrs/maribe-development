@@ -71,10 +71,9 @@ body footer #legalInformation a:hover {
 
 @media screen and (min-width: 768px) {
   body header #indexReferrer img {
-    width: 325px;
+    width: 320px;
   }
   body header nav ul {
-    display: flex;
     gap: 30px;
     margin: 25px 0 20px;
   }
@@ -96,12 +95,8 @@ body footer #legalInformation a:hover {
   }
 }
 @media screen and (min-width: 1024px) {
-  body header #indexReferrer img {
-    width: 350px;
-  }
   body header nav ul {
     font-size: 1.2rem;
-    gap: 40px;
     margin: 25px 0 40px;
   }
   body footer {
