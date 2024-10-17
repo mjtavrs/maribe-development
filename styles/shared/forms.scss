@@ -124,11 +124,11 @@ body {
 
                 .twoColumnsInForm {
                     flex-direction: row;
-                    gap: 0;
+                    gap: 80px;
                     row-gap: 35px;
-
-                    fieldset {
-                        min-width: 48%;
+                    
+                    fieldset, label {
+                        flex: 1;
                     }
                 }
             }

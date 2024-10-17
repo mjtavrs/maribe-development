@@ -86,66 +86,145 @@
                     <span>Nome completo</span>
                     <input type="text" name="name" id="name" placeholder="Digite seu nome aqui" autocomplete="on" required aria-required="true">
                 </label>
+                <label for="endereco">
+                    <span>Endereço do imóvel</span>
+                    <input type="text" name="endereco" id="endereco" placeholder="Ex.: Rua/Av. X, 123, Bairro, Cidade/Estado" autocomplete="on" required aria-required="true">
+                </label>
+                <label for="maisImportanteNoOrcamento">
+                    <span>O que é mais importante para você nesse processo de orçamento de projeto?</span>
+                    <input type="text" name="maisImportanteNoOrcamento" id="maisImportanteNoOrcamento" placeholder="Nos diga aqui" autocomplete="on" required aria-required="true">
+                </label>
                 <div class="twoColumnsInForm">
                     <fieldset>
-                        <legend>Como chegou até nós?</legend>
+                        <legend>No caso de projeto de interiores, o imóvel tem planta-baixa?</legend>
                         <div>
-                            <input type="radio" name="howYouFoundUs" id="instagram" value="instagram" value="Instagram" required aria-required="true">
-                            <label for="instagram">Instagram</label>
+                            <input type="radio" name="imovelTemPlantaOuNao" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
                         </div>
                         <div>
-                            <input type="radio" name="howYouFoundUs" id="indicacao" value="indicacao" value="Indicação de conhecidos" required aria-required="true">
-                            <label for="indicacao">Indicação de conhecidos</label>
+                            <input type="radio" name="imovelTemPlantaOuNao" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
+                        </div>
+                    </fieldset>
+                    <label for="apartamentoCompletoOuAlgunsAmbientes">
+                        <span>Apartamento completo? Se não, quantos e quais são os ambientes?</span>
+                        <input type="text" name="apartamentoCompletoOuAlgunsAmbientes" id="apartamentoCompletoOuAlgunsAmbientes" placeholder="Ex.: 2, sala e quarto de casal" autocomplete="on" required aria-required="true">
+                    </label>
+                </div>
+                <div class="twoColumnsInForm">
+                    <label for="quantasPessoasResidemEIdades">
+                        <span>Quantas pessoas residem no imóvel e quais as idades?</span>
+                        <input type="text" name="quantasPessoasResidemEIdades" id="quantasPessoasResidemEIdades" placeholder="Ex.: 3 pessoas, 30 e 28 anos" autocomplete="on" required aria-required="true">
+                    </label>
+                    <label for="tamanhoEmMetrosQuadrados">
+                        <span>Qual o tamanho (em m²)?</span>
+                        <input type="text" name="tamanhoEmMetrosQuadrados" id="tamanhoEmMetrosQuadrados" placeholder="Ex.: 60m²" autocomplete="on" required aria-required="true">
+                    </label>
+                </div>
+                <div class="twoColumnsInForm">
+                    <fieldset>
+                        <legend>Vai ter demolição/construção de paredes?</legend>
+                        <div>
+                            <input type="radio" name="haveraDemolicaoOuConstrucaoDeParedes" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
                         </div>
                         <div>
-                            <input type="radio" name="howYouFoundUs" id="visitaAProjetado" value="visitaAProjetado" value="Visitei um espaço projetado por vocês" required aria-required="true">
-                            <label for="visitaAProjetado">Visitei um espaço projetado por vocês</label>
+                            <input type="radio" name="haveraDemolicaoOuConstrucaoDeParedes" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>O que estaremos projetando?</legend>
+                        <legend>Vai modificar elétrica?</legend>
                         <div>
-                            <input type="radio" name="whatAreWeWorkingOn" id="interioresResidencialCompleto" value="interioresResidencialCompleto" value="Projeto de interiores residencial completo" required aria-required="true">
-                            <label for="interioresResidencialCompleto">Projeto de interiores residencial completo</label>
+                            <input type="radio" name="vaiModificarEletrica" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
                         </div>
                         <div>
-                            <input type="radio" name="whatAreWeWorkingOn" id="interioresAlgunsAmbientes" value="interioresAlgunsAmbientes" value="Projeto de interiores para alguns ambientes" required aria-required="true">
-                            <label for="interioresAlgunsAmbientes">Projeto de interiores para alguns ambientes</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="whatAreWeWorkingOn" id="interioresComercialCompleto" value="interioresComercialCompleto" value="Projeto de interiores comercial completo" required aria-required="true">
-                            <label for="interioresComercialCompleto">Projeto de interiores comercial completo</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="whatAreWeWorkingOn" id="projetoDeArquitetura" value="projetoDeArquitetura" value="Projeto de arquitetura" required aria-required="true">
-                            <label for="projetoDeArquitetura">Projeto de arquitetura</label>
+                            <input type="radio" name="vaiModificarEletrica" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
                         </div>
                     </fieldset>
                 </div>
                 <div class="twoColumnsInForm">
                     <fieldset>
-                        <legend>Quando você prevê iniciar o projeto?</legend>
+                        <legend>Vai modificar gesso?</legend>
                         <div>
-                            <input type="radio" name="whenToBeginTheProject" id="escolhendoMeuNovoLar" value="escolhendoMeuNovoLar" value="Estou no projeto de escolher meu novo lar" required aria-required="true">
-                            <label for="escolhendoMeuNovoLar">Estou no projeto de escolher meu novo lar</label>
+                            <input type="radio" name="vaiModificarGesso" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
                         </div>
                         <div>
-                            <input type="radio" name="whenToBeginTheProject" id="aguardandoAsChaves" value="aguardandoAsChaves" value="Estou aguardando as chaves, mal posso esperar!" required aria-required="true">
-                            <label for="aguardandoAsChaves">Estou aguardando as chaves, mal posso esperar!</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="whenToBeginTheProject" id="estouSemPressa" value="estouSemPressa" value="Não estou com pressa. Vamos seguir o ritmo natural" required aria-required="true">
-                            <label for="estouSemPressa">Não estou com pressa. Vamos seguir o ritmo natural</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="whenToBeginTheProject" id="estouApressado" value="estouApressado" value="Estou um pouquinho apressado(a) e gostaria de agilizar as coisas" required aria-required="true">
-                            <label for="estouApressado">Estou um pouquinho apressado(a) e gostaria de agilizar as coisas</label>
+                            <input type="radio" name="vaiModificarGesso" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
                         </div>
                     </fieldset>
-                    <label for="objective" class="inputWithSmallText">
-                        <span>Qual é o seu objetivo com este projeto? Como podemos te ajudar?</span>
-                        <textarea name="objective" id="objective" rows="5" placeholder="Nos conte aqui..." required aria-required="true"></textarea>
-                        <small>Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.</small>
+                    <fieldset>
+                        <legend>Vai modificar revestimento ou bancadas?</legend>
+                        <div>
+                            <input type="radio" name="vaiModificarRevestimentoOuBancadas" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="vaiModificarRevestimentoOuBancadas" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="twoColumnsInForm">
+                    <fieldset>
+                        <legend>Vai aproveitar e/ou modificar algum móvel existente?</legend>
+                        <div>
+                            <input type="radio" name="vaiAproveitarEOuModificarAlgumMovel" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="vaiAproveitarEOuModificarAlgumMovel" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Pensa em fazer móveis com marcenaria ou planejados?</legend>
+                        <div>
+                            <input type="radio" name="pensaEmFazerMoveisComMarcenariaOuPlanejados" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="pensaEmFazerMoveisComMarcenariaOuPlanejados" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="twoColumnsInForm">
+                    <fieldset>
+                        <legend>Acompanha nosso trabalho pelas redes sociais?</legend>
+                        <div>
+                            <input type="radio" name="nosAcompanhaNasRedesSociais" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="nosAcompanhaNasRedesSociais" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Acredita que nossos trabalhos anteriores conseguem atingir a sua expectativa estética?</legend>
+                        <div>
+                            <input type="radio" name="acreditaQueTrabalhosAnterioresAtingemExpectativa" id="sim" value="sim" value="Sim" required aria-required="true">
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="acreditaQueTrabalhosAnterioresAtingemExpectativa" id="nao" value="nao" value="Não" required aria-required="true">
+                            <label for="nao">Não</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="twoColumnsInForm">
+                    <label for="porqueAcreditaQueSomosOEscritorioIdealParaSeuProjeto">
+                        <span>Porque você acredita que somos o escritório ideal para seu projeto?</span>
+                        <textarea name="porqueAcreditaQueSomosOEscritorioIdealParaSeuProjeto" id="porqueAcreditaQueSomosOEscritorioIdealParaSeuProjeto" rows="6" placeholder="Conta aqui!" required aria-required="true"></textarea>
+                    </label>
+                    <label for="duvidasOuInformacoesAAcrescentar">
+                        <span>Se houver alguma dúvida ou informação a acrescentar, comente aqui!</span>
+                        <textarea name="duvidasOuInformacoesAAcrescentar" id="duvidasOuInformacoesAAcrescentar" rows="6" placeholder="Suas dúvidas e outras informações vêm aqui :)"></textarea>
                     </label>
                 </div>
                 <label for="privacy" id="privacyLabel">

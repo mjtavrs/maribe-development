@@ -96,10 +96,10 @@ body main form button:not(hover) {
   }
   body main form .twoColumnsInForm {
     flex-direction: row;
-    gap: 0;
+    gap: 80px;
     row-gap: 35px;
   }
-  body main form .twoColumnsInForm fieldset {
-    min-width: 48%;
+  body main form .twoColumnsInForm fieldset, body main form .twoColumnsInForm label {
+    flex: 1;
   }
 }/*# sourceMappingURL=forms.css.map */
