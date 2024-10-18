@@ -88,3 +88,33 @@ body {
         }
     }
 }
+
+@media screen and (min-width: 1280px) {
+    body {
+        main {
+            background-image: url("../../../assets/images/svg/1440x900.svg");
+            background-size: 1440px auto;
+
+            #maribeLogo {
+                display: none;
+            }
+
+            nav {
+                position: relative;
+                height: 100dvh;
+                width: 100%;
+
+                ul {
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 50px;
+                    position: absolute;
+                    left: 30%;
+                    top: 16%;
+                    translate: transform(30%, 16%);
+                    z-index: 9999;
+                }
+            }
+        }
+    }
+}

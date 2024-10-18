@@ -62,4 +62,28 @@ body main nav ul li a:hover {
     font-size: 1.75rem;
     gap: 35px;
   }
+}
+@media screen and (min-width: 1280px) {
+  body main {
+    background-image: url("../../../assets/images/svg/1440x900.svg");
+    background-size: 1440px auto;
+  }
+  body main #maribeLogo {
+    display: none;
+  }
+  body main nav {
+    position: relative;
+    height: 100dvh;
+    width: 100%;
+  }
+  body main nav ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    position: absolute;
+    left: 30%;
+    top: 16%;
+    translate: transform(30%, 16%);
+    z-index: 9999;
+  }
 }/*# sourceMappingURL=home.css.map */
