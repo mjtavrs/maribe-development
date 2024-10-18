@@ -6,8 +6,14 @@
 body {
   font-family: "Source Sans 3", sans-serif;
   font-size: 1.25rem;
+  overflow: hidden;
 }
 body main {
+  background-color: #fcfcfa;
+  background-image: url("../../../assets/images/svg/500x1080.svg");
+  background-size: 500px auto;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -33,11 +39,27 @@ body main nav ul li a:hover {
 }
 
 @media screen and (min-width: 768px) {
+  body main {
+    background-image: url("../../../assets/images/svg/1024x1366.svg");
+    background-size: 1024px auto;
+  }
   body main img {
     width: 300px;
   }
   body main nav ul {
     font-size: 1.25rem;
     gap: 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  body main {
+    gap: 35px;
+  }
+  body main img {
+    width: 350px;
+  }
+  body main nav ul {
+    font-size: 1.75rem;
+    gap: 35px;
   }
 }/*# sourceMappingURL=home.css.map */
