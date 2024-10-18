@@ -102,18 +102,16 @@ body main nav ul li a:hover {
   }
 }
 @media screen and (min-width: 1830px) {
+  body main {
+    background-image: url("../../../assets/images/svg/3840x2160.svg");
+    background-size: 2250px auto;
+  }
   body main nav ul {
     gap: 65px;
     left: 35%;
     top: 20%;
     translate: transform(35%, 20%);
     font-size: 1.875rem;
-  }
-}
-@media screen and (min-width: 1920px) {
-  body main {
-    background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 2250px auto;
   }
 }
 @media screen and (min-width: 2250px) {
