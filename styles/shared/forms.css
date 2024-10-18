@@ -68,7 +68,7 @@ body main form #privacyLabel span a {
   font-weight: 600;
   color: #c56e51;
 }
-body main form button {
+body main form #buttonContainer button {
   background-color: #c56e51;
   color: #fcfcfa;
   cursor: pointer;
@@ -81,11 +81,11 @@ body main form button {
   margin: 10px 0;
   box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
 }
-body main form button:hover {
+body main form #buttonContainer button:hover {
   background-color: #e2af58;
   transition: 300ms background-color;
 }
-body main form button:not(hover) {
+body main form #buttonContainer button:not(hover) {
   background-color: #c56e51;
   transition: 300ms background-color;
 }
@@ -101,5 +101,13 @@ body main form button:not(hover) {
   }
   body main form .twoColumnsInForm fieldset, body main form .twoColumnsInForm label {
     flex: 1;
+  }
+  body main form #buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+  body main form #buttonContainer button {
+    margin: 15px 0;
+    width: 75%;
   }
 }/*# sourceMappingURL=forms.css.map */
