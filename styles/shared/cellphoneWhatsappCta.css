@@ -2,7 +2,7 @@
   font-family: "Kantumruy Pro Regular";
   src: url("../../assets/fonts/subtitle/KantumruyPro-Regular.ttf") format("truetype");
 }
-#cellphoneWhatsappCta {
+#whatsappCtaContainer #cellphoneWhatsappCta {
   font-family: "Kantumruy Pro Regular", sans-serif;
   display: flex;
   box-sizing: border-box;
@@ -16,31 +16,39 @@
   border-radius: 5px;
   margin-top: 30px;
 }
-#cellphoneWhatsappCta i {
+#whatsappCtaContainer #cellphoneWhatsappCta i {
   font-size: 2rem;
 }
-#cellphoneWhatsappCta p {
+#whatsappCtaContainer #cellphoneWhatsappCta p {
   text-transform: uppercase;
 }
-
-#cellphoneWhatsappCta:hover {
+#whatsappCtaContainer #cellphoneWhatsappCta:hover {
   background-color: #e2af58;
   transition: 300ms background-color;
 }
-
-#cellphoneWhatsappCta:not(hover) {
+#whatsappCtaContainer #cellphoneWhatsappCta:not(hover) {
   background-color: #c56e51;
   transition: 300ms background-color;
 }
 
 @media screen and (min-width: 768px) {
-  #cellphoneWhatsappCta {
+  #whatsappCtaContainer #cellphoneWhatsappCta {
     padding: 15px 10px;
   }
-  #cellphoneWhatsappCta i {
+  #whatsappCtaContainer #cellphoneWhatsappCta i {
     font-size: 2.25rem;
   }
-  #cellphoneWhatsappCta p {
+  #whatsappCtaContainer #cellphoneWhatsappCta p {
     font-size: 1.125rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #whatsappCtaContainer {
+    display: flex;
+    justify-content: center;
+  }
+  #whatsappCtaContainer #cellphoneWhatsappCta {
+    margin-top: 15px;
+    width: 75%;
   }
 }/*# sourceMappingURL=cellphoneWhatsappCta.css.map */
