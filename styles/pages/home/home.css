@@ -63,10 +63,10 @@ body main nav ul li a:hover {
     gap: 35px;
   }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1196px) {
   body main {
     background-image: url("../../../assets/images/svg/1440x900.svg");
-    background-size: 1440px auto;
+    background-size: 1196px auto;
   }
   body main #maribeLogo {
     display: none;
@@ -87,10 +87,10 @@ body main nav ul li a:hover {
     z-index: 9999;
   }
 }
-@media screen and (min-width: 1768px) {
+@media screen and (min-width: 1660px) {
   body main {
     background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 1768px auto;
+    background-size: 1660px auto;
   }
   body main nav ul {
     gap: 50px;
@@ -99,19 +99,19 @@ body main nav ul li a:hover {
     translate: transform(35%, 22%);
   }
 }
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1880px) {
   body main {
     background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 1920px auto;
+    background-size: 1880px auto;
   }
   body main nav ul {
     font-size: 2rem;
   }
 }
-@media screen and (min-width: 2560px) {
+@media screen and (min-width: 2250px) {
   body main {
     background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 2560px auto;
+    background-size: 2250px auto;
   }
   body main nav ul {
     font-size: 2.5rem;
