@@ -70,11 +70,8 @@ body footer #legalInformation a:hover {
 }
 
 @media screen and (min-width: 768px) {
-  body header #indexReferrer img {
-    width: 320px;
-  }
   body header nav ul {
-    gap: 30px;
+    gap: 26px;
     margin: 25px 0 20px;
   }
   body footer {
@@ -96,7 +93,7 @@ body footer #legalInformation a:hover {
 }
 @media screen and (min-width: 1024px) {
   body header nav ul {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin: 25px 0 40px;
   }
   body footer {
@@ -106,5 +103,12 @@ body footer #legalInformation a:hover {
 @media screen and (min-width: 1366px) {
   body footer {
     padding: 30px 80px;
+  }
+  body footer #socialLinks ul {
+    gap: 15px;
+  }
+  body footer #socialLinks ul li a i {
+    font-size: 25px;
+    border-radius: 5px;
   }
 }/*# sourceMappingURL=headerAndFooter.css.map */
