@@ -101,13 +101,13 @@ body main nav ul li a:hover {
     translate: transform(35%, 22%);
   }
 }
-@media screen and (min-width: 1830px) {
+@media screen and (min-width: 1920px) {
   body main {
     background-image: url("../../../assets/images/svg/3840x2160.svg");
     background-size: 2250px auto;
   }
   body main nav ul {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
 }
 @media screen and (min-width: 2250px) {

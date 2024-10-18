@@ -139,7 +139,7 @@ body {
     }
 }
 
-@media screen and (min-width: 1830px) {
+@media screen and (min-width: 1920px) {
     body {
         main {
             background-image: url("../../../assets/images/svg/3840x2160.svg");
@@ -147,7 +147,7 @@ body {
 
             nav {
                 ul {
-                    font-size: 2rem;
+                    font-size: 1.875rem;
                 }
             }
         }
