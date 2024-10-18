@@ -50,8 +50,8 @@ body main #pageInfo p a {
 }
 @media screen and (min-width: 1366px) {
   body main #pageInfo h1 {
-    font-size: 3.5rem;
-    padding: 0 120px;
+    font-size: 3.375rem;
+    padding: 0 80px;
   }
   body main #pageInfo p {
     line-height: 30px;
