@@ -67,8 +67,8 @@ body main nav ul li a:hover {
 }
 @media screen and (min-width: 1280px) {
   body main {
-    background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 1680px auto;
+    background-image: url("../../../assets/images/svg/1280x1024.svg");
+    background-size: 1280px auto;
   }
   body main #maribeLogo {
     display: none;
@@ -89,40 +89,54 @@ body main nav ul li a:hover {
     z-index: 9999;
   }
 }
-@media screen and (min-width: 1680px) {
+@media screen and (min-width: 1366px) {
   body main {
-    background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 1830px auto;
+    background-image: url("../../../assets/images/svg/1366x768.svg");
+    background-size: 1366px auto;
   }
   body main nav ul {
     gap: 50px;
-    left: 35%;
-    top: 22%;
-    translate: transform(35%, 22%);
+    left: 30%;
+    top: 23%;
+    translate: transform(30%, 23%);
   }
 }
-@media screen and (min-width: 1830px) {
+@media screen and (min-width: 1440px) {
   body main {
-    background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 2250px auto;
+    background-image: url("../../../assets/images/svg/1440x900.svg");
+    background-size: 1440px auto;
   }
   body main nav ul {
-    gap: 65px;
-    left: 35%;
-    top: 20%;
-    translate: transform(35%, 20%);
-    font-size: 1.875rem;
+    gap: 80px;
+    left: 27.5%;
+    top: 19%;
+    translate: transform(27.5%, 19%);
   }
 }
-@media screen and (min-width: 2250px) {
+@media screen and (min-width: 1896px) {
   body main {
-    background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 3840px auto;
+    background-image: url("../../../assets/images/svg/1920x1080.svg");
+    background-size: 1896px auto;
   }
   body main nav ul {
+    gap: 100px;
+    left: 31%;
+    top: 25%;
+    translate: transform(31%, 25%);
+    font-size: 1.9rem;
+  }
+}
+@media screen and (min-width: 2560px) {
+  body main {
+    background-image: url("../../../assets/images/svg/3840x2160.svg");
+    background-size: 2560px auto;
+  }
+  body main nav ul {
+    gap: 130px;
     font-size: 2.5rem;
-    left: 35.5%;
+    left: 32%;
     top: 22%;
-    translate: transform(35.5%, 22%);
+    translate: transform(32%, 22%);
+    font-size: 2.5rem;
   }
 }/*# sourceMappingURL=home.css.map */
