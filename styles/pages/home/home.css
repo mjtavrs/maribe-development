@@ -33,6 +33,7 @@ body main nav ul {
 body main nav ul li a {
   color: #3c3c3b;
   text-decoration: none;
+  transition: 400ms color;
 }
 body main nav ul li a:hover {
   color: #c56e51;

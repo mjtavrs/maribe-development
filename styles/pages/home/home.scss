@@ -39,6 +39,7 @@ body {
                     a {
                         color: $cinzaElegante;
                         text-decoration: none;
+                        transition: 400ms color;
                     }
 
                     a:hover {
