@@ -20,6 +20,10 @@ body main {
   align-items: center;
   justify-content: center;
   height: 100dvh;
+  position: relative;
+}
+body main #maribeDesktopBackground {
+  display: none;
 }
 body main img {
   width: 250px;
@@ -29,6 +33,7 @@ body main nav ul {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  z-index: 1;
 }
 body main nav ul li a {
   color: #3c3c3b;
@@ -68,8 +73,15 @@ body main nav ul li a:hover {
 }
 @media screen and (min-width: 1280px) {
   body main {
-    background-image: url("../../../assets/images/svg/1280x1024.svg");
-    background-size: 1280px auto;
+    background-image: none;
+  }
+  body main #maribeDesktopBackground {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.7;
   }
   body main #maribeLogo {
     display: none;
@@ -84,60 +96,44 @@ body main nav ul li a:hover {
     justify-content: center;
     gap: 50px;
     position: absolute;
-    left: 31%;
-    top: 16%;
-    translate: transform(31%, 16%);
+    font-size: 1.35rem;
+    left: 32%;
+    top: 23%;
+    translate: transform(32%, 23%);
     z-index: 9999;
   }
 }
 @media screen and (min-width: 1366px) {
-  body main {
-    background-image: url("../../../assets/images/svg/1366x768.svg");
-    background-size: 1366px auto;
-  }
   body main nav ul {
-    gap: 50px;
-    left: 30%;
-    top: 23%;
-    translate: transform(30%, 23%);
+    left: 33%;
+    top: 25%;
+    translate: transform(33%, 25%);
   }
 }
 @media screen and (min-width: 1440px) {
-  body main {
-    background-image: url("../../../assets/images/svg/1440x900.svg");
-    background-size: 1440px auto;
-  }
   body main nav ul {
-    gap: 80px;
-    left: 27.5%;
-    top: 19%;
-    translate: transform(27.5%, 19%);
+    gap: 65px;
+    font-size: 1.4rem;
+    left: 32%;
+    top: 23%;
+    translate: transform(32%, 23%);
   }
 }
 @media screen and (min-width: 1896px) {
-  body main {
-    background-image: url("../../../assets/images/svg/1920x1080.svg");
-    background-size: 1896px auto;
-  }
   body main nav ul {
-    gap: 100px;
-    left: 31%;
-    top: 23%;
-    translate: transform(31%, 23%);
-    font-size: 1.9rem;
+    gap: 80px;
+    left: 33%;
+    top: 25%;
+    translate: transform(33%, 25%);
+    font-size: 1.75rem;
   }
 }
 @media screen and (min-width: 2560px) {
-  body main {
-    background-image: url("../../../assets/images/svg/3840x2160.svg");
-    background-size: 2560px auto;
-  }
   body main nav ul {
-    gap: 130px;
-    font-size: 2.5rem;
-    left: 32%;
-    top: 22%;
-    translate: transform(32%, 22%);
-    font-size: 2.5rem;
+    gap: 120px;
+    font-size: 2.2rem;
+    left: 33%;
+    top: 26%;
+    translate: transform(33%, 26%);
   }
 }/*# sourceMappingURL=home.css.map */

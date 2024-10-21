@@ -23,6 +23,11 @@ body {
         align-items: center;
         justify-content: center;
         height: 100dvh;
+        position: relative;
+
+        #maribeDesktopBackground {
+            display: none;
+        }
 
         img {
             width: 250px;
@@ -34,6 +39,7 @@ body {
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
+                z-index: 1;
 
                 li {
                     a {
@@ -95,8 +101,16 @@ body {
 @media screen and (min-width: 1280px) {
     body {
         main {
-            background-image: url("../../../assets/images/svg/1280x1024.svg");
-            background-size: 1280px auto;
+            background-image: none;
+
+            #maribeDesktopBackground {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;     
+                opacity: 0.7;
+            }
 
             #maribeLogo {
                 display: none;
@@ -112,9 +126,10 @@ body {
                     justify-content: center;
                     gap: 50px;
                     position: absolute;
-                    left: 31%;
-                    top: 16%;
-                    translate: transform(31%, 16%);
+                    font-size: 1.35rem;
+                    left: 32%;
+                    top: 23%;
+                    translate: transform(32%, 23%);
                     z-index: 9999;
                 }
             }
@@ -125,15 +140,11 @@ body {
 @media screen and (min-width: 1366px) {
     body {
         main {
-            background-image: url("../../../assets/images/svg/1366x768.svg");
-            background-size: 1366px auto;
-
             nav {
                 ul {
-                    gap: 50px;
-                    left: 30%;
-                    top: 23%;
-                    translate: transform(30%, 23%);
+                    left: 33%;
+                    top: 25%;
+                    translate: transform(33%, 25%);
                 }
             }
         }
@@ -143,15 +154,13 @@ body {
 @media screen and (min-width: 1440px) {
     body {
         main {
-            background-image: url("../../../assets/images/svg/1440x900.svg");
-            background-size: 1440px auto;
-
             nav {
                 ul {
-                    gap: 80px;
-                    left: 27.5%;
-                    top: 19%;
-                    translate: transform(27.5%, 19%);
+                    gap: 65px;
+                    font-size: 1.4rem;
+                    left: 32%;
+                    top: 23%;
+                    translate: transform(32%, 23%);
                 }
             }
         }
@@ -161,16 +170,13 @@ body {
 @media screen and (min-width: 1896px) {
     body {
         main {
-            background-image: url("../../../assets/images/svg/1920x1080.svg");
-            background-size: 1896px auto;
-            
             nav {
                 ul {
-                    gap: 100px;
-                    left: 31%;
-                    top: 23%;
-                    translate: transform(31%, 23%);
-                    font-size: 1.9rem;
+                    gap: 80px;
+                    left: 33%;
+                    top: 25%;
+                    translate: transform(33%, 25%);
+                    font-size: 1.75rem;
                 }
             }
         }
@@ -180,17 +186,13 @@ body {
 @media screen and (min-width: 2560px) {
     body {
         main {
-            background-image: url("../../../assets/images/svg/3840x2160.svg");
-            background-size: 2560px auto;
-
             nav {
                 ul {
-                    gap: 130px;
-                    font-size: 2.5rem;
-                    left: 32%;
-                    top: 22%;
-                    translate: transform(32%, 22%);
-                    font-size: 2.5rem;
+                    gap: 120px;
+                    font-size: 2.2rem;
+                    left: 33%;
+                    top: 26%;
+                    translate: transform(33%, 26%);
                 }
             }
         }
