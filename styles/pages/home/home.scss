@@ -14,7 +14,7 @@ body {
     main {
         background-color: $begeDelicado;
         background-image: url("../../../assets/images/svg/500x1080.svg");
-        background-size: 500px auto;
+        background-size: 100% auto;
         background-repeat: no-repeat;
         background-position: center;
         display: flex;
@@ -61,7 +61,7 @@ body {
     body {
         main {
             background-image: url("../../../assets/images/svg/1024x1366.svg");
-            background-size: 1024px auto;
+            background-size: 100% auto;
 
             img {
                 width: 300px;

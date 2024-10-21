@@ -11,7 +11,7 @@ body {
 body main {
   background-color: #fcfcfa;
   background-image: url("../../../assets/images/svg/500x1080.svg");
-  background-size: 500px auto;
+  background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -47,7 +47,7 @@ body main nav ul li a:hover {
 @media screen and (min-width: 768px) {
   body main {
     background-image: url("../../../assets/images/svg/1024x1366.svg");
-    background-size: 1024px auto;
+    background-size: 100% auto;
   }
   body main img {
     width: 300px;
