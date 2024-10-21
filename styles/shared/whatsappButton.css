@@ -46,7 +46,7 @@
   right: 15px;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   #whatsappFloatingButton {
     display: block;
   }
