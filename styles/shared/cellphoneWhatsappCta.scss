@@ -58,12 +58,18 @@
 
 @media screen and (min-width: 1024px) {
     #whatsappCtaContainer {
+        #cellphoneWhatsappCta {
+            margin: 40px 0 30px;
+        }
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    #whatsappCtaContainer {
         display: flex;
         justify-content: center;
 
         #cellphoneWhatsappCta {
-            margin-top: 15px;
-            margin-bottom: 25px;
             width: 75%;
         }
     }
