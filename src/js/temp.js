@@ -13,13 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const n = document.getElementById("projectImages");
     
+    let i = 1;
+
     o.outrasFotos.forEach((t) => {
         const e = document.createElement("div"),
             a = document.createElement("a");
         
-        (a.href = t), a.setAttribute("data-lightbox", "fotos"), a.setAttribute("data-title", `${o.titulo}`);
+        (a.href = t), a.setAttribute("data-lightbox", "fotos"), a.setAttribute("data-title", `${o.titulo}`), (a.ariaLabel = `Imagem do ${o.titulo}. Imagem ${i} de ${o.outrasFotos.length}.`), a.setAttribute("aria-role", "listitem");
         
         const d = document.createElement("img");
-        (d.src = t), (d.alt = "Imagem de projeto da Maribe Arquitetura"), (d.title = `${o.titulo}`), a.appendChild(d), e.appendChild(a), n.appendChild(e);
+        (d.src = t), (d.alt = `Imagem do ${o.titulo}. Imagem ${i} de ${o.outrasFotos.length}.`), (d.title = `${o.titulo}`), a.appendChild(d), e.appendChild(a), n.appendChild(e);
+        i++;
     });
 });

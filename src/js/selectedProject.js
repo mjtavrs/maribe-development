@@ -20,6 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         (a.href = t), a.setAttribute("data-lightbox", "fotos"), a.setAttribute("data-title", `${o.titulo}`);
         
         const d = document.createElement("img");
-        (d.src = t), (d.alt = "Imagem de projeto da Maribe Arquitetura"), (d.title = `${o.titulo}`), a.appendChild(d), e.appendChild(a), n.appendChild(e);
+        (d.src = t), (d.alt = `Imagem do ${o.titulo}. Imagem ${o.outrasFotos[t]} de ${o.outrasFotos.length + 1}`), (d.title = `${o.titulo}`), a.appendChild(d), e.appendChild(a), n.appendChild(e);
     });
 });

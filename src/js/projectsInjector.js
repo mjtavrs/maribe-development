@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     projects.forEach((project) => {
         let projectBox = document.createElement("article");
+        (projectBox.ariaLabel = `Saiba mais sobre o ${project.titulo}`), (projectBox.role = "listitem");
 
         let projectReferrer = document.createElement("a");
         projectReferrer.href = `projeto.html?id=${project.id}`;
