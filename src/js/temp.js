@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const e = parseInt(t.get("id"));
     const o = projects.find((t) => t.id === e);
     
-    document.title = `${o.titulo} | maribe arquitetura`;
+    document.title = `${o.titulo} • maribe arquitetura`;
     
     document.getElementById("projectTitle").innerText = `${o.titulo}`;
     document.getElementById("projectLocationAndYear").innerText = `${o.cidade}, ${o.ano}`;
