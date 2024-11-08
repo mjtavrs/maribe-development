@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hora_envio = date("d/m/Y \à\s H:i:s");
 
-    $to = "dev.marcostavares@gmail.com";
+    $to = "formulariomaribe@gmail.com";
     $subject = "Novo contato";
 
     $mensagem_email = "

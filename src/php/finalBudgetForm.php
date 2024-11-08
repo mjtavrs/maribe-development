@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hora_envio = date("d/m/Y \à\s H:i:s");
 
-    $to = "dev.marcostavares@gmail.com";
+    $to = "formulariomaribe@gmail.com";
     $assunto = "Formulário de proposta preenchido";
 
     $mensagem_email = "
@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "De: $email\r\nReply-To: $email\r\n";
+    // $headers .= "De: $email\r\nReply-To: $email\r\n";
 
     if (mail($to, $assunto, $mensagem_email, $headers)) {
         header("Location: http://maribe.arq.br/sucesso");
