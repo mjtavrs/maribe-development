@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="styles/shared/whatsappButton.css" />
     <link rel="stylesheet" href="styles/shared/scrollbar.css" />
     <link rel="stylesheet" href="styles/shared/smoothOpening.css" />
+    <link rel="stylesheet" href="styles/shared/cookiesPopup.css">
     <link rel="stylesheet" href="styles/pages/about/about.css" />
     
     <!-- Scripts -->
@@ -36,6 +37,18 @@
             <i class="ph ph-whatsapp-logo"></i>
         </div>
     </a>
+    <div id="cookiePopupContainer" class="hidden">
+        <div id="cookiePopupHeader">
+            <h3>Nosso site utiliza cookies 🍪</h3>
+            <button title="Fechar aviso de cookies" aria-label="Fechar aviso de cookies" id="closeCookiesPopup">X</button>
+        </div>
+        <div id="cookiePopupContent">
+            <p>
+                Este site utiliza dados salvos no seu navegador para facilitar o preenchimento dos formulários. Caso tenha dúvidas sobre o uso dos dados, leia nossa <a href="/politica-de-privacidade.html" target="_blank">Política de Privacidade</a> para maiores informações.
+            </p>
+            <button aria-label="Consentir com aviso de cookies">Entendi 😄</button>
+        </div>
+    </div>
     <div id="smoothOpening">
         <header>
             <a href="index.html" id="indexReferrer">

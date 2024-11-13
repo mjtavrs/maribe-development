@@ -1,0 +1,10 @@
+@import "./colors";
+
+body {
+    #cookiePopupContainer {
+        border: 1px solid $vermelhoRecife;
+        border-radius: 8px;
+        margin: 20px;
+        padding: 20px;
+    }
+}
