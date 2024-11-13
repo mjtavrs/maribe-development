@@ -1,10 +1,139 @@
 @import "./colors";
 
+@font-face {
+    font-family: "Kantumruy Pro Regular";
+    src: url("../../../assets/fonts/subtitle/KantumruyPro-Regular.ttf") format("truetype");
+}
+
+// body {
+//     #cookiePopupContainer {
+//         position: fixed;
+//         z-index: 9999;
+//         border: 1px solid $vermelhoRecife;
+//         border-radius: 8px;
+//         margin: 20px;
+//         padding: 20px;
+//         bottom: 0;
+//         background-color: $begeDelicado;
+
+//         -webkit-box-shadow: 0px 0px 17px 2px rgba(226,183,159,0.6);
+//         -moz-box-shadow: 0px 0px 17px 2px rgba(226,183,159,0.6);
+//         box-shadow: 0px 0px 17px 2px rgba(226,183,159,0.6);
+
+//         #cookiePopupHeader {
+//             border-bottom: 1px solid $vermelhoRecife;
+//             display: flex;
+//             justify-content: space-between;
+//             align-items: center;
+//             padding-bottom: 10px;
+
+//             h3 {
+//                 font-size: 1rem;
+//                 font-family: "Kantumruy Pro Regular", sans-serif;
+//                 font-weight: bold;
+//                 color: $vermelhoRecife;
+//             }
+
+//             button {
+//                 background: transparent;
+//                 border: none;
+//                 color: #b7b7b7;
+//                 font-size: 22px;
+//                 opacity: 0.85;
+//             }
+//         }
+
+//         #cookiePopupContent {
+//             display: flex;
+//             flex-direction: column;
+//             align-items: flex-end;
+
+//             p {
+//                 padding: 15px 0;
+
+//                 a {
+//                     color: $vermelhoRecife;
+//                     font-weight: bold;
+//                 }
+//             }
+
+//             button {
+//                 background-color: $vermelhoRecife;
+//                 padding: 8px 10px;
+//                 border: none;
+//                 border-radius: 5px;
+//                 color: $begeDelicado;
+//                 font-weight: bold;
+//                 font-family: "Kantumruy Pro Regular", sans-serif;
+//                 font-size: 0.875rem;
+//             }
+//         }
+//     }
+// }
+
 body {
     #cookiePopupContainer {
-        border: 1px solid $vermelhoRecife;
+        color: $begeDelicado;
+        position: fixed;
+        z-index: 9999;
+        border: 1px solid $begeDelicado;
         border-radius: 8px;
         margin: 20px;
         padding: 20px;
+        bottom: 0;
+        background-color: $vermelhoRecife;
+
+        -webkit-box-shadow: 0px 0px 17px 2px rgba(226,183,159,0.6);
+        -moz-box-shadow: 0px 0px 17px 2px rgba(226,183,159,0.6);
+        box-shadow: 0px 0px 17px 2px rgba(226,183,159,0.6);
+
+        #cookiePopupHeader {
+            border-bottom: 1px solid $begeDelicado;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+
+            h3 {
+                font-size: 1rem;
+                font-family: "Kantumruy Pro Regular", sans-serif;
+                font-weight: bold;
+                color: $begeDelicado;
+            }
+
+            button {
+                background: transparent;
+                border: none;
+                color: $begeDelicado;
+                font-size: 22px;
+                opacity: 0.85;
+            }
+        }
+
+        #cookiePopupContent {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            p {
+                padding: 15px 0;
+
+                a {
+                    color: $begeDelicado;
+                    font-weight: bold;
+                }
+            }
+
+            button {
+                background-color: $begeDelicado;
+                padding: 8px 10px;
+                border: none;
+                border-radius: 5px;
+                color: $vermelhoRecife;
+                font-weight: bold;
+                font-family: "Kantumruy Pro Regular", sans-serif;
+                font-size: 0.875rem;
+            }
+        }
     }
 }
