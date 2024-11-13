@@ -2,35 +2,66 @@
   font-family: "Kantumruy Pro Regular";
   src: url("../../../assets/fonts/subtitle/KantumruyPro-Regular.ttf") format("truetype");
 }
+.hidePopup {
+  display: none;
+}
+
+.showPopupFromBellow {
+  display: block;
+  animation: showFromBelow 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes showFromBelow {
+  0% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.hidePopupWithAnimation {
+  animation: slide-out-bottom 700ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+@keyframes slide-out-bottom {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
 body #cookiePopupContainer {
-  color: #fcfcfa;
   position: fixed;
-  z-index: 9999;
-  border: 1px solid #fcfcfa;
+  z-index: 9998;
+  border: 1px solid #c56e51;
   border-radius: 8px;
   margin: 20px;
   padding: 20px;
   bottom: 0;
-  background-color: #c56e51;
+  background-color: #fcfcfa;
   box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
 }
 body #cookiePopupContainer #cookiePopupHeader {
-  border-bottom: 1px solid #fcfcfa;
+  border-bottom: 1px solid #c56e51;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 10px;
+  z-index: 9999;
 }
 body #cookiePopupContainer #cookiePopupHeader h3 {
   font-size: 1rem;
   font-family: "Kantumruy Pro Regular", sans-serif;
   font-weight: bold;
-  color: #fcfcfa;
+  color: #c56e51;
 }
 body #cookiePopupContainer #cookiePopupHeader button {
   background: transparent;
   border: none;
-  color: #fcfcfa;
+  color: #b7b7b7;
   font-size: 22px;
   opacity: 0.85;
 }
@@ -38,20 +69,21 @@ body #cookiePopupContainer #cookiePopupContent {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  z-index: 9999;
 }
 body #cookiePopupContainer #cookiePopupContent p {
   padding: 15px 0;
 }
 body #cookiePopupContainer #cookiePopupContent p a {
-  color: #fcfcfa;
+  color: #c56e51;
   font-weight: bold;
 }
 body #cookiePopupContainer #cookiePopupContent button {
-  background-color: #fcfcfa;
+  background-color: #c56e51;
   padding: 8px 10px;
   border: none;
   border-radius: 5px;
-  color: #c56e51;
+  color: #fcfcfa;
   font-weight: bold;
   font-family: "Kantumruy Pro Regular", sans-serif;
   font-size: 0.875rem;

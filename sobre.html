@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="styles/pages/about/about.css" />
     
     <!-- Scripts -->
+     <script src="./src/js/cookiePopup.js"></script>
 </head>
 <body>
     <a href="https://api.whatsapp.com/send?phone=5581994083257" id="whatsappFloatingButton" target="_blank" aria-hidden="true">
@@ -37,7 +38,7 @@
             <i class="ph ph-whatsapp-logo"></i>
         </div>
     </a>
-    <div id="cookiePopupContainer" class="hidden">
+    <div id="cookiePopupContainer" class="hidePopup">
         <div id="cookiePopupHeader">
             <h3>Nosso site utiliza cookies 🍪</h3>
             <button title="Fechar aviso de cookies" aria-label="Fechar aviso de cookies" id="closeCookiesPopup">X</button>
@@ -46,9 +47,8 @@
             <p>
                 Este site utiliza dados salvos no seu navegador para facilitar o preenchimento dos formulários. Caso tenha dúvidas sobre o uso dos dados, leia nossa <a href="/politica-de-privacidade.html" target="_blank">Política de Privacidade</a> para maiores informações.
             </p>
-            <button aria-label="Consentir com aviso de cookies">
-                Estou de acordo!
-                
+            <button aria-label="Consentir com aviso de cookies" id="acceptCookies">
+                Estou de acordo!  
             </button>
         </div>
     </div>
