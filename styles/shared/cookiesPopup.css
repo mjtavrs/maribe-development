@@ -81,6 +81,7 @@ body #cookiePopupContainer #cookiePopupContent p {
 body #cookiePopupContainer #cookiePopupContent p a {
   color: #c56e51;
   font-weight: bold;
+  text-decoration: none;
 }
 body #cookiePopupContainer #cookiePopupContent p a:hover {
   transition: 300ms color;

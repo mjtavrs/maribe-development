@@ -21,11 +21,27 @@
     <link rel="stylesheet" href="styles/shared/headerAndFooter.css" />
     <link rel="stylesheet" href="styles/shared/scrollbar.css" />
     <link rel="stylesheet" href="styles/shared/smoothOpening.css" />
+    <link rel="stylesheet" href="styles/shared/cookiesPopup.css">
     <link rel="stylesheet" href="styles/pages/privacyPolicies/privacyPolicies.css" />
     
     <!-- Scripts -->
+    <script src="./src/js/cookiePopup.js"></script>
 </head>
 <body>
+    <div id="cookiePopupContainer" class="hidePopup">
+        <div id="cookiePopupHeader">
+            <h3>Nosso site agora utiliza cookies! 🍪</h3>
+            <button title="Fechar aviso de cookies" aria-label="Fechar aviso de cookies" id="closeCookiesPopup">X</button>
+        </div>
+        <div id="cookiePopupContent">
+            <p>
+                Isso significa que nosso site utiliza dados salvos no seu navegador para facilitar o preenchimento dos formulários que você pode nos enviar. Caso tenha dúvidas sobre o uso dos dados, você pode ler nossa <a href="/politica-de-privacidade.html" target="_blank">Política de Privacidade</a> para ter maiores informações ou nos enviar uma mensagem na nossa <a href="/contato.html" target="_blank">página de contato</a>.
+            </p>
+            <button aria-label="Consentir com aviso de cookies" id="acceptCookies">
+                Estou de acordo!  
+            </button>
+        </div>
+    </div>
     <div id="smoothOpening">
         <header>
             <a href="index.html" id="indexReferrer">
