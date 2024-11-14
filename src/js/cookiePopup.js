@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const autoCloseCookiesPopup = setTimeout(() => {
             popupContainer.classList.add("hidePopupWithAnimation");
             popupContainer.classList.remove("showPopupFromBellow");
-        }, 12000);
+        }, 15000);
 
         acceptButton.addEventListener("click", () => {
             popupContainer.classList.add("hidePopupWithAnimation");

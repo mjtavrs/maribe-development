@@ -8,7 +8,7 @@
 
 .showPopupFromBellow {
   display: block;
-  animation: showFromBelow 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: showFromBelow 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @keyframes showFromBelow {
   0% {
@@ -21,7 +21,7 @@
   }
 }
 .hidePopupWithAnimation {
-  animation: slide-out-bottom 700ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: slide-out-bottom 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 @keyframes slide-out-bottom {
   0% {
