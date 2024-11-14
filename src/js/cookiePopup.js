@@ -8,23 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
             popupContainer.classList.remove("hidePopup");
             popupContainer.classList.add("showPopupFromBellow");
             sessionStorage.setItem("cookiesPopupDisplayed", "true");
-        }, 2000);
-
-        const autoCloseCookiesPopup = setTimeout(() => {
-            popupContainer.classList.add("hidePopupWithAnimation");
-            popupContainer.classList.remove("showPopupFromBellow");
-        }, 15000);
+        }, 1500);
 
         acceptButton.addEventListener("click", () => {
             popupContainer.classList.add("hidePopupWithAnimation");
             popupContainer.classList.remove("showPopupFromBellow");
-            clearTimeout(autoCloseCookiesPopup);
         });
 
         closePopupButton.addEventListener("click", () => {
             popupContainer.classList.add("hidePopupWithAnimation");
             popupContainer.classList.remove("showPopupFromBellow");
-            clearTimeout(autoCloseCookiesPopup);
         });
     }
 });

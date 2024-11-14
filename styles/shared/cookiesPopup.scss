@@ -11,8 +11,8 @@
 
 .showPopupFromBellow {
     display: block;
-    -webkit-animation: showFromBelow 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: showFromBelow 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: showFromBelow 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: showFromBelow 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @-webkit-keyframes showFromBelow {
