@@ -29,6 +29,12 @@ body {
                     resize: none;
                 }
 
+                input[type="date"] {
+                    &::-webkit-calendar-picker-indicator {
+                        opacity: 0.4;
+                    }
+                }
+
                 .inputWithSmallText {
                     display: flex;
                     flex-direction: column;

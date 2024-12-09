@@ -23,6 +23,9 @@ body main form label input, body main form label textarea {
   padding: 5px;
   resize: none;
 }
+body main form label input[type=date]::-webkit-calendar-picker-indicator {
+  opacity: 0.4;
+}
 body main form label .inputWithSmallText {
   display: flex;
   flex-direction: column;
