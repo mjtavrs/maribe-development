@@ -109,12 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hora_envio = date("d/m/Y \à\s H:i:s");
 
     $to = "formulariomaribe@gmail.com";
-    $assunto = "Formulário de proposta preenchido";
+    $assunto = "Formulário de Proposta preenchido";
 
     $mensagem_email = "
     <html>
     <head>
-        <title>Formulário de proposta</title>
+        <title>Formulário de Proposta</title>
     </head>
     <body>
         <img src='https://i.ibb.co/yVPy89p/formulario-De-Proposta.png' alt='Formulário de Proposta'>

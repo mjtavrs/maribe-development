@@ -94,18 +94,18 @@
                 <h1 role="heading">formulário de contrato</h1>
                 <p>Esses dados são necessários para preenchimento do contrato e organização da gestão interna do escritório.</p>
             </div>
-            <form action="src/php/finalBudgetForm.php" method="POST">
+            <form action="src/php/contractForm.php" method="POST">
                 <label for="name">
                     <span>Nome completo</span>
                     <input type="text" name="name" id="name" autocomplete="on" required aria-required="true">
                 </label>
                 <label for="cpf">
                     <span>CPF</span>
-                    <input type="text" name="cpf" id="cpf" placeholder="Apenas números. Ex.: 12345678900" autocomplete="on" required aria-required="true">
+                    <input type="text" name="cpf" id="cpf" placeholder="Apenas números. Ex.: 12345678900" pattern="\d*" title="Apenas números são permitidos" minlength="11" maxlength="11" autocomplete="on" required aria-required="true">
                 </label>
                 <label for="rg">
                     <span>RG</span>
-                    <input type="text" name="rg" id="rg" placeholder="Apenas números. Ex.: 1234567" autocomplete="on" required aria-required="true">
+                    <input type="text" name="rg" id="rg" placeholder="Apenas números. Ex.: 1234567" pattern="\d*" title="Apenas números são permitidos" minlength="7" autocomplete="on" required aria-required="true">
                 </label>
                 <label for="projectAddress">
                     <span>Endereço completo do projeto</span>
