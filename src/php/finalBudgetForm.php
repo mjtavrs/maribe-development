@@ -82,24 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pensa_em_fazer_moveis_com_marcenaria_ou_planejados = $_POST["pensaEmFazerMoveisComMarcenariaOuPlanejados"];
     }
 
-    if (empty($_POST["nosAcompanhaNasRedesSociais"])) {
-        $erros[] = "Por favor, marque se acompanha nosso trabalho nas redes sociais.";
-    } else {
-        $acompanha_nas_redes_sociais = $_POST["nosAcompanhaNasRedesSociais"];
-    }
-
-    if (empty($_POST["acreditaQueTrabalhosAnterioresAtingemExpectativa"])) {
-        $erros[] = "Por favor, marque sua opção.";
-    } else {
-        $acredita_que_trabalhos_anteriores_antigiram_expectativa = $_POST["acreditaQueTrabalhosAnterioresAtingemExpectativa"];
-    }
-
-    if (empty($_POST["porqueAcreditaQueSomosOEscritorioIdealParaSeuProjeto"])) {
-        $erros[] = "Por favor, nos informe porque acredita que somos o escritório ideal para você.";
-    } else {
-        $porque_acredita_que_somos_o_ideal = $_POST["porqueAcreditaQueSomosOEscritorioIdealParaSeuProjeto"];
-    }
-
     if (empty($_POST["duvidasOuInformacoesAAcrescentar"])) {
         $outras_duvidas = "Sem outras dúvidas";
     } else {
@@ -132,9 +114,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>vai modificar revestimento ou bancadas?</strong> $modificar_revestimento_ou_bancada</p>
         <p><strong>vai aproveitar e/ou modificar algum móvel já existente?</strong> $vai_aproveitar_e_ou_modificar_movel_existente</p>
         <p><strong>pensa em fazer móveis com marcenaria ou planejados?</strong> $pensa_em_fazer_moveis_com_marcenaria_ou_planejados</p>
-        <p><strong>acompanha nossos trabalhos nas redes sociais?</strong> $acompanha_nas_redes_sociais</p>
-        <p><strong>acredita que nossos trabalhos anteriores conseguem atingir a sua expectativa estética?</strong> $acredita_que_trabalhos_anteriores_antigiram_expectativa</p>
-        <p><strong>porque você acredita que somos o escritório ideal para ajudá-los?</strong> $porque_acredita_que_somos_o_ideal</p>
         <p><strong>se houver alguma dúvida ou informação a acrescentar, comente:</strong> $outras_duvidas</p>
         <br />
         <small><p id='data_envio'>este formulário foi enviado no dia $hora_envio</p></small>
