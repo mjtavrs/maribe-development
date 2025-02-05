@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hora_envio = date("d/m/Y \à\s H:i:s");
 
-    $to = "contato@maribe.arq.br";
+    $to = "maribe.arquitetura@gmail.com";
     $subject = "Formulário de Contato preenchido";
 
     $mensagem_email = "
