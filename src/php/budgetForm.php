@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hora_envio = date("d/m/Y \à\s H:i:s");
 
-    $to = "formulariomaribe@gmail.com";
+    $to = "contato@maribe.arq.br";
     $assunto = "Novo pedido inicial de orçamento";
 
     $mensagem_email = "
