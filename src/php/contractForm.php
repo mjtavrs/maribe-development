@@ -40,10 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $clientBirthDate = $_POST["clientBirthDate"];
     }
     
-    if (empty($_POST["clientJob"])) {
-        $erros[] = "Por favor, digite sua profissão.";
+    if (empty($_POST["paymentMethod"])) {
+        $erros[] = "Por favor, informa a forma de pagamento escolhida.";
     } else {
-        $clientJob = $_POST["clientJob"];
+        $paymentMethod = $_POST["paymentMethod"];
     }
 
     $hora_envio = date("d/m/Y \à\s H:i:s");
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>endereço do projeto:</strong> $projectAddress</p>
         <p><strong>endereço do cliente:</strong> $clientAddress</p>
         <p><strong>data de nascimento:</strong> $clientBirthDate</p>
-        <p><strong>profissão:</strong> $clientJob</p>
+        <p><strong>forma de pagamento escolhida:</strong> $paymentMethod</p>
         <br />
         <small><p id='data_envio'>este formulário foi enviado no dia $hora_envio</p></small>
         </body>
