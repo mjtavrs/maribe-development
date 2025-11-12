@@ -1,3 +1,7 @@
+/**
+ * Projects Page Styles
+ */
+
 .visibilityOff {
   visibility: hidden;
 }
@@ -11,14 +15,16 @@ body main #projectsContainer {
   flex-direction: column;
   gap: 32px;
 }
+
 body main #projectsContainer article {
   height: 360px;
   position: relative;
 }
+
 body main #projectsContainer article a span {
-  background-color: #fcfcfa;
+  background-color: var(--color-bege-delicado);
   border-radius: 16px;
-  color: #3c3c3b;
+  color: var(--color-cinza-elegante);
   filter: opacity(0.9);
   font-family: "All Round Gothic", sans-serif;
   left: 50%;
@@ -30,17 +36,18 @@ body main #projectsContainer article a span {
   transform: translate(-50%, -50%);
   z-index: 2;
 }
+
 body main #projectsContainer article a span h4 {
-  border-top: 1px solid #3c3c3b;
-  border-bottom: 1px solid #3c3c3b;
+  border-top: 1px solid var(--color-cinza-elegante);
+  border-bottom: 1px solid var(--color-cinza-elegante);
   padding: 16px 0;
   text-align: center;
 }
+
 body main #projectsContainer article a img {
   border-radius: 10px;
   height: 360px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   position: absolute;
   transition: 300ms;
   width: 100%;
@@ -56,18 +63,22 @@ body main #projectsContainer article a img {
     row-gap: 20px;
     width: 100%;
   }
+
   body main #projectsContainer article {
     min-width: 49%;
   }
+
   body main #projectsContainer article a img {
     border-radius: 8px;
   }
 }
+
 @media screen and (min-width: 1366px) {
   body main #projectsContainer article {
     height: 400px;
   }
+
   body main #projectsContainer article a img {
     height: 400px;
   }
-}/*# sourceMappingURL=projects.css.map */
+}

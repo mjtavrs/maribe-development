@@ -3,25 +3,26 @@
 require_once __DIR__ . '/functions.php';
 
 $erros = [];
+$errosPorCampo = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação e sanitização do nome
     if (empty($_POST["name"])) {
-        $erros[] = "Por favor, digite seu nome.";
+        $errosPorCampo["name"] = "Por favor, digite seu nome.";
     } else {
         $nome = sanitizeForEmail($_POST["name"]);
 
         if (strlen(trim($_POST["name"])) < 2) {
-            $erros[] = "O nome deve ter pelo menos 2 caracteres.";
+            $errosPorCampo["name"] = "O nome deve ter pelo menos 2 caracteres.";
         }
     }
 
     // Validação e sanitização do email
     if (empty($_POST["email"])) {
-        $erros[] = "Por favor, digite seu e-mail.";
+        $errosPorCampo["email"] = "Por favor, digite seu e-mail.";
     } elseif (!validateEmail($_POST["email"])) {
-        $erros[] = "Formato de e-mail inválido.";
+        $errosPorCampo["email"] = "Formato de e-mail inválido.";
     } else {
         $email = sanitizeInput($_POST["email"]);
     }
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefoneFormatado = '';
     if (!empty($_POST["phone"])) {
         if (!validatePhone($_POST["phone"])) {
-            $erros[] = "Formato de telefone inválido. Por favor, insira um número de telefone válido.";
+            $errosPorCampo["phone"] = "Formato de telefone inválido. Por favor, insira um número de telefone válido.";
         } else {
             $telefone = preg_replace('/\D/', '', $_POST["phone"]);
             $telefoneFormatado = sanitizeForEmail($_POST["phone"]);
@@ -40,39 +41,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação de como chegou até nós
     if (empty($_POST["howYouFoundUs"])) {
-        $erros[] = "Por favor, selecione de onde você veio.";
+        $errosPorCampo["howYouFoundUs"] = "Por favor, selecione de onde você veio.";
     } else {
         $de_onde_veio = sanitizeForEmail($_POST["howYouFoundUs"]);
     }
 
     // Validação do que será projetado
     if (empty($_POST["whatAreWeWorkingOn"])) {
-        $erros[] = "Por favor, selecione o que será projetado.";
+        $errosPorCampo["whatAreWeWorkingOn"] = "Por favor, selecione o que será projetado.";
     } else {
         $o_que_projetar = sanitizeForEmail($_POST["whatAreWeWorkingOn"]);
     }
 
     // Validação de quando iniciar o projeto
     if (empty($_POST["whenToBeginTheProject"])) {
-        $erros[] = "Por favor, indique quando pretende iniciar o projeto.";
+        $errosPorCampo["whenToBeginTheProject"] = "Por favor, indique quando pretende iniciar o projeto.";
     } else {
         $quando_comecar_projeto = sanitizeForEmail($_POST["whenToBeginTheProject"]);
     }
 
     // Validação do objetivo
     if (empty($_POST["objective"])) {
-        $erros[] = "Por favor, descreva o objetivo do projeto.";
+        $errosPorCampo["objective"] = "Por favor, descreva o objetivo do projeto.";
     } else {
         $objetivo = sanitizeForEmail($_POST["objective"]);
 
         if (strlen(trim($_POST["objective"])) < 10) {
-            $erros[] = "O objetivo deve ter pelo menos 10 caracteres.";
+            $errosPorCampo["objective"] = "O objetivo deve ter pelo menos 10 caracteres.";
         }
     }
 
     // Se houver erros, redireciona de volta ao formulário
-    if (!empty($erros)) {
-        redirectWithStatus('error', $erros);
+    if (!empty($errosPorCampo)) {
+        redirectWithStatus('error', $erros, $errosPorCampo);
     }
 
     // Prepara o email
@@ -109,5 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         redirectWithStatus('error', $erros);
     }
 } else {
-    redirectWithStatus('error');
+    // Se não for POST, redireciona para a página de orçamento
+    $erros[] = 'Método de requisição inválido.';
+    redirectWithStatus('error', $erros);
 }

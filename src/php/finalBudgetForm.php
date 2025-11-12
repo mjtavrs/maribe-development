@@ -3,104 +3,105 @@
 require_once __DIR__ . '/functions.php';
 
 $erros = [];
+$errosPorCampo = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação e sanitização do nome
     if (empty($_POST["name"])) {
-        $erros[] = "Por favor, digite seu nome.";
+        $errosPorCampo["name"] = "Por favor, digite seu nome.";
     } else {
         $nome = sanitizeForEmail($_POST["name"]);
 
         if (strlen(trim($_POST["name"])) < 2) {
-            $erros[] = "O nome deve ter pelo menos 2 caracteres.";
+            $errosPorCampo["name"] = "O nome deve ter pelo menos 2 caracteres.";
         }
     }
 
     // Validação e sanitização do endereço
     if (empty($_POST["address"])) {
-        $erros[] = "Por favor, digite seu endereço.";
+        $errosPorCampo["address"] = "Por favor, digite seu endereço.";
     } else {
         $endereco = sanitizeForEmail($_POST["address"]);
     }
 
     // Validação do que é mais importante no orçamento
     if (empty($_POST["maisImportanteNoOrcamento"])) {
-        $erros[] = "Por favor, digite o que é mais importante no orçamento.";
+        $errosPorCampo["maisImportanteNoOrcamento"] = "Por favor, digite o que é mais importante no orçamento.";
     } else {
         $o_que_e_mais_importante_no_orcamento = sanitizeForEmail($_POST["maisImportanteNoOrcamento"]);
     }
 
     // Validação se o imóvel tem planta
     if (empty($_POST["imovelTemPlantaOuNao"])) {
-        $erros[] = "Por favor, marque se o projeto possui planta.";
+        $errosPorCampo["imovelTemPlantaOuNao"] = "Por favor, marque se o projeto possui planta.";
     } else {
         $projeto_tem_planta = sanitizeForEmail($_POST["imovelTemPlantaOuNao"]);
     }
 
     // Validação se é apartamento completo ou alguns ambientes
     if (empty($_POST["apartamentoCompletoOuAlgunsAmbientes"])) {
-        $erros[] = "Por favor, informe se é o apartamento completo ou alguns ambientes.";
+        $errosPorCampo["apartamentoCompletoOuAlgunsAmbientes"] = "Por favor, informe se é o apartamento completo ou alguns ambientes.";
     } else {
         $apartamento_completo_ou_ambientes = sanitizeForEmail($_POST["apartamentoCompletoOuAlgunsAmbientes"]);
     }
 
     // Validação de quantas pessoas residem e idades
     if (empty($_POST["quantasPessoasResidemEIdades"])) {
-        $erros[] = "Por favor, informe quantas pessoas vivem no apartamento e as idades.";
+        $errosPorCampo["quantasPessoasResidemEIdades"] = "Por favor, informe quantas pessoas vivem no apartamento e as idades.";
     } else {
         $quantas_pessoas_vivem_no_apartamento = sanitizeForEmail($_POST["quantasPessoasResidemEIdades"]);
     }
 
     // Validação do tamanho em metros quadrados
     if (empty($_POST["tamanhoEmMetrosQuadrados"])) {
-        $erros[] = "Por favor, informe qual o tamanho do espaço em m².";
+        $errosPorCampo["tamanhoEmMetrosQuadrados"] = "Por favor, informe qual o tamanho do espaço em m².";
     } else {
         $tamanho_projeto = sanitizeForEmail($_POST["tamanhoEmMetrosQuadrados"]);
         // Validação básica: deve ser um número
         if (!is_numeric(str_replace(',', '.', $_POST["tamanhoEmMetrosQuadrados"]))) {
-            $erros[] = "O tamanho em m² deve ser um número válido.";
+            $errosPorCampo["tamanhoEmMetrosQuadrados"] = "O tamanho em m² deve ser um número válido.";
         }
     }
 
     // Validação de demolição ou construção de paredes
     if (empty($_POST["haveraDemolicaoOuConstrucaoDeParedes"])) {
-        $erros[] = "Por favor, marque se haverá demolição ou construção de paredes.";
+        $errosPorCampo["haveraDemolicaoOuConstrucaoDeParedes"] = "Por favor, marque se haverá demolição ou construção de paredes.";
     } else {
         $demolicao_ou_construcao_paredes = sanitizeForEmail($_POST["haveraDemolicaoOuConstrucaoDeParedes"]);
     }
 
     // Validação de modificação elétrica
     if (empty($_POST["vaiModificarEletrica"])) {
-        $erros[] = "Por favor, marque se haverá modificação de elétrica.";
+        $errosPorCampo["vaiModificarEletrica"] = "Por favor, marque se haverá modificação de elétrica.";
     } else {
         $modificar_eletrica = sanitizeForEmail($_POST["vaiModificarEletrica"]);
     }
 
     // Validação de modificação de gesso
     if (empty($_POST["vaiModificarGesso"])) {
-        $erros[] = "Por favor, marque se haverá modificação de gesso.";
+        $errosPorCampo["vaiModificarGesso"] = "Por favor, marque se haverá modificação de gesso.";
     } else {
         $modificar_gesso = sanitizeForEmail($_POST["vaiModificarGesso"]);
     }
 
     // Validação de modificação de revestimento ou bancada
     if (empty($_POST["vaiModificarRevestimentoOuBancadas"])) {
-        $erros[] = "Por favor, marque se haverá modificação de revestimento ou bancada.";
+        $errosPorCampo["vaiModificarRevestimentoOuBancadas"] = "Por favor, marque se haverá modificação de revestimento ou bancada.";
     } else {
         $modificar_revestimento_ou_bancada = sanitizeForEmail($_POST["vaiModificarRevestimentoOuBancadas"]);
     }
 
     // Validação de aproveitar ou modificar móvel existente
     if (empty($_POST["vaiAproveitarEOuModificarAlgumMovel"])) {
-        $erros[] = "Por favor, marque se vai aproveitar ou modificar algum móvel existente.";
+        $errosPorCampo["vaiAproveitarEOuModificarAlgumMovel"] = "Por favor, marque se vai aproveitar ou modificar algum móvel existente.";
     } else {
         $vai_aproveitar_e_ou_modificar_movel_existente = sanitizeForEmail($_POST["vaiAproveitarEOuModificarAlgumMovel"]);
     }
 
     // Validação de móveis com marcenaria ou planejados
     if (empty($_POST["pensaEmFazerMoveisComMarcenariaOuPlanejados"])) {
-        $erros[] = "Por favor, marque se pensa em fazer móveis com marcenaria ou planejados.";
+        $errosPorCampo["pensaEmFazerMoveisComMarcenariaOuPlanejados"] = "Por favor, marque se pensa em fazer móveis com marcenaria ou planejados.";
     } else {
         $pensa_em_fazer_moveis_com_marcenaria_ou_planejados = sanitizeForEmail($_POST["pensaEmFazerMoveisComMarcenariaOuPlanejados"]);
     }
@@ -112,8 +113,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Se houver erros, redireciona de volta ao formulário
-    if (!empty($erros)) {
-        redirectWithStatus('error', $erros);
+    if (!empty($errosPorCampo)) {
+        redirectWithStatus('error', $erros, $errosPorCampo);
     }
 
     // Prepara o email
@@ -160,5 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         redirectWithStatus('error', $erros);
     }
 } else {
-    redirectWithStatus('error');
+    // Se não for POST, redireciona para a página de proposta
+    $erros[] = 'Método de requisição inválido.';
+    redirectWithStatus('error', $erros);
 }

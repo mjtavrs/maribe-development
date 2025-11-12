@@ -1,0 +1,597 @@
+/**
+ * Componentes CSS
+ * Consolida: headerAndFooter.scss + forms.scss + cookiesPopup.scss + pageInfo.scss + separator.scss + scrollbar.scss
+ */
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  padding-top: 16px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-vermelho-recife);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-bege-delicado);
+}
+
+/* ============================================
+   HEADER & FOOTER
+   ============================================ */
+body header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body header #indexReferrer img {
+  margin-top: 30px;
+  width: 300px;
+}
+
+body header nav {
+  margin-top: 60px;
+}
+
+body header nav ul {
+  display: flex;
+  font-size: 1.125rem;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+body header nav ul #selected a {
+  color: var(--color-vermelho-recife);
+  font-weight: 600;
+}
+
+body header nav ul li:not(#selected) a {
+  opacity: 0.8;
+  color: var(--color-cinza-elegante);
+}
+
+body header nav ul li:not(#selected) a:hover {
+  color: var(--color-vermelho-recife);
+  transition: 300ms color;
+  opacity: 1;
+}
+
+body footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  border-top: 1px solid var(--color-cinza-elegante);
+  padding: 30px;
+}
+
+body footer #socialLinks ul {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+body footer #socialLinks ul li a i {
+  font-size: 28px;
+  color: var(--color-cinza-elegante);
+  padding: 5px;
+  border: 1px solid var(--color-cinza-elegante);
+  border-radius: 6px;
+}
+
+body footer #legalInformation {
+  font-size: 0.975rem;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+body footer #legalInformation p span {
+  font-weight: bold;
+}
+
+body footer #legalInformation a {
+  color: var(--color-cinza-elegante);
+  padding-top: 10px;
+  font-weight: bold;
+  transition: 500ms color;
+}
+
+body footer #legalInformation a:hover {
+  color: var(--color-vermelho-recife);
+}
+
+@media screen and (min-width: 768px) {
+  body header nav ul {
+    gap: 26px;
+    margin: 25px 0 20px;
+  }
+
+  body footer {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 40px;
+  }
+
+  body footer #legalInformation {
+    font-size: 1rem;
+    gap: 3px;
+    align-items: end;
+    text-align: center;
+  }
+
+  body footer #legalInformation a {
+    padding-top: 5px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body header nav ul {
+    font-size: 1.15rem;
+    margin: 25px 0 40px;
+  }
+
+  body footer {
+    padding: 30px 50px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  body footer {
+    padding: 30px 80px;
+  }
+
+  body footer #socialLinks ul {
+    gap: 15px;
+  }
+
+  body footer #socialLinks ul li a i {
+    font-size: 25px;
+    border-radius: 5px;
+  }
+}
+
+/* ============================================
+   PAGE INFO
+   ============================================ */
+@font-face {
+  font-family: "All Round Gothic";
+  src: url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("opentype"),
+    url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff"),
+    url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff2");
+}
+
+body main #pageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin: 10px 0 50px;
+}
+
+body main #pageInfo h1 {
+  color: var(--color-vermelho-recife);
+  font-family: "All Round Gothic", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+body main #pageInfo p {
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+body main #pageInfo p strong {
+  font-weight: 600;
+}
+
+body main #pageInfo p a {
+  font-weight: 500;
+  color: var(--color-vermelho-recife);
+}
+
+@media screen and (min-width: 768px) {
+  body main #pageInfo h1 {
+    font-size: 4rem;
+  }
+
+  body main #pageInfo p {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body main #pageInfo {
+    gap: 30px;
+  }
+
+  body main #pageInfo h1 {
+    font-size: 4.5rem;
+  }
+
+  body main #pageInfo p {
+    line-height: 26px;
+    padding: 0 70px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  body main #pageInfo h1 {
+    font-size: 3.375rem;
+    padding: 0 80px;
+  }
+
+  body main #pageInfo p {
+    line-height: 30px;
+    padding: 0 120px;
+  }
+}
+
+@media screen and (min-width: 1768px) {
+  body main #pageInfo p {
+    padding: 0 150px;
+  }
+}
+
+/* ============================================
+   SEPARATOR
+   ============================================ */
+body main #separatorBox {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 30px;
+  width: 100%;
+}
+
+body main #separatorBox #separator {
+  border-top: 1px solid var(--color-cinza-elegante);
+  opacity: 0.5;
+  width: 50%;
+}
+
+/* ============================================
+   COOKIE POPUP
+   ============================================ */
+@font-face {
+  font-family: "Kantumruy Pro Regular";
+  src: url("../../assets/fonts/subtitle/KantumruyPro-Regular.ttf")
+    format("truetype");
+}
+
+body #cookiePopupContainer {
+  position: fixed;
+  z-index: 9998;
+  border: 1px solid var(--color-vermelho-recife);
+  border-radius: 8px;
+  margin: 20px;
+  padding: 20px;
+  bottom: 0;
+  background-color: var(--color-bege-delicado);
+
+  -webkit-box-shadow: 0px 0px 17px 2px rgba(60, 60, 59, 0.3);
+  -moz-box-shadow: 0px 0px 17px 2px rgba(60, 60, 59, 0.3);
+  box-shadow: 0px 0px 17px 2px rgba(60, 60, 59, 0.3);
+}
+
+body #cookiePopupContainer button {
+  cursor: pointer;
+}
+
+body #cookiePopupContainer #cookiePopupHeader {
+  border-bottom: 1px solid var(--color-vermelho-recife);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  z-index: 9999;
+}
+
+body #cookiePopupContainer #cookiePopupHeader h3 {
+  font-size: 0.775rem;
+  font-family: "Kantumruy Pro Regular", sans-serif;
+  font-weight: bold;
+  color: var(--color-vermelho-recife);
+}
+
+body #cookiePopupContainer #cookiePopupHeader button {
+  background: transparent;
+  border: none;
+  color: #b7b7b7;
+  font-size: 1.375rem;
+  opacity: 0.85;
+}
+
+body #cookiePopupContainer #cookiePopupContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 9999;
+  font-size: 0.775rem;
+}
+
+body #cookiePopupContainer #cookiePopupContent p {
+  line-height: 1.6;
+  padding: 15px 0;
+}
+
+body #cookiePopupContainer #cookiePopupContent p a {
+  color: var(--color-vermelho-recife);
+  font-weight: bold;
+  text-decoration: none;
+  transition: 300ms color;
+}
+
+body #cookiePopupContainer #cookiePopupContent p a:hover {
+  color: var(--color-amarelo-tarsila);
+}
+
+body #cookiePopupContainer #cookiePopupContent button {
+  background-color: var(--color-vermelho-recife);
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  color: var(--color-bege-delicado);
+  font-weight: bold;
+  font-family: "Kantumruy Pro Regular", sans-serif;
+  font-size: 0.775rem;
+  transition: 300ms background-color;
+}
+
+body #cookiePopupContainer #cookiePopupContent button:hover {
+  background-color: var(--color-amarelo-tarsila);
+}
+
+@media screen and (min-width: 1024px) {
+  body #cookiePopupContainer {
+    margin: 30px 40px;
+    padding: 30px;
+    left: 50%;
+  }
+
+  body #cookiePopupContainer #cookiePopupHeader {
+    padding-bottom: 20px;
+  }
+
+  body #cookiePopupContainer #cookiePopupHeader h3 {
+    font-size: 1.125rem;
+  }
+
+  body #cookiePopupContainer #cookiePopupHeader button {
+    font-size: 1.125rem;
+  }
+
+  body #cookiePopupContainer #cookiePopupContent {
+    font-size: 1.125rem;
+  }
+
+  body #cookiePopupContainer #cookiePopupContent p {
+    padding: 25px 0;
+  }
+
+  body #cookiePopupContainer #cookiePopupContent button {
+    padding: 12px 15px;
+    font-size: 1.125rem;
+  }
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+body main form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+body main form .twoColumnsInForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+body main form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.125rem;
+  gap: 10px;
+}
+
+body main form label input,
+body main form label textarea {
+  background-color: var(--color-bege-delicado);
+  border: none;
+  border-bottom: 1px solid var(--color-cinza-elegante);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
+  padding: 5px;
+  resize: none;
+}
+
+body main form label input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.4;
+}
+
+body main form label .inputWithSmallText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body main form label .inputWithSmallText small,
+body main form label small {
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+body main form label input:focus,
+body main form label textarea:focus {
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(197, 110, 81, 1);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(197, 110, 81, 1);
+  box-shadow: 0px 0px 5px 2px rgba(197, 110, 81, 1);
+}
+
+/* Estilos para campos com erro */
+body main form label input.error,
+body main form label textarea.error {
+  border-bottom: 2px solid #d32f2f;
+  background-color: rgba(211, 47, 47, 0.05);
+}
+
+body main form label input.error:focus,
+body main form label textarea.error:focus {
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(211, 47, 47, 0.5);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(211, 47, 47, 0.5);
+  box-shadow: 0px 0px 5px 2px rgba(211, 47, 47, 0.5);
+}
+
+/* Mensagens de erro */
+body main form label .field-error {
+  display: block;
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Mensagens de erro em fieldsets */
+body main form fieldset .field-error {
+  display: block;
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Estilos para campos radio/checkbox com erro */
+body main form fieldset input[type="radio"].error,
+body main form fieldset input[type="checkbox"].error {
+  border: 2px solid #d32f2f;
+  outline: 2px solid rgba(211, 47, 47, 0.2);
+}
+
+body main form fieldset input[type="radio"].error:focus,
+body main form fieldset input[type="checkbox"].error:focus {
+  outline: 2px solid rgba(211, 47, 47, 0.5);
+}
+
+/* Mensagem de erro geral do formulário */
+body main form .form-error {
+  background-color: rgba(211, 47, 47, 0.1);
+  border: 1px solid #d32f2f;
+  border-radius: 5px;
+  color: #d32f2f;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+body main form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body main form fieldset legend {
+  font-size: 1.125rem;
+  padding-bottom: 10px;
+}
+
+body main form fieldset div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body main form ::placeholder {
+  opacity: 0.5;
+}
+
+body main form #privacyLabel {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: auto;
+  max-width: none;
+}
+
+body main form #privacyLabel span a {
+  font-weight: 600;
+  color: var(--color-vermelho-recife);
+}
+
+body main form #buttonContainer button {
+  background-color: var(--color-vermelho-recife);
+  color: var(--color-bege-delicado);
+  cursor: pointer;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 0;
+  margin: 10px 0;
+  width: 100%;
+  z-index: 9999;
+
+  -webkit-box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  -moz-box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  transition: 300ms background-color;
+}
+
+body main form #buttonContainer button:hover {
+  background-color: var(--color-amarelo-tarsila);
+}
+
+body main form #buttonContainer button:not(:hover) {
+  background-color: var(--color-vermelho-recife);
+}
+
+@media screen and (min-width: 1024px) {
+  body main form {
+    gap: 35px;
+  }
+
+  body main form .twoColumnsInForm {
+    flex-direction: row;
+    gap: 80px;
+    row-gap: 35px;
+  }
+
+  body main form .twoColumnsInForm fieldset,
+  body main form .twoColumnsInForm label {
+    flex: 1;
+  }
+
+  body main form #buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  body main form #buttonContainer button {
+    margin: 15px 0;
+    width: 75%;
+  }
+}
+
+/* ============================================
+   WHATSAPP BUTTONS (comentado - não usado atualmente)
+   ============================================ */
+/* 
+   Estilos para botões WhatsApp foram removidos pois não estão sendo usados.
+   Se precisar reativar, os estilos originais estão em:
+   - styles/shared/whatsappButton.css
+   - styles/shared/cellphoneWhatsappCta.css
+*/

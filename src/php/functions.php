@@ -4,6 +4,11 @@
  * Funções auxiliares para formulários
  */
 
+// Inicia sessão se ainda não foi iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 /**
  * Sanitiza uma string para uso seguro em HTML
  * 
@@ -95,16 +100,100 @@ function getBaseUrl()
 }
 
 /**
+ * Armazena erros na sessão
+ * 
+ * @param array $errors Array de erros
+ * @param string $field Campo específico (opcional, para erros de campo específico)
+ */
+function setFormErrors($errors, $field = null)
+{
+    if (!is_array($errors)) {
+        $errors = [$errors];
+    }
+
+    if (!isset($_SESSION['form_errors'])) {
+        $_SESSION['form_errors'] = [
+            'general' => [],
+            'fields' => []
+        ];
+    }
+
+    if ($field !== null) {
+        // Erro de campo específico
+        if (!isset($_SESSION['form_errors']['fields'][$field])) {
+            $_SESSION['form_errors']['fields'][$field] = [];
+        }
+        $_SESSION['form_errors']['fields'][$field] = array_merge(
+            $_SESSION['form_errors']['fields'][$field],
+            $errors
+        );
+    } else {
+        // Erros gerais
+        $_SESSION['form_errors']['general'] = array_merge(
+            $_SESSION['form_errors']['general'],
+            $errors
+        );
+    }
+}
+
+/**
+ * Obtém erros da sessão e os remove
+ * 
+ * @return array Array com 'general' (erros gerais) e 'fields' (erros por campo)
+ */
+function getFormErrors()
+{
+    $errors = [
+        'general' => [],
+        'fields' => []
+    ];
+
+    if (isset($_SESSION['form_errors'])) {
+        $errors = $_SESSION['form_errors'];
+        // Remove erros após ler (apenas uma vez)
+        unset($_SESSION['form_errors']);
+    }
+
+    return $errors;
+}
+
+/**
+ * Verifica se há erros na sessão
+ * 
+ * @return bool True se houver erros, False caso contrário
+ */
+function hasFormErrors()
+{
+    return isset($_SESSION['form_errors']) &&
+        (!empty($_SESSION['form_errors']['general']) ||
+            !empty($_SESSION['form_errors']['fields']));
+}
+
+/**
+ * Limpa erros da sessão
+ */
+function clearFormErrors()
+{
+    if (isset($_SESSION['form_errors'])) {
+        unset($_SESSION['form_errors']);
+    }
+}
+
+/**
  * Redireciona para uma página de sucesso ou erro
  * 
  * @param string $status 'success' ou 'error'
  * @param array $errors Array de erros (opcional)
+ * @param array $fieldErrors Array de erros por campo (opcional, chave = nome do campo)
  */
-function redirectWithStatus($status = 'success', $errors = [])
+function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = [])
 {
     $baseUrl = getBaseUrl();
 
     if ($status === 'success') {
+        // Limpa qualquer erro anterior
+        clearFormErrors();
+
         // Tenta redirecionar para sucesso.html primeiro, depois sucesso sem extensão
         // (compatibilidade com servidores que podem ter rewrite rules)
         if (file_exists(__DIR__ . '/../../sucesso.html')) {
@@ -114,13 +203,46 @@ function redirectWithStatus($status = 'success', $errors = [])
         }
         exit;
     } else {
-        // Em caso de erro, redireciona de volta ao formulário
-        // Usa o referer ou tenta identificar a página de origem
-        $referer = $_SERVER['HTTP_REFERER'] ?? $baseUrl . '/contato.html';
+        // Em caso de erro, armazena erros na sessão
+        if (!empty($errors)) {
+            setFormErrors($errors);
+        }
 
-        // Se houver erros, poderia passar via sessão, mas por simplicidade
-        // apenas redireciona de volta (o formulário pode exibir mensagem genérica)
-        header("Location: $referer?error=1");
+        // Armazena erros de campos específicos
+        if (!empty($fieldErrors)) {
+            foreach ($fieldErrors as $field => $fieldError) {
+                // Se for string, converte para array
+                if (is_string($fieldError)) {
+                    setFormErrors([$fieldError], $field);
+                } else if (is_array($fieldError)) {
+                    setFormErrors($fieldError, $field);
+                }
+            }
+        }
+
+        // Em caso de erro, redireciona de volta ao formulário
+        // Tenta identificar a página de origem baseado no script atual
+        $referer = $_SERVER['HTTP_REFERER'] ?? null;
+
+        // Se não houver referer, tenta identificar a página baseado no script
+        if (!$referer) {
+            $scriptName = basename($_SERVER['PHP_SELF']);
+            $pageMap = [
+                'contactForm.php' => 'contato.html',
+                'budgetForm.php' => 'orcamento.html',
+                'contractForm.php' => 'contrato.html',
+                'finalBudgetForm.php' => 'proposta.html'
+            ];
+
+            $page = $pageMap[$scriptName] ?? 'contato.html';
+            $referer = $baseUrl . '/' . $page;
+        } else {
+            // Remove query string de erro anterior se existir
+            $referer = preg_replace('/[?&]error=\d+/', '', $referer);
+        }
+
+        $separator = strpos($referer, '?') !== false ? '&' : '?';
+        header("Location: $referer{$separator}error=1");
         exit;
     }
 }

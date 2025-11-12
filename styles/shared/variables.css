@@ -1,0 +1,28 @@
+/**
+ * Variáveis CSS Custom Properties
+ * Substitui o colors.scss
+ */
+
+:root {
+  /* Primary colors */
+  --color-azul-mar: #c9d4d9;
+  --color-amarelo-tarsila: #e2af58;
+  --color-bege-delicado: #fcfcfa;
+  --color-verde-mosaico: #9da882;
+  --color-vermelho-recife: #c56e51;
+
+  /* Secondary colors */
+  --color-azul-rio: #e2e8eb;
+  --color-cinza-elegante: #3c3c3b;
+  --color-rosa-retro: #e2b79f;
+
+  /* Alias para compatibilidade com código existente */
+  --azul-mar: var(--color-azul-mar);
+  --amarelo-tarsila: var(--color-amarelo-tarsila);
+  --bege-delicado: var(--color-bege-delicado);
+  --verde-mosaico: var(--color-verde-mosaico);
+  --vermelho-recife: var(--color-vermelho-recife);
+  --azul-rio: var(--color-azul-rio);
+  --cinza-elegante: var(--color-cinza-elegante);
+  --rosa-retro: var(--color-rosa-retro);
+}

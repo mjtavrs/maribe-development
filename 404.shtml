@@ -16,11 +16,10 @@
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/shared/reset.css" />
-    <link rel="stylesheet" href="styles/shared/sharedStyling.css" />
-    <link rel="stylesheet" href="styles/shared/headerAndFooter.css" />
-    <link rel="stylesheet" href="styles/shared/scrollbar.css" />
-    <link rel="stylesheet" href="styles/shared/smoothOpening.css" />
+    <link rel="stylesheet" href="styles/shared/variables.css" />
+    <link rel="stylesheet" href="styles/shared/base.css" />
+    <link rel="stylesheet" href="styles/shared/animations.css" />
+    <link rel="stylesheet" href="styles/shared/components.css" />
     <link rel="stylesheet" href="styles/pages/404/404.css" />
     
     <!-- Scripts -->
@@ -89,11 +88,6 @@
                             <i title="Acesse nosso Facebook" class="ph-light ph-facebook-logo"></i>
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" aria-label="Converse conosco no WhatsApp">
-                            <i title="Converse conosco no WhatsApp" class="ph-light ph-whatsapp-logo"></i>
-                        </a>
-                    </li> -->
                     <li>
                         <a href="https://www.tiktok.com/@maribe.arquitetura" target="_blank" aria-label="Acesse nosso Tiktok">
                             <i title="Acesse nosso Tiktok" class="ph-light ph-tiktok-logo"></i>

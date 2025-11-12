@@ -1,45 +1,58 @@
+/**
+ * About Page Styles
+ */
+
 body main #sectionsContainer {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
+
 body main #sectionsContainer section {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
+
 body main #sectionsContainer section h2 {
-  color: #c56e51;
+  color: var(--color-vermelho-recife);
   font-size: 1.375rem;
   font-weight: 600;
 }
+
 body main #sectionsContainer section div {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
 body main #sectionsContainer section h3 {
   font-size: 1.25rem;
   font-weight: 600;
 }
+
 body main #sectionsContainer section p {
   font-size: 1.125rem;
 }
+
 body main #sectionsContainer section p span {
   font-weight: 600;
 }
+
 body main #sectionsContainer section #imageContainer {
   position: relative;
 }
+
 body main #sectionsContainer section #imageContainer #orangeBox {
   bottom: 0;
-  background-color: #c56e51;
+  background-color: var(--color-vermelho-recife);
   border-radius: 16px;
   height: 200px;
   position: absolute;
   width: 100%;
   z-index: -9999;
 }
+
 body main #sectionsContainer section #videoContainer {
   border: 1px solid transparent !important;
   border-radius: 10px;
@@ -50,50 +63,63 @@ body main #sectionsContainer section #videoContainer {
   body main #sectionsContainer section h2 {
     font-size: 1.5rem;
   }
+
   body main #sectionsContainer section div {
     gap: 10px;
   }
+
   body main #sectionsContainer section #imageContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   body main #sectionsContainer section #imageContainer img {
     width: 600px;
   }
+
   body main #sectionsContainer section #imageContainer #orangeBox {
     height: 250px;
   }
 }
+
 @media screen and (min-width: 1024px) {
   body main #sectionsContainer {
     gap: 50px;
   }
+
   body main #sectionsContainer section h2 {
     font-size: 1.875rem;
   }
+
   body main #sectionsContainer section h3 {
     font-size: 1.375rem;
   }
+
   body main #sectionsContainer section div {
     gap: 15px;
   }
+
   body main #sectionsContainer section #imageContainer #orangeBox {
     height: 300px;
   }
+
   body main #sectionsContainer section #videoContainer {
     border-radius: 20px;
   }
 }
+
 @media screen and (min-width: 1366px) {
   body main #sectionsContainer section #imageContainer #orangeBox {
     height: 350px;
   }
+
   body main #sectionsContainer section #videoContainer {
     display: flex;
     align-items: center;
   }
+
   body main #sectionsContainer section #videoContainer video {
     width: 65%;
   }
-}/*# sourceMappingURL=about.css.map */
+}

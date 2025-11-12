@@ -3,25 +3,26 @@
 require_once __DIR__ . '/functions.php';
 
 $erros = [];
+$errosPorCampo = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação e sanitização do nome
     if (empty($_POST["name"])) {
-        $erros[] = "Por favor, digite seu nome.";
+        $errosPorCampo["name"] = "Por favor, digite seu nome.";
     } else {
         $nome = sanitizeForEmail($_POST["name"]);
 
         if (strlen(trim($_POST["name"])) < 2) {
-            $erros[] = "O nome deve ter pelo menos 2 caracteres.";
+            $errosPorCampo["name"] = "O nome deve ter pelo menos 2 caracteres.";
         }
     }
 
-    // Validação e sanitização do email (CORRIGIDO: agora valida e armazena)
+    // Validação e sanitização do email
     $email = '';
     if (!empty($_POST["email"])) {
         if (!validateEmail($_POST["email"])) {
-            $erros[] = "Formato de e-mail inválido.";
+            $errosPorCampo["email"] = "Formato de e-mail inválido.";
         } else {
             $email = sanitizeInput($_POST["email"]);
         }
@@ -29,58 +30,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação e sanitização do CPF
     if (empty($_POST["cpf"])) {
-        $erros[] = "Por favor, digite seu CPF.";
+        $errosPorCampo["cpf"] = "Por favor, digite seu CPF.";
     } else {
         $cpf = sanitizeForEmail($_POST["cpf"]);
         // Validação básica de CPF (11 dígitos)
         $cpf_numeros = preg_replace('/\D/', '', $_POST["cpf"]);
         if (strlen($cpf_numeros) !== 11) {
-            $erros[] = "CPF deve conter 11 dígitos.";
+            $errosPorCampo["cpf"] = "CPF deve conter 11 dígitos.";
         }
     }
 
     // Validação e sanitização do RG
     if (empty($_POST["rg"])) {
-        $erros[] = "Por favor, digite seu RG.";
+        $errosPorCampo["rg"] = "Por favor, digite seu RG.";
     } else {
         $rg = sanitizeForEmail($_POST["rg"]);
     }
 
     // Validação e sanitização do endereço do projeto
     if (empty($_POST["projectAddress"])) {
-        $erros[] = "Por favor, digite o endereço do projeto.";
+        $errosPorCampo["projectAddress"] = "Por favor, digite o endereço do projeto.";
     } else {
         $projectAddress = sanitizeForEmail($_POST["projectAddress"]);
     }
 
     // Validação e sanitização do endereço do cliente
     if (empty($_POST["clientAddress"])) {
-        $erros[] = "Por favor, digite seu endereço.";
+        $errosPorCampo["clientAddress"] = "Por favor, digite seu endereço.";
     } else {
         $clientAddress = sanitizeForEmail($_POST["clientAddress"]);
     }
 
     // Validação da data de nascimento
     if (empty($_POST["clientBirthDate"])) {
-        $erros[] = "Por favor, insira sua data de nascimento.";
+        $errosPorCampo["clientBirthDate"] = "Por favor, insira sua data de nascimento.";
     } else {
         $clientBirthDate = sanitizeForEmail($_POST["clientBirthDate"]);
         // Validação básica de data (formato YYYY-MM-DD)
         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $_POST["clientBirthDate"])) {
-            $erros[] = "Formato de data inválido. Use o formato YYYY-MM-DD.";
+            $errosPorCampo["clientBirthDate"] = "Formato de data inválido. Use o formato YYYY-MM-DD.";
         }
     }
 
     // Validação da forma de pagamento
     if (empty($_POST["paymentMethod"])) {
-        $erros[] = "Por favor, informe a forma de pagamento escolhida.";
+        $errosPorCampo["paymentMethod"] = "Por favor, informe a forma de pagamento escolhida.";
     } else {
         $paymentMethod = sanitizeForEmail($_POST["paymentMethod"]);
     }
 
     // Se houver erros, redireciona de volta ao formulário
-    if (!empty($erros)) {
-        redirectWithStatus('error', $erros);
+    if (!empty($errosPorCampo)) {
+        redirectWithStatus('error', $erros, $errosPorCampo);
     }
 
     // Prepara o email
@@ -121,5 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         redirectWithStatus('error', $erros);
     }
 } else {
-    redirectWithStatus('error');
+    // Se não for POST, redireciona para a página de contrato
+    $erros[] = 'Método de requisição inválido.';
+    redirectWithStatus('error', $erros);
 }

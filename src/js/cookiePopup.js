@@ -3,21 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const acceptButton = document.getElementById("acceptCookies");
     const closePopupButton = document.getElementById("closeCookiesPopup");
 
-    if (!sessionStorage.getItem("cookiesPopupDisplayed")) {
+    // Verifica se o popup já foi exibido usando localStorage (persiste entre sessões)
+    if (!localStorage.getItem("cookiesPopupDisplayed")) {
         setTimeout(() => {
             popupContainer.classList.remove("hidePopup");
             popupContainer.classList.add("showPopupFromBellow");
-            sessionStorage.setItem("cookiesPopupDisplayed", "true");
         }, 1500);
 
-        acceptButton.addEventListener("click", () => {
+        // Função para fechar o popup e salvar no localStorage
+        const closePopup = () => {
             popupContainer.classList.add("hidePopupWithAnimation");
             popupContainer.classList.remove("showPopupFromBellow");
-        });
+            localStorage.setItem("cookiesPopupDisplayed", "true");
+        };
 
-        closePopupButton.addEventListener("click", () => {
-            popupContainer.classList.add("hidePopupWithAnimation");
-            popupContainer.classList.remove("showPopupFromBellow");
-        });
+        // Adiciona event listeners
+        acceptButton.addEventListener("click", closePopup);
+        closePopupButton.addEventListener("click", closePopup);
     }
 });

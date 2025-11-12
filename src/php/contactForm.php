@@ -3,26 +3,27 @@
 require_once __DIR__ . '/functions.php';
 
 $erros = [];
+$errosPorCampo = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação e sanitização do nome
     if (empty($_POST["name"])) {
-        $erros[] = "Por favor, digite seu nome.";
+        $errosPorCampo["name"] = "Por favor, digite seu nome.";
     } else {
         $nome = sanitizeForEmail($_POST["name"]);
 
         // Validação adicional: nome deve ter pelo menos 2 caracteres
         if (strlen(trim($_POST["name"])) < 2) {
-            $erros[] = "O nome deve ter pelo menos 2 caracteres.";
+            $errosPorCampo["name"] = "O nome deve ter pelo menos 2 caracteres.";
         }
     }
 
     // Validação e sanitização do email
     if (empty($_POST["email"])) {
-        $erros[] = "Por favor, digite seu e-mail.";
+        $errosPorCampo["email"] = "Por favor, digite seu e-mail.";
     } elseif (!validateEmail($_POST["email"])) {
-        $erros[] = "Formato de e-mail inválido.";
+        $errosPorCampo["email"] = "Formato de e-mail inválido.";
     } else {
         $email = sanitizeInput($_POST["email"]);
     }
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefone = '';
     if (!empty($_POST["phone"])) {
         if (!validatePhone($_POST["phone"])) {
-            $erros[] = "Formato de telefone inválido. Por favor, insira um número de telefone válido.";
+            $errosPorCampo["phone"] = "Formato de telefone inválido. Por favor, insira um número de telefone válido.";
         } else {
             // Remove caracteres não numéricos para armazenar
             $telefone = preg_replace('/\D/', '', $_POST["phone"]);
@@ -42,31 +43,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação e sanitização do assunto
     if (empty($_POST["subject"])) {
-        $erros[] = "Por favor, escreva o assunto.";
+        $errosPorCampo["subject"] = "Por favor, escreva o assunto.";
     } else {
         $assunto = sanitizeForEmail($_POST["subject"]);
 
         // Validação adicional: assunto deve ter pelo menos 3 caracteres
         if (strlen(trim($_POST["subject"])) < 3) {
-            $erros[] = "O assunto deve ter pelo menos 3 caracteres.";
+            $errosPorCampo["subject"] = "O assunto deve ter pelo menos 3 caracteres.";
         }
     }
 
     // Validação e sanitização da mensagem
     if (empty($_POST["message"])) {
-        $erros[] = "Por favor, escreva a mensagem.";
+        $errosPorCampo["message"] = "Por favor, escreva a mensagem.";
     } else {
         $mensagem = sanitizeForEmail($_POST["message"]);
 
         // Validação adicional: mensagem deve ter pelo menos 10 caracteres
         if (strlen(trim($_POST["message"])) < 10) {
-            $erros[] = "A mensagem deve ter pelo menos 10 caracteres.";
+            $errosPorCampo["message"] = "A mensagem deve ter pelo menos 10 caracteres.";
         }
     }
 
+    // Validação de privacidade (checkbox)
+    if (empty($_POST["privacy"])) {
+        $errosPorCampo["privacy"] = "Você deve concordar com a política de privacidade.";
+    }
+
     // Se houver erros, redireciona de volta ao formulário
-    if (!empty($erros)) {
-        redirectWithStatus('error', $erros);
+    if (!empty($errosPorCampo)) {
+        redirectWithStatus('error', $erros, $errosPorCampo);
     }
 
     // Prepara o email
@@ -102,5 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Se não for POST, redireciona para a página de contato
-    redirectWithStatus('error');
+    $erros[] = 'Método de requisição inválido.';
+    redirectWithStatus('error', $erros);
 }
