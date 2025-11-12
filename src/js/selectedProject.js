@@ -1,25 +1,86 @@
 import projects from "./projectsData.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const t = new URLSearchParams(window.location.search);
-    const e = parseInt(t.get("id"));
-    const o = projects.find((t) => t.id === e);
+    // Obtém o ID do projeto da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = parseInt(urlParams.get("id"));
     
-    document.title = `${o.titulo} | maribe arquitetura`;
+    // Valida se o ID foi fornecido e é um número válido
+    if (!projectId || isNaN(projectId)) {
+        redirectToProjects();
+        return;
+    }
     
-    document.getElementById("projectTitle").innerText = `${o.titulo}`;
-    document.getElementById("projectLocationAndYear").innerText = `${o.cidade}, ${o.ano}`;
-    document.getElementById("projectDescription").innerText = `${o.descricao}`;
+    // Busca o projeto pelo ID
+    const project = projects.find((p) => p.id === projectId);
     
-    const n = document.getElementById("project-pictures");
+    // Valida se o projeto existe
+    if (!project) {
+        redirectToProjects();
+        return;
+    }
     
-    o.outrasFotos.forEach((t) => {
-        const e = document.createElement("div"),
-            a = document.createElement("a");
+    // Valida se os elementos necessários existem no DOM
+    const projectTitleElement = document.getElementById("projectTitle");
+    const projectLocationElement = document.getElementById("projectLocationAndYear");
+    const projectDescriptionElement = document.getElementById("projectDescription");
+    const projectImagesContainer = document.getElementById("projectImages");
+    
+    if (!projectTitleElement || !projectLocationElement || !projectDescriptionElement || !projectImagesContainer) {
+        console.error("Elementos necessários não encontrados no DOM");
+        return;
+    }
+    
+    // Define o título da página
+    document.title = `${project.titulo} • maribe arquitetura`;
+    
+    // Preenche as informações do projeto
+    projectTitleElement.textContent = project.titulo;
+    projectLocationElement.textContent = `${project.cidade}, ${project.ano}`;
+    projectDescriptionElement.textContent = project.descricao;
+    
+    // Valida se existem fotos do projeto
+    if (!project.outrasFotos || project.outrasFotos.length === 0) {
+        console.warn("Projeto não possui fotos");
+        return;
+    }
+    
+    // Cria os elementos das imagens
+    let imageIndex = 1;
+    const totalImages = project.outrasFotos.length;
+    
+    project.outrasFotos.forEach((imageUrl) => {
+        const imageWrapper = document.createElement("div");
+        const imageLink = document.createElement("a");
         
-        (a.href = t), a.setAttribute("data-lightbox", "fotos"), a.setAttribute("data-title", `${o.titulo}`);
+        // Configura o link da imagem
+        imageLink.href = imageUrl;
+        imageLink.setAttribute("data-lightbox", "fotos");
+        imageLink.setAttribute("data-title", project.titulo);
+        imageLink.setAttribute("aria-label", `Imagem do ${project.titulo}. Imagem ${imageIndex} de ${totalImages}.`);
+        imageLink.setAttribute("role", "listitem");
         
-        const d = document.createElement("img");
-        (d.src = t), (d.alt = `Imagem do ${o.titulo}. Imagem ${o.outrasFotos[t]} de ${o.outrasFotos.length + 1}`), (d.title = `${o.titulo}`), a.appendChild(d), e.appendChild(a), n.appendChild(e);
+        // Cria o elemento da imagem
+        const image = document.createElement("img");
+        image.src = imageUrl;
+        image.alt = `Imagem do ${project.titulo}. Imagem ${imageIndex} de ${totalImages}.`;
+        image.title = project.titulo;
+        
+        // Adiciona lazy loading para melhor performance
+        image.loading = "lazy";
+        
+        // Monta a estrutura
+        imageLink.appendChild(image);
+        imageWrapper.appendChild(imageLink);
+        projectImagesContainer.appendChild(imageWrapper);
+        
+        imageIndex++;
     });
 });
+
+/**
+ * Redireciona para a página de projetos quando o projeto não é encontrado
+ */
+function redirectToProjects() {
+    window.location.href = "projetos.html";
+}

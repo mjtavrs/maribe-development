@@ -1,97 +1,128 @@
 <?php
 
+require_once __DIR__ . '/functions.php';
+
 $erros = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Validação e sanitização do nome
     if (empty($_POST["name"])) {
         $erros[] = "Por favor, digite seu nome.";
     } else {
-        $nome = $_POST["name"];
+        $nome = sanitizeForEmail($_POST["name"]);
+
+        if (strlen(trim($_POST["name"])) < 2) {
+            $erros[] = "O nome deve ter pelo menos 2 caracteres.";
+        }
     }
 
+    // Validação e sanitização do endereço
     if (empty($_POST["address"])) {
         $erros[] = "Por favor, digite seu endereço.";
     } else {
-        $endereco = $_POST["address"];
+        $endereco = sanitizeForEmail($_POST["address"]);
     }
 
+    // Validação do que é mais importante no orçamento
     if (empty($_POST["maisImportanteNoOrcamento"])) {
         $erros[] = "Por favor, digite o que é mais importante no orçamento.";
     } else {
-        $o_que_e_mais_importante_no_orcamento = $_POST["maisImportanteNoOrcamento"];
+        $o_que_e_mais_importante_no_orcamento = sanitizeForEmail($_POST["maisImportanteNoOrcamento"]);
     }
 
+    // Validação se o imóvel tem planta
     if (empty($_POST["imovelTemPlantaOuNao"])) {
         $erros[] = "Por favor, marque se o projeto possui planta.";
     } else {
-        $projeto_tem_planta = $_POST["imovelTemPlantaOuNao"];
+        $projeto_tem_planta = sanitizeForEmail($_POST["imovelTemPlantaOuNao"]);
     }
 
+    // Validação se é apartamento completo ou alguns ambientes
     if (empty($_POST["apartamentoCompletoOuAlgunsAmbientes"])) {
         $erros[] = "Por favor, informe se é o apartamento completo ou alguns ambientes.";
     } else {
-        $apartamento_completo_ou_ambientes = $_POST["apartamentoCompletoOuAlgunsAmbientes"];
+        $apartamento_completo_ou_ambientes = sanitizeForEmail($_POST["apartamentoCompletoOuAlgunsAmbientes"]);
     }
-    
+
+    // Validação de quantas pessoas residem e idades
     if (empty($_POST["quantasPessoasResidemEIdades"])) {
         $erros[] = "Por favor, informe quantas pessoas vivem no apartamento e as idades.";
     } else {
-        $quantas_pessoas_vivem_no_apartamento = $_POST["quantasPessoasResidemEIdades"];
+        $quantas_pessoas_vivem_no_apartamento = sanitizeForEmail($_POST["quantasPessoasResidemEIdades"]);
     }
-    
+
+    // Validação do tamanho em metros quadrados
     if (empty($_POST["tamanhoEmMetrosQuadrados"])) {
         $erros[] = "Por favor, informe qual o tamanho do espaço em m².";
     } else {
-        $tamanho_projeto = $_POST["tamanhoEmMetrosQuadrados"];
+        $tamanho_projeto = sanitizeForEmail($_POST["tamanhoEmMetrosQuadrados"]);
+        // Validação básica: deve ser um número
+        if (!is_numeric(str_replace(',', '.', $_POST["tamanhoEmMetrosQuadrados"]))) {
+            $erros[] = "O tamanho em m² deve ser um número válido.";
+        }
     }
 
+    // Validação de demolição ou construção de paredes
     if (empty($_POST["haveraDemolicaoOuConstrucaoDeParedes"])) {
         $erros[] = "Por favor, marque se haverá demolição ou construção de paredes.";
     } else {
-        $demolicao_ou_construcao_paredes = $_POST["haveraDemolicaoOuConstrucaoDeParedes"];
+        $demolicao_ou_construcao_paredes = sanitizeForEmail($_POST["haveraDemolicaoOuConstrucaoDeParedes"]);
     }
 
+    // Validação de modificação elétrica
     if (empty($_POST["vaiModificarEletrica"])) {
         $erros[] = "Por favor, marque se haverá modificação de elétrica.";
     } else {
-        $modificar_eletrica = $_POST["vaiModificarEletrica"];
+        $modificar_eletrica = sanitizeForEmail($_POST["vaiModificarEletrica"]);
     }
 
+    // Validação de modificação de gesso
     if (empty($_POST["vaiModificarGesso"])) {
         $erros[] = "Por favor, marque se haverá modificação de gesso.";
     } else {
-        $modificar_gesso = $_POST["vaiModificarGesso"];
+        $modificar_gesso = sanitizeForEmail($_POST["vaiModificarGesso"]);
     }
 
+    // Validação de modificação de revestimento ou bancada
     if (empty($_POST["vaiModificarRevestimentoOuBancadas"])) {
         $erros[] = "Por favor, marque se haverá modificação de revestimento ou bancada.";
     } else {
-        $modificar_revestimento_ou_bancada = $_POST["vaiModificarRevestimentoOuBancadas"];
+        $modificar_revestimento_ou_bancada = sanitizeForEmail($_POST["vaiModificarRevestimentoOuBancadas"]);
     }
 
+    // Validação de aproveitar ou modificar móvel existente
     if (empty($_POST["vaiAproveitarEOuModificarAlgumMovel"])) {
         $erros[] = "Por favor, marque se vai aproveitar ou modificar algum móvel existente.";
     } else {
-        $vai_aproveitar_e_ou_modificar_movel_existente = $_POST["vaiAproveitarEOuModificarAlgumMovel"];
+        $vai_aproveitar_e_ou_modificar_movel_existente = sanitizeForEmail($_POST["vaiAproveitarEOuModificarAlgumMovel"]);
     }
 
+    // Validação de móveis com marcenaria ou planejados
     if (empty($_POST["pensaEmFazerMoveisComMarcenariaOuPlanejados"])) {
         $erros[] = "Por favor, marque se pensa em fazer móveis com marcenaria ou planejados.";
     } else {
-        $pensa_em_fazer_moveis_com_marcenaria_ou_planejados = $_POST["pensaEmFazerMoveisComMarcenariaOuPlanejados"];
+        $pensa_em_fazer_moveis_com_marcenaria_ou_planejados = sanitizeForEmail($_POST["pensaEmFazerMoveisComMarcenariaOuPlanejados"]);
     }
 
-    if (empty($_POST["duvidasOuInformacoesAAcrescentar"])) {
-        $outras_duvidas = "Sem outras dúvidas";
-    } else {
-        $outras_duvidas = $_POST["duvidasOuInformacoesAAcrescentar"];
+    // Dúvidas ou informações adicionais (opcional)
+    $outras_duvidas = "Sem outras dúvidas";
+    if (!empty($_POST["duvidasOuInformacoesAAcrescentar"])) {
+        $outras_duvidas = sanitizeForEmail($_POST["duvidasOuInformacoesAAcrescentar"]);
     }
 
+    // Se houver erros, redireciona de volta ao formulário
+    if (!empty($erros)) {
+        redirectWithStatus('error', $erros);
+    }
+
+    // Prepara o email
     $hora_envio = date("d/m/Y \à\s H:i:s");
-
     $to = "maribe.arquitetura@gmail.com";
-    $assunto = "Formulário de Proposta preenchido";
+    $email_subject = "Formulário de Proposta preenchido";
+
+    // Usa um email padrão já que este formulário não coleta email
+    $email_from = 'noreply@maribe.arq.br';
 
     $mensagem_email = "
     <html>
@@ -121,14 +152,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </html>
     ";
 
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    // $headers .= "De: $email\r\nReply-To: $email\r\n";
-
-    if (mail($to, $assunto, $mensagem_email, $headers)) {
-        header("Location: http://maribe.arq.br/sucesso");
-        exit;
+    // Envia o email
+    if (sendEmail($to, $email_subject, $mensagem_email, $email_from)) {
+        redirectWithStatus('success');
     } else {
-        $erros[] = 'Erro ao enviar a mensagem.';
+        $erros[] = 'Erro ao enviar a mensagem. Por favor, tente novamente mais tarde.';
+        redirectWithStatus('error', $erros);
     }
+} else {
+    redirectWithStatus('error');
 }

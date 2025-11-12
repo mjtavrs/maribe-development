@@ -1,65 +1,106 @@
 <?php
 
+require_once __DIR__ . '/functions.php';
+
 $erros = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Validação e sanitização do nome
     if (empty($_POST["name"])) {
         $erros[] = "Por favor, digite seu nome.";
     } else {
-        $nome = $_POST["name"];
+        $nome = sanitizeForEmail($_POST["name"]);
+
+        if (strlen(trim($_POST["name"])) < 2) {
+            $erros[] = "O nome deve ter pelo menos 2 caracteres.";
+        }
     }
 
+    // Validação e sanitização do email (CORRIGIDO: agora valida e armazena)
+    $email = '';
+    if (!empty($_POST["email"])) {
+        if (!validateEmail($_POST["email"])) {
+            $erros[] = "Formato de e-mail inválido.";
+        } else {
+            $email = sanitizeInput($_POST["email"]);
+        }
+    }
+
+    // Validação e sanitização do CPF
     if (empty($_POST["cpf"])) {
-        $erros[] = "Formato de CPF inválido. Por favor, insira um CPF válido.";
+        $erros[] = "Por favor, digite seu CPF.";
     } else {
-        $cpf = $_POST["cpf"];
+        $cpf = sanitizeForEmail($_POST["cpf"]);
+        // Validação básica de CPF (11 dígitos)
+        $cpf_numeros = preg_replace('/\D/', '', $_POST["cpf"]);
+        if (strlen($cpf_numeros) !== 11) {
+            $erros[] = "CPF deve conter 11 dígitos.";
+        }
     }
 
+    // Validação e sanitização do RG
     if (empty($_POST["rg"])) {
-        $erros[] = "Formato de RG inválido. Por favor, insira um RG válido.";
+        $erros[] = "Por favor, digite seu RG.";
     } else {
-        $rg = $_POST["rg"];
+        $rg = sanitizeForEmail($_POST["rg"]);
     }
 
+    // Validação e sanitização do endereço do projeto
     if (empty($_POST["projectAddress"])) {
         $erros[] = "Por favor, digite o endereço do projeto.";
     } else {
-        $projectAddress = $_POST["projectAddress"];
+        $projectAddress = sanitizeForEmail($_POST["projectAddress"]);
     }
 
+    // Validação e sanitização do endereço do cliente
     if (empty($_POST["clientAddress"])) {
         $erros[] = "Por favor, digite seu endereço.";
     } else {
-        $clientAddress = $_POST["clientAddress"];
+        $clientAddress = sanitizeForEmail($_POST["clientAddress"]);
     }
 
+    // Validação da data de nascimento
     if (empty($_POST["clientBirthDate"])) {
         $erros[] = "Por favor, insira sua data de nascimento.";
     } else {
-        $clientBirthDate = $_POST["clientBirthDate"];
+        $clientBirthDate = sanitizeForEmail($_POST["clientBirthDate"]);
+        // Validação básica de data (formato YYYY-MM-DD)
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $_POST["clientBirthDate"])) {
+            $erros[] = "Formato de data inválido. Use o formato YYYY-MM-DD.";
+        }
     }
-    
+
+    // Validação da forma de pagamento
     if (empty($_POST["paymentMethod"])) {
-        $erros[] = "Por favor, informa a forma de pagamento escolhida.";
+        $erros[] = "Por favor, informe a forma de pagamento escolhida.";
     } else {
-        $paymentMethod = $_POST["paymentMethod"];
+        $paymentMethod = sanitizeForEmail($_POST["paymentMethod"]);
     }
 
-    $hora_envio = date("d/m/Y \à\s H:i:s");
+    // Se houver erros, redireciona de volta ao formulário
+    if (!empty($erros)) {
+        redirectWithStatus('error', $erros);
+    }
 
+    // Prepara o email
+    $hora_envio = date("d/m/Y \à\s H:i:s");
     $to = "maribe.arquitetura@gmail.com";
-    $subject = "Formulário de Contrato preenchido";
+    $email_subject = "Formulário de Contrato preenchido";
+
+    // CORRIGIDO: usa email do formulário ou um padrão se não fornecido
+    $email_from = !empty($email) ? $email : 'noreply@maribe.arq.br';
 
     $mensagem_email = "
     <html>
     <head>
-        <title>Novo contato</title>
+        <title>Novo contrato</title>
     </head>
     <body>
         <img src='https://i.ibb.co/MshF9WF/formulario-De-Contrato.png' alt='Formulário de Contrato'>
         <br />
         <p><strong>nome:</strong> $nome</p>
+        " . (!empty($email) ? "<p><strong>e-mail:</strong> $email</p>" : "") . "
         <p><strong>cpf:</strong> $cpf</p>
         <p><strong>rg:</strong> $rg</p>
         <p><strong>endereço do projeto:</strong> $projectAddress</p>
@@ -68,18 +109,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>forma de pagamento escolhida:</strong> $paymentMethod</p>
         <br />
         <small><p id='data_envio'>este formulário foi enviado no dia $hora_envio</p></small>
-        </body>
+    </body>
     </html>
     ";
 
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "De: $email\r\nReply-To: $email\r\n";
-
-    if (mail($to, $subject, $mensagem_email, $headers)) {
-        header("Location: http://maribe.arq.br/sucesso");
-        exit;
+    // Envia o email
+    if (sendEmail($to, $email_subject, $mensagem_email, $email_from)) {
+        redirectWithStatus('success');
     } else {
-        $erros[] = 'Erro ao enviar a mensagem.';
+        $erros[] = 'Erro ao enviar a mensagem. Por favor, tente novamente mais tarde.';
+        redirectWithStatus('error', $erros);
     }
+} else {
+    redirectWithStatus('error');
 }
