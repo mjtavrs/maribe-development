@@ -16,8 +16,30 @@ export function initFormValidation() {
         const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', () => validateField(input));
-            input.addEventListener('input', () => clearFieldError(input));
+            // Limpa erro quando o usuário começa a digitar
+            input.addEventListener('input', () => {
+                clearFieldError(input);
+                // Para CPF, valida após 11 dígitos
+                if (input.name === 'cpf') {
+                    const cpfNumbers = input.value.replace(/\D/g, '');
+                    if (cpfNumbers.length === 11) {
+                        validateField(input);
+                    }
+                }
+            });
         });
+        
+        // Validação em tempo real para checkbox de privacidade
+        const privacyCheckbox = form.querySelector('input[name="privacy"][type="checkbox"]');
+        if (privacyCheckbox) {
+            privacyCheckbox.addEventListener('change', () => {
+                clearFieldError(privacyCheckbox);
+                if (privacyCheckbox.checked) {
+                    // Se marcou, valida para garantir que está ok
+                    validateField(privacyCheckbox);
+                }
+            });
+        }
     });
 }
 
@@ -42,6 +64,7 @@ function handleFormSubmit(event) {
  */
 function validateForm(form) {
     let isValid = true;
+    // Seleciona todos os campos obrigatórios, incluindo checkboxes
     const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
     
     inputs.forEach(input => {
@@ -49,6 +72,13 @@ function validateForm(form) {
             isValid = false;
         }
     });
+    
+    // Validação específica para checkbox de privacidade
+    const privacyCheckbox = form.querySelector('input[name="privacy"][type="checkbox"]');
+    if (privacyCheckbox && !privacyCheckbox.checked) {
+        showFieldError(privacyCheckbox, 'Você deve concordar com a política de privacidade.');
+        isValid = false;
+    }
     
     // Validação específica por tipo de campo
     const emailInputs = form.querySelectorAll('input[type="email"]');
@@ -67,6 +97,15 @@ function validateForm(form) {
         }
     });
     
+    // Validação de CPF
+    const cpfInputs = form.querySelectorAll('input[name="cpf"]');
+    cpfInputs.forEach(input => {
+        if (input.value && !validateCPF(input.value)) {
+            showFieldError(input, 'CPF inválido. Por favor, verifique os dígitos informados.');
+            isValid = false;
+        }
+    });
+    
     return isValid;
 }
 
@@ -80,9 +119,19 @@ function validateField(field) {
     clearFieldError(field);
     
     // Validação de campo obrigatório
-    if (field.hasAttribute('required') && !field.value.trim()) {
-        showFieldError(field, 'Este campo é obrigatório.');
-        return false;
+    if (field.hasAttribute('required')) {
+        // Para checkboxes, verifica se está marcado
+        if (field.type === 'checkbox') {
+            if (!field.checked) {
+                showFieldError(field, 'Você deve concordar com a política de privacidade.');
+                return false;
+            }
+        } 
+        // Para outros campos, verifica se tem valor
+        else if (!field.value.trim()) {
+            showFieldError(field, 'Este campo é obrigatório.');
+            return false;
+        }
     }
     
     // Validação de tamanho mínimo
@@ -115,6 +164,12 @@ function validateField(field) {
         return false;
     }
     
+    // Validação de CPF
+    if (field.name === 'cpf' && field.value && !validateCPF(field.value)) {
+        showFieldError(field, 'CPF inválido. Por favor, verifique os dígitos informados.');
+        return false;
+    }
+    
     return true;
 }
 
@@ -138,6 +193,56 @@ function validatePhone(phone) {
     const phoneNumbers = phone.replace(/\D/g, '');
     // Valida se tem 10 ou 11 dígitos (com DDD)
     return phoneNumbers.length >= 10 && phoneNumbers.length <= 11;
+}
+
+/**
+ * Valida CPF brasileiro
+ * @param {string} cpf - CPF a ser validado (pode conter pontos e traços)
+ * @returns {boolean} True se válido, False caso contrário
+ */
+function validateCPF(cpf) {
+    if (!cpf) {
+        return false;
+    }
+
+    // Remove caracteres não numéricos
+    cpf = cpf.replace(/\D/g, '');
+
+    // Verifica se tem 11 dígitos
+    if (cpf.length !== 11) {
+        return false;
+    }
+
+    // Verifica se todos os dígitos são iguais (CPFs inválidos conhecidos)
+    if (/^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    // Valida primeiro dígito verificador
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+        soma += parseInt(cpf[i]) * (10 - i);
+    }
+    let resto = soma % 11;
+    let digito1 = resto < 2 ? 0 : 11 - resto;
+
+    if (parseInt(cpf[9]) !== digito1) {
+        return false;
+    }
+
+    // Valida segundo dígito verificador
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf[i]) * (11 - i);
+    }
+    resto = soma % 11;
+    let digito2 = resto < 2 ? 0 : 11 - resto;
+
+    if (parseInt(cpf[10]) !== digito2) {
+        return false;
+    }
+
+    return true;
 }
 
 /**

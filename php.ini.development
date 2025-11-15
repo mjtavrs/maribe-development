@@ -1,0 +1,28 @@
+; Configurações PHP para desenvolvimento local
+; Copie este arquivo para php.ini ou inclua no seu php.ini existente
+
+; Exibe erros (apenas em desenvolvimento)
+display_errors = On
+display_startup_errors = On
+
+; Nível de reporte de erros
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+
+; Configurações de sessão
+session.auto_start = 0
+session.use_cookies = 1
+session.use_only_cookies = 1
+session.cookie_httponly = 1
+session.cookie_samesite = "Lax"
+
+; Tempo de vida da sessão (em segundos)
+session.gc_maxlifetime = 1440
+
+; Diretório para salvar sessões
+; Windows: session.save_path = "C:/temp"
+; Linux/Mac: session.save_path = "/tmp"
+
+; Permite que session_start() seja chamado mesmo após headers (apenas para debug)
+; ATENÇÃO: Em produção, sempre certifique-se de que session_start() é chamado antes de qualquer output
+; output_buffering = 4096
+

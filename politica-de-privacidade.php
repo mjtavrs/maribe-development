@@ -1,8 +1,13 @@
+<?php
+// Define a página atual para o header (politica não aparece no menu, mas definimos para consistência)
+$currentPage = 'politica';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
-    
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,67 +25,21 @@
     <link rel="stylesheet" href="styles/shared/animations.css" />
     <link rel="stylesheet" href="styles/shared/components.css" />
     <link rel="stylesheet" href="styles/pages/privacyPolicies/privacyPolicies.css" />
-    
+
     <!-- Scripts -->
     <script src="./src/js/cookiePopup.js"></script>
 </head>
+
 <body>
-    <div id="cookiePopupContainer" class="hidePopup">
-        <div id="cookiePopupHeader">
-            <h3>Nosso site agora utiliza cookies! 🍪</h3>
-            <button title="Fechar aviso de cookies" aria-label="Fechar aviso de cookies" id="closeCookiesPopup">X</button>
-        </div>
-        <div id="cookiePopupContent">
-            <p>
-                Também utilizamos dados salvos no seu navegador. Se houver dúvidas desse uso, você pode ler nossa <a href="/politica-de-privacidade.html" target="_blank">Política de Privacidade</a> para ter maiores informações.
-            </p>
-            <button aria-label="Consentir com aviso de cookies" id="acceptCookies">
-                Estou de acordo!  
-            </button>
-        </div>
-    </div>
+    <?php include 'includes/cookiePopup.php'; ?>
     <div id="smoothOpening">
-        <header>
-            <a href="index.html" id="indexReferrer">
-                <img src="assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura">
-            </a>
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="index.html">
-                                início
-                            </a>
-                        </li>
-                        <li>
-                            <a href="sobre.html">
-                                sobre
-                            </a>
-                        </li>
-                        <li>
-                            <a href="projetos.html">
-                                projetos
-                            </a>
-                        </li>
-                        <li>
-                            <a href="orcamento.html">
-                                orçamento
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contato.html">
-                                contato
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <?php include 'includes/header.php'; ?>
         <main role="main">
-            <div id="pageInfo">
-                <h1 role="heading">política de privacidade</h1>
-                <p>Nós valorizamos a confiança que você deposita em nós e estamos comprometidos em proteger sua privacidade e seus dados pessoais. Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações enquanto você navega pelo nosso site.</p>
-            </div>
+            <?php
+            $pageTitle = 'política de privacidade';
+            $pageDescription = 'Nós valorizamos a confiança que você deposita em nós e estamos comprometidos em proteger sua privacidade e seus dados pessoais. Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações enquanto você navega pelo nosso site.';
+            include 'includes/pageInfo.php';
+            ?>
             <div id="policies">
                 <span>
                     Última atualização: 03 de outubro de 2024
@@ -188,53 +147,13 @@
                     Ficou alguma dúvida?
                 </h2>
                 <p>
-                    Você sempre pode nos enviar um e-mail a partir da nossa <a href="contato.html">página de contato</a> e ficaremos felizes em responder o mais breve possível. 
+                    Você sempre pode nos enviar um e-mail a partir da nossa <a href="contato.php">página de contato</a> e ficaremos felizes em responder o mais breve possível.
                     <!-- Se preferir, pode enviar uma mensagem no nosso WhatsApp clicando <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank">aqui</a> para começar uma conversa. -->
                 </p>
             </div>
         </main>
-        <footer>
-            <div id="socialLinks">
-                <ul>
-                    <li>
-                        <a href="https://www.instagram.com/maribe.arquitetura" target="_blank" aria-label="Acesse nosso Instagram">
-                            <i title="Acesse nosso Instagram" class="ph-light ph-instagram-logo"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://web.facebook.com/people/Maribe-Arquitetura/100089975852864/" target="_blank" aria-label="Acesse nosso Facebook">
-                            <i title="Acesse nosso Facebook" class="ph-light ph-facebook-logo"></i>
-                        </a>
-                    </li>
-                    <!-- <li>
-                        <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank" aria-label="Converse conosco no WhatsApp">
-                            <i title="Converse conosco no WhatsApp" class="ph-light ph-whatsapp-logo"></i>
-                        </a>
-                    </li> -->
-                    <li>
-                        <a href="https://www.tiktok.com/@maribe.arquitetura" target="_blank" aria-label="Acesse nosso Tiktok">
-                            <i title="Acesse nosso Tiktok" class="ph-light ph-tiktok-logo"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://br.pinterest.com/maribearquitetura/" target="_blank" aria-label="Acesse nosso Pinterest">
-                            <i title="Acesse nosso Pinterest" class="ph-light ph-pinterest-logo"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div id="legalInformation" role="contentinfo">
-                <p>
-                    <span>maribe arquitetura</span> • todos os direitos reservados &copy; 2025
-                </p>
-                <p>
-                    feito com 🧡 por marcos tavares
-                </p>
-                <a href="/politica-de-privacidade.html">
-                    política de privacidade
-                </a>
-            </div>
-        </footer>
+        <?php include 'includes/footer.php'; ?>
     </div>
 </body>
+
 </html>

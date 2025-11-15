@@ -7,6 +7,12 @@ $errosPorCampo = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Validação CSRF
+    if (empty($_POST["csrf_token"]) || !validateCSRFToken($_POST["csrf_token"])) {
+        $erros[] = 'Token de segurança inválido. Por favor, recarregue a página e tente novamente.';
+        redirectWithStatus('error', $erros);
+    }
+
     // Validação e sanitização do nome
     if (empty($_POST["name"])) {
         $errosPorCampo["name"] = "Por favor, digite seu nome.";

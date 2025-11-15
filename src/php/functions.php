@@ -4,10 +4,21 @@
  * Funções auxiliares para formulários
  */
 
+// Inicia output buffering para evitar problemas com session_start()
+// Isso permite que session_start() seja chamado mesmo se houver algum output anterior
+if (!ob_get_level()) {
+    ob_start();
+}
+
 // Inicia sessão se ainda não foi iniciada
+// IMPORTANTE: Este arquivo deve ser incluído ANTES de qualquer output HTML
+// Se você ver um warning de "headers already sent", verifique se há espaços ou caracteres antes do <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Carrega sistema de internacionalização
+require_once __DIR__ . '/i18n.php';
 
 /**
  * Sanitiza uma string para uso seguro em HTML
@@ -85,6 +96,103 @@ function validatePhone($phone)
 
     // Valida se tem 10 ou 11 dígitos (com DDD)
     return preg_match('/^\d{10,11}$/', $phone);
+}
+
+/**
+ * Valida CPF brasileiro
+ * 
+ * @param string $cpf CPF a ser validado (pode conter pontos e traços)
+ * @return bool True se válido, False caso contrário
+ */
+function validateCPF($cpf)
+{
+    if (empty($cpf)) {
+        return false;
+    }
+
+    // Remove caracteres não numéricos
+    $cpf = preg_replace('/\D/', '', $cpf);
+
+    // Verifica se tem 11 dígitos
+    if (strlen($cpf) !== 11) {
+        return false;
+    }
+
+    // Verifica se todos os dígitos são iguais (CPFs inválidos conhecidos)
+    if (preg_match('/(\d)\1{10}/', $cpf)) {
+        return false;
+    }
+
+    // Valida primeiro dígito verificador
+    $soma = 0;
+    for ($i = 0; $i < 9; $i++) {
+        $soma += intval($cpf[$i]) * (10 - $i);
+    }
+    $resto = $soma % 11;
+    $digito1 = ($resto < 2) ? 0 : 11 - $resto;
+
+    if (intval($cpf[9]) !== $digito1) {
+        return false;
+    }
+
+    // Valida segundo dígito verificador
+    $soma = 0;
+    for ($i = 0; $i < 10; $i++) {
+        $soma += intval($cpf[$i]) * (11 - $i);
+    }
+    $resto = $soma % 11;
+    $digito2 = ($resto < 2) ? 0 : 11 - $resto;
+
+    if (intval($cpf[10]) !== $digito2) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Gera um token CSRF e o armazena na sessão
+ * 
+ * @return string Token CSRF
+ */
+function generateCSRFToken()
+{
+    if (!isset($_SESSION['csrf_token'])) {
+        // Gera um token aleatório seguro
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+/**
+ * Valida um token CSRF
+ * 
+ * @param string $token Token a ser validado
+ * @return bool True se válido, False caso contrário
+ */
+function validateCSRFToken($token)
+{
+    if (empty($token)) {
+        return false;
+    }
+
+    if (!isset($_SESSION['csrf_token'])) {
+        return false;
+    }
+
+    // Compara os tokens de forma segura (timing-safe comparison)
+    return hash_equals($_SESSION['csrf_token'], $token);
+}
+
+/**
+ * Gera um novo token CSRF (útil após uso para regenerar)
+ * 
+ * @return string Novo token CSRF
+ */
+function regenerateCSRFToken()
+{
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    return $_SESSION['csrf_token'];
 }
 
 /**
@@ -180,6 +288,41 @@ function clearFormErrors()
 }
 
 /**
+ * Define toast na sessão
+ * 
+ * @param string $type Tipo do toast ('success' ou 'error')
+ * @param string $message Mensagem a ser exibida
+ * @param string $title Título do toast (opcional)
+ */
+function setToast($type, $message, $title = null)
+{
+    // Títulos padrão se não fornecidos (usa traduções se disponível)
+    if ($title === null) {
+        if (function_exists('t')) {
+            $title = $type === 'success' ? t('toast.success.title') : t('toast.error.title');
+        } else {
+            $title = $type === 'success' ? 'Sucesso!' : 'Erro!';
+        }
+    }
+
+    $_SESSION['toast'] = [
+        'type' => $type,
+        'title' => $title,
+        'message' => $message
+    ];
+}
+
+/**
+ * Limpa toast da sessão
+ */
+function clearToast()
+{
+    if (isset($_SESSION['toast'])) {
+        unset($_SESSION['toast']);
+    }
+}
+
+/**
  * Redireciona para uma página de sucesso ou erro
  * 
  * @param string $status 'success' ou 'error'
@@ -194,13 +337,32 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
         // Limpa qualquer erro anterior
         clearFormErrors();
 
-        // Tenta redirecionar para sucesso.html primeiro, depois sucesso sem extensão
-        // (compatibilidade com servidores que podem ter rewrite rules)
-        if (file_exists(__DIR__ . '/../../sucesso.html')) {
-            header("Location: $baseUrl/sucesso.html");
+        // Regenera o token CSRF após uso bem-sucedido
+        regenerateCSRFToken();
+
+        // Define toast de sucesso na sessão (usa traduções se disponível)
+        $successTitle = function_exists('t') ? t('toast.success.title') : 'Sucesso!';
+        $successMessage = function_exists('t') ? t('toast.success.message') : 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+        setToast('success', $successMessage, $successTitle);
+
+        // Redireciona de volta para a página do formulário (não para sucesso.php)
+        $referer = $_SERVER['HTTP_REFERER'] ?? null;
+        if (!$referer) {
+            $scriptName = basename($_SERVER['PHP_SELF']);
+            $pageMap = [
+                'contactForm.php' => 'contato.php',
+                'budgetForm.php' => 'orcamento.php',
+                'contractForm.php' => 'contrato.php',
+                'finalBudgetForm.php' => 'proposta.php'
+            ];
+            $page = $pageMap[$scriptName] ?? 'contato.php';
+            $referer = $baseUrl . '/' . $page;
         } else {
-            header("Location: $baseUrl/sucesso");
+            // Remove parâmetros de erro da URL se existirem
+            $referer = preg_replace('/[?&]error=\d+/', '', $referer);
         }
+
+        header("Location: $referer");
         exit;
     } else {
         // Em caso de erro, armazena erros na sessão
@@ -228,18 +390,23 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
         if (!$referer) {
             $scriptName = basename($_SERVER['PHP_SELF']);
             $pageMap = [
-                'contactForm.php' => 'contato.html',
-                'budgetForm.php' => 'orcamento.html',
-                'contractForm.php' => 'contrato.html',
-                'finalBudgetForm.php' => 'proposta.html'
+                'contactForm.php' => 'contato.php',
+                'budgetForm.php' => 'orcamento.php',
+                'contractForm.php' => 'contrato.php',
+                'finalBudgetForm.php' => 'proposta.php'
             ];
 
-            $page = $pageMap[$scriptName] ?? 'contato.html';
+            $page = $pageMap[$scriptName] ?? 'contato.php';
             $referer = $baseUrl . '/' . $page;
         } else {
             // Remove query string de erro anterior se existir
             $referer = preg_replace('/[?&]error=\d+/', '', $referer);
         }
+
+        // Define toast de erro na sessão (usa traduções se disponível)
+        $errorTitle = function_exists('t') ? t('toast.error.title') : 'Erro!';
+        $errorMessage = !empty($errors) ? $errors[0] : (function_exists('t') ? t('toast.error.message') : 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.');
+        setToast('error', $errorMessage, $errorTitle);
 
         $separator = strpos($referer, '?') !== false ? '&' : '?';
         header("Location: $referer{$separator}error=1");

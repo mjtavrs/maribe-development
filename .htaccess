@@ -1,0 +1,77 @@
+# Redireciona arquivos .html para .php (mantendo compatibilidade com links antigos)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Rotas de internacionalização: /pt/pagina, /en/pagina ou /es/pagina
+    # Mapeia para pagina.php?lang=pt, pagina.php?lang=en ou pagina.php?lang=es
+    RewriteRule ^(pt|en|es)/(contato|contact|contacto)$ contato.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(orcamento|budget|presupuesto)$ orcamento.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(sobre|about)$ sobre.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(projetos|projects|proyectos)$ projetos.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(projeto|project|proyecto)$ projeto.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(contrato|contract)$ contrato.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(proposta|proposal|propuesta)$ proposta.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(politica-de-privacidade|privacy-policy|politica-de-privacidad)$ politica-de-privacidade.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(sucesso|success|exito)$ sucesso.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/(index|home|inicio)?$ index.php?lang=$1 [L,QSA]
+    
+    # Redireciona URLs antigas sem prefixo para /pt/ (português padrão)
+    RewriteRule ^contato\.php$ /pt/contato [R=301,L]
+    RewriteRule ^orcamento\.php$ /pt/orcamento [R=301,L]
+    RewriteRule ^sobre\.php$ /pt/sobre [R=301,L]
+    RewriteRule ^projetos\.php$ /pt/projetos [R=301,L]
+    RewriteRule ^projeto\.php$ /pt/projeto [R=301,L]
+    RewriteRule ^contrato\.php$ /pt/contrato [R=301,L]
+    RewriteRule ^proposta\.php$ /pt/proposta [R=301,L]
+    RewriteRule ^politica-de-privacidade\.php$ /pt/politica-de-privacidade [R=301,L]
+    RewriteRule ^sucesso\.php$ /pt/sucesso [R=301,L]
+    RewriteRule ^index\.php$ /pt/ [R=301,L]
+    
+    # Redireciona páginas específicas de .html para .php
+    RewriteRule ^index\.html$ index.php [R=301,L]
+    RewriteRule ^sobre\.html$ sobre.php [R=301,L]
+    RewriteRule ^projetos\.html$ projetos.php [R=301,L]
+    RewriteRule ^projeto\.html$ projeto.php [R=301,L]
+    RewriteRule ^orcamento\.html$ orcamento.php [R=301,L]
+    RewriteRule ^contato\.html$ contato.php [R=301,L]
+    RewriteRule ^contrato\.html$ contrato.php [R=301,L]
+    RewriteRule ^proposta\.html$ proposta.php [R=301,L]
+    RewriteRule ^politica-de-privacidade\.html$ politica-de-privacidade.php [R=301,L]
+    RewriteRule ^sucesso\.html$ sucesso.php [R=301,L]
+</IfModule>
+
+# Define index.php como página padrão
+DirectoryIndex index.php
+
+# Protege arquivos sensíveis
+<FilesMatch "^(\.htaccess|\.env|composer\.(json|lock)|package(-lock)?\.json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Habilita compressão GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache de arquivos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Configurações PHP para desenvolvimento
+# Em produção, configure no php.ini do servidor
+<IfModule mod_php.c>
+    # Suprime warnings de session_start() após headers (apenas em desenvolvimento)
+    # Em produção, sempre certifique-se de que session_start() é chamado antes de qualquer output
+    php_flag display_errors On
+    php_value error_reporting E_ALL & ~E_WARNING & ~E_NOTICE
+</IfModule>

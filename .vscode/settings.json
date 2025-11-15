@@ -1,0 +1,19 @@
+{
+    "php.validate.executablePath": "php",
+    "php.validate.enable": true,
+    "files.associations": {
+        "*.php": "php"
+    },
+    "emmet.includeLanguages": {
+        "php": "html"
+    },
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+    // Desabilita Live Server para arquivos PHP (não funciona mesmo)
+    "liveServer.settings.ignoreFiles": [
+        "**/*.php"
+    ]
+}
+

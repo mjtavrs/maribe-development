@@ -82,5 +82,5 @@ document.addEventListener("DOMContentLoaded", () => {
  * Redireciona para a página de projetos quando o projeto não é encontrado
  */
 function redirectToProjects() {
-    window.location.href = "projetos.html";
+    window.location.href = "projetos.php";
 }

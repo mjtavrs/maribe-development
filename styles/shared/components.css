@@ -27,6 +27,129 @@ body header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+/* Seletor de Idioma - Topo Direito */
+body header #languageSelectorContainer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+body header .language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+body header .language-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-bege-delicado);
+  border: 1px solid var(--color-cinza-elegante);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-cinza-elegante);
+  transition: all 0.2s ease;
+  min-width: 140px;
+  justify-content: space-between;
+}
+
+body header .language-button:hover {
+  border-color: var(--color-vermelho-recife);
+  color: var(--color-vermelho-recife);
+}
+
+body header .language-button[aria-expanded="true"] {
+  border-color: var(--color-vermelho-recife);
+  color: var(--color-vermelho-recife);
+}
+
+body header .language-button[aria-expanded="true"] .language-arrow {
+  transform: rotate(180deg);
+}
+
+body header .language-current {
+  font-weight: 500;
+}
+
+body header .language-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+  color: var(--color-cinza-elegante);
+}
+
+body header .language-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 140px;
+  background-color: var(--color-bege-delicado);
+  border: 1px solid var(--color-cinza-elegante);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 1001;
+}
+
+body header .language-dropdown.active .language-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body header .language-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--color-cinza-elegante);
+  font-size: 0.9375rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+body header .language-option:hover {
+  background-color: rgba(197, 110, 81, 0.1);
+  color: var(--color-vermelho-recife);
+}
+
+body header .language-option.active {
+  color: var(--color-vermelho-recife);
+  font-weight: 600;
+  background-color: rgba(197, 110, 81, 0.05);
+}
+
+body header .language-check {
+  color: var(--color-vermelho-recife);
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  body header #languageSelectorContainer {
+    top: 30px;
+    right: 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body header #languageSelectorContainer {
+    top: 40px;
+    right: 40px;
+  }
 }
 
 body header #indexReferrer img {
@@ -213,6 +336,9 @@ body main #pageInfo p a {
 @media screen and (min-width: 1024px) {
   body main #pageInfo {
     gap: 30px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   body main #pageInfo h1 {
@@ -391,6 +517,9 @@ body main form {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 body main form .twoColumnsInForm {
@@ -511,7 +640,53 @@ body main form fieldset legend {
 body main form fieldset div {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+/* Estilos para inputs radio */
+body main form fieldset input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--color-vermelho-recife);
+  /* Para navegadores que não suportam accent-color */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  position: relative;
+  background-color: white;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body main form fieldset input[type="radio"]:checked {
+  background-color: white;
+  border-color: var(--color-vermelho-recife);
+}
+
+body main form fieldset input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-vermelho-recife);
+  transform: translate(-50%, -50%);
+}
+
+body main form fieldset input[type="radio"]:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
+}
+
+body main form fieldset label {
+  line-height: 1.5;
+  cursor: pointer;
 }
 
 body main form ::placeholder {
@@ -521,9 +696,55 @@ body main form ::placeholder {
 body main form #privacyLabel {
   display: inline-flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  gap: 10px;
   width: auto;
   max-width: none;
+}
+
+body main form #privacyLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--color-vermelho-recife);
+  /* Para navegadores que não suportam accent-color */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  background-color: white;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body main form #privacyLabel input[type="checkbox"]:checked {
+  background-color: var(--color-vermelho-recife);
+  border-color: var(--color-vermelho-recife);
+}
+
+body main form #privacyLabel input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+body main form #privacyLabel input[type="checkbox"]:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
+}
+
+body main form #privacyLabel span {
+  line-height: 1.5;
+  flex: 1;
 }
 
 body main form #privacyLabel span a {
@@ -562,6 +783,7 @@ body main form #buttonContainer button:not(:hover) {
 @media screen and (min-width: 1024px) {
   body main form {
     gap: 35px;
+    max-width: 1000px;
   }
 
   body main form .twoColumnsInForm {
@@ -583,6 +805,257 @@ body main form #buttonContainer button:not(:hover) {
   body main form #buttonContainer button {
     margin: 15px 0;
     width: 75%;
+  }
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+#toastContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  max-width: 400px;
+  width: calc(100% - 40px);
+  align-items: flex-end;
+}
+
+.toast {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: var(--color-bege-delicado);
+  border: 1px solid;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  pointer-events: none;
+  min-width: 300px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.toast:active {
+  cursor: grabbing;
+}
+
+.toast .toast-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  position: relative;
+}
+
+.toast.toast-show {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.toast.toast-hide {
+  opacity: 0;
+  transform: translateX(400px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Toast de Sucesso */
+.toast-success {
+  border-color: #4caf50;
+  background-color: #f1f8f4;
+}
+
+.toast-success .toast-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  flex-shrink: 0;
+}
+
+.toast-success .toast-icon {
+  color: #ffffff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.toast-success .toast-title {
+  color: #2e7d32;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.toast-success .toast-message {
+  color: #2e7d32;
+  font-weight: 400;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Toast de Erro */
+.toast-error {
+  border-color: #f44336;
+  background-color: #ffebee;
+}
+
+.toast-error .toast-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background-color: #f44336;
+  flex-shrink: 0;
+}
+
+.toast-error .toast-icon {
+  color: #ffffff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.toast-error .toast-title {
+  color: #c62828;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.toast-error .toast-message {
+  color: #c62828;
+  font-weight: 400;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.toast-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+}
+
+.toast-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+/* Barra de progresso */
+.toast-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.toast-progress-fill {
+  height: 100%;
+  width: 100%;
+  transition: width 0.1s linear;
+  background-color: currentColor;
+  opacity: 0.6;
+}
+
+.toast-success .toast-progress-fill {
+  background-color: #4caf50;
+}
+
+.toast-error .toast-progress-fill {
+  background-color: #f44336;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: #3c3c3b;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  flex-shrink: 0;
+  font-size: 18px;
+  z-index: 1;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.toast-close:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.toast-close:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  #toastContainer {
+    bottom: 30px;
+    right: 30px;
+    max-width: 450px;
+  }
+
+  .toast .toast-wrapper {
+    padding: 22px 24px;
+  }
+
+  .toast-title {
+    font-size: 1.0625rem;
+  }
+
+  .toast-message {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #toastContainer {
+    bottom: 40px;
+    right: 40px;
+    max-width: 500px;
   }
 }
 

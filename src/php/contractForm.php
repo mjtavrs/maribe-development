@@ -7,6 +7,12 @@ $errosPorCampo = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Validação CSRF
+    if (empty($_POST["csrf_token"]) || !validateCSRFToken($_POST["csrf_token"])) {
+        $erros[] = 'Token de segurança inválido. Por favor, recarregue a página e tente novamente.';
+        redirectWithStatus('error', $erros);
+    }
+
     // Validação e sanitização do nome
     if (empty($_POST["name"])) {
         $errosPorCampo["name"] = "Por favor, digite seu nome.";
@@ -32,11 +38,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["cpf"])) {
         $errosPorCampo["cpf"] = "Por favor, digite seu CPF.";
     } else {
-        $cpf = sanitizeForEmail($_POST["cpf"]);
-        // Validação básica de CPF (11 dígitos)
-        $cpf_numeros = preg_replace('/\D/', '', $_POST["cpf"]);
-        if (strlen($cpf_numeros) !== 11) {
-            $errosPorCampo["cpf"] = "CPF deve conter 11 dígitos.";
+        // Validação completa de CPF
+        if (!validateCPF($_POST["cpf"])) {
+            $errosPorCampo["cpf"] = "CPF inválido. Por favor, verifique os dígitos informados.";
+        } else {
+            // Remove caracteres não numéricos para armazenar
+            $cpf = preg_replace('/\D/', '', $_POST["cpf"]);
+            // Formata para exibição (XXX.XXX.XXX-XX)
+            $cpfFormatado = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+            $cpf = sanitizeForEmail($cpfFormatado);
         }
     }
 

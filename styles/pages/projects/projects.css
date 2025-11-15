@@ -19,6 +19,26 @@ body main #projectsContainer {
 body main #projectsContainer article {
   height: 360px;
   position: relative;
+  /* Transição aplicada sempre - mais lenta e perceptível */
+  transition: opacity 1s ease-out, transform 1s ease-out,
+    box-shadow 0.3s ease-out;
+  /* Sombra sutil e leve para dar profundidade */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Estado inicial - projeto invisível, pronto para aparecer */
+body main #projectsContainer article.fade-in-ready {
+  opacity: 0;
+  transform: translateY(60px); /* Movimento mais perceptível */
+  visibility: visible; /* Mantém o espaço ocupado */
+}
+
+/* Estado ativo - projeto aparece com fade-in */
+body main #projectsContainer article.fade-in-active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 body main #projectsContainer article a span {
@@ -52,6 +72,16 @@ body main #projectsContainer article a img {
   transition: 300ms;
   width: 100%;
   z-index: 1;
+  /* Remove border-radius do img já que o article tem overflow hidden */
+  border-radius: 0;
+}
+
+/* Sentinela para lazy loading (invisível) */
+body main #projectsContainer #projectsSentinel {
+  height: 1px;
+  width: 100%;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 @media screen and (min-width: 1024px) {
@@ -66,10 +96,18 @@ body main #projectsContainer article a img {
 
   body main #projectsContainer article {
     min-width: 49%;
+    /* Sombra um pouco mais pronunciada em telas maiores */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   body main #projectsContainer article a img {
-    border-radius: 8px;
+    border-radius: 0;
+  }
+
+  /* Efeito hover sutil - sombra um pouco mais forte */
+  body main #projectsContainer article:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
   }
 }
 
