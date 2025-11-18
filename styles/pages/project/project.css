@@ -50,13 +50,27 @@ body main #projectImages {
 body main #projectImages div {
   height: 250px;
   width: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  /* Sombra e transição similares aos cards da listagem */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
 }
 
 body main #projectImages div img {
-  border-radius: 5px;
+  border-radius: 0;
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+/* Hover sutil em desktops aplica-se no container */
+@media (hover: hover) and (pointer: fine) {
+  body main #projectImages div:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -117,6 +131,8 @@ body main #projectImages div img {
   body main #projectImages div {
     height: 350px;
     max-width: 49%;
+    /* Sombra um pouco mais pronunciada em telas maiores */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
 

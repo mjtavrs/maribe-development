@@ -107,7 +107,7 @@ $allTranslations = [
                     'estouSemPressa' => 'Não estou com pressa. Vamos seguir o ritmo natural',
                     'estouApressado' => 'Estou um pouquinho apressado(a) e gostaria de agilizar as coisas'
                 ],
-                'objective' => 'Qual é o seu objetivo com este projeto? Como podemos te ajudar?',
+                'objective' => 'Qual é o seu objetivo com este projeto?',
                 'objectivePlaceholder' => 'Nos conte aqui...',
                 'objectiveHint' => 'Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.',
                 'privacy' => 'Eu concordo com o envio dos dados segundo a <a href=":privacyUrl">política de privacidade</a> da Maribe Arquitetura.',
@@ -203,6 +203,7 @@ $allTranslations = [
                 'birthDate' => 'Data de nascimento',
                 'paymentMethod' => 'Qual a forma de pagamento escolhida?',
                 'paymentMethodPlaceholder' => 'À vista; Sinal + \'x\' parcelas...',
+                'paymentMethodExamples' => 'Exemplos: “Entrada de R$ 3.000 e o restante parcelado no cartão” ou “Parcelado no cartão”.',
                 'submit' => 'Enviar mensagem'
             ]
         ]
@@ -303,7 +304,7 @@ $allTranslations = [
                     'estouSemPressa' => 'I am not in a hurry. Let\'s follow the natural pace',
                     'estouApressado' => 'I am a little rushed and would like to speed things up'
                 ],
-                'objective' => 'What is your goal with this project? How can we help you?',
+                'objective' => 'What is your goal with this project?',
                 'objectivePlaceholder' => 'Tell us here...',
                 'objectiveHint' => 'Describe the changes you plan to make in your space, what you plan to build, and the level of intervention needed, if there are renovations.',
                 'privacy' => 'I agree to the submission of data according to the <a href=":privacyUrl">privacy policy</a> of Maribe Arquitetura.',
@@ -399,13 +400,206 @@ $allTranslations = [
                 'birthDate' => 'Date of birth',
                 'paymentMethod' => 'What is the chosen payment method?',
                 'paymentMethodPlaceholder' => 'Cash; Down payment + \'x\' installments...',
+                'paymentMethodExamples' => 'Examples: “Down payment of BRL 3,000 and the rest on card” or “Paid in installments on the card”.',
                 'submit' => 'Send message'
             ]
         ]
     ],
 
-    // Espanhol será adicionado depois
     'es' => [
-        // Placeholder - será preenchido depois
+        // Menú de navegación
+        'menu' => [
+            'home' => 'inicio',
+            'about' => 'sobre',
+            'projects' => 'proyectos',
+            'budget' => 'presupuesto',
+            'contact' => 'contacto'
+        ],
+
+        // Página de Contacto
+        'contact' => [
+            'title' => 'contacto',
+            'description' => [
+                '¿Tienes algo que contarnos? ¡Por aquí podemos conversar!',
+                'Si necesitas un presupuesto, puedes enviarnos un mensaje desde <a href=":budgetUrl">esta página</a>.'
+            ],
+            'form' => [
+                'name' => 'Nombre completo',
+                'namePlaceholder' => 'Escribe tu nombre aquí',
+                'email' => 'E-mail',
+                'emailPlaceholder' => 'email@email.com',
+                'phone' => 'Teléfono',
+                'phoneHint' => 'Solo números, ¿de acuerdo? ¡No olvides incluir el código de área!',
+                'phonePlaceholder' => '00 123456789',
+                'subject' => 'Asunto',
+                'subjectPlaceholder' => '¿De qué vamos a hablar?',
+                'message' => 'Mensaje',
+                'messagePlaceholder' => 'Escribe tu mensaje aquí',
+                'privacy' => 'Acepto el envío de datos de acuerdo con la <a href=":privacyUrl">política de privacidad</a> de Maribe Arquitetura.',
+                'submit' => 'Enviar mensaje'
+            ]
+        ],
+
+        // Toast
+        'toast' => [
+            'test' => [
+                'success' => 'Probar Toast de Éxito',
+                'error' => 'Probar Toast de Error'
+            ],
+            'success' => [
+                'title' => '¡Éxito!',
+                'message' => '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.'
+            ],
+            'error' => [
+                'title' => '¡Error!',
+                'message' => 'Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo.'
+            ]
+        ],
+
+        // Validaciones
+        'validation' => [
+            'required' => 'Este campo es obligatorio.',
+            'email' => 'Por favor, introduce un e-mail válido.',
+            'phone' => 'Por favor, introduce un número de teléfono válido.',
+            'cpf' => 'CPF inválido. Por favor, revisa los dígitos informados.',
+            'privacy' => 'Debes aceptar la política de privacidad.',
+            'formError' => 'Por favor, corrige los errores del formulario antes de enviar.'
+        ],
+
+        // Página de Presupuesto
+        'budget' => [
+            'title' => '¡vamos a empezar tu proyecto juntos!',
+            'description' => [
+                '<strong>¡Bienvenido(a) a nuestro mundo de posibilidades</strong>! Estamos entusiasmadas por crear contigo el proyecto de tus sueños. Cada detalle será pensado según tu personalidad y recuerdos afectivos, <strong>transformando casas en hogares únicos</strong>, llenos de significado y calidez.',
+                'Para hacerlo posible, necesitamos algunas informaciones para entender mejor tus necesidades. Puedes completar tus datos en el formulario a continuación. ¡Esperamos que ames el camino con nosotras! 🧡'
+            ],
+            'form' => [
+                'name' => 'Nombre completo',
+                'namePlaceholder' => 'Escribe tu nombre aquí',
+                'email' => 'E-mail',
+                'emailPlaceholder' => 'email@email.com',
+                'phone' => 'Teléfono',
+                'phoneHint' => 'Solo números, ¿de acuerdo? ¡No olvides incluir el código de área!',
+                'phonePlaceholder' => '00 123456789',
+                'howYouFoundUs' => '¿Cómo nos encontraste?',
+                'howYouFoundUsOptions' => [
+                    'instagram' => 'Instagram',
+                    'indicacao' => 'Recomendación de conocidos',
+                    'visitaAProjetado' => 'Visité un espacio diseñado por ustedes'
+                ],
+                'whatAreWeWorkingOn' => '¿Qué vamos a diseñar?',
+                'whatAreWeWorkingOnOptions' => [
+                    'interioresResidencialCompleto' => 'Proyecto de interiores residenciales completo',
+                    'interioresAlgunsAmbientes' => 'Interiores para algunos ambientes',
+                    'interioresComercialCompleto' => 'Proyecto de interiores comerciales completo',
+                    'projetoDeArquitetura' => 'Proyecto de arquitectura'
+                ],
+                'whenToBeginTheProject' => '¿Cuándo prevés iniciar el proyecto?',
+                'whenToBeginTheProjectOptions' => [
+                    'escolhendoMeuNovoLar' => 'Estoy en el proceso de elegir mi nuevo hogar',
+                    'aguardandoAsChaves' => 'Estoy esperando las llaves, ¡no veo la hora!',
+                    'estouSemPressa' => 'No tengo prisa. Sigamos el ritmo natural',
+                    'estouApressado' => 'Tengo un poco de prisa y me gustaría agilizar las cosas'
+                ],
+                'objective' => '¿Cuál es tu objetivo con este proyecto?',
+                'objectivePlaceholder' => 'Cuéntanos aquí...',
+                'objectiveHint' => 'Describe los cambios que pretendes hacer en tu espacio, lo que planeas construir y el nivel de intervención necesario, en caso de reformas.',
+                'privacy' => 'Acepto el envío de datos de acuerdo con la <a href=":privacyUrl">política de privacidad</a> de Maribe Arquitetura.',
+                'submit' => 'Enviar mensaje'
+            ]
+        ],
+
+        // Página Sobre
+        'about' => [
+            'title' => 'quiénes somos',
+            'description' => '<strong>La arquitectura va más allá de construir espacios; transforma vidas</strong>. En Maribe Arquitetura, creemos en el poder de crear ambientes que reflejen historias y emociones. Nuestra misión es brindar bienestar, armonía y personalidad en cada proyecto, uniendo siempre lo funcional con lo bello, lo nuevo con lo tradicional. <strong>Cada espacio cuenta una historia, y estamos aquí para ayudar a contar la tuya</strong>.',
+            'aboutUs' => 'sobre nosotras',
+            'heloisa' => [
+                'name' => 'Heloísa Marletti',
+                'description' => '<span>Helô</span> es arquitecta y urbanista graduada por la Universidad Católica de Pernambuco (UNICAP) y posgraduanda en <span>Neuroarquitectura</span>. Tiene experiencia en <span>arquitectura de interiores</span>, <span>arquitectura social</span> e investigación académica. Le encanta trabajar con modelado y videos, aportando realismo a la presentación de los proyectos. Intensa, ama el arte, los viajes y un buen vino.'
+            ],
+            'nathalia' => [
+                'name' => 'Nathalia Ribeiro',
+                'description' => '<span>Nath</span> es arquitecta y urbanista graduada por la Universidad Católica de Pernambuco (UNICAP), con experiencia en <span>arquitectura de interiores</span>, <span>proyectos comerciales</span> y <span>diseño gráfico</span>. Apasionada por la carpintería, hace todo para dejar los proyectos bien detallados y con planos ejecutivos completos. Le encanta el yoga, las actividades al aire libre y disfrutar de un buen café.'
+            ],
+            'together' => 'Juntas gestionamos Maribe Arquitetura, siendo responsables de todo el proceso creativo de los proyectos.',
+            'ourSymbol' => 'nuestro símbolo',
+            'symbolDescription1' => 'El concepto del símbolo <span>une la arquitectura e historia de Recife</span> con referencias a artistas que admiramos. La composición en mosaico, inspirada en obras de <span>Hélio Oiticica</span> y <span>Tarsila do Amaral</span>, remite a la unión de lo antiguo con lo nuevo, referencia a nuestra línea de trabajo.',
+            'symbolDescription2' => 'El símbolo de Maribe utiliza recortes del dibujo del <span>Marco Zero</span> para formar el paisaje de la <span>Rua do Bom Jesus</span>, elegida como la 3ª calle más bonita del mundo. Y hace referencia al urbanismo de la ciudad con las calles que parten del Marco, representado por el círculo rojo.',
+            'symbolDescription3' => 'Formas divididas en dos tonos de azul aluden al encuentro de las aguas. El <span>río Capibaribe</span> se encuentra con el <span>río Beberibe</span> y desemboca en el Océano Atlántico, uniendo agua salada con dulce, mar con río, Marletti con Ribeiro, ¡Maribe!'
+        ],
+
+        // Página Proyectos
+        'projects' => [
+            'title' => 'nuestros proyectos',
+            'description' => 'Aquí encontrarás algunos de nuestros proyectos. ¡Esperamos que te gusten y que pronto podamos incluir aquí tu espacio! 🧡'
+        ],
+
+        // Footer
+        'footer' => [
+            'rights' => 'todos los derechos reservados',
+            'madeBy' => 'hecho con 🧡 por marcos tavares',
+            'privacyPolicy' => 'política de privacidad'
+        ],
+
+        // Página Propuesta
+        'proposal' => [
+            'title' => 'formulario de propuesta',
+            'description' => [
+                'Estamos muy felices con tu contacto, <strong>¡será un placer hacer esta alianza contigo</strong>!',
+                'Para ayudarte a hacer realidad este sueño, necesitamos que respondas algunas preguntas para entender mejor lo que necesitas.'
+            ],
+            'form' => [
+                'name' => 'Nombre completo',
+                'namePlaceholder' => 'Escribe tu nombre aquí',
+                'address' => 'Dirección de la propiedad',
+                'addressPlaceholder' => 'Ej.: Calle/Av. X, 123, Barrio, Ciudad/Estado',
+                'mostImportant' => '¿Qué es lo más importante para ti en este proceso de presupuesto del proyecto?',
+                'mostImportantPlaceholder' => 'Cuéntanos aquí',
+                'hasBlueprint' => 'En caso de proyecto de interiores, ¿la propiedad tiene plano?',
+                'yes' => 'Sí',
+                'no' => 'No',
+                'apartmentComplete' => '¿Apartamento completo? Si no, ¿cuántos y cuáles ambientes?',
+                'apartmentCompletePlaceholder' => 'Ej.: 2, sala y dormitorio principal',
+                'residents' => '¿Cuántas personas viven en la propiedad y qué edades tienen?',
+                'residentsPlaceholder' => 'Ej.: 3 personas, 30 y 28 años',
+                'size' => '¿Cuál es el tamaño (en m²)?',
+                'sizePlaceholder' => 'Ej.: 60m²',
+                'demolition' => '¿Habrá demolición/construcción de paredes?',
+                'electrical' => '¿Modificarás la instalación eléctrica?',
+                'plaster' => '¿Modificarás el yeso?',
+                'finishing' => '¿Modificarás revestimientos o encimeras?',
+                'furniture' => '¿Aprovecharás y/o modificarás algún mueble existente?',
+                'carpentry' => '¿Piensas hacer muebles con carpintería o a medida?',
+                'additionalInfo' => 'Si tienes alguna duda o información adicional, coméntala aquí.',
+                'additionalInfoPlaceholder' => 'Tus dudas e información adicional van aquí :)',
+                'privacy' => 'Acepto el envío de datos de acuerdo con la <a href=":privacyUrl">política de privacidad</a> de Maribe Arquitetura.',
+                'submit' => 'Enviar mensaje'
+            ]
+        ],
+
+        // Página Contrato
+        'contract' => [
+            'title' => 'formulario de contrato',
+            'description' => 'Estos datos son necesarios para completar el contrato y organizar la gestión interna del estudio.',
+            'form' => [
+                'name' => 'Nombre completo',
+                'email' => 'E-mail',
+                'emailPlaceholder' => 'email@email.com',
+                'cpf' => 'CPF',
+                'cpfPlaceholder' => 'Solo números. Ej.: 12345678900',
+                'rg' => 'RG',
+                'rgPlaceholder' => 'Solo números. Ej.: 1234567',
+                'projectAddress' => 'Dirección completa del proyecto',
+                'projectAddressPlaceholder' => 'Ej.: Calle/Av. X, 123, Barrio, Ciudad/Estado',
+                'clientAddress' => 'Dirección donde reside',
+                'clientAddressPlaceholder' => 'Ej.: Calle/Av. X, 123, Barrio, Ciudad/Estado',
+                'birthDate' => 'Fecha de nacimiento',
+                'paymentMethod' => '¿Cuál es la forma de pago elegida?',
+                'paymentMethodPlaceholder' => 'Al contado; Anticipo + “x” cuotas...',
+                'paymentMethodExamples' => 'Por ejemplo: “Pago inicial de R$ 3.000 y el resto en tarjeta” o “En cuotas con tarjeta”.',
+                'submit' => 'Enviar mensaje'
+            ]
+        ]
     ]
 ];

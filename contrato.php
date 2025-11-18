@@ -37,6 +37,7 @@ $currentPage = 'contrato';
     <script type="module" src="/src/js/formValidation.js"></script>
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/toast.js"></script>
+    <script src="/src/js/floatingLabel.js"></script>
     <script src="/src/js/languageSelector.js"></script>
 </head>
 
@@ -57,39 +58,58 @@ $currentPage = 'contrato';
                 ?>
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="lang" value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
-                <label for="name">
-                    <span><?php echo htmlspecialchars(t('contract.form.name'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="name" id="name" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="email">
-                    <span><?php echo htmlspecialchars(t('contract.form.email'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('contract.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on">
-                </label>
-                <label for="cpf">
-                    <span><?php echo htmlspecialchars(t('contract.form.cpf'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="cpf" id="cpf" placeholder="<?php echo htmlspecialchars(t('contract.form.cpfPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" pattern="\d*" title="Apenas números são permitidos" minlength="11" maxlength="11" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="rg">
-                    <span><?php echo htmlspecialchars(t('contract.form.rg'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="rg" id="rg" placeholder="<?php echo htmlspecialchars(t('contract.form.rgPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" pattern="\d*" title="Apenas números são permitidos" minlength="7" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="projectAddress">
-                    <span><?php echo htmlspecialchars(t('contract.form.projectAddress'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="projectAddress" id="projectAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.projectAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="clientAddress">
-                    <span><?php echo htmlspecialchars(t('contract.form.clientAddress'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="clientAddress" id="clientAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.clientAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="clientBirthDate">
-                    <span><?php echo htmlspecialchars(t('contract.form.birthDate'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="date" name="clientBirthDate" id="clientBirthDate" required aria-required="true">
-                </label>
-                <label for="paymentMethod">
-                    <span><?php echo htmlspecialchars(t('contract.form.paymentMethod'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="paymentMethod" id="paymentMethod" placeholder="<?php echo htmlspecialchars(t('contract.form.paymentMethodPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        autocomplete="on" required aria-required="true">
-                </label>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="name" id="name" autocomplete="on" required aria-required="true" placeholder="<?php echo htmlspecialchars(t('contract.form.name'), ENT_QUOTES, 'UTF-8'); ?>">
+                        <label for="name" class="floating-label"><?php echo htmlspecialchars(t('contract.form.name'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('contract.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="email" class="floating-label"><?php echo htmlspecialchars(t('contract.form.email'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="cpf" id="cpf" placeholder="<?php echo htmlspecialchars(t('contract.form.cpfPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true" maxlength="14">
+                        <label for="cpf" class="floating-label"><?php echo htmlspecialchars(t('contract.form.cpf'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="rg" id="rg" placeholder="<?php echo htmlspecialchars(t('contract.form.rgPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true" maxlength="12">
+                        <label for="rg" class="floating-label"><?php echo htmlspecialchars(t('contract.form.rg'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="projectAddress" id="projectAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.projectAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="projectAddress" class="floating-label"><?php echo htmlspecialchars(t('contract.form.projectAddress'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="clientAddress" id="clientAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.clientAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="clientAddress" class="floating-label"><?php echo htmlspecialchars(t('contract.form.clientAddress'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="date" name="clientBirthDate" id="clientBirthDate" required aria-required="true">
+                        <label for="clientBirthDate" class="floating-label"><?php echo htmlspecialchars(t('contract.form.birthDate'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="paymentMethod" id="paymentMethod" placeholder="<?php echo htmlspecialchars(t('contract.form.paymentMethodPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="paymentMethod" class="floating-label"><?php echo htmlspecialchars(t('contract.form.paymentMethod'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                    <div class="field-hint">
+                        <i class="ph-light ph-info hint-icon" aria-hidden="true"></i>
+                        <span><?php echo htmlspecialchars(t('contract.form.paymentMethodExamples'), ENT_QUOTES, 'UTF-8'); ?></span>
+                    </div>
+                </div>
                 <div id="buttonContainer">
                     <button type="submit">
                         <?php echo htmlspecialchars(t('contract.form.submit'), ENT_QUOTES, 'UTF-8'); ?>

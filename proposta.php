@@ -37,6 +37,7 @@ $currentPage = 'proposta';
     <script type="module" src="/src/js/formValidation.js"></script>
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/toast.js"></script>
+    <script src="/src/js/floatingLabel.js"></script>
     <script src="/src/js/languageSelector.js"></script>
 </head>
 
@@ -60,18 +61,24 @@ $currentPage = 'proposta';
                 ?>
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="lang" value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
-                <label for="name">
-                    <span><?php echo htmlspecialchars(t('proposal.form.name'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('proposal.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="address">
-                    <span><?php echo htmlspecialchars(t('proposal.form.address'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="address" id="address" placeholder="<?php echo htmlspecialchars(t('proposal.form.addressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="maisImportanteNoOrcamento">
-                    <span><?php echo htmlspecialchars(t('proposal.form.mostImportant'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="maisImportanteNoOrcamento" id="maisImportanteNoOrcamento" placeholder="<?php echo htmlspecialchars(t('proposal.form.mostImportantPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('proposal.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="name" class="floating-label"><?php echo htmlspecialchars(t('proposal.form.name'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="address" id="address" placeholder="<?php echo htmlspecialchars(t('proposal.form.addressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="address" class="floating-label"><?php echo htmlspecialchars(t('proposal.form.address'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="maisImportanteNoOrcamento" id="maisImportanteNoOrcamento" placeholder="<?php echo htmlspecialchars(t('proposal.form.mostImportantPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="maisImportanteNoOrcamento" class="floating-label"><?php echo htmlspecialchars(t('proposal.form.mostImportant'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
                 <div class="twoColumnsInForm">
                     <fieldset>
                         <legend><?php echo htmlspecialchars(t('proposal.form.hasBlueprint'), ENT_QUOTES, 'UTF-8'); ?></legend>
@@ -84,20 +91,26 @@ $currentPage = 'proposta';
                             <label for="imovelSemPlanta"><?php echo htmlspecialchars(t('proposal.form.no'), ENT_QUOTES, 'UTF-8'); ?></label>
                         </div>
                     </fieldset>
-                    <label for="apartamentoCompletoOuAlgunsAmbientes">
-                        <span><?php echo htmlspecialchars(t('proposal.form.apartmentComplete'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <input type="text" name="apartamentoCompletoOuAlgunsAmbientes" id="apartamentoCompletoOuAlgunsAmbientes" placeholder="<?php echo htmlspecialchars(t('proposal.form.apartmentCompletePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                    </label>
+                    <div class="form-field">
+                        <div class="floating-label-wrapper">
+                            <input type="text" name="apartamentoCompletoOuAlgunsAmbientes" id="apartamentoCompletoOuAlgunsAmbientes" placeholder="<?php echo htmlspecialchars(t('proposal.form.apartmentCompletePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                            <label for="apartamentoCompletoOuAlgunsAmbientes" class="floating-label"><?php echo htmlspecialchars(t('proposal.form.apartmentComplete'), ENT_QUOTES, 'UTF-8'); ?></label>
+                        </div>
+                    </div>
                 </div>
                 <div class="twoColumnsInForm">
-                    <label for="quantasPessoasResidemEIdades">
-                        <span><?php echo htmlspecialchars(t('proposal.form.residents'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <input type="text" name="quantasPessoasResidemEIdades" id="quantasPessoasResidemEIdades" placeholder="<?php echo htmlspecialchars(t('proposal.form.residentsPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                    </label>
-                    <label for="tamanhoEmMetrosQuadrados">
-                        <span><?php echo htmlspecialchars(t('proposal.form.size'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <input type="text" name="tamanhoEmMetrosQuadrados" id="tamanhoEmMetrosQuadrados" placeholder="<?php echo htmlspecialchars(t('proposal.form.sizePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                    </label>
+                    <div class="form-field">
+                        <div class="floating-label-wrapper">
+                            <input type="text" name="quantasPessoasResidemEIdades" id="quantasPessoasResidemEIdades" placeholder="<?php echo htmlspecialchars(t('proposal.form.residentsPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                            <label for="quantasPessoasResidemEIdades" class="floating-label"><?php echo htmlspecialchars(t('proposal.form.residents'), ENT_QUOTES, 'UTF-8'); ?></label>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="floating-label-wrapper">
+                            <input type="text" name="tamanhoEmMetrosQuadrados" id="tamanhoEmMetrosQuadrados" placeholder="<?php echo htmlspecialchars(t('proposal.form.sizePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                            <label for="tamanhoEmMetrosQuadrados" class="floating-label"><?php echo htmlspecialchars(t('proposal.form.size'), ENT_QUOTES, 'UTF-8'); ?></label>
+                        </div>
+                    </div>
                 </div>
                 <div class="twoColumnsInForm">
                     <fieldset>
@@ -171,11 +184,12 @@ $currentPage = 'proposta';
                         </div>
                     </fieldset>
                 </div>
-                <label for="duvidasOuInformacoesAAcrescentar">
-                    <span><?php echo htmlspecialchars(t('proposal.form.additionalInfo'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <textarea name="duvidasOuInformacoesAAcrescentar" id="duvidasOuInformacoesAAcrescentar" rows="6"
-                        placeholder="<?php echo htmlspecialchars(t('proposal.form.additionalInfoPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"></textarea>
-                </label>
+                <div class="form-field">
+                    <label for="duvidasOuInformacoesAAcrescentar">
+                        <span><?php echo htmlspecialchars(t('proposal.form.additionalInfo'), ENT_QUOTES, 'UTF-8'); ?></span>
+                        <textarea name="duvidasOuInformacoesAAcrescentar" id="duvidasOuInformacoesAAcrescentar" rows="6" placeholder="<?php echo htmlspecialchars(t('proposal.form.additionalInfoPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"></textarea>
+                    </label>
+                </div>
                 <label for="privacy" id="privacyLabel">
                     <input type="checkbox" name="privacy" id="privacy" required aria-required="true">
                     <span><?php

@@ -104,6 +104,11 @@ if (preg_match('/^(pt|en|es)(?:\/(.+))?$/', $requestPath, $matches)) {
     $lang = $matches[1];
     $page = isset($matches[2]) && !empty($matches[2]) ? $matches[2] : 'index';
 
+    // Normaliza páginas terminadas em .php para o nome sem extensão
+    if (substr($page, -4) === '.php') {
+        $page = substr($page, 0, -4);
+    }
+
     // Normaliza nomes de página para index
     if ($page === 'home' || $page === 'inicio') {
         $page = 'index';

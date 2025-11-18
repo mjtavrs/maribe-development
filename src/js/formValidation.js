@@ -18,6 +18,19 @@ export function initFormValidation() {
             input.addEventListener('blur', () => validateField(input));
             // Limpa erro quando o usuário começa a digitar
             input.addEventListener('input', () => {
+                // Máscara dinâmica para telefone
+                if (input.type === 'tel') {
+                    const masked = maskPhone(input.value);
+                    input.value = masked;
+                }
+                // Máscara para CPF
+                if (input.name === 'cpf') {
+                    input.value = maskCPF(input.value);
+                }
+                // Máscara para RG
+                if (input.name === 'rg') {
+                    input.value = maskRG(input.value);
+                }
                 clearFieldError(input);
                 // Para CPF, valida após 11 dígitos
                 if (input.name === 'cpf') {
@@ -27,6 +40,22 @@ export function initFormValidation() {
                     }
                 }
             });
+            // Garante aplicação da máscara ao colar
+            if (input.type === 'tel') {
+                input.addEventListener('paste', (e) => {
+                    requestAnimationFrame(() => {
+                        input.value = maskPhone(input.value);
+                    });
+                });
+            }
+            if (input.name === 'cpf' || input.name === 'rg') {
+                input.addEventListener('paste', () => {
+                    requestAnimationFrame(() => {
+                        if (input.name === 'cpf') input.value = maskCPF(input.value);
+                        if (input.name === 'rg') input.value = maskRG(input.value);
+                    });
+                });
+            }
         });
         
         // Validação em tempo real para checkbox de privacidade
@@ -169,6 +198,15 @@ function validateField(field) {
         showFieldError(field, 'CPF inválido. Por favor, verifique os dígitos informados.');
         return false;
     }
+
+    // Validação de RG simples: pelo menos 7 dígitos numéricos
+    if (field.name === 'rg' && field.value) {
+        const rgDigits = field.value.replace(/\D/g, '');
+        if (rgDigits.length < 7) {
+            showFieldError(field, 'RG inválido. Verifique os dígitos informados.');
+            return false;
+        }
+    }
     
     return true;
 }
@@ -193,6 +231,43 @@ function validatePhone(phone) {
     const phoneNumbers = phone.replace(/\D/g, '');
     // Valida se tem 10 ou 11 dígitos (com DDD)
     return phoneNumbers.length >= 10 && phoneNumbers.length <= 11;
+}
+
+/**
+ * Aplica máscara brasileira de telefone
+ * (DD) NNNN-NNNN para 10 dígitos
+ * (DD) NNNNN-NNNN para 11 dígitos
+ * @param {string} value
+ * @returns {string}
+ */
+function maskPhone(value) {
+    if (!value) return '';
+    const digits = value.replace(/\D/g, '').slice(0, 11);
+
+    // Sem dígitos, não mostra nada (evita exibir "(" sozinho)
+    if (digits.length === 0) {
+        return '';
+    }
+
+    // DDD
+    if (digits.length <= 2) {
+        return `(${digits}`;
+    }
+
+    const ddd = digits.slice(0, 2);
+    const rest = digits.slice(2);
+
+    // 10 dígitos total: (DD) NNNN-NNNN
+    if (digits.length <= 10) {
+        const part1 = rest.slice(0, 4);
+        const part2 = rest.slice(4, 8);
+        return `(${ddd}) ${part1}${part2 ? '-' + part2 : ''}`.trim();
+    }
+
+    // 11 dígitos total: (DD) NNNNN-NNNN
+    const part1 = rest.slice(0, 5);
+    const part2 = rest.slice(5, 9);
+    return `(${ddd}) ${part1}${part2 ? '-' + part2 : ''}`.trim();
 }
 
 /**
@@ -246,6 +321,31 @@ function validateCPF(cpf) {
 }
 
 /**
+ * Máscara de CPF: 000.000.000-00
+ */
+function maskCPF(value) {
+    if (!value) return '';
+    const digits = value.replace(/\D/g, '').slice(0, 11);
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return `${digits.slice(0, 3)}.${digits.slice(3)}`;
+    if (digits.length <= 9) return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6)}`;
+    return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}-${digits.slice(9)}`;
+}
+
+/**
+ * Máscara de RG comum (variável por estado): 00.000.000-0
+ * Mantém até 9 dígitos, com pontos e hífen quando possível
+ */
+function maskRG(value) {
+    if (!value) return '';
+    const digits = value.replace(/\D/g, '').slice(0, 9);
+    if (digits.length <= 2) return digits;
+    if (digits.length <= 5) return `${digits.slice(0, 2)}.${digits.slice(2)}`;
+    if (digits.length <= 8) return `${digits.slice(0, 2)}.${digits.slice(2, 5)}.${digits.slice(5)}`;
+    return `${digits.slice(0, 2)}.${digits.slice(2, 5)}.${digits.slice(5, 8)}-${digits.slice(8)}`;
+}
+
+/**
  * Exibe erro em um campo
  * @param {HTMLElement} field - Campo que possui erro
  * @param {string} message - Mensagem de erro
@@ -256,8 +356,10 @@ function showFieldError(field, message) {
     
     // Remove mensagem de erro anterior, se existir
     const label = field.closest('label');
+    const floatingWrapper = field.closest('.floating-label-wrapper');
+    const fieldContainer = field.closest('.form-field') || (floatingWrapper ? floatingWrapper.parentElement : null);
     const existingError = label?.querySelector('.field-error') || 
-                          field.parentElement?.querySelector('.field-error');
+                          (fieldContainer && fieldContainer.querySelector('.field-error'));
     if (existingError) {
         existingError.remove();
     }
@@ -270,7 +372,7 @@ function showFieldError(field, message) {
     errorElement.setAttribute('aria-live', 'polite');
     
     // Insere a mensagem de erro
-    if (label) {
+    if (label && !fieldContainer) {
         // Se o campo está dentro de um label, insere após o campo ou no final do label
         if (field.type === 'checkbox' || field.type === 'radio') {
             // Para checkboxes/radios, insere após o span que contém o texto
@@ -284,6 +386,9 @@ function showFieldError(field, message) {
             // Para outros campos, insere após o campo
             field.parentNode.insertBefore(errorElement, field.nextSibling);
         }
+    } else if (fieldContainer) {
+        // Se usa container, insere a mensagem dentro do container (após o wrapper)
+        fieldContainer.appendChild(errorElement);
     } else {
         // Se não houver label, insere após o campo
         if (field.parentNode) {
@@ -299,8 +404,8 @@ function showFieldError(field, message) {
 function clearFieldError(field) {
     field.classList.remove('error');
     const label = field.closest('label');
-    const errorElement = label?.querySelector('.field-error') || 
-                        field.parentElement.querySelector('.field-error');
+    const fieldContainer = field.closest('.form-field') || field.closest('.floating-label-wrapper')?.parentElement;
+    let errorElement = label?.querySelector('.field-error') || (fieldContainer ? fieldContainer.querySelector('.field-error') : null) || field.parentElement.querySelector('.field-error');
     if (errorElement) {
         errorElement.remove();
     }

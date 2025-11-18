@@ -84,21 +84,27 @@ $menuItems = [
                     <i class="ph ph-caret-down language-arrow"></i>
                 </button>
                 <ul id="languageDropdown" class="language-dropdown-menu" role="menu">
-                    <li role="menuitem">
-                        <a href="<?php echo url($currentRoute, 'pt'); ?>" class="language-option <?php echo $currentLang === 'pt' ? 'active' : ''; ?>">
-                            português <?php if ($currentLang === 'pt'): ?><span class="language-check">✓</span><?php endif; ?>
-                        </a>
-                    </li>
-                    <li role="menuitem">
-                        <a href="<?php echo url($currentRoute, 'en'); ?>" class="language-option <?php echo $currentLang === 'en' ? 'active' : ''; ?>">
-                            english <?php if ($currentLang === 'en'): ?><span class="language-check">✓</span><?php endif; ?>
-                        </a>
-                    </li>
-                    <li role="menuitem">
-                        <a href="<?php echo url($currentRoute, 'es'); ?>" class="language-option <?php echo $currentLang === 'es' ? 'active' : ''; ?>">
-                            español <?php if ($currentLang === 'es'): ?><span class="language-check">✓</span><?php endif; ?>
-                        </a>
-                    </li>
+                    <?php if ($currentLang !== 'pt'): ?>
+                        <li role="menuitem">
+                            <a href="<?php echo url($currentRoute, 'pt'); ?>" class="language-option">
+                                português
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($currentLang !== 'en'): ?>
+                        <li role="menuitem">
+                            <a href="<?php echo url($currentRoute, 'en'); ?>" class="language-option">
+                                english
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($currentLang !== 'es'): ?>
+                        <li role="menuitem">
+                            <a href="<?php echo url($currentRoute, 'es'); ?>" class="language-option">
+                                español
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

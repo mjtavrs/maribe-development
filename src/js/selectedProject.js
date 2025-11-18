@@ -1,18 +1,38 @@
 import projects from "./projectsData.js";
 
+function normalizeAssetPath(path) {
+    if (!path) return path;
+    return path.startsWith("/") ? path : `/${path}`;
+}
+
+function slugify(text) {
+    return String(text)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // remove acentos
+        .replace(/[^a-z0-9]+/g, "-")     // não alfanumérico -> hífen
+        .replace(/^-+|-+$/g, "");        // trim hífens
+}
 document.addEventListener("DOMContentLoaded", () => {
     // Obtém o ID do projeto da URL
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = parseInt(urlParams.get("id"));
+    const projectSlug = urlParams.get("name");
     
-    // Valida se o ID foi fornecido e é um número válido
-    if (!projectId || isNaN(projectId)) {
+    // Só redireciona se não houver slug e também não houver um ID válido
+    if ((!projectSlug || projectSlug.trim() === "") && (!projectId || isNaN(projectId))) {
         redirectToProjects();
         return;
     }
     
     // Busca o projeto pelo ID
-    const project = projects.find((p) => p.id === projectId);
+    let project = null;
+    if (projectSlug) {
+        project = projects.find((p) => slugify(p.titulo) === projectSlug);
+    }
+    if (!project && projectId) {
+        project = projects.find((p) => p.id === projectId);
+    }
     
     // Valida se o projeto existe
     if (!project) {
@@ -50,11 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalImages = project.outrasFotos.length;
     
     project.outrasFotos.forEach((imageUrl) => {
+        const normalized = normalizeAssetPath(imageUrl);
         const imageWrapper = document.createElement("div");
         const imageLink = document.createElement("a");
         
         // Configura o link da imagem
-        imageLink.href = imageUrl;
+        imageLink.href = normalized;
         imageLink.setAttribute("data-lightbox", "fotos");
         imageLink.setAttribute("data-title", project.titulo);
         imageLink.setAttribute("aria-label", `Imagem do ${project.titulo}. Imagem ${imageIndex} de ${totalImages}.`);
@@ -62,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Cria o elemento da imagem
         const image = document.createElement("img");
-        image.src = imageUrl;
+        image.src = normalized;
         image.alt = `Imagem do ${project.titulo}. Imagem ${imageIndex} de ${totalImages}.`;
         image.title = project.titulo;
         
@@ -76,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         imageIndex++;
     });
+
 });
 
 /**

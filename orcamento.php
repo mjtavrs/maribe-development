@@ -39,6 +39,7 @@ $currentPage = 'orcamento';
     <script type="module" src="/src/js/formValidation.js"></script>
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/toast.js"></script>
+    <script src="/src/js/floatingLabel.js"></script>
     <script src="/src/js/languageSelector.js"></script>
 </head>
 
@@ -62,21 +63,28 @@ $currentPage = 'orcamento';
                 ?>
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="lang" value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
-                <label for="name">
-                    <span><?php echo htmlspecialchars(t('budget.form.name'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('budget.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="email">
-                    <span><?php echo htmlspecialchars(t('budget.form.email'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('budget.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="phone">
-                    <div class="inputWithSmallText">
-                        <span><?php echo htmlspecialchars(t('budget.form.phone'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <small><?php echo htmlspecialchars(t('budget.form.phoneHint'), ENT_QUOTES, 'UTF-8'); ?></small>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('budget.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="name" class="floating-label"><?php echo htmlspecialchars(t('budget.form.name'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
-                    <input type="tel" name="phone" id="phone" placeholder="<?php echo htmlspecialchars(t('budget.form.phonePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
-                </label>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('budget.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <label for="email" class="floating-label"><?php echo htmlspecialchars(t('budget.form.email'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="tel" name="phone" id="phone" placeholder="<?php echo htmlspecialchars(t('budget.form.phonePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
+                        <label for="phone" class="floating-label"><?php echo htmlspecialchars(t('budget.form.phone'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                    <div class="field-hint">
+                        <i class="ph-light ph-info hint-icon" aria-hidden="true"></i>
+                        <span><?php echo htmlspecialchars(t('budget.form.phoneHint'), ENT_QUOTES, 'UTF-8'); ?></span>
+                    </div>
+                </div>
                 <div class="twoColumnsInForm">
                     <fieldset>
                         <legend><?php echo htmlspecialchars(t('budget.form.howYouFoundUs'), ENT_QUOTES, 'UTF-8'); ?></legend>
@@ -133,11 +141,16 @@ $currentPage = 'orcamento';
                             <label for="estouApressado"><?php echo htmlspecialchars(t('budget.form.whenToBeginTheProjectOptions.estouApressado'), ENT_QUOTES, 'UTF-8'); ?></label>
                         </div>
                     </fieldset>
-                    <label for="objective" class="inputWithSmallText">
-                        <span><?php echo htmlspecialchars(t('budget.form.objective'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <textarea name="objective" id="objective" rows="5" placeholder="<?php echo htmlspecialchars(t('budget.form.objectivePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true"></textarea>
-                        <small><?php echo htmlspecialchars(t('budget.form.objectiveHint'), ENT_QUOTES, 'UTF-8'); ?></small>
-                    </label>
+                    <div class="form-field">
+                        <label for="objective">
+                            <span><?php echo htmlspecialchars(t('budget.form.objective'), ENT_QUOTES, 'UTF-8'); ?></span>
+                            <textarea name="objective" id="objective" rows="5" placeholder="<?php echo htmlspecialchars(t('budget.form.objectivePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true"></textarea>
+                        </label>
+                        <div class="field-hint">
+                            <i class="ph-light ph-info hint-icon" aria-hidden="true"></i>
+                            <span><?php echo htmlspecialchars(t('budget.form.objectiveHint'), ENT_QUOTES, 'UTF-8'); ?></span>
+                        </div>
+                    </div>
                 </div>
                 <label for="privacy" id="privacyLabel">
                     <input type="checkbox" name="privacy" id="privacy" required aria-required="true">

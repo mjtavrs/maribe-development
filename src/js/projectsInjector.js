@@ -1,5 +1,18 @@
 import projects from "./projectsData.js";
 
+function normalizeAssetPath(path) {
+    if (!path) return path;
+    return path.startsWith("/") ? path : `/${path}`;
+}
+
+function slugify(text) {
+    return String(text)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // remove acentos
+        .replace(/[^a-z0-9]+/g, "-")     // não alfanumérico -> hífen
+        .replace(/^-+|-+$/g, "");        // trim hífens
+}
 /**
  * Configurações de lazy loading
  */
@@ -18,10 +31,11 @@ function createProjectElement(project) {
     projectBox.classList.add("fade-in-ready"); // Classe inicial - elemento invisível
 
     let projectReferrer = document.createElement("a");
-    projectReferrer.href = `projeto.php?id=${project.id}`;
+    const slug = slugify(project.titulo || project.id);
+    projectReferrer.href = `projeto.php?name=${encodeURIComponent(slug)}`;
 
     let projectCover = document.createElement("img");
-    projectCover.src = project.cover;
+    projectCover.src = normalizeAssetPath(project.cover);
     projectCover.alt = `Saiba mais sobre o ${project.titulo}`;
     // Preload da imagem para melhor performance
     projectCover.loading = "lazy";
@@ -70,7 +84,7 @@ function preloadProjectImages(startIndex, count) {
     const endIndex = Math.min(startIndex + count, projects.length);
     for (let i = startIndex; i < endIndex; i++) {
         const img = new Image();
-        img.src = projects[i].cover;
+        img.src = normalizeAssetPath(projects[i].cover);
     }
 }
 

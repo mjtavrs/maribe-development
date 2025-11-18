@@ -20,27 +20,27 @@ $currentPage = 'projeto';
 
     <!-- Title will be dynamically inputed by the selectedProject.js script -->
     <title></title>
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/shared/variables.css" />
-    <link rel="stylesheet" href="styles/shared/base.css" />
-    <link rel="stylesheet" href="styles/shared/animations.css" />
-    <link rel="stylesheet" href="styles/shared/components.css" />
-    <link rel="stylesheet" href="styles/shared/lightbox.css" />
-    <link rel="stylesheet" href="styles/pages/project/project.css" />
+    <link rel="stylesheet" href="/styles/shared/variables.css" />
+    <link rel="stylesheet" href="/styles/shared/base.css" />
+    <link rel="stylesheet" href="/styles/shared/animations.css" />
+    <link rel="stylesheet" href="/styles/shared/components.css" />
+    <link rel="stylesheet" href="/styles/shared/lightbox.css" />
+    <link rel="stylesheet" href="/styles/pages/project/project.css" />
 
     <!-- Scripts -->
-    <script type="module" src="./src/js/selectedProject.js" defer></script>
-    <script src="./src/js/lightbox-plus-jquery.js" defer></script>
-    <script src="./src/js/cookiePopup.js"></script>
+    <script type="module" src="/src/js/selectedProject.js" defer></script>
+    <script src="/src/js/lightbox-plus-jquery.js" defer></script>
+    <script src="/src/js/cookiePopup.js"></script>
 </head>
 
 <body>
     <?php include 'includes/cookiePopup.php'; ?>
     <div id="smoothOpening">
         <header>
-            <a href="projetos.php" title="Retornar aos projetos" aria-label="Retornar aos projetos">
+            <a href="/projetos.php" title="Retornar aos projetos" aria-label="Retornar aos projetos">
                 <i class="ph-bold ph-x"></i>
             </a>
             <h1 id="projectTitle">

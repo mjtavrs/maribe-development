@@ -24,7 +24,8 @@ $currentPage = 'contato';
     <!-- SEO Meta Tags -->
     <meta name="author" content="Marcos Tavares" />
     <meta name="description" content="Gostaria de conversar? Nos envie uma mensagem nessa página." />
-    <meta name="keywords" content="arquitetura, residencial, comercial, urbanismo, recife, pernambuco, maribe, escritório, consultoria, arquitetura residencial, arquitetura infantil, neuroarquitetura" />
+    <meta name="keywords"
+        content="arquitetura, residencial, comercial, urbanismo, recife, pernambuco, maribe, escritório, consultoria, arquitetura residencial, arquitetura infantil, neuroarquitetura" />
 
     <title>contato • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
@@ -38,6 +39,7 @@ $currentPage = 'contato';
     <!-- Scripts -->
     <script type="module" src="/src/js/formValidation.js"></script>
     <script src="/src/js/cookiePopup.js"></script>
+    <script src="/src/js/floatingLabel.js"></script>
     <script src="/src/js/toast.js"></script>
     <script src="/src/js/languageSelector.js"></script>
 </head>
@@ -61,31 +63,57 @@ $currentPage = 'contato';
                 <?php
                 $csrfToken = generateCSRFToken();
                 ?>
-                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8'); ?>">
-                <input type="hidden" name="lang" value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
-                <label for="name">
-                    <span><?php echo htmlspecialchars(t('contact.form.name'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('contact.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="email">
-                    <span><?php echo htmlspecialchars(t('contact.form.email'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('contact.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
-                </label>
-                <label for="phone">
-                    <div class="inputWithSmallText">
-                        <span><?php echo htmlspecialchars(t('contact.form.phone'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <small><?php echo htmlspecialchars(t('contact.form.phoneHint'), ENT_QUOTES, 'UTF-8'); ?></small>
+                <input type="hidden" name="csrf_token"
+                    value="<?php echo htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8'); ?>">
+                <input type="hidden" name="lang"
+                    value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="name" id="name"
+                            placeholder="<?php echo htmlspecialchars(t('contact.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                            autocomplete="on" required aria-required="true">
+                        <label for="name"
+                            class="floating-label"><?php echo htmlspecialchars(t('contact.form.name'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
-                    <input type="tel" name="phone" id="phone" placeholder="<?php echo htmlspecialchars(t('contact.form.phonePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
-                </label>
-                <label for="subject">
-                    <span><?php echo htmlspecialchars(t('contact.form.subject'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <input type="text" name="subject" id="subject" placeholder="<?php echo htmlspecialchars(t('contact.form.subjectPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" maxlength="20" required aria-required="true">
-                </label>
-                <label for="message">
-                    <span><?php echo htmlspecialchars(t('contact.form.message'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <textarea name="message" id="message" rows="5" placeholder="<?php echo htmlspecialchars(t('contact.form.messagePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true"></textarea>
-                </label>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="email" name="email" id="email"
+                            placeholder="<?php echo htmlspecialchars(t('contact.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                            autocomplete="on" required aria-required="true">
+                        <label for="email"
+                            class="floating-label"><?php echo htmlspecialchars(t('contact.form.email'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="tel" name="phone" id="phone"
+                            placeholder="<?php echo htmlspecialchars(t('contact.form.phonePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                            autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}"
+                            inputmode="numeric" required aria-required="true">
+                        <label for="phone"
+                            class="floating-label"><?php echo htmlspecialchars(t('contact.form.phone'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                    <div class="field-hint">
+                        <i class="ph-light ph-info hint-icon" aria-hidden="true"></i>
+                        <span><?php echo htmlspecialchars(t('contact.form.phoneHint'), ENT_QUOTES, 'UTF-8'); ?></span>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="subject" id="subject"
+                            placeholder="<?php echo htmlspecialchars(t('contact.form.subjectPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                            autocomplete="on" maxlength="20" required aria-required="true">
+                        <label for="subject"
+                            class="floating-label"><?php echo htmlspecialchars(t('contact.form.subject'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="message">
+                        <span><?php echo htmlspecialchars(t('contact.form.message'), ENT_QUOTES, 'UTF-8'); ?></span>
+                        <textarea name="message" id="message" rows="5" placeholder="<?php echo htmlspecialchars(t('contact.form.messagePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true"></textarea>
+                    </label>
+                </div>
                 <label for="privacy" id="privacyLabel">
                     <input type="checkbox" name="privacy" id="privacy" required aria-required="true">
                     <span><?php
