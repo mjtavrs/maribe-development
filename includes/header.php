@@ -125,15 +125,5 @@ $menuItems = [
                 <?php endforeach; ?>
             </ul>
         </nav>
-
-        <!-- Botões de teste para Toast (apenas em desenvolvimento) -->
-        <div id="toastTestButtons" style="display: flex; gap: 10px; margin-top: 10px; justify-content: center;">
-            <button id="testToastSuccess" style="background: #4caf50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.875rem;">
-                <?php echo function_exists('t') ? htmlspecialchars(t('toast.test.success'), ENT_QUOTES, 'UTF-8') : 'Testar Toast Sucesso'; ?>
-            </button>
-            <button id="testToastError" style="background: #f44336; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.875rem;">
-                <?php echo function_exists('t') ? htmlspecialchars(t('toast.test.error'), ENT_QUOTES, 'UTF-8') : 'Testar Toast Erro'; ?>
-            </button>
-        </div>
     </div>
 </header>

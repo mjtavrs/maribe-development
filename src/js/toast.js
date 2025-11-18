@@ -323,22 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toastManager.show(type, message, duration);
     };
     
-    // Botões de teste (apenas para desenvolvimento)
-    const testSuccessBtn = document.getElementById('testToastSuccess');
-    const testErrorBtn = document.getElementById('testToastError');
-    
-    if (testSuccessBtn) {
-        testSuccessBtn.addEventListener('click', () => {
-            showToast('success', 'Mensagem enviada com sucesso! Entraremos em contato em breve.', 6000, 'Sucesso!');
-        });
-    }
-    
-    if (testErrorBtn) {
-        testErrorBtn.addEventListener('click', () => {
-            showToast('error', 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.', 6000, 'Erro!');
-        });
-    }
-    
     // Fecha todos os toasts com ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && toastManager && toastManager.activeToasts.length > 0) {

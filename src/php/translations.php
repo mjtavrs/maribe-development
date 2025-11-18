@@ -43,6 +43,10 @@ $allTranslations = [
                 'messagePlaceholder' => 'Digite sua mensagem aqui',
                 'privacy' => 'Eu concordo com o envio dos dados segundo a <a href=":privacyUrl">política de privacidade</a> da Maribe Arquitetura.',
                 'submit' => 'Enviar mensagem'
+            ],
+            'contactInfo' => [
+                'preferOtherContact' => 'prefere nos contatar por outro lugar?',
+                'businessHours' => 'horários de funcionamento'
             ]
         ],
 
@@ -129,9 +133,9 @@ $allTranslations = [
                 'description' => '<span>Nath</span> é arquiteta e urbanista formada pela Universidade Católica de Pernambuco (UNICAP), com experiência em <span>arquitetura de interiores</span>, <span>projetos comerciais</span> e <span>design gráfico</span>. Apaixonada por marcenaria, faz tudo para deixar os projetos bem detalhados e executivos completos. Adora yoga, atividades ao ar livre e apreciar bons cafés.'
             ],
             'together' => 'Juntas, gerimos a Maribe Arquitetura, sendo responsáveis por todo criativo dos projetos.',
-            'ourSymbol' => 'nosso símbolo',
-            'symbolDescription1' => 'O conceito do símbolo <span>une a arquitetura e história de Recife</span> à referências a artistas que nós admiramos. Composição em mosaico, inspirada por obras de <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span>, remete à união do antigo com o novo, referência à nossa linha de trabalho.',
-            'symbolDescription2' => 'O símbolo da Maribe utiliza recortes do desenho do <span>Marco Zero</span> para formar a paisagem da <span>Rua do Bom Jesus</span>, eleita a 3ª rua mais bonita do mundo. E faz referência ao urbanismo da cidade com as ruas partindo do Marco, representado pelo círculo vermelho.',
+            'ourSymbol' => 'nossa marca',
+            'symbolDescription1' => 'O conceito da marca <span>une a arquitetura e história de Recife</span> à referências a artistas que nós admiramos. Composição em mosaico, inspirada por obras de <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span>, remete à união do antigo com o novo, referência à nossa linha de trabalho.',
+            'symbolDescription2' => 'A marca da Maribe utiliza recortes do desenho do <span>Marco Zero</span> para formar a paisagem da <span>Rua do Bom Jesus</span>, eleita a 3ª rua mais bonita do mundo. E faz referência ao urbanismo da cidade com as ruas partindo do Marco, representado pelo círculo vermelho.',
             'symbolDescription3' => 'Formas divididas por dois tons de azul fazem alusão ao encontro das águas. O <span>Rio Capibaribe</span> que encontra com o <span>Rio Beberibe</span> e desemboca no Oceano Atlântico, unindo a água salgada com a doce, o mar com o rio, Marletti com Ribeiro, Maribe!'
         ],
 
@@ -143,6 +147,9 @@ $allTranslations = [
 
         // Footer
         'footer' => [
+            'socialMedia' => 'redes sociais',
+            'contactEmail' => 'contato@maribearquitetura.com.br',
+            'businessHours' => 'Segunda a Sexta das 8h às 19h<br>Sábado das 8h às 12h',
             'rights' => 'todos os direitos reservados',
             'madeBy' => 'feito com 🧡 por marcos tavares',
             'privacyPolicy' => 'política de privacidade'
@@ -240,6 +247,10 @@ $allTranslations = [
                 'messagePlaceholder' => 'Type your message here',
                 'privacy' => 'I agree to the submission of data according to the <a href=":privacyUrl">privacy policy</a> of Maribe Arquitetura.',
                 'submit' => 'Send message'
+            ],
+            'contactInfo' => [
+                'preferOtherContact' => 'prefer to contact us another way?',
+                'businessHours' => 'business hours'
             ]
         ],
 
@@ -326,9 +337,9 @@ $allTranslations = [
                 'description' => '<span>Nath</span> is an architect and urban planner graduated from the Catholic University of Pernambuco (UNICAP), with experience in <span>interior architecture</span>, <span>commercial projects</span>, and <span>graphic design</span>. Passionate about woodworking, she does everything to make projects well-detailed and complete executive plans. She loves yoga, outdoor activities, and enjoying good coffee.'
             ],
             'together' => 'Together, we manage Maribe Arquitetura, being responsible for all the creative aspects of the projects.',
-            'ourSymbol' => 'our symbol',
-            'symbolDescription1' => 'The symbol concept <span>unites the architecture and history of Recife</span> with references to artists we admire. Mosaic composition, inspired by works by <span>Hélio Oiticica</span> and <span>Tarsila do Amaral</span>, refers to the union of old and new, a reference to our line of work.',
-            'symbolDescription2' => 'The Maribe symbol uses cutouts from the <span>Marco Zero</span> drawing to form the landscape of <span>Rua do Bom Jesus</span>, elected the 3rd most beautiful street in the world. And it references the city\'s urbanism with streets starting from the Marco, represented by the red circle.',
+            'ourSymbol' => 'our brand',
+            'symbolDescription1' => 'The brand concept <span>unites the architecture and history of Recife</span> with references to artists we admire. Mosaic composition, inspired by works by <span>Hélio Oiticica</span> and <span>Tarsila do Amaral</span>, refers to the union of old and new, a reference to our line of work.',
+            'symbolDescription2' => 'The Maribe brand uses cutouts from the <span>Marco Zero</span> drawing to form the landscape of <span>Rua do Bom Jesus</span>, elected the 3rd most beautiful street in the world. And it references the city\'s urbanism with streets starting from the Marco, represented by the red circle.',
             'symbolDescription3' => 'Forms divided by two shades of blue allude to the meeting of waters. The <span>Capibaribe River</span> meets the <span>Beberibe River</span> and flows into the Atlantic Ocean, uniting salt water with fresh water, the sea with the river, Marletti with Ribeiro, Maribe!'
         ],
 
@@ -340,6 +351,9 @@ $allTranslations = [
 
         // Footer
         'footer' => [
+            'socialMedia' => 'social media',
+            'contactEmail' => 'contact@maribearquitetura.com.br',
+            'businessHours' => 'Monday to Friday 8am to 7pm<br>Saturday 8am to 12pm',
             'rights' => 'all rights reserved',
             'madeBy' => 'made with 🧡 by marcos tavares',
             'privacyPolicy' => 'privacy policy'
@@ -437,6 +451,10 @@ $allTranslations = [
                 'messagePlaceholder' => 'Escribe tu mensaje aquí',
                 'privacy' => 'Acepto el envío de datos de acuerdo con la <a href=":privacyUrl">política de privacidad</a> de Maribe Arquitetura.',
                 'submit' => 'Enviar mensaje'
+            ],
+            'contactInfo' => [
+                'preferOtherContact' => '¿prefieres contactarnos de otra manera?',
+                'businessHours' => 'horarios de atención'
             ]
         ],
 
@@ -523,9 +541,9 @@ $allTranslations = [
                 'description' => '<span>Nath</span> es arquitecta y urbanista graduada por la Universidad Católica de Pernambuco (UNICAP), con experiencia en <span>arquitectura de interiores</span>, <span>proyectos comerciales</span> y <span>diseño gráfico</span>. Apasionada por la carpintería, hace todo para dejar los proyectos bien detallados y con planos ejecutivos completos. Le encanta el yoga, las actividades al aire libre y disfrutar de un buen café.'
             ],
             'together' => 'Juntas gestionamos Maribe Arquitetura, siendo responsables de todo el proceso creativo de los proyectos.',
-            'ourSymbol' => 'nuestro símbolo',
-            'symbolDescription1' => 'El concepto del símbolo <span>une la arquitectura e historia de Recife</span> con referencias a artistas que admiramos. La composición en mosaico, inspirada en obras de <span>Hélio Oiticica</span> y <span>Tarsila do Amaral</span>, remite a la unión de lo antiguo con lo nuevo, referencia a nuestra línea de trabajo.',
-            'symbolDescription2' => 'El símbolo de Maribe utiliza recortes del dibujo del <span>Marco Zero</span> para formar el paisaje de la <span>Rua do Bom Jesus</span>, elegida como la 3ª calle más bonita del mundo. Y hace referencia al urbanismo de la ciudad con las calles que parten del Marco, representado por el círculo rojo.',
+            'ourSymbol' => 'nuestra marca',
+            'symbolDescription1' => 'El concepto de la marca <span>une la arquitectura e historia de Recife</span> con referencias a artistas que admiramos. La composición en mosaico, inspirada en obras de <span>Hélio Oiticica</span> y <span>Tarsila do Amaral</span>, remite a la unión de lo antiguo con lo nuevo, referencia a nuestra línea de trabajo.',
+            'symbolDescription2' => 'La marca de Maribe utiliza recortes del dibujo del <span>Marco Zero</span> para formar el paisaje de la <span>Rua do Bom Jesus</span>, elegida como la 3ª calle más bonita del mundo. Y hace referencia al urbanismo de la ciudad con las calles que parten del Marco, representado por el círculo rojo.',
             'symbolDescription3' => 'Formas divididas en dos tonos de azul aluden al encuentro de las aguas. El <span>río Capibaribe</span> se encuentra con el <span>río Beberibe</span> y desemboca en el Océano Atlántico, uniendo agua salada con dulce, mar con río, Marletti con Ribeiro, ¡Maribe!'
         ],
 
@@ -537,6 +555,9 @@ $allTranslations = [
 
         // Footer
         'footer' => [
+            'socialMedia' => 'redes sociales',
+            'contactEmail' => 'contacto@maribearquitetura.com.br',
+            'businessHours' => 'Lunes a Viernes de 8h a 19h<br>Sábado de 8h a 12h',
             'rights' => 'todos los derechos reservados',
             'madeBy' => 'hecho con 🧡 por marcos tavares',
             'privacyPolicy' => 'política de privacidad'

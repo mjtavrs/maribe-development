@@ -186,32 +186,94 @@ body footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   border-top: 1px solid var(--color-cinza-elegante);
-  padding: 30px;
+  padding: 50px 30px;
+}
+
+body footer #footerTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+body footer #footerLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+body footer #footerLogo a {
+  display: inline-block;
+}
+
+body footer #footerLogo img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+body footer #socialLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+body footer #socialLinks h3 {
+  color: var(--color-cinza-elegante);
+  font-family: "All Round Gothic", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: lowercase;
+  margin: 0;
+  text-align: left;
 }
 
 body footer #socialLinks ul {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: 10px;
+}
+
+body footer #socialLinks ul li a {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid var(--color-cinza-elegante);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+body footer #socialLinks ul li a:hover {
+  background-color: rgba(197, 110, 81, 0.1);
+}
+
+body footer #socialLinks ul li a:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
 }
 
 body footer #socialLinks ul li a i {
   font-size: 28px;
   color: var(--color-cinza-elegante);
-  padding: 5px;
-  border: 1px solid var(--color-cinza-elegante);
-  border-radius: 6px;
+  display: block;
 }
 
 body footer #legalInformation {
   font-size: 0.975rem;
   display: flex;
-  gap: 5px;
+  gap: 12px;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
+}
+
+body footer #legalInformation p {
+  margin: 0;
 }
 
 body footer #legalInformation p span {
@@ -220,9 +282,9 @@ body footer #legalInformation p span {
 
 body footer #legalInformation a {
   color: var(--color-cinza-elegante);
-  padding-top: 10px;
   font-weight: bold;
   transition: 500ms color;
+  text-decoration: none;
 }
 
 body footer #legalInformation a:hover {
@@ -236,22 +298,37 @@ body footer #legalInformation a:hover {
   }
 
   body footer {
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px 40px;
+  }
+
+  body footer #footerTop {
     flex-direction: row;
-    gap: 0;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 30px 40px;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  body footer #footerLogo {
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  body footer #footerLogo img {
+    max-width: 250px;
+  }
+
+  body footer #socialLinks {
+    align-items: flex-end;
   }
 
   body footer #legalInformation {
     font-size: 1rem;
-    gap: 3px;
-    align-items: end;
+    gap: 10px;
+    align-items: center;
     text-align: center;
-  }
-
-  body footer #legalInformation a {
-    padding-top: 5px;
   }
 }
 
@@ -262,22 +339,25 @@ body footer #legalInformation a:hover {
   }
 
   body footer {
-    padding: 30px 50px;
+    padding: 50px 50px;
   }
 }
 
 @media screen and (min-width: 1366px) {
   body footer {
-    padding: 30px 80px;
+    padding: 50px 80px;
   }
 
   body footer #socialLinks ul {
-    gap: 15px;
+    gap: 10px;
+  }
+
+  body footer #socialLinks ul li a {
+    border-radius: 5px;
   }
 
   body footer #socialLinks ul li a i {
     font-size: 25px;
-    border-radius: 5px;
   }
 }
 
@@ -302,7 +382,7 @@ body main #pageInfo {
 body main #pageInfo h1 {
   color: var(--color-vermelho-recife);
   font-family: "All Round Gothic", sans-serif;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: bold;
   text-align: center;
 }
@@ -323,7 +403,7 @@ body main #pageInfo p a {
 
 @media screen and (min-width: 768px) {
   body main #pageInfo h1 {
-    font-size: 4rem;
+    font-size: 5rem;
   }
 
   body main #pageInfo p {
@@ -340,7 +420,7 @@ body main #pageInfo p a {
   }
 
   body main #pageInfo h1 {
-    font-size: 4.5rem;
+    font-size: 5.5rem;
   }
 
   body main #pageInfo p {
@@ -351,7 +431,7 @@ body main #pageInfo p a {
 
 @media screen and (min-width: 1366px) {
   body main #pageInfo h1 {
-    font-size: 3.375rem;
+    font-size: 4.5rem;
     padding: 0 80px;
   }
 
