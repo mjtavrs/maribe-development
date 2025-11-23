@@ -142,7 +142,8 @@ $allTranslations = [
         // Página Projetos
         'projects' => [
             'title' => 'nossos projetos',
-            'description' => 'Aqui você encontra alguns dos nossos projetos, esperamos que você goste e que possamos incluir um espaço aqui para o seu projeto no futuro! 🧡'
+            'description' => 'Aqui você encontra alguns dos nossos projetos, esperamos que você goste e que possamos incluir um espaço aqui para o seu projeto no futuro! 🧡',
+            'searchPlaceholder' => 'Procurando um projeto ou cidade específicos?'
         ],
 
         // Footer
@@ -153,6 +154,67 @@ $allTranslations = [
             'rights' => 'todos os direitos reservados',
             'madeBy' => 'feito com 🧡 por marcos tavares',
             'privacyPolicy' => 'política de privacidade'
+        ],
+
+        // Página Política de Privacidade
+        'privacy' => [
+            'title' => 'política de privacidade',
+            'description' => 'Nós valorizamos a confiança que você deposita em nós e estamos comprometidos em proteger sua privacidade e seus dados pessoais. Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações enquanto você navega pelo nosso site.',
+            'lastUpdate' => 'Última atualização',
+            'sections' => [
+                'collection' => [
+                    'title' => 'Coleta de Informações',
+                    'intro' => 'A Maribe Arquitetura utiliza cookies e tecnologias similares para melhorar sua experiência de navegação. Você pode escolher quais tipos de cookies deseja aceitar através do nosso gerenciador de cookies.',
+                    'cookieTypes' => 'Tipos de Cookies Utilizados:',
+                    'essential' => [
+                        'title' => 'Cookies Essenciais (Obrigatórios)',
+                        'description' => 'Necessários para o funcionamento básico do site. Incluem tokens de segurança (CSRF) para proteção de formulários e sessões temporárias. Estes cookies não podem ser desativados, pois são essenciais para a segurança e funcionamento do site.'
+                    ],
+                    'functional' => [
+                        'title' => 'Cookies de Funcionalidade',
+                        'description' => 'Permitem que o site lembre suas preferências, como o idioma escolhido (português, inglês ou espanhol), por um período de 1 semana. Estes cookies melhoram sua experiência ao evitar que você precise escolher o idioma novamente em cada visita.'
+                    ],
+                    'important' => 'Importante:',
+                    'importantText' => 'Não coletamos seu endereço de IP, informações sobre seu navegador ou dados pessoais identificáveis através de cookies. Os dados coletados são utilizados exclusivamente para melhorar a funcionalidade do site e sua experiência de navegação.',
+                    'management' => 'Você pode gerenciar suas preferências de cookies a qualquer momento através do nosso gerenciador de cookies, disponível na parte inferior da página. Também é possível desativar os cookies através das configurações do seu navegador, porém, isso pode afetar o desempenho e algumas funcionalidades do nosso site.'
+                ],
+                'usage' => [
+                    'title' => 'Uso das Informações',
+                    'intro' => 'As informações coletadas são utilizadas para:',
+                    'items' => [
+                        'Garantir a segurança e o bom funcionamento da plataforma (tokens CSRF, sessões);',
+                        'Lembrar suas preferências de idioma para melhorar sua experiência de navegação;',
+                        'Melhorar a usabilidade e funcionalidade do site;',
+                        'Cumprir obrigações legais e proteger a Maribe Arquitetura em caso de atividade maliciosa.'
+                    ],
+                    'sharing' => 'Nós não compartilhamos suas informações pessoais com terceiros, exceto em casos obrigatórios por lei ou para proteção de nossos direitos.'
+                ],
+                'security' => [
+                    'title' => 'Segurança dos Dados',
+                    'paragraph1' => 'A proteção dos seus dados é uma prioridade para a Maribe Arquitetura. Implementamos medidas de segurança apropriadas para garantir que suas informações estejam seguras e protegidas contra acessos não autorizados, alteração, divulgação ou destruição.',
+                    'paragraph2' => 'O acesso aos dados pessoais fornecidos é restrito a funcionários autorizados e todos eles estão comprometidos em manter a confidencialidade dessas informações.'
+                ],
+                'externalLinks' => [
+                    'title' => 'Links para Sites Externos',
+                    'description' => 'Nosso site pode conter links para sites externos que não são operados por nós. Esses links são disponibilizados para sua conveniência, mas não temos controle sobre o conteúdo ou as práticas de privacidade desses sites. Recomendamos que você leia as políticas de privacidade de qualquer site externo que visitar, já que não nos responsabilizamos por eventuais danos ou perdas decorrentes do uso desses links.'
+                ],
+                'responsibility' => [
+                    'title' => 'Responsabilidade e Crimes Digitais',
+                    'description' => 'A Maribe Arquitetura reserva-se o direito de monitorar e registrar atividades suspeitas que possam indicar o cometimento de crimes digitais, como fraudes, invasões e outros atos ilícitos. Em caso de atividades ilegais, poderemos compartilhar informações com as autoridades competentes para a devida investigação.'
+                ],
+                'intellectual' => [
+                    'title' => 'Propriedade Intelectual',
+                    'description' => 'Todo o conteúdo do nosso site, incluindo textos, imagens, gráficos e outros materiais, é protegido por leis de propriedade intelectual. O uso não autorizado de qualquer parte deste conteúdo pode resultar em ação legal. A reprodução de qualquer material sem autorização prévia é expressamente proibida.'
+                ],
+                'changes' => [
+                    'title' => 'Alterações nesta Política',
+                    'description' => 'A Maribe Arquitetura pode atualizar esta Política de Privacidade periodicamente, de modo a refletir melhorias no nosso site ou mudanças nas regulamentações aplicáveis. Sempre que houver modificações significativas, você será informado através do nosso site ou de outros canais de comunicação.'
+                ]
+            ],
+            'contact' => [
+                'title' => 'Ficou alguma dúvida?',
+                'description' => 'Você sempre pode nos enviar um e-mail a partir da nossa <a href=":contactUrl">página de contato</a> e ficaremos felizes em responder o mais breve possível.'
+            ]
         ],
 
         // Página Proposta
@@ -346,7 +408,8 @@ $allTranslations = [
         // Página Projetos
         'projects' => [
             'title' => 'our projects',
-            'description' => 'Here you can find some of our projects. We hope you like them and that we can include a space here for your project in the future! 🧡'
+            'description' => 'Here you can find some of our projects. We hope you like them and that we can include a space here for your project in the future! 🧡',
+            'searchPlaceholder' => 'Looking for a specific project or city?'
         ],
 
         // Footer
@@ -357,6 +420,67 @@ $allTranslations = [
             'rights' => 'all rights reserved',
             'madeBy' => 'made with 🧡 by marcos tavares',
             'privacyPolicy' => 'privacy policy'
+        ],
+
+        // Privacy Policy Page
+        'privacy' => [
+            'title' => 'privacy policy',
+            'description' => 'We value the trust you place in us and are committed to protecting your privacy and personal data. This Privacy Policy describes how we collect, use, and protect your information while you browse our website.',
+            'lastUpdate' => 'Last updated',
+            'sections' => [
+                'collection' => [
+                    'title' => 'Information Collection',
+                    'intro' => 'Maribe Arquitetura uses cookies and similar technologies to improve your browsing experience. You can choose which types of cookies you wish to accept through our cookie manager.',
+                    'cookieTypes' => 'Types of Cookies Used:',
+                    'essential' => [
+                        'title' => 'Essential Cookies (Required)',
+                        'description' => 'Necessary for the basic functioning of the website. Include security tokens (CSRF) for form protection and temporary sessions. These cookies cannot be disabled, as they are essential for the security and functioning of the website.'
+                    ],
+                    'functional' => [
+                        'title' => 'Functionality Cookies',
+                        'description' => 'Allow the website to remember your preferences, such as the chosen language (Portuguese, English, or Spanish), for a period of 1 week. These cookies improve your experience by avoiding the need to choose the language again on each visit.'
+                    ],
+                    'important' => 'Important:',
+                    'importantText' => 'We do not collect your IP address, information about your browser, or personally identifiable data through cookies. The data collected is used exclusively to improve the website functionality and your browsing experience.',
+                    'management' => 'You can manage your cookie preferences at any time through our cookie manager, available at the bottom of the page. It is also possible to disable cookies through your browser settings, however, this may affect the performance and some functionalities of our website.'
+                ],
+                'usage' => [
+                    'title' => 'Use of Information',
+                    'intro' => 'The information collected is used to:',
+                    'items' => [
+                        'Ensure the security and proper functioning of the platform (CSRF tokens, sessions);',
+                        'Remember your language preferences to improve your browsing experience;',
+                        'Improve the usability and functionality of the website;',
+                        'Comply with legal obligations and protect Maribe Arquitetura in case of malicious activity.'
+                    ],
+                    'sharing' => 'We do not share your personal information with third parties, except in cases required by law or to protect our rights.'
+                ],
+                'security' => [
+                    'title' => 'Data Security',
+                    'paragraph1' => 'The protection of your data is a priority for Maribe Arquitetura. We implement appropriate security measures to ensure that your information is secure and protected against unauthorized access, alteration, disclosure, or destruction.',
+                    'paragraph2' => 'Access to the personal data provided is restricted to authorized employees and all of them are committed to maintaining the confidentiality of this information.'
+                ],
+                'externalLinks' => [
+                    'title' => 'Links to External Sites',
+                    'description' => 'Our website may contain links to external sites that are not operated by us. These links are provided for your convenience, but we have no control over the content or privacy practices of these sites. We recommend that you read the privacy policies of any external site you visit, as we are not responsible for any damages or losses resulting from the use of these links.'
+                ],
+                'responsibility' => [
+                    'title' => 'Responsibility and Digital Crimes',
+                    'description' => 'Maribe Arquitetura reserves the right to monitor and record suspicious activities that may indicate the commission of digital crimes, such as fraud, intrusions, and other illegal acts. In case of illegal activities, we may share information with the competent authorities for proper investigation.'
+                ],
+                'intellectual' => [
+                    'title' => 'Intellectual Property',
+                    'description' => 'All content on our website, including texts, images, graphics, and other materials, is protected by intellectual property laws. Unauthorized use of any part of this content may result in legal action. Reproduction of any material without prior authorization is expressly prohibited.'
+                ],
+                'changes' => [
+                    'title' => 'Changes to this Policy',
+                    'description' => 'Maribe Arquitetura may update this Privacy Policy periodically to reflect improvements on our website or changes in applicable regulations. Whenever there are significant modifications, you will be informed through our website or other communication channels.'
+                ]
+            ],
+            'contact' => [
+                'title' => 'Have any questions?',
+                'description' => 'You can always send us an email from our <a href=":contactUrl">contact page</a> and we will be happy to respond as soon as possible.'
+            ]
         ],
 
         // Página Proposta
@@ -550,7 +674,8 @@ $allTranslations = [
         // Página Proyectos
         'projects' => [
             'title' => 'nuestros proyectos',
-            'description' => 'Aquí encontrarás algunos de nuestros proyectos. ¡Esperamos que te gusten y que pronto podamos incluir aquí tu espacio! 🧡'
+            'description' => 'Aquí encontrarás algunos de nuestros proyectos. ¡Esperamos que te gusten y que pronto podamos incluir aquí tu espacio! 🧡',
+            'searchPlaceholder' => '¿Buscas un proyecto o ciudad específicos?'
         ],
 
         // Footer
@@ -561,6 +686,67 @@ $allTranslations = [
             'rights' => 'todos los derechos reservados',
             'madeBy' => 'hecho con 🧡 por marcos tavares',
             'privacyPolicy' => 'política de privacidad'
+        ],
+
+        // Página Política de Privacidad
+        'privacy' => [
+            'title' => 'política de privacidad',
+            'description' => 'Valoramos la confianza que depositas en nosotros y estamos comprometidos a proteger tu privacidad y datos personales. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos tu información mientras navegas por nuestro sitio web.',
+            'lastUpdate' => 'Última actualización',
+            'sections' => [
+                'collection' => [
+                    'title' => 'Recopilación de Información',
+                    'intro' => 'Maribe Arquitetura utiliza cookies y tecnologías similares para mejorar tu experiencia de navegación. Puedes elegir qué tipos de cookies deseas aceptar a través de nuestro gestor de cookies.',
+                    'cookieTypes' => 'Tipos de Cookies Utilizados:',
+                    'essential' => [
+                        'title' => 'Cookies Esenciales (Obligatorios)',
+                        'description' => 'Necesarios para el funcionamiento básico del sitio web. Incluyen tokens de seguridad (CSRF) para protección de formularios y sesiones temporales. Estas cookies no pueden desactivarse, ya que son esenciales para la seguridad y funcionamiento del sitio web.'
+                    ],
+                    'functional' => [
+                        'title' => 'Cookies de Funcionalidad',
+                        'description' => 'Permiten que el sitio web recuerde tus preferencias, como el idioma elegido (portugués, inglés o español), por un período de 1 semana. Estas cookies mejoran tu experiencia al evitar que necesites elegir el idioma nuevamente en cada visita.'
+                    ],
+                    'important' => 'Importante:',
+                    'importantText' => 'No recopilamos tu dirección IP, información sobre tu navegador o datos personales identificables a través de cookies. Los datos recopilados se utilizan exclusivamente para mejorar la funcionalidad del sitio web y tu experiencia de navegación.',
+                    'management' => 'Puedes gestionar tus preferencias de cookies en cualquier momento a través de nuestro gestor de cookies, disponible en la parte inferior de la página. También es posible desactivar las cookies a través de la configuración de tu navegador, sin embargo, esto puede afectar el rendimiento y algunas funcionalidades de nuestro sitio web.'
+                ],
+                'usage' => [
+                    'title' => 'Uso de la Información',
+                    'intro' => 'La información recopilada se utiliza para:',
+                    'items' => [
+                        'Garantizar la seguridad y el buen funcionamiento de la plataforma (tokens CSRF, sesiones);',
+                        'Recordar tus preferencias de idioma para mejorar tu experiencia de navegación;',
+                        'Mejorar la usabilidad y funcionalidad del sitio web;',
+                        'Cumplir con obligaciones legales y proteger a Maribe Arquitetura en caso de actividad maliciosa.'
+                    ],
+                    'sharing' => 'No compartimos tu información personal con terceros, excepto en casos obligatorios por ley o para protección de nuestros derechos.'
+                ],
+                'security' => [
+                    'title' => 'Seguridad de los Datos',
+                    'paragraph1' => 'La protección de tus datos es una prioridad para Maribe Arquitetura. Implementamos medidas de seguridad apropiadas para garantizar que tu información esté segura y protegida contra accesos no autorizados, alteración, divulgación o destrucción.',
+                    'paragraph2' => 'El acceso a los datos personales proporcionados está restringido a empleados autorizados y todos ellos están comprometidos a mantener la confidencialidad de esta información.'
+                ],
+                'externalLinks' => [
+                    'title' => 'Enlaces a Sitios Externos',
+                    'description' => 'Nuestro sitio web puede contener enlaces a sitios externos que no son operados por nosotros. Estos enlaces se proporcionan para tu conveniencia, pero no tenemos control sobre el contenido o las prácticas de privacidad de estos sitios. Recomendamos que leas las políticas de privacidad de cualquier sitio externo que visites, ya que no nos responsabilizamos por daños o pérdidas derivados del uso de estos enlaces.'
+                ],
+                'responsibility' => [
+                    'title' => 'Responsabilidad y Delitos Digitales',
+                    'description' => 'Maribe Arquitetura se reserva el derecho de monitorear y registrar actividades sospechosas que puedan indicar la comisión de delitos digitales, como fraudes, intrusiones y otros actos ilícitos. En caso de actividades ilegales, podemos compartir información con las autoridades competentes para la debida investigación.'
+                ],
+                'intellectual' => [
+                    'title' => 'Propiedad Intelectual',
+                    'description' => 'Todo el contenido de nuestro sitio web, incluidos textos, imágenes, gráficos y otros materiales, está protegido por leyes de propiedad intelectual. El uso no autorizado de cualquier parte de este contenido puede resultar en acción legal. La reproducción de cualquier material sin autorización previa está expresamente prohibida.'
+                ],
+                'changes' => [
+                    'title' => 'Cambios en esta Política',
+                    'description' => 'Maribe Arquitetura puede actualizar esta Política de Privacidad periódicamente para reflejar mejoras en nuestro sitio web o cambios en las regulaciones aplicables. Siempre que haya modificaciones significativas, serás informado a través de nuestro sitio web u otros canales de comunicación.'
+                ]
+            ],
+            'contact' => [
+                'title' => '¿Tienes alguna duda?',
+                'description' => 'Siempre puedes enviarnos un correo electrónico desde nuestra <a href=":contactUrl">página de contacto</a> y estaremos encantados de responder lo antes posible.'
+            ]
         ],
 
         // Página Propuesta

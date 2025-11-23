@@ -432,3 +432,57 @@ function sendEmail($to, $subject, $message, $fromEmail)
 
     return mail($to, $subject, $message, $headers);
 }
+
+/**
+ * Formata data conforme o idioma
+ * 
+ * @param string|null $lang Idioma (pt, en, es). Se null, usa o idioma atual
+ * @param string|null $date Data no formato Y-m-d ou timestamp. Se null, usa hoje
+ * @return string Data formatada
+ */
+function formatDate($lang = null, $date = null)
+{
+    if ($lang === null) {
+        $lang = getCurrentLanguage();
+    }
+
+    if ($date === null) {
+        $timestamp = strtotime('today');
+    } else {
+        $timestamp = is_numeric($date) ? $date : strtotime($date);
+    }
+
+    // Nomes dos meses em cada idioma
+    $months = [
+        'pt' => [
+            1 => 'janeiro', 2 => 'fevereiro', 3 => 'março', 4 => 'abril',
+            5 => 'maio', 6 => 'junho', 7 => 'julho', 8 => 'agosto',
+            9 => 'setembro', 10 => 'outubro', 11 => 'novembro', 12 => 'dezembro'
+        ],
+        'en' => [
+            1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
+            5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
+            9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
+        ],
+        'es' => [
+            1 => 'enero', 2 => 'febrero', 3 => 'marzo', 4 => 'abril',
+            5 => 'mayo', 6 => 'junio', 7 => 'julio', 8 => 'agosto',
+            9 => 'septiembre', 10 => 'octubre', 11 => 'noviembre', 12 => 'diciembre'
+        ]
+    ];
+
+    $day = date('j', $timestamp);
+    $month = (int)date('n', $timestamp);
+    $year = date('Y', $timestamp);
+
+    if ($lang === 'pt') {
+        return "$day de {$months['pt'][$month]} de $year";
+    } elseif ($lang === 'en') {
+        return "{$months['en'][$month]} $day, $year";
+    } elseif ($lang === 'es') {
+        return "$day de {$months['es'][$month]} de $year";
+    }
+
+    // Fallback para português
+    return "$day de {$months['pt'][$month]} de $year";
+}

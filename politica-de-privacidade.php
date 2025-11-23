@@ -1,12 +1,23 @@
 <?php
+// Inicia sessão ANTES de qualquer output
+require_once __DIR__ . '/src/php/functions.php';
+
+// Detecta e define o idioma
+$currentLang = getCurrentLanguage();
+$langAttribute = $currentLang === 'pt' ? 'pt-br' : ($currentLang === 'en' ? 'en-US' : 'es-ES');
+
 // Define a página atual para o header (politica não aparece no menu, mas definimos para consistência)
 $currentPage = 'politica';
+
+// Formata data de atualização conforme idioma
+$updateDate = formatDate($currentLang);
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?php echo htmlspecialchars($langAttribute, ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -16,18 +27,19 @@ $currentPage = 'politica';
     <!-- SEO Meta Tags -->
     <meta name="author" content="Marcos Tavares" />
 
-    <title>política de privacidade • maribe arquitetura</title>
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title><?php echo htmlspecialchars(t('privacy.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/shared/variables.css" />
-    <link rel="stylesheet" href="styles/shared/base.css" />
-    <link rel="stylesheet" href="styles/shared/animations.css" />
-    <link rel="stylesheet" href="styles/shared/components.css" />
-    <link rel="stylesheet" href="styles/pages/privacyPolicies/privacyPolicies.css" />
+    <link rel="stylesheet" href="/styles/shared/variables.css" />
+    <link rel="stylesheet" href="/styles/shared/base.css" />
+    <link rel="stylesheet" href="/styles/shared/animations.css" />
+    <link rel="stylesheet" href="/styles/shared/components.css" />
+    <link rel="stylesheet" href="/styles/pages/privacyPolicies/privacyPolicies.css" />
 
     <!-- Scripts -->
-    <script src="./src/js/cookiePopup.js"></script>
+    <script src="/src/js/cookiePopup.js"></script>
+    <script src="/src/js/languageSelector.js"></script>
 </head>
 
 <body>
@@ -36,119 +48,112 @@ $currentPage = 'politica';
         <?php include 'includes/header.php'; ?>
         <main role="main">
             <?php
-            $pageTitle = 'política de privacidade';
-            $pageDescription = 'Nós valorizamos a confiança que você deposita em nós e estamos comprometidos em proteger sua privacidade e seus dados pessoais. Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações enquanto você navega pelo nosso site.';
+            $pageTitle = t('privacy.title');
+            $pageDescription = t('privacy.description');
             include 'includes/pageInfo.php';
             ?>
             <div id="policies">
                 <span>
-                    Última atualização: 03 de outubro de 2024
+                    <?php echo htmlspecialchars(t('privacy.lastUpdate'), ENT_QUOTES, 'UTF-8'); ?>: <?php echo htmlspecialchars($updateDate, ENT_QUOTES, 'UTF-8'); ?>
                 </span>
+
+                <!-- Seção: Coleta de Informações -->
                 <section class="policy">
-                    <h2>
-                        Coleta de Informações
-                    </h2>
+                    <h2><?php echo htmlspecialchars(t('privacy.sections.collection.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
                     <div class="policyInfo">
-                        <p>
-                            A Maribe Arquitetura coleta dados de navegação por meio de cookies, que são pequenos arquivos de texto armazenados no seu dispositivo para melhorar sua experiência no site. Essas informações incluem seu endereço de IP, o navegador utilizado e as páginas visitadas. Elas nos ajudam a entender como o site está sendo usado e a personalizar sua navegação, tornando-a mais eficiente e segura.
-                        </p>
-                        <p>
-                            Você pode optar por desativar os cookies a qualquer momento através das configurações do seu navegador, porém, isso pode afetar o desempenho e algumas funcionalidades do nosso site.
-                        </p>
-                    </div>
-                </section>
-                <section class="policy">
-                    <h2>
-                        Uso das Informações
-                    </h2>
-                    <div class="policyInfo">
-                        <p>
-                            As informações coletadas são utilizadas para:
-                        </p>
+                        <p><?php echo t('privacy.sections.collection.intro'); ?></p>
+                        <h3><?php echo htmlspecialchars(t('privacy.sections.collection.cookieTypes'), ENT_QUOTES, 'UTF-8'); ?></h3>
                         <ul>
                             <li>
-                                Melhorar a usabilidade e experiência do usuário em nosso site;
+                                <strong><?php echo htmlspecialchars(t('privacy.sections.collection.essential.title'), ENT_QUOTES, 'UTF-8'); ?>:</strong> <?php echo htmlspecialchars(t('privacy.sections.collection.essential.description'), ENT_QUOTES, 'UTF-8'); ?>
                             </li>
                             <li>
-                                Garantir a segurança e o bom funcionamento da plataforma;
-                            </li>
-                            <li>
-                                Monitorar e analisar o tráfego do site para otimizar nossos serviços;
-                            </li>
-                            <li>
-                                Cumprir obrigações legais e proteger a Maribe Arquitetura em caso de atividade maliciosa.
+                                <strong><?php echo htmlspecialchars(t('privacy.sections.collection.functional.title'), ENT_QUOTES, 'UTF-8'); ?>:</strong> <?php echo htmlspecialchars(t('privacy.sections.collection.functional.description'), ENT_QUOTES, 'UTF-8'); ?>
                             </li>
                         </ul>
-                        <span>
-                            Nós não compartilhamos suas informações pessoais com terceiros, exceto em casos obrigatórios por lei ou para proteção de nossos direitos.
-                        </span>
+                        <p>
+                            <strong><?php echo htmlspecialchars(t('privacy.sections.collection.important'), ENT_QUOTES, 'UTF-8'); ?></strong> <?php echo htmlspecialchars(t('privacy.sections.collection.importantText'), ENT_QUOTES, 'UTF-8'); ?>
+                        </p>
+                        <p><?php echo htmlspecialchars(t('privacy.sections.collection.management'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </section>
+
+                <!-- Seção: Uso das Informações -->
                 <section class="policy">
-                    <h2>
-                        Segurança dos Dados
-                    </h2>
+                    <h2><?php echo htmlspecialchars(t('privacy.sections.usage.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
                     <div class="policyInfo">
-                        <p>
-                            A proteção dos seus dados é uma prioridade para a Maribe Arquitetura. Implementamos medidas de segurança apropriadas para garantir que suas informações estejam seguras e protegidas contra acessos não autorizados, alteração, divulgação ou destruição.
-                        </p>
-                        <p>
-                            O acesso aos dados pessoais fornecidos é restrito a funcionários autorizados e todos eles estão comprometidos em manter a confidencialidade dessas informações.
-                        </p>
+                        <p><?php echo htmlspecialchars(t('privacy.sections.usage.intro'), ENT_QUOTES, 'UTF-8'); ?></p>
+                        <ul>
+                            <?php 
+                            $usageItems = t('privacy.sections.usage.items');
+                            // A função t() pode retornar array ou string (chave se não encontrar)
+                            if (is_array($usageItems)) {
+                                foreach ($usageItems as $item): ?>
+                                    <li><?php echo htmlspecialchars($item, ENT_QUOTES, 'UTF-8'); ?></li>
+                                <?php endforeach;
+                            } elseif (is_string($usageItems) && $usageItems !== 'privacy.sections.usage.items') {
+                                // Se retornou string válida (não a chave), exibe como item único
+                                echo '<li>' . htmlspecialchars($usageItems, ENT_QUOTES, 'UTF-8') . '</li>';
+                            }
+                            ?>
+                        </ul>
+                        <span><?php echo htmlspecialchars(t('privacy.sections.usage.sharing'), ENT_QUOTES, 'UTF-8'); ?></span>
                     </div>
                 </section>
+
+                <!-- Seção: Segurança dos Dados -->
                 <section class="policy">
-                    <h2>
-                        Links para Sites Externos
-                    </h2>
+                    <h2><?php echo htmlspecialchars(t('privacy.sections.security.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
                     <div class="policyInfo">
-                        <p>
-                            Nosso site pode conter links para sites externos que não são operados por nós. Esses links são disponibilizados para sua conveniência, mas não temos controle sobre o conteúdo ou as práticas de privacidade desses sites. Recomendamos que você leia as políticas de privacidade de qualquer site externo que visitar, já que não nos responsabilizamos por eventuais danos ou perdas decorrentes do uso desses links.
-                        </p>
+                        <p><?php echo htmlspecialchars(t('privacy.sections.security.paragraph1'), ENT_QUOTES, 'UTF-8'); ?></p>
+                        <p><?php echo htmlspecialchars(t('privacy.sections.security.paragraph2'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </section>
+
+                <!-- Seção: Links para Sites Externos -->
                 <section class="policy">
-                    <h2>
-                        Responsabilidade e Crimes Digitais
-                    </h2>
+                    <h2><?php echo htmlspecialchars(t('privacy.sections.externalLinks.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
                     <div class="policyInfo">
-                        <p>
-                            A Maribe Arquitetura reserva-se o direito de monitorar e registrar atividades suspeitas que possam indicar o cometimento de crimes digitais, como fraudes, invasões e outros atos ilícitos. Em caso de atividades ilegais, poderemos compartilhar informações com as autoridades competentes para a devida investigação.
-                        </p>
+                        <p><?php echo htmlspecialchars(t('privacy.sections.externalLinks.description'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </section>
+
+                <!-- Seção: Responsabilidade e Crimes Digitais -->
                 <section class="policy">
-                    <h2>
-                        Propriedade Intelectual
-                    </h2>
+                    <h2><?php echo htmlspecialchars(t('privacy.sections.responsibility.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
                     <div class="policyInfo">
-                        <p>
-                            Todo o conteúdo do nosso site, incluindo textos, imagens, gráficos e outros materiais, é protegido por leis de propriedade intelectual. O uso não autorizado de qualquer parte deste conteúdo pode resultar em ação legal. A reprodução de qualquer material sem autorização prévia é expressamente proibida.
-                        </p>
+                        <p><?php echo htmlspecialchars(t('privacy.sections.responsibility.description'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </section>
+
+                <!-- Seção: Propriedade Intelectual -->
                 <section class="policy">
-                    <h2>
-                        Alterações nesta Política
-                    </h2>
+                    <h2><?php echo htmlspecialchars(t('privacy.sections.intellectual.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
                     <div class="policyInfo">
-                        <p>
-                            A Maribe Arquitetura pode atualizar esta Política de Privacidade periodicamente, de modo a refletir melhorias no nosso site ou mudanças nas regulamentações aplicáveis. Sempre que houver modificações significativas, você será informado através do nosso site ou de outros canais de comunicação.
-                        </p>
+                        <p><?php echo htmlspecialchars(t('privacy.sections.intellectual.description'), ENT_QUOTES, 'UTF-8'); ?></p>
+                    </div>
+                </section>
+
+                <!-- Seção: Alterações nesta Política -->
+                <section class="policy">
+                    <h2><?php echo htmlspecialchars(t('privacy.sections.changes.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
+                    <div class="policyInfo">
+                        <p><?php echo htmlspecialchars(t('privacy.sections.changes.description'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </section>
             </div>
+
             <div id="separatorBox">
-                <div id="separator">
-                </div>
+                <div id="separator"></div>
             </div>
+
             <div id="contactInformationIfDoubt">
-                <h2>
-                    Ficou alguma dúvida?
-                </h2>
+                <h2><?php echo htmlspecialchars(t('privacy.contact.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
                 <p>
-                    Você sempre pode nos enviar um e-mail a partir da nossa <a href="contato.php">página de contato</a> e ficaremos felizes em responder o mais breve possível.
-                    <!-- Se preferir, pode enviar uma mensagem no nosso WhatsApp clicando <a href="https://api.whatsapp.com/send?phone=5581994083257" target="_blank">aqui</a> para começar uma conversa. -->
+                    <?php 
+                    $contactUrl = function_exists('url') ? url('contato', $currentLang) : '/pt/contato';
+                    echo t('privacy.contact.description', ['contactUrl' => $contactUrl]);
+                    ?>
                 </p>
             </div>
         </main>

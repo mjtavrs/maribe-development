@@ -15,9 +15,10 @@ define('DEFAULT_LANGUAGE', 'pt');
  * 
  * Ordem de prioridade:
  * 1. Parâmetro ?lang= na URL
- * 2. Sessão (idioma escolhido anteriormente)
- * 3. Header Accept-Language do navegador
- * 4. Idioma padrão (pt)
+ * 2. Cookie/localStorage (idioma salvo por 1 semana)
+ * 3. Sessão (idioma escolhido anteriormente)
+ * 4. Header Accept-Language do navegador
+ * 5. Idioma padrão (pt)
  * 
  * @return string Código do idioma (pt, en, es)
  */
@@ -28,18 +29,26 @@ function detectLanguage()
         $lang = $_GET['lang'];
         // Salva na sessão para próximas requisições
         $_SESSION['lang'] = $lang;
+        // Salva em cookie por 1 semana
+        setLanguageCookie($lang);
         return $lang;
     }
 
-    // 2. Verifica sessão (mas apenas se não houver parâmetro lang na URL)
-    // Se a URL não tem ?lang=, mas a sessão tem um idioma diferente do padrão,
-    // isso pode causar problemas. Vamos manter a sessão apenas se for válida.
+    // 2. Verifica cookie (persiste por 1 semana)
+    if (isset($_COOKIE['preferred_language']) && in_array($_COOKIE['preferred_language'], SUPPORTED_LANGUAGES)) {
+        $lang = $_COOKIE['preferred_language'];
+        // Sincroniza com sessão
+        $_SESSION['lang'] = $lang;
+        return $lang;
+    }
+
+    // 3. Verifica sessão (mas apenas se não houver parâmetro lang na URL)
     if (isset($_SESSION['lang']) && in_array($_SESSION['lang'], SUPPORTED_LANGUAGES)) {
         // Se não há parâmetro na URL, usa o da sessão
         return $_SESSION['lang'];
     }
 
-    // 3. Detecta idioma do navegador (apenas na primeira visita)
+    // 4. Detecta idioma do navegador (apenas na primeira visita)
     // Só detecta se não há sessão definida ainda
     if (!isset($_SESSION['lang'])) {
         $browserLang = detectBrowserLanguage();
@@ -49,7 +58,7 @@ function detectLanguage()
         }
     }
 
-    // 4. Idioma padrão (português)
+    // 5. Idioma padrão (português)
     // Sempre retorna português se nada foi definido
     if (!isset($_SESSION['lang'])) {
         $_SESSION['lang'] = DEFAULT_LANGUAGE;
@@ -101,7 +110,20 @@ function setLanguage($lang)
 {
     if (in_array($lang, SUPPORTED_LANGUAGES)) {
         $_SESSION['lang'] = $lang;
+        setLanguageCookie($lang);
     }
+}
+
+/**
+ * Salva o idioma preferido em cookie por 1 semana
+ * 
+ * @param string $lang Código do idioma (pt, en, es)
+ */
+function setLanguageCookie($lang)
+{
+    // Cookie expira em 7 dias (1 semana)
+    $expire = time() + (7 * 24 * 60 * 60);
+    setcookie('preferred_language', $lang, $expire, '/', '', false, true);
 }
 
 /**
@@ -166,7 +188,13 @@ function t($key, $params = [])
         }
     }
 
-    return is_string($value) ? $value : $key;
+    // Retorna o valor encontrado (pode ser string ou array)
+    // Se não encontrou e não é string nem array, retorna a chave
+    if (is_string($value) || is_array($value)) {
+        return $value;
+    }
+    
+    return $key;
 }
 
 /**

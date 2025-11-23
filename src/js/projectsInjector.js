@@ -19,6 +19,9 @@ function slugify(text) {
 const INITIAL_LOAD = 8; // Quantidade inicial de projetos (aumentado para melhor performance)
 const LOAD_MORE = 6; // Quantidade a carregar por vez
 let currentIndex = 0; // Índice atual dos projetos carregados
+let currentProjects = projects; // Lista atual de projetos (pode ser filtrada)
+let sentinelObserver = null; // Observer do sentinela para poder desconectar
+let sentinel = null; // Referência ao sentinela
 
 /**
  * Cria um elemento de projeto
@@ -81,10 +84,10 @@ function createProjectElement(project) {
  * Pré-carrega imagens dos próximos projetos para melhor performance
  */
 function preloadProjectImages(startIndex, count) {
-    const endIndex = Math.min(startIndex + count, projects.length);
+    const endIndex = Math.min(startIndex + count, currentProjects.length);
     for (let i = startIndex; i < endIndex; i++) {
         const img = new Image();
-        img.src = normalizeAssetPath(projects[i].cover);
+        img.src = normalizeAssetPath(currentProjects[i].cover);
     }
 }
 
@@ -92,7 +95,7 @@ function preloadProjectImages(startIndex, count) {
  * Carrega projetos no container (sem animação ainda - será revelado no scroll)
  */
 function loadProjects(projectsContainer, projectsToLoad, preloadImages = true) {
-    const endIndex = Math.min(currentIndex + projectsToLoad, projects.length);
+    const endIndex = Math.min(currentIndex + projectsToLoad, currentProjects.length);
     const newElements = [];
     
     // Pré-carrega as imagens dos próximos projetos antes de criar os elementos
@@ -101,7 +104,7 @@ function loadProjects(projectsContainer, projectsToLoad, preloadImages = true) {
     }
     
     for (let i = currentIndex; i < endIndex; i++) {
-        const project = projects[i];
+        const project = currentProjects[i];
         const projectElement = createProjectElement(project);
         projectsContainer.appendChild(projectElement);
         newElements.push(projectElement);
@@ -111,7 +114,7 @@ function loadProjects(projectsContainer, projectsToLoad, preloadImages = true) {
     
     // Retorna os novos elementos para observação
     return {
-        hasMore: currentIndex < projects.length,
+        hasMore: currentIndex < currentProjects.length,
         newElements: newElements
     };
 }
@@ -182,19 +185,37 @@ function createSentinel(projectsContainer) {
 
 
 /**
- * Inicializa o lazy loading com reveal on scroll
+ * Limpa o container de projetos
  */
-document.addEventListener("DOMContentLoaded", () => {
-    const projectsContainer = document.getElementById("projectsContainer");
+function clearProjectsContainer(projectsContainer) {
+    // Remove o sentinela se existir
+    if (sentinel) {
+        if (sentinelObserver) {
+            sentinelObserver.unobserve(sentinel);
+        }
+        sentinel.remove();
+        sentinel = null;
+    }
     
-    if (!projectsContainer) {
-        console.error("Container de projetos não encontrado!");
+    // Limpa todos os projetos
+    projectsContainer.innerHTML = "";
+    currentIndex = 0;
+}
+
+/**
+ * Renderiza projetos (usado tanto na inicialização quanto na busca)
+ */
+function renderProjects(projectsContainer, projectsToRender) {
+    clearProjectsContainer(projectsContainer);
+    
+    if (projectsToRender.length === 0) {
+        // Mostra mensagem de "nenhum resultado encontrado" se necessário
         return;
     }
-
-    // Carrega os primeiros projetos (com preload automático)
+    
+    // Carrega os primeiros projetos
     const initialResult = loadProjects(projectsContainer, INITIAL_LOAD, true);
-
+    
     // Aguarda um frame para garantir que o DOM foi atualizado
     requestAnimationFrame(() => {
         // Observa todos os projetos carregados para aplicar fade-in quando entrarem na viewport
@@ -202,25 +223,25 @@ document.addEventListener("DOMContentLoaded", () => {
             observeProject(element);
         });
     });
-
+    
     // Se não há mais projetos, não precisa do sentinela
     if (!initialResult.hasMore) {
         return;
     }
-
+    
     // Cria o sentinela para detectar quando carregar mais projetos
-    const sentinel = createSentinel(projectsContainer);
-
+    sentinel = createSentinel(projectsContainer);
+    
     // Configura o Intersection Observer para o sentinela
     const observerOptions = {
         root: null, // Viewport
         rootMargin: "400px", // Carrega quando está a 400px do final (mais cedo para evitar lag)
         threshold: 0.1
     };
-
-    const observer = new IntersectionObserver((entries) => {
+    
+    sentinelObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && currentIndex < projects.length) {
+            if (entry.isIntersecting && currentIndex < currentProjects.length) {
                 // Carrega mais projetos no DOM
                 const loadResult = loadProjects(projectsContainer, LOAD_MORE);
                 
@@ -233,13 +254,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 // Se não há mais projetos, para de observar
                 if (!loadResult.hasMore) {
-                    observer.unobserve(sentinel);
+                    sentinelObserver.unobserve(sentinel);
                     sentinel.remove(); // Remove o sentinela quando não é mais necessário
+                    sentinel = null;
                 }
             }
         });
     }, observerOptions);
-
+    
     // Inicia a observação do sentinela
-    observer.observe(sentinel);
+    sentinelObserver.observe(sentinel);
+}
+
+/**
+ * Inicializa o lazy loading com reveal on scroll
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    const projectsContainer = document.getElementById("projectsContainer");
+    
+    if (!projectsContainer) {
+        console.error("Container de projetos não encontrado!");
+        return;
+    }
+
+    // Renderiza os projetos iniciais
+    renderProjects(projectsContainer, currentProjects);
+    
+    // Escuta eventos de busca
+    document.addEventListener("projectsSearch", (e) => {
+        currentProjects = e.detail.projects;
+        renderProjects(projectsContainer, currentProjects);
+    });
 });

@@ -38,6 +38,7 @@ $currentPage = 'projetos';
 
     <!-- Scripts -->
     <script src="/src/js/languageSelector.js"></script>
+    <script type="module" src="/src/js/projectsSearch.js" defer></script>
     <script type="module" src="/src/js/projectsInjector.js" defer></script>
     <script src="/src/js/cookiePopup.js"></script>
 </head>
@@ -52,6 +53,18 @@ $currentPage = 'projetos';
             $pageDescription = t('projects.description');
             include 'includes/pageInfo.php';
             ?>
+            <div id="projectsSearchContainer">
+                <div id="projectsSearchWrapper">
+                    <i class="ph ph-regular ph-magnifying-glass" id="searchIcon"></i>
+                    <input 
+                        type="text" 
+                        id="projectsSearchInput" 
+                        placeholder="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                        aria-label="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                    >
+                    <span id="searchKeyboardHelper" class="search-helper"></span>
+                </div>
+            </div>
             <div id="projectsContainer" role="list" aria-live="polite"></div>
         </main>
         <?php include 'includes/footer.php'; ?>

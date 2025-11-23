@@ -4,22 +4,50 @@
 
 main {
   text-align: justify;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 main #policies {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
 }
 
-main #policies span {
+main #policies > span {
   font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-cinza-elegante);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+main #policies .policy {
+  background-color: rgba(197, 110, 81, 0.02);
+  border-left: 3px solid var(--color-vermelho-recife);
+  padding: 20px;
+  border-radius: 4px;
+  transition: 300ms all;
+}
+
+main #policies .policy:hover {
+  background-color: rgba(197, 110, 81, 0.04);
 }
 
 main #policies .policy h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  padding-bottom: 8px;
+  padding-bottom: 12px;
+  margin-top: 0;
+  color: var(--color-vermelho-recife);
+}
+
+main #policies .policy h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: var(--color-cinza-elegante);
 }
 
 main #policies .policy .policyInfo {
@@ -28,17 +56,30 @@ main #policies .policy .policyInfo {
   gap: 15px;
 }
 
+main #policies .policy .policyInfo p {
+  line-height: 1.7;
+  margin: 0;
+}
+
 main #policies .policy .policyInfo ul {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   list-style-type: disc;
   padding-left: 28px;
+  margin: 10px 0;
+}
+
+main #policies .policy .policyInfo ul li {
+  line-height: 1.6;
 }
 
 main #policies .policy .policyInfo span {
   font-weight: 700;
   padding-top: 10px;
+  display: block;
+  font-style: italic;
+  color: var(--color-cinza-elegante);
 }
 
 main #separatorBox {
@@ -71,6 +112,38 @@ main #contactInformationIfDoubt h2 {
 main #contactInformationIfDoubt p a {
   font-weight: 600;
   color: var(--color-vermelho-recife);
+}
+
+@media screen and (min-width: 768px) {
+  main #policies {
+    gap: 35px;
+  }
+
+  main #policies .policy {
+    padding: 25px;
+  }
+
+  main #policies .policy h2 {
+    font-size: 1.75rem;
+  }
+
+  main #policies .policy h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    max-width: 1000px;
+  }
+
+  main #policies {
+    gap: 40px;
+  }
+
+  main #policies .policy {
+    padding: 30px;
+  }
 }
 
 @media screen and (min-width: 1366px) {

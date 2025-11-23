@@ -34,7 +34,8 @@ $pageRouteMap = [
     'sobre' => 'sobre',
     'projetos' => 'projetos',
     'orcamento' => 'orcamento',
-    'contato' => 'contato'
+    'contato' => 'contato',
+    'politica' => 'politica-de-privacidade'
 ];
 
 // Define quais páginas devem ter o menu destacado

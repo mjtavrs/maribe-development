@@ -1,15 +1,55 @@
 <!-- Cookie Popup -->
 <div id="cookiePopupContainer" class="hidePopup">
-    <div id="cookiePopupHeader">
-        <h3>Nosso site agora utiliza cookies! 🍪</h3>
-        <button title="Fechar aviso de cookies" aria-label="Fechar aviso de cookies" id="closeCookiesPopup">X</button>
-    </div>
     <div id="cookiePopupContent">
-        <p>
-            Também utilizamos dados salvos no seu navegador. Se houver dúvidas desse uso, você pode ler nossa <a href="politica-de-privacidade.php" target="_blank">Política de Privacidade</a> para ter maiores informações.
-        </p>
-        <button aria-label="Consentir com aviso de cookies" id="acceptCookies">
-            Estou de acordo!
-        </button>
+        <div id="cookiePopupHeader">
+            <h3>Gerenciar Cookies 🍪</h3>
+            <p class="cookieDescription">
+                Utilizamos cookies e tecnologias similares para melhorar sua experiência de navegação. Você pode escolher quais tipos de cookies deseja aceitar.
+            </p>
+        </div>
+
+        <div id="cookieOptions">
+            <div class="cookieOption">
+                <div class="cookieOptionHeader">
+                    <label class="cookieToggle">
+                        <input type="checkbox" id="cookieEssential" checked disabled>
+                        <span class="cookieToggleSlider"></span>
+                    </label>
+                    <div class="cookieOptionInfo">
+                        <h4>Cookies Essenciais <span class="cookieRequired">(Obrigatório)</span></h4>
+                        <p>Necessários para o funcionamento básico do site. Incluem segurança (tokens CSRF) e sessões.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cookieOption">
+                <div class="cookieOptionHeader">
+                    <label class="cookieToggle">
+                        <input type="checkbox" id="cookieFunctional">
+                        <span class="cookieToggleSlider"></span>
+                    </label>
+                    <div class="cookieOptionInfo">
+                        <h4>Cookies de Funcionalidade</h4>
+                        <p>Permitem que o site lembre suas preferências, como idioma escolhido, para melhorar sua experiência.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="cookiePopupActions">
+            <a href="<?php echo function_exists('url') ? url('politica-de-privacidade', function_exists('getCurrentLanguage') ? getCurrentLanguage() : 'pt') : '/pt/politica-de-privacidade'; ?>" target="_blank" class="cookiePolicyLink">
+                Política de Privacidade
+                <i class="ph ph-regular ph-link"></i>
+            </a>
+            <div class="cookieButtons">
+                <button id="acceptAllCookies" class="cookieButton cookieButtonPrimary">
+                    Aceitar todos
+                </button>
+                <button id="saveCookiePreferences" class="cookieButton cookieButtonSecondary">
+                    Salvar preferências
+                </button>
+            </div>
+        </div>
     </div>
 </div>
