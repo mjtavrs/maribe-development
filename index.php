@@ -6,7 +6,7 @@ require_once __DIR__ . '/src/php/functions.php';
 $currentLang = getCurrentLanguage();
 $langAttribute = $currentLang === 'pt' ? 'pt-br' : ($currentLang === 'en' ? 'en-US' : 'es-ES');
 
-// Define a página atual para o header (index tem layout especial, não usa o header padrão)
+// Define a página atual para o header
 $currentPage = 'home';
 ?>
 <!DOCTYPE html>
@@ -32,27 +32,29 @@ $currentPage = 'home';
     <link rel="stylesheet" href="/styles/shared/animations.css" />
     <link rel="stylesheet" href="/styles/shared/components.css" />
     <link rel="stylesheet" href="/styles/pages/home/home.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
 
     <!-- Scripts -->
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/languageSelector.js"></script>
+    <script src="/src/js/homeScroll.js"></script>
 </head>
 
 <body>
     <?php include 'includes/cookiePopup.php'; ?>
     <div id="smoothOpening">
         <main>
-            <img src="/assets/images/svg/3840x2160.svg" aria-hidden="true" id="maribeDesktopBackground">
-            <img src="/assets/images/public/logo_home.webp" alt="Logo da Maribe Arquitetura" id="maribeLogo">
-            <nav>
-                <ul>
-                    <li><a href="<?php echo function_exists('url') ? url('sobre', $currentLang) : 'sobre.php'; ?>"><?php echo function_exists('t') ? htmlspecialchars(t('menu.about'), ENT_QUOTES, 'UTF-8') : 'sobre'; ?></a></li>
-                    <li><a href="<?php echo function_exists('url') ? url('projetos', $currentLang) : 'projetos.php'; ?>"><?php echo function_exists('t') ? htmlspecialchars(t('menu.projects'), ENT_QUOTES, 'UTF-8') : 'projetos'; ?></a></li>
-                    <li><a href="<?php echo function_exists('url') ? url('orcamento', $currentLang) : 'orcamento.php'; ?>"><?php echo function_exists('t') ? htmlspecialchars(t('menu.budget'), ENT_QUOTES, 'UTF-8') : 'orçamento'; ?></a></li>
-                    <li><a href="<?php echo function_exists('url') ? url('contato', $currentLang) : 'contato.php'; ?>"><?php echo function_exists('t') ? htmlspecialchars(t('menu.contact'), ENT_QUOTES, 'UTF-8') : 'contato'; ?></a></li>
-                </ul>
-            </nav>
+            <!-- Hero Section -->
+            <section id="heroSection">
+                <img src="/assets/images/svg/4k_without_logo.svg" aria-hidden="true" id="maribeDesktopBackground">
+                <div id="heroContent">
+                    <img src="/assets/images/public/logo_home.webp" alt="Logo da Maribe Arquitetura" id="maribeLogo">
+                    <a href="/<?php echo $currentLang; ?>/<?php echo $currentLang === 'en' ? 'about' : 'sobre'; ?>" id="scrollIndicator" aria-label="Ir para a página Sobre">
+                        <i class="ph ph-regular ph-caret-down" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </section>
         </main>
     </div>
 </body>

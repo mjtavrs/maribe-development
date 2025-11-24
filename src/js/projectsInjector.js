@@ -205,11 +205,23 @@ function clearProjectsContainer(projectsContainer) {
 /**
  * Renderiza projetos (usado tanto na inicialização quanto na busca)
  */
-function renderProjects(projectsContainer, projectsToRender) {
+function renderProjects(projectsContainer, projectsToRender, searchTerm = "") {
     clearProjectsContainer(projectsContainer);
     
+    // Mostra ou esconde a mensagem de "sem resultados"
+    const noResultsMessage = document.getElementById("noResultsMessage");
+    if (noResultsMessage) {
+        // Só mostra se houver termo de busca E não houver resultados
+        if (searchTerm.trim() !== "" && projectsToRender.length === 0) {
+            noResultsMessage.classList.remove("no-results-hidden");
+            noResultsMessage.classList.add("no-results-visible");
+        } else {
+            noResultsMessage.classList.remove("no-results-visible");
+            noResultsMessage.classList.add("no-results-hidden");
+        }
+    }
+    
     if (projectsToRender.length === 0) {
-        // Mostra mensagem de "nenhum resultado encontrado" se necessário
         return;
     }
     
@@ -278,11 +290,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Renderiza os projetos iniciais
-    renderProjects(projectsContainer, currentProjects);
+    renderProjects(projectsContainer, currentProjects, "");
     
     // Escuta eventos de busca
     document.addEventListener("projectsSearch", (e) => {
         currentProjects = e.detail.projects;
-        renderProjects(projectsContainer, currentProjects);
+        const searchTerm = e.detail.searchTerm || "";
+        renderProjects(projectsContainer, currentProjects, searchTerm);
     });
 });

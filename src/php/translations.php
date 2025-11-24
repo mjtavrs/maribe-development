@@ -22,6 +22,7 @@ $allTranslations = [
             'contact' => 'contato'
         ],
 
+
         // Página de Contato
         'contact' => [
             'title' => 'contato',
@@ -115,14 +116,14 @@ $allTranslations = [
                 'objectivePlaceholder' => 'Nos conte aqui...',
                 'objectiveHint' => 'Descreva as mudanças que pretende fazer em seu espaço, o que planeja construir e o nível de intervenção necessário, caso haja reformas.',
                 'privacy' => 'Eu concordo com o envio dos dados segundo a <a href=":privacyUrl">política de privacidade</a> da Maribe Arquitetura.',
-                'submit' => 'Enviar mensagem'
+                'submit' => 'Solicitar orçamento'
             ]
         ],
 
         // Página Sobre
         'about' => [
             'title' => 'quem somos',
-            'description' => '<strong>A arquitetura vai além de construir espaços; ela transforma vidas</strong>. Na Maribe Arquitetura, acreditamos no poder de criar ambientes que refletem histórias e emoções. Nossa missão é proporcionar bem-estar, harmonia e personalidade em cada projeto, sempre unindo o funcional ao belo, o novo ao tradicional. <strong>Cada espaço conta uma história, e estamos aqui para ajudar a contar a sua</strong>.',
+            'description' => '<strong>A arquitetura vai além de construir espaços; ela transforma vidas</strong>. Na Maribe Arquitetura, acreditamos no poder de criar ambientes que refletem histórias e emoções. Nossa missão é proporcionar bem-estar, harmonia e personalidade em cada projeto, sempre unindo o funcional ao belo, o novo ao tradicional. Cada detalhe é pensado para refletir a essência de quem vai morar. <strong>Cada espaço conta uma história, e estamos aqui para ajudar a contar a sua</strong>.',
             'aboutUs' => 'sobre nós',
             'heloisa' => [
                 'name' => 'Heloísa Marletti',
@@ -143,7 +144,9 @@ $allTranslations = [
         'projects' => [
             'title' => 'nossos projetos',
             'description' => 'Aqui você encontra alguns dos nossos projetos, esperamos que você goste e que possamos incluir um espaço aqui para o seu projeto no futuro! 🧡',
-            'searchPlaceholder' => 'Procurando um projeto ou cidade específicos?'
+            'searchPlaceholder' => 'Procurando um projeto ou cidade específicos?',
+            'noResultsMessage' => 'Ainda não foram encontrados projetos com esses termos...<br>Mas, o que você pensa de incluirmos o seu aqui?',
+            'requestBudget' => 'Solicitar orçamento'
         ],
 
         // Footer
@@ -249,7 +252,7 @@ $allTranslations = [
                 'additionalInfo' => 'Se houver alguma dúvida ou informação a acrescentar, comente aqui!',
                 'additionalInfoPlaceholder' => 'Suas dúvidas e outras informações vêm aqui :)',
                 'privacy' => 'Eu concordo com o envio dos dados segundo a <a href=":privacyUrl">política de privacidade</a> da Maribe Arquitetura.',
-                'submit' => 'Enviar mensagem'
+                'submit' => 'Enviar mensagem',
             ]
         ],
 
@@ -272,8 +275,10 @@ $allTranslations = [
                 'birthDate' => 'Data de nascimento',
                 'paymentMethod' => 'Qual a forma de pagamento escolhida?',
                 'paymentMethodPlaceholder' => 'À vista; Sinal + \'x\' parcelas...',
-                'paymentMethodExamples' => 'Exemplos: “Entrada de R$ 3.000 e o restante parcelado no cartão” ou “Parcelado no cartão”.',
-                'submit' => 'Enviar mensagem'
+                'paymentMethodExamples' => 'Exemplos: "Entrada de R$ 3.000 e o restante parcelado no cartão" ou "Parcelado no cartão".',
+                'submit' => 'Enviar mensagem',
+                'dataExplanation' => 'Por que precisamos desses dados?',
+                'dataExplanationText' => 'Os dados de CPF, RG e endereço são necessários para o preenchimento correto do contrato e para a organização da gestão interna do escritório. Essas informações são essenciais para garantir a formalização adequada do acordo entre as partes.',
             ]
         ]
     ],
@@ -287,6 +292,7 @@ $allTranslations = [
             'budget' => 'budget',
             'contact' => 'contact'
         ],
+
 
         // Página de Contato
         'contact' => [
@@ -388,7 +394,7 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'who we are',
-            'description' => '<strong>Architecture goes beyond building spaces; it transforms lives</strong>. At Maribe Arquitetura, we believe in the power of creating environments that reflect stories and emotions. Our mission is to provide well-being, harmony, and personality in each project, always combining the functional with the beautiful, the new with the traditional. <strong>Every space tells a story, and we are here to help tell yours</strong>.',
+            'description' => '<strong>Architecture goes beyond building spaces; it transforms lives</strong>. At Maribe Arquitetura, we believe in the power of creating environments that reflect stories and emotions. Our mission is to provide well-being, harmony, and personality in each project, always combining the functional with the beautiful, the new with the traditional. Every detail is designed to reflect the essence of those who will live there. <strong>Every space tells a story, and we are here to help tell yours</strong>.',
             'aboutUs' => 'about us',
             'heloisa' => [
                 'name' => 'Heloísa Marletti',
@@ -409,7 +415,9 @@ $allTranslations = [
         'projects' => [
             'title' => 'our projects',
             'description' => 'Here you can find some of our projects. We hope you like them and that we can include a space here for your project in the future! 🧡',
-            'searchPlaceholder' => 'Looking for a specific project or city?'
+            'searchPlaceholder' => 'Looking for a specific project or city?',
+            'noResultsMessage' => 'No projects found with these terms yet...<br>But, what do you think about including yours here?',
+            'requestBudget' => 'Request a quote'
         ],
 
         // Footer
@@ -515,7 +523,7 @@ $allTranslations = [
                 'additionalInfo' => 'If you have any questions or additional information, comment here!',
                 'additionalInfoPlaceholder' => 'Your questions and other information go here :)',
                 'privacy' => 'I agree to the submission of data according to the <a href=":privacyUrl">privacy policy</a> of Maribe Arquitetura.',
-                'submit' => 'Send message'
+                'submit' => 'Request a quote'
             ]
         ],
 
@@ -538,8 +546,10 @@ $allTranslations = [
                 'birthDate' => 'Date of birth',
                 'paymentMethod' => 'What is the chosen payment method?',
                 'paymentMethodPlaceholder' => 'Cash; Down payment + \'x\' installments...',
-                'paymentMethodExamples' => 'Examples: “Down payment of BRL 3,000 and the rest on card” or “Paid in installments on the card”.',
-                'submit' => 'Send message'
+                'paymentMethodExamples' => 'Examples: "Down payment of BRL 3,000 and the rest on card" or "Paid in installments on the card".',
+                'submit' => 'Send message',
+                'dataExplanation' => 'Why do we need this data?',
+                'dataExplanationText' => 'CPF, RG, and address data are necessary for the correct completion of the contract and for organizing the internal management of the office. This information is essential to ensure the proper formalization of the agreement between the parties.'
             ]
         ]
     ],
@@ -553,6 +563,7 @@ $allTranslations = [
             'budget' => 'presupuesto',
             'contact' => 'contacto'
         ],
+
 
         // Página de Contacto
         'contact' => [
@@ -654,7 +665,7 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'quiénes somos',
-            'description' => '<strong>La arquitectura va más allá de construir espacios; transforma vidas</strong>. En Maribe Arquitetura, creemos en el poder de crear ambientes que reflejen historias y emociones. Nuestra misión es brindar bienestar, armonía y personalidad en cada proyecto, uniendo siempre lo funcional con lo bello, lo nuevo con lo tradicional. <strong>Cada espacio cuenta una historia, y estamos aquí para ayudar a contar la tuya</strong>.',
+            'description' => '<strong>La arquitectura va más allá de construir espacios; transforma vidas</strong>. En Maribe Arquitetura, creemos en el poder de crear ambientes que reflejen historias y emociones. Nuestra misión es brindar bienestar, armonía y personalidad en cada proyecto, uniendo siempre lo funcional con lo bello, lo nuevo con lo tradicional. Cada detalle está pensado para reflejar la esencia de quienes vivirán allí. <strong>Cada espacio cuenta una historia, y estamos aquí para ayudar a contar la tuya</strong>.',
             'aboutUs' => 'sobre nosotras',
             'heloisa' => [
                 'name' => 'Heloísa Marletti',
@@ -675,7 +686,9 @@ $allTranslations = [
         'projects' => [
             'title' => 'nuestros proyectos',
             'description' => 'Aquí encontrarás algunos de nuestros proyectos. ¡Esperamos que te gusten y que pronto podamos incluir aquí tu espacio! 🧡',
-            'searchPlaceholder' => '¿Buscas un proyecto o ciudad específicos?'
+            'searchPlaceholder' => '¿Buscas un proyecto o ciudad específicos?',
+            'noResultsMessage' => 'Aún no se encontraron proyectos con estos términos...<br>Pero, ¿qué piensas de incluir el tuyo aquí?',
+            'requestBudget' => 'Solicitar presupuesto'
         ],
 
         // Footer
@@ -804,8 +817,10 @@ $allTranslations = [
                 'birthDate' => 'Fecha de nacimiento',
                 'paymentMethod' => '¿Cuál es la forma de pago elegida?',
                 'paymentMethodPlaceholder' => 'Al contado; Anticipo + “x” cuotas...',
-                'paymentMethodExamples' => 'Por ejemplo: “Pago inicial de R$ 3.000 y el resto en tarjeta” o “En cuotas con tarjeta”.',
-                'submit' => 'Enviar mensaje'
+                'paymentMethodExamples' => 'Por ejemplo: "Pago inicial de R$ 3.000 y el resto en tarjeta" o "En cuotas con tarjeta".',
+                'submit' => 'Enviar mensaje',
+                'dataExplanation' => '¿Por qué necesitamos estos datos?',
+                'dataExplanationText' => 'Los datos de CPF, RG y dirección son necesarios para el correcto cumplimiento del contrato y para organizar la gestión interna del estudio. Esta información es esencial para garantizar la formalización adecuada del acuerdo entre las partes.'
             ]
         ]
     ]

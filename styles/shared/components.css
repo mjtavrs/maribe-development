@@ -206,12 +206,8 @@ body footer #footerLogo {
   width: 100%;
 }
 
-body footer #footerLogo a {
-  display: inline-block;
-}
-
 body footer #footerLogo img {
-  max-width: 300px;
+  max-width: 350px;
   width: 100%;
   height: auto;
 }
@@ -318,7 +314,7 @@ body footer #legalInformation a:hover {
   }
 
   body footer #footerLogo img {
-    max-width: 250px;
+    max-width: 300px;
   }
 
   body footer #socialLinks {
@@ -377,7 +373,7 @@ body main #pageInfo {
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  margin: 10px 0 50px;
+  margin: 10px 0 70px;
 }
 
 body main #pageInfo h1 {
@@ -1156,6 +1152,41 @@ body main form .floating-label-wrapper textarea:focus {
   border-bottom: 2px solid var(--color-vermelho-recife);
 }
 
+/* Estilos específicos para input de data - sobrescreve estilos padrão do navegador */
+body main form .floating-label-wrapper input[type="date"] {
+  color: var(--color-cinza-elegante) !important;
+  background-color: var(--color-bege-delicado) !important;
+  border-bottom: 1px solid var(--color-cinza-elegante) !important;
+  -webkit-text-fill-color: var(--color-cinza-elegante) !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+body main form .floating-label-wrapper input[type="date"]:focus {
+  border-bottom: 2px solid var(--color-vermelho-recife) !important;
+  color: var(--color-cinza-elegante) !important;
+  -webkit-text-fill-color: var(--color-cinza-elegante) !important;
+  background-color: var(--color-bege-delicado) !important;
+}
+
+body main form .floating-label-wrapper input[type="date"]:not(:placeholder-shown),
+body main form .floating-label-wrapper input[type="date"]:valid,
+body main form .floating-label-wrapper input[type="date"]:invalid {
+  color: var(--color-cinza-elegante) !important;
+  -webkit-text-fill-color: var(--color-cinza-elegante) !important;
+  background-color: var(--color-bege-delicado) !important;
+}
+
+body main form .floating-label-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+  filter: grayscale(100%);
+}
+
+body main form .floating-label-wrapper input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
 body main form .floating-label-wrapper input.error,
 body main form .floating-label-wrapper textarea.error {
   border-bottom: 2px solid #d32f2f;
@@ -1553,6 +1584,76 @@ body main form #buttonContainer button:not(:hover) {
     bottom: 40px;
     right: 40px;
     max-width: 500px;
+  }
+}
+
+/* ============================================
+   CONTRACT DATA EXPLANATION
+   ============================================ */
+body main #contractDataExplanation {
+  max-width: 1000px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+body main #contractDataExplanation.policy-card {
+  background-color: rgba(197, 110, 81, 0.02);
+  border-left: 3px solid var(--color-vermelho-recife);
+  padding: 20px;
+  border-radius: 4px;
+  transition: 300ms all;
+}
+
+body main #contractDataExplanation.policy-card:hover {
+  background-color: rgba(197, 110, 81, 0.04);
+}
+
+body main #contractDataExplanation .contract-explanation-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+body main #contractDataExplanation .contract-explanation-header i {
+  font-size: 1.5rem;
+  color: var(--color-vermelho-recife);
+  flex-shrink: 0;
+}
+
+body main #contractDataExplanation .contract-explanation-header h3 {
+  font-family: "Kantumruy Pro SemiBold", sans-serif;
+  font-size: 1.5rem;
+  color: var(--color-vermelho-recife);
+  margin: 0;
+  font-weight: bold;
+}
+
+body main #contractDataExplanation .contract-explanation-content p {
+  font-size: 1rem;
+  color: var(--color-cinza-elegante);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  body main #contractDataExplanation {
+    padding: 0;
+  }
+
+  body main #contractDataExplanation.policy-card {
+    padding: 25px;
+  }
+
+  body main #contractDataExplanation .contract-explanation-header h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body main #contractDataExplanation.policy-card {
+    padding: 30px;
   }
 }
 

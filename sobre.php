@@ -49,46 +49,56 @@ $currentPage = 'sobre';
         <main role="main">
             <?php
             $pageTitle = t('about.title');
-            $pageDescription = t('about.description');
             include 'includes/pageInfo.php';
             ?>
             <div id="sectionsContainer">
                 <section>
                     <h2><?php echo htmlspecialchars(t('about.aboutUs'), ENT_QUOTES, 'UTF-8'); ?></h2>
-                    <div>
-                        <h3><?php echo htmlspecialchars(t('about.heloisa.name'), ENT_QUOTES, 'UTF-8'); ?></h3>
-                        <p>
-                            <?php echo t('about.heloisa.description'); ?>
-                        </p>
-                    </div>
-                    <div>
-                        <h3><?php echo htmlspecialchars(t('about.nathalia.name'), ENT_QUOTES, 'UTF-8'); ?></h3>
-                        <p>
-                            <?php echo t('about.nathalia.description'); ?>
-                        </p>
-                    </div>
-                    <p>
-                        <?php echo htmlspecialchars(t('about.together'), ENT_QUOTES, 'UTF-8'); ?>
-                    </p>
-                    <div id="imageContainer">
-                        <img src="/assets/images/public/meninas_foto_sem_bg.webp" alt="Foto de Nathalia Ribeiro e Heloisa Marletti">
-                        <div id="orangeBox">
+                    <div id="aboutContentWrapper">
+                        <div id="aboutTextContent">
+                            <p id="aboutIntroText">
+                                <?php echo t('about.description'); ?>
+                            </p>
+                            <div>
+                                <h3><?php echo htmlspecialchars(t('about.heloisa.name'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                                <p>
+                                    <?php echo t('about.heloisa.description'); ?>
+                                </p>
+                            </div>
+                            <div>
+                                <h3><?php echo htmlspecialchars(t('about.nathalia.name'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                                <p>
+                                    <?php echo t('about.nathalia.description'); ?>
+                                </p>
+                            </div>
+                            <p>
+                                <?php echo htmlspecialchars(t('about.together'), ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
+                        </div>
+                        <div id="imageContainer">
+                            <img src="/assets/images/public/meninas_foto_sem_bg.webp" alt="Foto de Nathalia Ribeiro e Heloisa Marletti">
+                            <div id="orangeBox">
+                            </div>
                         </div>
                     </div>
                 </section>
                 <section>
                     <h2><?php echo htmlspecialchars(t('about.ourSymbol'), ENT_QUOTES, 'UTF-8'); ?></h2>
-                    <p>
-                        <?php echo t('about.symbolDescription1'); ?>
-                    </p>
-                    <p>
-                        <?php echo t('about.symbolDescription2'); ?>
-                    </p>
-                    <p>
-                        <?php echo t('about.symbolDescription3'); ?>
-                    </p>
-                    <div id="videoContainer">
-                        <video src="/assets/videos/logoHistorySquared.MOV" autoplay loop muted defaultmuted playsinline preload="auto"></video>
+                    <div id="symbolContentWrapper">
+                        <div id="symbolTextContent">
+                            <p>
+                                <?php echo t('about.symbolDescription1'); ?>
+                            </p>
+                            <p>
+                                <?php echo t('about.symbolDescription2'); ?>
+                            </p>
+                            <p>
+                                <?php echo t('about.symbolDescription3'); ?>
+                            </p>
+                        </div>
+                        <div id="videoContainer">
+                            <video src="/assets/videos/logoHistorySquared.MOV" autoplay loop muted defaultmuted playsinline preload="auto"></video>
+                        </div>
                     </div>
                 </section>
             </div>

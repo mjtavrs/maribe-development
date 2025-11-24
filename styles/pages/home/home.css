@@ -5,147 +5,204 @@
 body {
   font-family: "Source Sans 3", sans-serif;
   font-size: 1.25rem;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-body main {
+/* Animação de fade-out + slide up */
+body #smoothOpening.fade-out-up {
+  animation: fadeOutUp 800ms cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+
+/* Hero Section */
+body main #heroSection {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--color-bege-delicado);
   background-image: url("../../../assets/images/svg/500x1080.svg");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  height: 100dvh;
+  overflow: hidden;
+}
+
+body main #heroSection {
   position: relative;
 }
 
-body main #maribeDesktopBackground {
+body main #heroSection::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--color-bege-delicado));
+  z-index: 1;
+  pointer-events: none;
+}
+
+body main #heroSection #maribeDesktopBackground {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  filter: blur(6px);
+  z-index: 0;
 }
 
-body main img {
-  width: 250px;
-}
-
-body main nav ul {
+body main #heroSection #heroContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  z-index: 1;
+  justify-content: center;
+  gap: 30px;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  max-width: 90%;
+  position: relative;
+  height: 100%;
 }
 
-body main nav ul li a {
-  color: var(--color-cinza-elegante);
-  text-decoration: none;
-  transition: 400ms color;
+body main #heroSection #maribeLogo {
+  width: 300px;
+  height: auto;
 }
 
-body main nav ul li a:hover {
+
+body main #heroSection #scrollIndicator {
+  background: transparent;
+  border: none;
+  cursor: pointer;
   color: var(--color-vermelho-recife);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
+body main #heroSection #scrollIndicator:hover {
+  opacity: 0.8;
+  transform: translateX(-50%) translateY(5px);
+}
+
+body main #heroSection #scrollIndicator i {
+  font-size: 3rem;
+}
+
+/* About Section */
+body main {
+  display: flex;
+  flex-direction: column;
+}
+
 
 @media screen and (min-width: 768px) {
-  body main {
+  body main #heroSection {
     background-image: url("../../../assets/images/svg/1024x1366.svg");
     background-size: 100% auto;
   }
 
-  body main img {
-    width: 300px;
+  body main #heroSection #maribeLogo {
+    width: 380px;
   }
 
-  body main nav ul {
-    font-size: 1.25rem;
-    gap: 30px;
+  body main #heroSection #scrollIndicator {
+    bottom: 25px;
+  }
+
+  body main #heroSection #scrollIndicator i {
+    font-size: 3.5rem;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  body main {
+  body main #heroSection {
     background-image: url("../../../assets/images/svg/1024x1366.svg");
     background-size: 100% auto;
-    gap: 35px;
   }
 
-  body main img {
-    width: 350px;
+  body main #heroSection #maribeLogo {
+    width: 450px;
   }
 
-  body main nav ul {
-    font-size: 1.75rem;
-    gap: 35px;
+  body main #heroSection #heroContent {
+    gap: 40px;
+  }
+
+  body main #heroSection #scrollIndicator {
+    bottom: 30px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  body main {
+  body main #heroSection {
     background-image: none;
   }
 
-  body main #maribeDesktopBackground {
+  body main #heroSection #maribeDesktopBackground {
     display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0.7;
+    opacity: 0.45;
+    filter: blur(8px);
   }
 
-  body main #maribeLogo {
-    display: none;
+  body main #heroSection::after {
+    height: 300px;
   }
 
-  body main nav {
-    position: relative;
-    height: 100dvh;
-    width: 100%;
-  }
 
-  body main nav ul {
-    flex-direction: row;
-    justify-content: center;
+  body main #heroSection #heroContent {
     gap: 50px;
-    position: absolute;
-    font-size: 1.35rem;
-    left: 32%;
-    top: 24%;
-    z-index: 9999;
   }
+
+  body main #heroSection #scrollIndicator {
+    bottom: 40px;
+  }
+
+  body main #heroSection #scrollIndicator i {
+    font-size: 4rem;
+  }
+
+
 }
 
 @media screen and (min-width: 1366px) {
-  body main nav ul {
-    left: 33%;
-    top: 26%;
+  body main #heroSection #heroContent {
+    gap: 60px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  body main nav ul {
-    gap: 65px;
-    font-size: 1.4rem;
-    left: 32%;
-    top: 24%;
-  }
 }
 
 @media screen and (min-width: 1896px) {
-  body main nav ul {
-    gap: 80px;
-    left: 33%;
-    top: 27%;
-    font-size: 1.75rem;
-  }
 }
 
 @media screen and (min-width: 2560px) {
-  body main nav ul {
-    gap: 120px;
-    font-size: 2.2rem;
-  }
 }

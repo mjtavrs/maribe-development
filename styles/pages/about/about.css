@@ -5,7 +5,7 @@
 body main #sectionsContainer {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 70px;
 }
 
 body main #sectionsContainer section {
@@ -29,8 +29,9 @@ body main #sectionsContainer section div {
 }
 
 body main #sectionsContainer section h3 {
+  font-family: "Kantumruy Pro SemiBold", sans-serif;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 body main #sectionsContainer section p {
@@ -39,6 +40,28 @@ body main #sectionsContainer section p {
 
 body main #sectionsContainer section p span {
   font-weight: 600;
+  color: var(--color-vermelho-recife);
+}
+
+body main #sectionsContainer section p strong {
+  color: var(--color-vermelho-recife);
+}
+
+body main #sectionsContainer section #aboutContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+body main #sectionsContainer section #aboutTextContent {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+body main #sectionsContainer section #aboutTextContent #aboutIntroText {
+  font-size: 1.125rem;
+  margin-bottom: 8px;
 }
 
 body main #sectionsContainer section #imageContainer {
@@ -55,6 +78,18 @@ body main #sectionsContainer section #imageContainer #orangeBox {
   z-index: -9999;
 }
 
+body main #sectionsContainer section #symbolContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+body main #sectionsContainer section #symbolTextContent {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
 body main #sectionsContainer section #videoContainer {
   border: 1px solid transparent !important;
   border-radius: 10px;
@@ -68,6 +103,14 @@ body main #sectionsContainer section #videoContainer {
 
   body main #sectionsContainer section div {
     gap: 10px;
+  }
+
+  body main #sectionsContainer section #aboutContentWrapper {
+    gap: 40px;
+  }
+
+  body main #sectionsContainer section #symbolContentWrapper {
+    gap: 40px;
   }
 
   body main #sectionsContainer section #imageContainer {
@@ -87,7 +130,7 @@ body main #sectionsContainer section #videoContainer {
 
 @media screen and (min-width: 1024px) {
   body main #sectionsContainer {
-    gap: 50px;
+    gap: 80px;
   }
 
   body main #sectionsContainer section h2 {
@@ -102,8 +145,53 @@ body main #sectionsContainer section #videoContainer {
     gap: 15px;
   }
 
+  body main #sectionsContainer section #aboutContentWrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+  }
+
+  body main #sectionsContainer section #aboutTextContent {
+    flex: 1;
+    gap: 22px;
+  }
+
+  body main #sectionsContainer section #imageContainer {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  body main #sectionsContainer section #imageContainer img {
+    width: 100%;
+    max-width: 500px;
+  }
+
   body main #sectionsContainer section #imageContainer #orangeBox {
     height: 300px;
+  }
+
+  body main #sectionsContainer section #symbolContentWrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+  }
+
+  body main #sectionsContainer section #symbolTextContent {
+    flex: 1;
+    gap: 22px;
+  }
+
+  body main #sectionsContainer section #videoContainer {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  body main #sectionsContainer section #videoContainer video {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
   }
 
   body main #sectionsContainer section #videoContainer {
@@ -112,16 +200,33 @@ body main #sectionsContainer section #videoContainer {
 }
 
 @media screen and (min-width: 1366px) {
+  body main #sectionsContainer section #aboutContentWrapper {
+    gap: 60px;
+  }
+
+  body main #sectionsContainer section #imageContainer {
+    max-width: 600px;
+  }
+
+  body main #sectionsContainer section #imageContainer img {
+    max-width: 600px;
+  }
+
   body main #sectionsContainer section #imageContainer #orangeBox {
     height: 350px;
   }
 
+  body main #sectionsContainer section #symbolContentWrapper {
+    gap: 60px;
+  }
+
   body main #sectionsContainer section #videoContainer {
-    display: flex;
-    align-items: center;
+    max-width: 600px;
   }
 
   body main #sectionsContainer section #videoContainer video {
-    width: 65%;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 }

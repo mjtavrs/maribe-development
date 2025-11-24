@@ -24,7 +24,7 @@ $currentPage = 'contrato';
     <!-- SEO Meta Tags -->
     <meta name="author" content="Marcos Tavares" />
 
-    <title>formulário de contrato • maribe arquitetura</title>
+    <title><?php echo htmlspecialchars(t('contract.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
     <!-- Styles -->
@@ -49,7 +49,6 @@ $currentPage = 'contrato';
         <main role="main">
             <?php
             $pageTitle = t('contract.title');
-            $pageDescription = t('contract.description');
             include 'includes/pageInfo.php';
             ?>
             <form action="/src/php/contractForm.php" method="POST">
@@ -95,10 +94,10 @@ $currentPage = 'contrato';
                     </div>
                 </div>
                 <div class="form-field">
-                    <div class="floating-label-wrapper">
+                    <label for="clientBirthDate">
+                        <?php echo htmlspecialchars(t('contract.form.birthDate'), ENT_QUOTES, 'UTF-8'); ?>
                         <input type="date" name="clientBirthDate" id="clientBirthDate" required aria-required="true">
-                        <label for="clientBirthDate" class="floating-label"><?php echo htmlspecialchars(t('contract.form.birthDate'), ENT_QUOTES, 'UTF-8'); ?></label>
-                    </div>
+                    </label>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
@@ -116,6 +115,14 @@ $currentPage = 'contrato';
                     </button>
                 </div>
             </form>
+            <div id="contractDataExplanation" class="policy-card">
+                <div class="contract-explanation-header">
+                    <h3><?php echo htmlspecialchars(t('contract.form.dataExplanation'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                </div>
+                <div class="contract-explanation-content">
+                    <p><?php echo htmlspecialchars(t('contract.form.dataExplanationText'), ENT_QUOTES, 'UTF-8'); ?></p>
+                </div>
+            </div>
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>

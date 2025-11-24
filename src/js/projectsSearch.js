@@ -78,6 +78,14 @@ function initSearch() {
     // Atualiza o helper do teclado
     if (searchHelper) {
         updateKeyboardHelper();
+        // Inicializa a visibilidade baseada no tamanho da tela
+        if (window.innerWidth >= 768) {
+            searchHelper.style.opacity = "1";
+            searchHelper.style.visibility = "visible";
+        } else {
+            searchHelper.style.opacity = "0";
+            searchHelper.style.visibility = "hidden";
+        }
     }
     
     // Event listener para busca em tempo real com debounce
@@ -92,33 +100,37 @@ function initSearch() {
         // Esconde o helper quando o input está focado e tem conteúdo
         if (searchHelper) {
             if (e.target.value.trim() !== "" || document.activeElement === searchInput) {
-                searchHelper.style.display = "none";
+                searchHelper.style.opacity = "0";
+                searchHelper.style.visibility = "hidden";
             } else {
                 // Mostra novamente se não estiver focado (apenas em desktop)
                 if (window.innerWidth >= 768) {
-                    searchHelper.style.display = "flex";
+                    searchHelper.style.opacity = "1";
+                    searchHelper.style.visibility = "visible";
                 }
             }
         }
         
-        // Debounce: aguarda 300ms após o usuário parar de digitar
+        // Debounce: aguarda 1 segundo após o usuário parar de digitar
         searchTimeout = setTimeout(() => {
             const filteredProjects = filterProjects(currentSearchTerm);
             triggerProjectsUpdate(filteredProjects);
-        }, 300);
+        }, 1000);
     });
     
     // Esconde o helper quando o input recebe foco
     searchInput.addEventListener("focus", () => {
         if (searchHelper) {
-            searchHelper.style.display = "none";
+            searchHelper.style.opacity = "0";
+            searchHelper.style.visibility = "hidden";
         }
     });
     
     // Mostra o helper quando o input perde foco (apenas em desktop)
     searchInput.addEventListener("blur", () => {
         if (searchHelper && window.innerWidth >= 768 && currentSearchTerm.trim() === "") {
-            searchHelper.style.display = "flex";
+            searchHelper.style.opacity = "1";
+            searchHelper.style.visibility = "visible";
         }
     });
     
@@ -143,9 +155,11 @@ function initSearch() {
             if (window.innerWidth >= 768 && 
                 currentSearchTerm.trim() === "" && 
                 document.activeElement !== searchInput) {
-                searchHelper.style.display = "flex";
+                searchHelper.style.opacity = "1";
+                searchHelper.style.visibility = "visible";
             } else {
-                searchHelper.style.display = "none";
+                searchHelper.style.opacity = "0";
+                searchHelper.style.visibility = "hidden";
             }
         }
     });

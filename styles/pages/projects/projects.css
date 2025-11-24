@@ -128,6 +128,8 @@ body main #projectsContainer #projectsSentinel {
 body main #projectsSearchContainer {
   margin-bottom: 32px;
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 body main #projectsSearchWrapper {
@@ -135,6 +137,7 @@ body main #projectsSearchWrapper {
   display: flex;
   align-items: center;
   max-width: 600px;
+  width: 100%;
 }
 
 body main #projectsSearchWrapper #searchIcon {
@@ -149,14 +152,17 @@ body main #projectsSearchWrapper #searchIcon {
 body main #projectsSearchWrapper #projectsSearchInput {
   width: 100%;
   padding: 12px 120px 12px 48px;
-  border: 1px solid var(--color-vermelho-recife);
-  border-radius: 8px;
+  border: none;
+  border-bottom: 1px solid var(--color-vermelho-recife);
+  border-radius: 0;
   font-family: "Source Sans 3", sans-serif;
   font-size: 1rem;
   color: var(--color-cinza-elegante);
   background-color: var(--color-bege-delicado);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  box-shadow: none;
+  transition: border-color 0.3s ease, border-width 0.3s ease, padding 0.3s ease;
+  min-height: 48px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 767px) {
@@ -167,19 +173,18 @@ body main #projectsSearchWrapper #projectsSearchInput {
 
 body main #projectsSearchWrapper #projectsSearchInput:focus {
   outline: none;
-  border-color: var(--color-vermelho-recife);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 0 3px rgba(197, 110, 81, 0.15);
+  border-bottom: 1px solid var(--color-vermelho-recife);
 }
 
 body main #projectsSearchWrapper #projectsSearchInput::placeholder {
   color: var(--color-cinza-elegante);
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 body main #projectsSearchWrapper #searchKeyboardHelper {
   position: absolute;
   right: 12px;
-  display: none;
+  display: flex;
   align-items: center;
   gap: 2px;
   padding: 4px 8px;
@@ -191,6 +196,9 @@ body main #projectsSearchWrapper #searchKeyboardHelper {
   color: var(--color-vermelho-recife);
   pointer-events: none;
   white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 body main #projectsSearchWrapper #searchKeyboardHelper kbd {
@@ -210,11 +218,173 @@ body main #projectsSearchWrapper #searchKeyboardHelper span {
 }
 
 body main #projectsSearchWrapper #projectsSearchInput:focus + #searchKeyboardHelper {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 @media screen and (min-width: 768px) {
   body main #projectsSearchWrapper #searchKeyboardHelper {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  body main #projectsSearchContainer {
+    justify-content: flex-end;
+  }
+
+  body main #projectsSearchWrapper {
+    max-width: 500px;
+  }
+}
+
+/* ============================================
+   NO RESULTS MESSAGE
+   ============================================ */
+body main #noResultsMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+}
+
+body main #noResultsMessage.no-results-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body main #noResultsMessage.no-results-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+body main #noResultsMessage .no-results-icon-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body main #noResultsMessage .no-results-icon-wrapper .ph-magnifying-glass {
+  font-size: 4.5rem;
+  color: var(--color-vermelho-recife);
+  opacity: 0.3;
+  z-index: 2;
+}
+
+body main #noResultsMessage .no-results-icon-wrapper .question-icon {
+  position: absolute;
+  color: var(--color-vermelho-recife);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+body main #noResultsMessage .no-results-icon-wrapper .question-icon-1 {
+  top: 5px;
+  left: 15px;
+  font-size: 2rem;
+}
+
+body main #noResultsMessage .no-results-icon-wrapper .question-icon-2 {
+  top: 20px;
+  right: 5px;
+  font-size: 1.75rem;
+}
+
+body main #noResultsMessage .no-results-icon-wrapper .question-icon-3 {
+  bottom: 15px;
+  left: 5px;
+  font-size: 1.5rem;
+}
+
+body main #noResultsMessage .no-results-icon-wrapper .question-icon-4 {
+  bottom: 5px;
+  right: 20px;
+  font-size: 2.25rem;
+}
+
+body main #noResultsMessage .no-results-text {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.25rem;
+  color: var(--color-vermelho-recife);
+  margin-bottom: 32px;
+  font-weight: 500;
+  line-height: 1.5;
+  opacity: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+  body main #noResultsMessage .no-results-text {
+    line-height: 1.8;
+  }
+}
+
+body main #noResultsMessage .no-results-button {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: var(--color-vermelho-recife);
+  color: var(--color-bege-delicado);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+body main #noResultsMessage .no-results-button:hover {
+  background-color: #b85d3f;
+  transform: translateY(-2px);
+}
+
+body main #noResultsMessage .no-results-button:active {
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 767px) {
+  body main #noResultsMessage {
+    padding: 40px 20px;
+  }
+
+  body main #noResultsMessage .no-results-icon-wrapper {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 24px;
+  }
+
+  body main #noResultsMessage .no-results-icon-wrapper .ph-magnifying-glass {
+    font-size: 3.5rem;
+  }
+
+  body main #noResultsMessage .no-results-icon-wrapper .question-icon-1 {
+    font-size: 1.75rem;
+  }
+
+  body main #noResultsMessage .no-results-icon-wrapper .question-icon-2 {
+    font-size: 1.5rem;
+  }
+
+  body main #noResultsMessage .no-results-icon-wrapper .question-icon-3 {
+    font-size: 1.25rem;
+  }
+
+  body main #noResultsMessage .no-results-icon-wrapper .question-icon-4 {
+    font-size: 1.875rem;
+  }
+
+  body main #noResultsMessage .no-results-text {
+    font-size: 1.125rem;
   }
 }

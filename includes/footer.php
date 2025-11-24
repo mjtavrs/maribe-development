@@ -2,9 +2,7 @@
 <footer>
     <div id="footerTop">
         <div id="footerLogo">
-            <a href="<?php echo function_exists('url') ? url('index', function_exists('getCurrentLanguage') ? getCurrentLanguage() : 'pt') : 'index.php'; ?>" aria-label="Voltar para a página inicial">
-                <img src="/assets/images/public/logo_horizontal_estendido.webp" alt="Logo Maribe Arquitetura" title="Maribe Arquitetura">
-            </a>
+            <img src="/assets/images/public/logo_horizontal_estendido.webp" alt="Logo Maribe Arquitetura">
         </div>
         <div id="socialLinks">
             <h3><?php echo function_exists('t') ? htmlspecialchars(t('footer.socialMedia'), ENT_QUOTES, 'UTF-8') : 'redes sociais'; ?></h3>

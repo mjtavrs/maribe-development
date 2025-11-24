@@ -35,15 +35,14 @@ $pageRouteMap = [
     'projetos' => 'projetos',
     'orcamento' => 'orcamento',
     'contato' => 'contato',
+    'contrato' => 'contrato',
+    'proposta' => 'proposta',
+    'sucesso' => 'sucesso',
     'politica' => 'politica-de-privacidade'
 ];
 
 // Define quais páginas devem ter o menu destacado
 $menuItems = [
-    'home' => [
-        'url' => function_exists('url') ? url($pageRouteMap['home'], $currentLang) : 'index.php',
-        'label' => function_exists('t') ? t('menu.home') : 'início'
-    ],
     'sobre' => [
         'url' => function_exists('url') ? url($pageRouteMap['sobre'], $currentLang) : 'sobre.php',
         'label' => function_exists('t') ? t('menu.about') : 'sobre'
@@ -64,7 +63,7 @@ $menuItems = [
 ?>
 
 <!-- Header -->
-<header>
+<header<?php echo (isset($headerId) && !empty($headerId)) ? ' id="' . htmlspecialchars($headerId, ENT_QUOTES, 'UTF-8') . '"' : ''; ?>>
     <!-- Seletor de Idioma (Topo Direito) -->
     <?php if (function_exists('getCurrentLanguage') && function_exists('url')): ?>
         <?php
@@ -111,9 +110,9 @@ $menuItems = [
         </div>
     <?php endif; ?>
 
-    <a href="<?php echo function_exists('url') ? url('index', $currentLang) : 'index.php'; ?>" id="indexReferrer">
+    <div id="indexReferrer">
         <img src="/assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
-    </a>
+    </div>
     <div>
         <nav>
             <ul>

@@ -66,6 +66,19 @@ $currentPage = 'projetos';
                 </div>
             </div>
             <div id="projectsContainer" role="list" aria-live="polite"></div>
+            <div id="noResultsMessage" class="no-results-hidden" aria-live="polite" aria-atomic="true">
+                <div class="no-results-icon-wrapper">
+                    <i class="ph ph-regular ph-magnifying-glass" aria-hidden="true"></i>
+                    <i class="ph ph-regular ph-question-mark question-icon question-icon-1" aria-hidden="true"></i>
+                    <i class="ph ph-regular ph-question-mark question-icon question-icon-2" aria-hidden="true"></i>
+                    <i class="ph ph-regular ph-question-mark question-icon question-icon-3" aria-hidden="true"></i>
+                    <i class="ph ph-regular ph-question-mark question-icon question-icon-4" aria-hidden="true"></i>
+                </div>
+                <p class="no-results-text"><?php echo t('projects.noResultsMessage'); ?></p>
+                <a href="<?php echo htmlspecialchars(url('orcamento', $currentLang), ENT_QUOTES, 'UTF-8'); ?>" class="no-results-button">
+                    <?php echo htmlspecialchars(t('projects.requestBudget'), ENT_QUOTES, 'UTF-8'); ?>
+                </a>
+            </div>
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>
