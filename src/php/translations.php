@@ -22,10 +22,16 @@ $allTranslations = [
             'contact' => 'contato'
         ],
 
+        // Página Home
+        'home' => [
+            'title' => 'home',
+            'metaDescription' => 'Maribe Arquitetura é um escritório de arquitetura e urbanismo baseado em Recife, Pernambuco, com foco em arquitetura residencial, comercial e consultorias.'
+        ],
 
         // Página de Contato
         'contact' => [
             'title' => 'contato',
+            'metaDescription' => 'Gostaria de conversar? Nos envie uma mensagem nessa página.',
             'description' => [
                 'Tem alguma assunto para tratar conosco? É por aqui que podemos conversar!',
                 'Caso precise de um orçamento, você pode enviar uma mensagem a partir <a href=":budgetUrl">dessa página</a>.'
@@ -80,6 +86,7 @@ $allTranslations = [
         // Página de Orçamento
         'budget' => [
             'title' => 'vamos começar o seu projeto juntos!',
+            'metaDescription' => 'Nessa página você poderá solicitar o orçamento inicial do seu projeto com a Maribe Arquitetura.',
             'description' => [
                 '<strong>Bem-vindo(a) ao nosso mundo de possibilidades</strong>! Estamos ansiosas para criarmos juntos o seu projeto dos sonhos. Cada detalhe será pensado de acordo com a sua personalidade e memórias afetivas, <strong>transformando casas em lares únicos</strong>, cheios de significado e com muito aconchego.',
                 'Para que isso seja possível, precisamos de algumas informações para entender melhor suas necessidades, você pode preencher suas informações no formulário a seguir. Esperamos que você ame a jornada conosco! 🧡'
@@ -123,26 +130,28 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'quem somos',
-            'description' => '<strong>A arquitetura vai além de construir espaços; ela transforma vidas</strong>. Na Maribe Arquitetura, acreditamos no poder de criar ambientes que refletem histórias e emoções. Nossa missão é proporcionar bem-estar, harmonia e personalidade em cada projeto, sempre unindo o funcional ao belo, o novo ao tradicional. Cada detalhe é pensado para refletir a essência de quem vai morar. <strong>Cada espaço conta uma história, e estamos aqui para ajudar a contar a sua</strong>.',
+            'metaDescription' => 'Maribe Arquitetura é um escritório de arquitetura e urbanismo baseado em Recife, Pernambuco, com foco em arquitetura residencial, comercial e consultorias.',
+            'description' => 'A Maribe nasceu da união dos caminhos de <span>Heloísa Marletti</span> e <span>Nathalia Ribeiro</span>, arquitetas que compartilham a mesma vontade de criar espaços que acolhem, inspiram e contam histórias reais. O nome surge da junção dos sobrenomes — Marletti + Ribeiro — e simboliza exatamente isso: <span>duas visões que se encontram para formar algo único</span>.<br><br><span>Acreditamos que arquitetura vai além de projetar ambientes</span>. É sobre escutar, compreender e transformar o cotidiano de quem vive cada espaço. Nosso trabalho une funcionalidade e beleza, tradição e novidade, sempre com atenção aos detalhes que tornam um lar verdadeiramente seu.',
             'aboutUs' => 'sobre nós',
             'heloisa' => [
                 'name' => 'Heloísa Marletti',
-                'description' => '<span>Helô</span> é arquiteta e urbanista formada pela Universidade Católica de Pernambuco (UNICAP) e pós-graduanda em <span>Neuroarquitetura</span>. Possui experiência em <span>arquitetura de interiores</span>, <span>arquitetura social</span> e pesquisa na área acadêmica. Adora trabalhar com modelagens e vídeos, trazendo realismo na apresentação dos projetos. Intensa, adora arte, viagens e bons vinhos.'
+                'description' => 'Arquiteta e urbanista formada pela UNICAP, pós-graduanda em Neuroarquitetura. Tem experiência em arquitetura de interiores, pesquisa acadêmica e representação visual, criando projetos que valorizam conforto, estética e presença. É movida por arte, viagens e novas experiências que enriquecem seu olhar.'
             ],
             'nathalia' => [
                 'name' => 'Nathalia Ribeiro',
-                'description' => '<span>Nath</span> é arquiteta e urbanista formada pela Universidade Católica de Pernambuco (UNICAP), com experiência em <span>arquitetura de interiores</span>, <span>projetos comerciais</span> e <span>design gráfico</span>. Apaixonada por marcenaria, faz tudo para deixar os projetos bem detalhados e executivos completos. Adora yoga, atividades ao ar livre e apreciar bons cafés.'
+                'description' => 'Arquiteta e urbanista pela UNICAP, com trajetória em interiores, projetos comerciais e design gráfico. Apaixonada por marcenaria e por soluções práticas e bem detalhadas, leva precisão e cuidado a cada projeto. Encontra inspiração em movimentos ao ar livre, yoga e pequenos rituais de bem-estar.'
             ],
-            'together' => 'Juntas, gerimos a Maribe Arquitetura, sendo responsáveis por todo criativo dos projetos.',
+            'together' => 'Juntas, conduzimos cada projeto da Maribe do início ao fim. Nosso propósito é simples: <span>criar ambientes onde as pessoas se sintam bem, vistas e acolhidas</span>. Cada espaço carrega a personalidade de quem vai habitá-lo — e é uma honra fazer parte dessa construção.',
             'ourSymbol' => 'nossa marca',
-            'symbolDescription1' => 'O conceito da marca <span>une a arquitetura e história de Recife</span> à referências a artistas que nós admiramos. Composição em mosaico, inspirada por obras de <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span>, remete à união do antigo com o novo, referência à nossa linha de trabalho.',
-            'symbolDescription2' => 'A marca da Maribe utiliza recortes do desenho do <span>Marco Zero</span> para formar a paisagem da <span>Rua do Bom Jesus</span>, eleita a 3ª rua mais bonita do mundo. E faz referência ao urbanismo da cidade com as ruas partindo do Marco, representado pelo círculo vermelho.',
-            'symbolDescription3' => 'Formas divididas por dois tons de azul fazem alusão ao encontro das águas. O <span>Rio Capibaribe</span> que encontra com o <span>Rio Beberibe</span> e desemboca no Oceano Atlântico, unindo a água salgada com a doce, o mar com o rio, Marletti com Ribeiro, Maribe!'
+            'symbolDescription1' => 'A identidade visual da Maribe reflete o que acreditamos: arquitetura que acolhe, valoriza histórias e se conecta ao lugar onde nasce. Nosso símbolo une a força cultural de Recife, a sensibilidade das artes brasileiras e a forma como entendemos o encontro entre passado e presente.',
+            'symbolDescription2' => 'A marca utiliza <span>recortes do desenho do Marco Zero</span>, formando a paisagem da <span>Rua do Bom Jesus</span>, uma das ruas mais emblemáticas da cidade. As formas azuis representam os paralelepípedos; as formas coloridas, os prédios históricos. O <span>círculo vermelho</span> simboliza o próprio Marco, de onde as ruas se expandem — referência ao urbanismo de Recife e ao ponto de partida do nosso conceito.<br><br>Dois tons de azul fazem alusão ao <span>encontro das águas</span> do Capibaribe e do Beberibe antes de chegar ao mar. Essa união também representa a essência da Maribe: a mistura de influências, olhares e histórias — do mar com o rio, do salgado com o doce, do <span>Marletti com Ribeiro</span>.',
+            'symbolDescription3' => 'A composição em mosaico traz inspiração em <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span>, artistas que admiramos e que traduzem a riqueza da cor, da forma e da brasilidade. A paleta de cores nasce de Recife, enquanto a tipografia arredondada e orgânica reforça suavidade, proximidade e modernidade.<br><br>O resultado é uma marca que carrega o que buscamos em nossos projetos: <span>leveza, personalidade e uma beleza que acolhe</span>.'
         ],
 
         // Página Projetos
         'projects' => [
             'title' => 'nossos projetos',
+            'metaDescription' => 'Confira os nossos projetos, temos certeza que você irá amar!',
             'description' => 'Aqui você encontra alguns dos nossos projetos, esperamos que você goste e que possamos incluir um espaço aqui para o seu projeto no futuro! 🧡',
             'searchPlaceholder' => 'Procurando um projeto ou cidade específicos?',
             'noResultsMessage' => 'Ainda não foram encontrados projetos com esses termos...<br>Mas, o que você pensa de incluirmos o seu aqui?',
@@ -162,6 +171,7 @@ $allTranslations = [
         // Página Política de Privacidade
         'privacy' => [
             'title' => 'política de privacidade',
+            'metaDescription' => 'Política de privacidade da Maribe Arquitetura. Saiba como coletamos, usamos e protegemos suas informações pessoais.',
             'description' => 'Nós valorizamos a confiança que você deposita em nós e estamos comprometidos em proteger sua privacidade e seus dados pessoais. Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações enquanto você navega pelo nosso site.',
             'lastUpdate' => 'Última atualização',
             'sections' => [
@@ -223,6 +233,7 @@ $allTranslations = [
         // Página Proposta
         'proposal' => [
             'title' => 'formulário de proposta',
+            'metaDescription' => 'Formulário de proposta detalhada para orçamento de projeto com a Maribe Arquitetura.',
             'description' => [
                 'Ficamos muito felizes com o seu contato, <strong>vai ser um prazer fazer essa parceria contigo</strong>!',
                 'Para que possamos te ajudar a tirar esse sonho do papel, precisamos que você responda a algumas perguntas para entendermos melhor do que você precisa.'
@@ -259,6 +270,7 @@ $allTranslations = [
         // Página Contrato
         'contract' => [
             'title' => 'formulário de contrato',
+            'metaDescription' => 'Preencha os dados necessários para o preenchimento do contrato e organização da gestão interna do escritório.',
             'description' => 'Esses dados são necessários para preenchimento do contrato e organização da gestão interna do escritório.',
             'form' => [
                 'name' => 'Nome completo',
@@ -280,6 +292,14 @@ $allTranslations = [
                 'dataExplanation' => 'Por que precisamos desses dados?',
                 'dataExplanationText' => 'Os dados de CPF, RG e endereço são necessários para o preenchimento correto do contrato e para a organização da gestão interna do escritório. Essas informações são essenciais para garantir a formalização adequada do acordo entre as partes.',
             ]
+        ],
+
+        // Página Sucesso
+        'success' => [
+            'title' => 'mensagem enviada',
+            'metaDescription' => 'Sua mensagem foi enviada com sucesso! Agradecemos o seu contato e responderemos o mais breve possível.',
+            'heading' => 'agradecemos o seu contato!',
+            'message' => 'Sua mensagem foi enviada e nos iremos respondê-la o mais breve possível. Enquanto isso, <a href=":projectsUrl">clique aqui</a> para ver alguns dos nossos projetos.'
         ]
     ],
 
@@ -351,6 +371,7 @@ $allTranslations = [
         // Página de Orçamento
         'budget' => [
             'title' => "let's start your project together!",
+            'metaDescription' => 'On this page you can request the initial quote for your project with Maribe Arquitetura.',
             'description' => [
                 '<strong>Welcome to our world of possibilities</strong>! We are excited to create your dream project together. Every detail will be thought according to your personality and affective memories, <strong>transforming houses into unique homes</strong>, full of meaning and coziness.',
                 'For this to be possible, we need some information to better understand your needs. You can fill in your information in the form below. We hope you love the journey with us! 🧡'
@@ -394,26 +415,28 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'who we are',
-            'description' => '<strong>Architecture goes beyond building spaces; it transforms lives</strong>. At Maribe Arquitetura, we believe in the power of creating environments that reflect stories and emotions. Our mission is to provide well-being, harmony, and personality in each project, always combining the functional with the beautiful, the new with the traditional. Every detail is designed to reflect the essence of those who will live there. <strong>Every space tells a story, and we are here to help tell yours</strong>.',
+            'metaDescription' => 'Maribe Arquitetura is an architecture and urban planning firm based in Recife, Pernambuco, focused on residential architecture, commercial architecture, and consulting.',
+            'description' => 'Maribe was born from the union of the paths of <span>Heloísa Marletti</span> and <span>Nathalia Ribeiro</span>, architects who share the same desire to create spaces that welcome, inspire, and tell real stories. The name comes from the combination of the surnames — Marletti + Ribeiro — and symbolizes exactly that: <span>two visions that meet to form something unique</span>.<br><br><span>We believe that architecture goes beyond designing environments</span>. It\'s about listening, understanding, and transforming the daily life of those who live in each space. Our work unites functionality and beauty, tradition and novelty, always with attention to the details that make a home truly yours.',
             'aboutUs' => 'about us',
             'heloisa' => [
                 'name' => 'Heloísa Marletti',
-                'description' => '<span>Helô</span> is an architect and urban planner graduated from the Catholic University of Pernambuco (UNICAP) and a postgraduate student in <span>Neuroarchitecture</span>. She has experience in <span>interior architecture</span>, <span>social architecture</span>, and academic research. She loves working with modeling and videos, bringing realism to project presentations. Intense, she loves art, travel, and good wine.'
+                'description' => 'Architect and urban planner graduated from UNICAP, postgraduate student in Neuroarchitecture. Has experience in interior architecture, academic research, and visual representation, creating projects that value comfort, aesthetics, and presence. Driven by art, travel, and new experiences that enrich her perspective.'
             ],
             'nathalia' => [
                 'name' => 'Nathalia Ribeiro',
-                'description' => '<span>Nath</span> is an architect and urban planner graduated from the Catholic University of Pernambuco (UNICAP), with experience in <span>interior architecture</span>, <span>commercial projects</span>, and <span>graphic design</span>. Passionate about woodworking, she does everything to make projects well-detailed and complete executive plans. She loves yoga, outdoor activities, and enjoying good coffee.'
+                'description' => 'Architect and urban planner from UNICAP, with a background in interiors, commercial projects, and graphic design. Passionate about woodworking and practical, well-detailed solutions, brings precision and care to each project. Finds inspiration in outdoor activities, yoga, and small wellness rituals.'
             ],
-            'together' => 'Together, we manage Maribe Arquitetura, being responsible for all the creative aspects of the projects.',
+            'together' => 'Together, we guide each Maribe project from start to finish. Our purpose is simple: <span>to create environments where people feel good, seen, and welcomed</span>. Each space carries the personality of those who will inhabit it — and it\'s an honor to be part of this construction.',
             'ourSymbol' => 'our brand',
-            'symbolDescription1' => 'The brand concept <span>unites the architecture and history of Recife</span> with references to artists we admire. Mosaic composition, inspired by works by <span>Hélio Oiticica</span> and <span>Tarsila do Amaral</span>, refers to the union of old and new, a reference to our line of work.',
-            'symbolDescription2' => 'The Maribe brand uses cutouts from the <span>Marco Zero</span> drawing to form the landscape of <span>Rua do Bom Jesus</span>, elected the 3rd most beautiful street in the world. And it references the city\'s urbanism with streets starting from the Marco, represented by the red circle.',
-            'symbolDescription3' => 'Forms divided by two shades of blue allude to the meeting of waters. The <span>Capibaribe River</span> meets the <span>Beberibe River</span> and flows into the Atlantic Ocean, uniting salt water with fresh water, the sea with the river, Marletti with Ribeiro, Maribe!'
+            'symbolDescription1' => 'Maribe\'s visual identity reflects what we believe: architecture that welcomes, values stories, and connects to the place where it\'s born. Our symbol unites the cultural strength of Recife, the sensitivity of Brazilian arts, and how we understand the meeting between past and present.',
+            'symbolDescription2' => 'The brand uses <span>cutouts from the Marco Zero drawing</span>, forming the landscape of <span>Rua do Bom Jesus</span>, one of the city\'s most emblematic streets. The blue shapes represent the cobblestones; the colored shapes, the historic buildings. The <span>red circle</span> symbolizes the Marco itself, from where the streets expand — a reference to Recife\'s urbanism and the starting point of our concept.<br><br>Two shades of blue allude to the <span>meeting of the waters</span> of Capibaribe and Beberibe before reaching the sea. This union also represents the essence of Maribe: the mix of influences, perspectives, and stories — from sea to river, from salt to fresh, from <span>Marletti to Ribeiro</span>.',
+            'symbolDescription3' => 'The mosaic composition draws inspiration from <span>Hélio Oiticica</span> and <span>Tarsila do Amaral</span>, artists we admire and who translate the richness of color, form, and Brazilianness. The color palette is born from Recife, while the rounded and organic typography reinforces softness, proximity, and modernity.<br><br>The result is a brand that carries what we seek in our projects: <span>lightness, personality, and a beauty that welcomes</span>.'
         ],
 
         // Página Projetos
         'projects' => [
             'title' => 'our projects',
+            'metaDescription' => 'Check out our projects, we are sure you will love them!',
             'description' => 'Here you can find some of our projects. We hope you like them and that we can include a space here for your project in the future! 🧡',
             'searchPlaceholder' => 'Looking for a specific project or city?',
             'noResultsMessage' => 'No projects found with these terms yet...<br>But, what do you think about including yours here?',
@@ -433,6 +456,7 @@ $allTranslations = [
         // Privacy Policy Page
         'privacy' => [
             'title' => 'privacy policy',
+            'metaDescription' => 'Maribe Arquitetura privacy policy. Learn how we collect, use, and protect your personal information.',
             'description' => 'We value the trust you place in us and are committed to protecting your privacy and personal data. This Privacy Policy describes how we collect, use, and protect your information while you browse our website.',
             'lastUpdate' => 'Last updated',
             'sections' => [
@@ -530,6 +554,7 @@ $allTranslations = [
         // Página Contrato
         'contract' => [
             'title' => 'contract form',
+            'metaDescription' => 'Fill in the necessary data for contract completion and organization of the office internal management.',
             'description' => 'This data is necessary for filling out the contract and organizing the internal management of the office.',
             'form' => [
                 'name' => 'Full name',
@@ -551,6 +576,14 @@ $allTranslations = [
                 'dataExplanation' => 'Why do we need this data?',
                 'dataExplanationText' => 'CPF, RG, and address data are necessary for the correct completion of the contract and for organizing the internal management of the office. This information is essential to ensure the proper formalization of the agreement between the parties.'
             ]
+        ],
+
+        // Página Sucesso
+        'success' => [
+            'title' => 'message sent',
+            'metaDescription' => 'Your message has been sent successfully! We thank you for your contact and will respond as soon as possible.',
+            'heading' => 'thank you for your contact!',
+            'message' => 'Your message has been sent and we will respond as soon as possible. Meanwhile, <a href=":projectsUrl">click here</a> to see some of our projects.'
         ]
     ],
 
@@ -564,10 +597,16 @@ $allTranslations = [
             'contact' => 'contacto'
         ],
 
+        // Página Home
+        'home' => [
+            'title' => 'inicio',
+            'metaDescription' => 'Maribe Arquitetura es un estudio de arquitectura y urbanismo con sede en Recife, Pernambuco, enfocado en arquitectura residencial, arquitectura comercial y consultorías.'
+        ],
 
         // Página de Contacto
         'contact' => [
             'title' => 'contacto',
+            'metaDescription' => '¿Te gustaría conversar? Envíanos un mensaje en esta página.',
             'description' => [
                 '¿Tienes algo que contarnos? ¡Por aquí podemos conversar!',
                 'Si necesitas un presupuesto, puedes enviarnos un mensaje desde <a href=":budgetUrl">esta página</a>.'
@@ -622,6 +661,7 @@ $allTranslations = [
         // Página de Presupuesto
         'budget' => [
             'title' => '¡vamos a empezar tu proyecto juntos!',
+            'metaDescription' => 'En esta página podrás solicitar el presupuesto inicial de tu proyecto con Maribe Arquitetura.',
             'description' => [
                 '<strong>¡Bienvenido(a) a nuestro mundo de posibilidades</strong>! Estamos entusiasmadas por crear contigo el proyecto de tus sueños. Cada detalle será pensado según tu personalidad y recuerdos afectivos, <strong>transformando casas en hogares únicos</strong>, llenos de significado y calidez.',
                 'Para hacerlo posible, necesitamos algunas informaciones para entender mejor tus necesidades. Puedes completar tus datos en el formulario a continuación. ¡Esperamos que ames el camino con nosotras! 🧡'
@@ -665,26 +705,28 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'quiénes somos',
-            'description' => '<strong>La arquitectura va más allá de construir espacios; transforma vidas</strong>. En Maribe Arquitetura, creemos en el poder de crear ambientes que reflejen historias y emociones. Nuestra misión es brindar bienestar, armonía y personalidad en cada proyecto, uniendo siempre lo funcional con lo bello, lo nuevo con lo tradicional. Cada detalle está pensado para reflejar la esencia de quienes vivirán allí. <strong>Cada espacio cuenta una historia, y estamos aquí para ayudar a contar la tuya</strong>.',
+            'metaDescription' => 'Maribe Arquitetura es un estudio de arquitectura y urbanismo con sede en Recife, Pernambuco, enfocado en arquitectura residencial, arquitectura comercial y consultorías.',
+            'description' => 'Maribe nació de la unión de los caminos de <span>Heloísa Marletti</span> y <span>Nathalia Ribeiro</span>, arquitectas que comparten el mismo deseo de crear espacios que acogen, inspiran y cuentan historias reales. El nombre surge de la unión de los apellidos — Marletti + Ribeiro — y simboliza exactamente eso: <span>dos visiones que se encuentran para formar algo único</span>.<br><br><span>Creemos que la arquitectura va más allá de proyectar ambientes</span>. Se trata de escuchar, comprender y transformar el cotidiano de quienes viven cada espacio. Nuestro trabajo une funcionalidad y belleza, tradición y novedad, siempre con atención a los detalles que hacen de un hogar algo verdaderamente propio.',
             'aboutUs' => 'sobre nosotras',
             'heloisa' => [
                 'name' => 'Heloísa Marletti',
-                'description' => '<span>Helô</span> es arquitecta y urbanista graduada por la Universidad Católica de Pernambuco (UNICAP) y posgraduanda en <span>Neuroarquitectura</span>. Tiene experiencia en <span>arquitectura de interiores</span>, <span>arquitectura social</span> e investigación académica. Le encanta trabajar con modelado y videos, aportando realismo a la presentación de los proyectos. Intensa, ama el arte, los viajes y un buen vino.'
+                'description' => 'Arquitecta y urbanista graduada por la UNICAP, posgraduanda en Neuroarquitectura. Tiene experiencia en arquitectura de interiores, investigación académica y representación visual, creando proyectos que valoran confort, estética y presencia. Se mueve por el arte, los viajes y nuevas experiencias que enriquecen su mirada.'
             ],
             'nathalia' => [
                 'name' => 'Nathalia Ribeiro',
-                'description' => '<span>Nath</span> es arquitecta y urbanista graduada por la Universidad Católica de Pernambuco (UNICAP), con experiencia en <span>arquitectura de interiores</span>, <span>proyectos comerciales</span> y <span>diseño gráfico</span>. Apasionada por la carpintería, hace todo para dejar los proyectos bien detallados y con planos ejecutivos completos. Le encanta el yoga, las actividades al aire libre y disfrutar de un buen café.'
+                'description' => 'Arquitecta y urbanista por la UNICAP, con trayectoria en interiores, proyectos comerciales y diseño gráfico. Apasionada por la carpintería y por soluciones prácticas y bien detalladas, lleva precisión y cuidado a cada proyecto. Encuentra inspiración en movimientos al aire libre, yoga y pequeños rituales de bienestar.'
             ],
-            'together' => 'Juntas gestionamos Maribe Arquitetura, siendo responsables de todo el proceso creativo de los proyectos.',
+            'together' => 'Juntas, conducimos cada proyecto de Maribe de principio a fin. Nuestro propósito es simple: <span>crear ambientes donde las personas se sientan bien, vistas y acogidas</span>. Cada espacio lleva la personalidad de quienes lo habitarán — y es un honor ser parte de esa construcción.',
             'ourSymbol' => 'nuestra marca',
-            'symbolDescription1' => 'El concepto de la marca <span>une la arquitectura e historia de Recife</span> con referencias a artistas que admiramos. La composición en mosaico, inspirada en obras de <span>Hélio Oiticica</span> y <span>Tarsila do Amaral</span>, remite a la unión de lo antiguo con lo nuevo, referencia a nuestra línea de trabajo.',
-            'symbolDescription2' => 'La marca de Maribe utiliza recortes del dibujo del <span>Marco Zero</span> para formar el paisaje de la <span>Rua do Bom Jesus</span>, elegida como la 3ª calle más bonita del mundo. Y hace referencia al urbanismo de la ciudad con las calles que parten del Marco, representado por el círculo rojo.',
-            'symbolDescription3' => 'Formas divididas en dos tonos de azul aluden al encuentro de las aguas. El <span>río Capibaribe</span> se encuentra con el <span>río Beberibe</span> y desemboca en el Océano Atlántico, uniendo agua salada con dulce, mar con río, Marletti con Ribeiro, ¡Maribe!'
+            'symbolDescription1' => 'La identidad visual de Maribe refleja lo que creemos: arquitectura que acoge, valora historias y se conecta al lugar donde nace. Nuestro símbolo une la fuerza cultural de Recife, la sensibilidad de las artes brasileñas y la forma en que entendemos el encuentro entre pasado y presente.',
+            'symbolDescription2' => 'La marca utiliza <span>recortes del dibujo del Marco Zero</span>, formando el paisaje de la <span>Rua do Bom Jesus</span>, una de las calles más emblemáticas de la ciudad. Las formas azules representan los adoquines; las formas coloridas, los edificios históricos. El <span>círculo rojo</span> simboliza el propio Marco, de donde se expanden las calles — referencia al urbanismo de Recife y al punto de partida de nuestro concepto.<br><br>Dos tonos de azul hacen alusión al <span>encuentro de las aguas</span> del Capibaribe y del Beberibe antes de llegar al mar. Esta unión también representa la esencia de Maribe: la mezcla de influencias, miradas e historias — del mar con el río, de lo salado con lo dulce, de <span>Marletti con Ribeiro</span>.',
+            'symbolDescription3' => 'La composición en mosaico trae inspiración en <span>Hélio Oiticica</span> y <span>Tarsila do Amaral</span>, artistas que admiramos y que traducen la riqueza del color, de la forma y de la brasilidad. La paleta de colores nace de Recife, mientras la tipografía redondeada y orgánica refuerza suavidad, proximidad y modernidad.<br><br>El resultado es una marca que lleva lo que buscamos en nuestros proyectos: <span>ligereza, personalidad y una belleza que acoge</span>.'
         ],
 
         // Página Proyectos
         'projects' => [
             'title' => 'nuestros proyectos',
+            'metaDescription' => '¡Consulta nuestros proyectos, estamos seguros de que te encantarán!',
             'description' => 'Aquí encontrarás algunos de nuestros proyectos. ¡Esperamos que te gusten y que pronto podamos incluir aquí tu espacio! 🧡',
             'searchPlaceholder' => '¿Buscas un proyecto o ciudad específicos?',
             'noResultsMessage' => 'Aún no se encontraron proyectos con estos términos...<br>Pero, ¿qué piensas de incluir el tuyo aquí?',
@@ -704,6 +746,7 @@ $allTranslations = [
         // Página Política de Privacidad
         'privacy' => [
             'title' => 'política de privacidad',
+            'metaDescription' => 'Política de privacidad de Maribe Arquitetura. Conoce cómo recopilamos, usamos y protegemos tu información personal.',
             'description' => 'Valoramos la confianza que depositas en nosotros y estamos comprometidos a proteger tu privacidad y datos personales. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos tu información mientras navegas por nuestro sitio web.',
             'lastUpdate' => 'Última actualización',
             'sections' => [
@@ -765,6 +808,7 @@ $allTranslations = [
         // Página Propuesta
         'proposal' => [
             'title' => 'formulario de propuesta',
+            'metaDescription' => 'Formulario de propuesta detallada para presupuesto de proyecto con Maribe Arquitetura.',
             'description' => [
                 'Estamos muy felices con tu contacto, <strong>¡será un placer hacer esta alianza contigo</strong>!',
                 'Para ayudarte a hacer realidad este sueño, necesitamos que respondas algunas preguntas para entender mejor lo que necesitas.'
@@ -801,6 +845,7 @@ $allTranslations = [
         // Página Contrato
         'contract' => [
             'title' => 'formulario de contrato',
+            'metaDescription' => 'Completa los datos necesarios para el cumplimiento del contrato y la organización de la gestión interna del estudio.',
             'description' => 'Estos datos son necesarios para completar el contrato y organizar la gestión interna del estudio.',
             'form' => [
                 'name' => 'Nombre completo',
@@ -822,6 +867,14 @@ $allTranslations = [
                 'dataExplanation' => '¿Por qué necesitamos estos datos?',
                 'dataExplanationText' => 'Los datos de CPF, RG y dirección son necesarios para el correcto cumplimiento del contrato y para organizar la gestión interna del estudio. Esta información es esencial para garantizar la formalización adecuada del acuerdo entre las partes.'
             ]
+        ],
+
+        // Página Sucesso
+        'success' => [
+            'title' => 'mensaje enviado',
+            'metaDescription' => '¡Tu mensaje ha sido enviado con éxito! Agradecemos tu contacto y responderemos lo antes posible.',
+            'heading' => '¡agradecemos tu contacto!',
+            'message' => 'Tu mensaje ha sido enviado y lo responderemos lo antes posible. Mientras tanto, <a href=":projectsUrl">haz clic aquí</a> para ver algunos de nuestros proyectos.'
         ]
     ]
 ];

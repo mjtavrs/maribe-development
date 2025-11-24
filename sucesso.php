@@ -1,9 +1,16 @@
 <?php
+// Inicia sessão ANTES de qualquer output
+require_once __DIR__ . '/src/php/functions.php';
+
+// Detecta e define o idioma
+$currentLang = getCurrentLanguage();
+$langAttribute = $currentLang === 'pt' ? 'pt-br' : ($currentLang === 'en' ? 'en-US' : 'es-ES');
+
 // Define a página atual para o header (sucesso não aparece no menu, mas definimos para consistência)
 $currentPage = 'sucesso';
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?php echo htmlspecialchars($langAttribute, ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
@@ -16,16 +23,17 @@ $currentPage = 'sucesso';
 
     <!-- SEO Meta Tags -->
     <meta name="author" content="Marcos Tavares" />
+    <meta name="description" content="<?php echo htmlspecialchars(t('success.metaDescription'), ENT_QUOTES, 'UTF-8'); ?>" />
 
-    <title>mensagem enviada • maribe arquitetura</title>
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title><?php echo htmlspecialchars(t('success.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/shared/variables.css" />
-    <link rel="stylesheet" href="styles/shared/base.css" />
-    <link rel="stylesheet" href="styles/shared/animations.css" />
-    <link rel="stylesheet" href="styles/shared/components.css" />
-    <link rel="stylesheet" href="styles/pages/404/404.css" />
+    <link rel="stylesheet" href="/styles/shared/variables.css" />
+    <link rel="stylesheet" href="/styles/shared/base.css" />
+    <link rel="stylesheet" href="/styles/shared/animations.css" />
+    <link rel="stylesheet" href="/styles/shared/components.css" />
+    <link rel="stylesheet" href="/styles/pages/404/404.css" />
 
     <!-- Scripts -->
 </head>
@@ -38,10 +46,13 @@ $currentPage = 'sucesso';
                 <i class="ph-fill ph-seal-check"></i>
                 <div id="notFoundText">
                     <h1>
-                        agradecemos o seu contato!
+                        <?php echo htmlspecialchars(t('success.heading'), ENT_QUOTES, 'UTF-8'); ?>
                     </h1>
                     <p>
-                        Sua mensagem foi enviada e nos iremos respondê-la o mais breve possível. Enquanto isso, <a href="projetos.php">clique aqui</a> para ver alguns dos nossos projetos.
+                        <?php
+                        $projectsUrl = url('projetos', $currentLang);
+                        echo t('success.message', ['projectsUrl' => $projectsUrl]);
+                        ?>
                     </p>
                 </div>
             </div>

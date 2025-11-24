@@ -1,9 +1,16 @@
 <?php
+// Inicia sessão ANTES de qualquer output
+require_once __DIR__ . '/src/php/functions.php';
+
+// Detecta e define o idioma
+$currentLang = getCurrentLanguage();
+$langAttribute = $currentLang === 'pt' ? 'pt-br' : ($currentLang === 'en' ? 'en-US' : 'es-ES');
+
 // Define a página atual para o header (projeto tem header especial, não usa o header padrão)
 $currentPage = 'projeto';
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?php echo htmlspecialchars($langAttribute, ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
@@ -40,7 +47,7 @@ $currentPage = 'projeto';
     <?php include 'includes/cookiePopup.php'; ?>
     <div id="smoothOpening">
         <header>
-            <a href="/projetos.php" title="Retornar aos projetos" aria-label="Retornar aos projetos">
+            <a href="<?php echo htmlspecialchars(url('projetos', $currentLang), ENT_QUOTES, 'UTF-8'); ?>" title="Retornar aos projetos" aria-label="Retornar aos projetos">
                 <i class="ph-bold ph-x"></i>
             </a>
             <h1 id="projectTitle">

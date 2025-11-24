@@ -23,10 +23,10 @@ $currentPage = 'sobre';
 
     <!-- SEO Meta Tags -->
     <meta name="author" content="Marcos Tavares" />
-    <meta name="description" content="Maribe Arquitetura é um escritório de arquitetura e urbanismo baseado em Recife, Pernambuco, com foco em arquitetura residencial, comercial e consultorias." />
+    <meta name="description" content="<?php echo htmlspecialchars(t('about.metaDescription'), ENT_QUOTES, 'UTF-8'); ?>" />
     <meta name="keywords" content="arquitetura, residencial, comercial, urbanismo, recife, pernambuco, maribe, escritório, consultoria, arquitetura residencial, arquitetura infantil, neuroarquitetura" />
 
-    <title>sobre • maribe arquitetura</title>
+    <title><?php echo htmlspecialchars(t('about.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
     <!-- Styles -->
