@@ -172,8 +172,9 @@ $allTranslations = [
         'notFound' => [
             'title' => 'página não encontrada',
             'metaDescription' => 'A página que você está procurando não foi encontrada.',
-            'heading' => 'ooops, não conseguimos encontrar essa página',
-            'description' => 'Esse endereço pode não existir ou estar em manutenção. Tente os links do cabeçalho acima.'
+            'heading' => 'página não encontrada',
+            'description' => 'A página que você buscou pode não existir ou estar em manutenção. Você pode tentar novamente ou ver nossos projetos no botão abaixo.',
+            'viewProjects' => 'Ver projetos'
         ],
 
         // Página Política de Privacidade
@@ -465,8 +466,9 @@ $allTranslations = [
         'notFound' => [
             'title' => 'page not found',
             'metaDescription' => 'The page you are looking for was not found.',
-            'heading' => 'oops, we couldn\'t find this page',
-            'description' => 'This address may not exist or be under maintenance. Try the links in the header above.'
+            'heading' => 'page not found',
+            'description' => 'The page you searched for may not exist or be under maintenance. You can try again or see our projects in the button below.',
+            'viewProjects' => 'View projects'
         ],
 
         // Privacy Policy Page
@@ -763,8 +765,9 @@ $allTranslations = [
         'notFound' => [
             'title' => 'página no encontrada',
             'metaDescription' => 'La página que estás buscando no fue encontrada.',
-            'heading' => 'oops, no pudimos encontrar esta página',
-            'description' => 'Esta dirección puede no existir o estar en mantenimiento. Prueba los enlaces del encabezado arriba.'
+            'heading' => 'página no encontrada',
+            'description' => 'La página que buscaste puede no existir o estar en mantenimiento. Puedes intentar de nuevo o ver nuestros proyectos en el botón de abajo.',
+            'viewProjects' => 'Ver proyectos'
         ],
 
         // Página Política de Privacidad

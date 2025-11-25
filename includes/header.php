@@ -38,7 +38,8 @@ $pageRouteMap = [
     'contrato' => 'contrato',
     'proposta' => 'proposta',
     'sucesso' => 'sucesso',
-    'politica' => 'politica-de-privacidade'
+    'politica' => 'politica-de-privacidade',
+    '404' => '404'
 ];
 
 // Define quais páginas devem ter o menu destacado
