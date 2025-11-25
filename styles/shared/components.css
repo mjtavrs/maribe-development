@@ -54,7 +54,7 @@ body header .language-button {
   cursor: pointer;
   font-family: "Source Sans 3", sans-serif;
   font-size: 0.9375rem;
-  color: var(--color-cinza-elegante);
+  color: var(--color-cinza-elegante-sutil);
   transition: all 0.2s ease;
   min-width: 140px;
   justify-content: space-between;
@@ -79,7 +79,7 @@ body header .language-current {
 body header .language-arrow {
   font-size: 14px;
   transition: transform 0.2s ease;
-  color: var(--color-cinza-elegante);
+  color: var(--color-cinza-elegante-sutil);
 }
 
 body header .language-dropdown-menu {
@@ -113,7 +113,7 @@ body header .language-option {
   justify-content: space-between;
   padding: 10px 16px;
   text-decoration: none;
-  color: var(--color-cinza-elegante);
+  color: var(--color-cinza-elegante-sutil);
   font-size: 0.9375rem;
   transition: background-color 0.2s ease, color 0.2s ease;
   cursor: pointer;
@@ -150,6 +150,11 @@ body header .language-check {
   }
 }
 
+body header #indexReferrer {
+  display: block;
+  text-decoration: none;
+}
+
 body header #indexReferrer img {
   margin-top: 30px;
   width: 300px;
@@ -172,14 +177,12 @@ body header nav ul #selected a {
 }
 
 body header nav ul li:not(#selected) a {
-  opacity: 0.8;
-  color: var(--color-cinza-elegante);
+  color: var(--color-cinza-elegante-sutil);
 }
 
 body header nav ul li:not(#selected) a:hover {
   color: var(--color-vermelho-recife);
   transition: 300ms color;
-  opacity: 1;
 }
 
 body footer {
@@ -220,7 +223,7 @@ body footer #socialLinks {
 }
 
 body footer #socialLinks h3 {
-  color: var(--color-cinza-elegante);
+  color: var(--color-cinza-elegante-sutil);
   font-family: "All Round Gothic", sans-serif;
   font-size: 2rem;
   font-weight: bold;
@@ -254,7 +257,7 @@ body footer #socialLinks ul li a:focus {
 
 body footer #socialLinks ul li a i {
   font-size: 28px;
-  color: var(--color-cinza-elegante);
+  color: var(--color-cinza-elegante-sutil);
   display: block;
 }
 
@@ -278,7 +281,7 @@ body footer #legalInformation p span {
 }
 
 body footer #legalInformation a {
-  color: var(--color-cinza-elegante);
+  color: var(--color-cinza-elegante-sutil);
   font-weight: bold;
   transition: 500ms color;
   text-decoration: none;

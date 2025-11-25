@@ -14,6 +14,7 @@
   /* Secondary colors */
   --color-azul-rio: #e2e8eb;
   --color-cinza-elegante: #3c3c3b;
+  --color-cinza-elegante-sutil: rgba(60, 60, 59, 0.8);
   --color-rosa-retro: #e2b79f;
 
   /* Alias para compatibilidade com código existente */
@@ -24,5 +25,6 @@
   --vermelho-recife: var(--color-vermelho-recife);
   --azul-rio: var(--color-azul-rio);
   --cinza-elegante: var(--color-cinza-elegante);
+  --cinza-elegante-sutil: var(--color-cinza-elegante-sutil);
   --rosa-retro: var(--color-rosa-retro);
 }

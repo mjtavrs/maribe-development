@@ -15,6 +15,7 @@
     RewriteRule ^(pt|en|es)/(politica-de-privacidade|privacy-policy|politica-de-privacidad)$ politica-de-privacidade.php?lang=$1 [L,QSA]
     RewriteRule ^(pt|en|es)/(sucesso|success|exito)$ sucesso.php?lang=$1 [L,QSA]
     RewriteRule ^(pt|en|es)/(index|home|inicio)?$ index.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/404$ 404.php?lang=$1 [L,QSA]
     
     # Redireciona URLs antigas sem prefixo para /pt/ (português padrão)
     RewriteRule ^contato\.php$ /pt/contato [R=301,L]
@@ -44,11 +45,18 @@
 # Define index.php como página padrão
 DirectoryIndex index.php
 
+# Página de erro 404
+ErrorDocument 404 /404.php
+
 # Protege arquivos sensíveis
 <FilesMatch "^(\.htaccess|\.env|composer\.(json|lock)|package(-lock)?\.json)$">
-    Order allow,deny
-    Deny from all
+    Require all denied
 </FilesMatch>
+
+# Protege diretório src/php/ (endpoints não devem ser acessados diretamente)
+<IfModule mod_rewrite.c>
+    RewriteRule ^src/php/ - [F,L]
+</IfModule>
 
 # Habilita compressão GZIP
 <IfModule mod_deflate.c>
@@ -67,11 +75,12 @@ DirectoryIndex index.php
     ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
-# Configurações PHP para desenvolvimento
-# Em produção, configure no php.ini do servidor
+# Configurações PHP
+# ATENÇÃO: Em produção, configure display_errors = Off no php.ini do servidor
+# Estas configurações são apenas para desenvolvimento local
+# Em produção, sempre certifique-se de que session_start() é chamado antes de qualquer output
 <IfModule mod_php.c>
-    # Suprime warnings de session_start() após headers (apenas em desenvolvimento)
-    # Em produção, sempre certifique-se de que session_start() é chamado antes de qualquer output
-    php_flag display_errors On
-    php_value error_reporting E_ALL & ~E_WARNING & ~E_NOTICE
+    # Descomente as linhas abaixo apenas para desenvolvimento local
+    # php_flag display_errors On
+    # php_value error_reporting E_ALL & ~E_WARNING & ~E_NOTICE
 </IfModule>

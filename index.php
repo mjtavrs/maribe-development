@@ -50,7 +50,7 @@ $currentPage = 'home';
                 <img src="/assets/images/svg/4k_without_logo.svg" aria-hidden="true" id="maribeDesktopBackground">
                 <div id="heroContent">
                     <img src="/assets/images/public/logo_home.webp" alt="Logo da Maribe Arquitetura" id="maribeLogo">
-                    <a href="/<?php echo $currentLang; ?>/<?php echo $currentLang === 'en' ? 'about' : 'sobre'; ?>" id="scrollIndicator" aria-label="Ir para a página Sobre">
+                    <a href="#" id="scrollIndicator" aria-label="Ir para a página Sobre" data-target-url="<?php echo htmlspecialchars(url('sobre', $currentLang), ENT_QUOTES, 'UTF-8'); ?>">
                         <i class="ph ph-regular ph-caret-down" aria-hidden="true"></i>
                     </a>
                 </div>

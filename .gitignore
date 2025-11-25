@@ -1,2 +1,58 @@
+# Arquivos do sistema operacional
 *.DS_Store
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de configuração sensíveis
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+config.php
+config.local.php
+
+# Logs
+*.log
+logs/
+error_log
+access_log
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+
+# Backups
+*.bak
+*.backup
+*.old
+*.orig
+
+# Arquivos de IDE
+.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de sessão PHP (se salvos em arquivo)
+sessions/
+tmp/
+
+# Arquivos de upload (se houver)
+uploads/
+files/
+
+# Node modules (se adicionar ferramentas de build no futuro)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Composer (se adicionar no futuro)
+vendor/
+composer.lock

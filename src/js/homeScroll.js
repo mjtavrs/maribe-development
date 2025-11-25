@@ -25,30 +25,42 @@
         // Adiciona classe de transição ao clicar no chevron
         scrollIndicator.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             
-            // Pega a URL diretamente do href, garantindo que seja a página sobre
-            let targetUrl = scrollIndicator.getAttribute('href');
+            // Tenta usar o data-target-url primeiro (mais confiável)
+            let targetUrl = scrollIndicator.getAttribute('data-target-url');
             
-            // Remove qualquer hash que possa estar no final
-            if (targetUrl && targetUrl.includes('#')) {
-                targetUrl = targetUrl.split('#')[0];
+            // Se não tiver data-target-url, constrói a URL baseado no pathname atual
+            if (!targetUrl || targetUrl === '#' || targetUrl === '') {
+                const currentPath = window.location.pathname;
+                
+                // Detecta o idioma do pathname (procura por /pt/, /en/ ou /es/ no início)
+                let lang = 'pt'; // padrão
+                const langMatch = currentPath.match(/^\/(pt|en|es)(\/|$)/);
+                if (langMatch) {
+                    lang = langMatch[1];
+                }
+                
+                // Mapeia o caminho correto para "sobre" em cada idioma
+                const sobrePath = lang === 'en' ? 'about' : 'sobre';
+                
+                // Constrói a URL completa
+                targetUrl = `/${lang}/${sobrePath}`;
             }
             
-            // Se ainda não tiver uma URL válida, constrói manualmente
-            if (!targetUrl || targetUrl.includes('index')) {
-                const currentPath = window.location.pathname;
-                const lang = currentPath.match(/^\/(pt|en|es)/)?.[1] || 'pt';
-                const sobrePath = lang === 'en' ? 'about' : 'sobre';
-                targetUrl = `/${lang}/${sobrePath}`;
+            // Remove qualquer hash que possa estar no final
+            if (targetUrl.includes('#')) {
+                targetUrl = targetUrl.split('#')[0];
             }
             
             // Adiciona classe de fade-out + slide up
             smoothOpening.classList.add('fade-out-up');
             
-            // Redireciona após a animação
+            // Redireciona após a animação usando window.location.assign para garantir navegação completa
             setTimeout(() => {
-                window.location.href = targetUrl;
+                window.location.assign(targetUrl);
             }, 800); // Duração da animação
-        });
+        }, { capture: true }); // Usa capture phase para garantir que seja executado primeiro
     }
 })();

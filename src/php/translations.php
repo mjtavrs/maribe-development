@@ -168,6 +168,14 @@ $allTranslations = [
             'privacyPolicy' => 'política de privacidade'
         ],
 
+        // Página 404
+        'notFound' => [
+            'title' => 'página não encontrada',
+            'metaDescription' => 'A página que você está procurando não foi encontrada.',
+            'heading' => 'ooops, não conseguimos encontrar essa página',
+            'description' => 'Esse endereço pode não existir ou estar em manutenção. Tente os links do cabeçalho acima.'
+        ],
+
         // Página Política de Privacidade
         'privacy' => [
             'title' => 'política de privacidade',
@@ -451,6 +459,14 @@ $allTranslations = [
             'rights' => 'all rights reserved',
             'madeBy' => 'made with 🧡 by marcos tavares',
             'privacyPolicy' => 'privacy policy'
+        ],
+
+        // 404 Page
+        'notFound' => [
+            'title' => 'page not found',
+            'metaDescription' => 'The page you are looking for was not found.',
+            'heading' => 'oops, we couldn\'t find this page',
+            'description' => 'This address may not exist or be under maintenance. Try the links in the header above.'
         ],
 
         // Privacy Policy Page
@@ -741,6 +757,14 @@ $allTranslations = [
             'rights' => 'todos los derechos reservados',
             'madeBy' => 'hecho con 🧡 por marcos tavares',
             'privacyPolicy' => 'política de privacidad'
+        ],
+
+        // Página 404
+        'notFound' => [
+            'title' => 'página no encontrada',
+            'metaDescription' => 'La página que estás buscando no fue encontrada.',
+            'heading' => 'oops, no pudimos encontrar esta página',
+            'description' => 'Esta dirección puede no existir o estar en mantenimiento. Prueba los enlaces del encabezado arriba.'
         ],
 
         // Página Política de Privacidad

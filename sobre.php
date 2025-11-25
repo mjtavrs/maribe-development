@@ -72,7 +72,7 @@ $currentPage = 'sobre';
                                 </p>
                             </div>
                             <p>
-                                <?php echo htmlspecialchars(t('about.together'), ENT_QUOTES, 'UTF-8'); ?>
+                                <?php echo t('about.together'); ?>
                             </p>
                         </div>
                         <div id="imageContainer">
@@ -96,8 +96,39 @@ $currentPage = 'sobre';
                                 <?php echo t('about.symbolDescription3'); ?>
                             </p>
                         </div>
-                        <div id="videoContainer">
-                            <video src="/assets/videos/logoHistorySquared.MOV" autoplay loop muted defaultmuted playsinline preload="auto"></video>
+                        <div id="logosContainer">
+                            <div id="logosGrid">
+                                <!-- Linha superior: 3 logos horizontais -->
+                                <div class="logo-item horizontal-top">
+                                    <img src="/assets/images/public/logos/logo_horizontal.webp" alt="Logo horizontal Maribe">
+                                </div>
+                                <div class="logo-item horizontal-top">
+                                    <img src="/assets/images/public/logos/logo_horizontal_com_assinatura.webp" alt="Logo horizontal com assinatura Maribe">
+                                </div>
+                                <div class="logo-item horizontal-top">
+                                    <img src="/assets/images/public/logos/logo_horizontal_estendida.webp" alt="Logo horizontal estendida Maribe">
+                                </div>
+                                
+                                <!-- Logo ao lado esquerdo -->
+                                <div class="logo-item around-logo around-left">
+                                    <img src="/assets/images/public/logos/simbolo.webp" alt="Símbolo Maribe">
+                                </div>
+                                
+                                <!-- Logo vertical centralizada -->
+                                <div class="logo-item vertical-center">
+                                    <img src="/assets/images/public/logos/logo_vertical.webp" alt="Logo vertical Maribe">
+                                </div>
+                                
+                                <!-- Logo ao lado direito -->
+                                <div class="logo-item around-logo around-right">
+                                    <img src="/assets/images/public/logos/simbolo_reduzido.webp" alt="Símbolo reduzido Maribe">
+                                </div>
+                                
+                                <!-- Logo embaixo -->
+                                <div class="logo-item around-logo around-bottom">
+                                    <img src="/assets/images/public/logos/submark.webp" alt="Submark Maribe">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

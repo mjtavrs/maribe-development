@@ -110,9 +110,9 @@ $menuItems = [
         </div>
     <?php endif; ?>
 
-    <div id="indexReferrer">
+    <a href="<?php echo function_exists('url') ? url('index', $currentLang) : '/'; ?>" id="indexReferrer">
         <img src="/assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
-    </div>
+    </a>
     <div>
         <nav>
             <ul>

@@ -41,6 +41,7 @@ $i18nRoutes = [
         'proposta' => 'proposta.php',
         'politica-de-privacidade' => 'politica-de-privacidade.php',
         'sucesso' => 'sucesso.php',
+        '404' => '404.php',
         'index' => 'index.php'
     ],
     'en' => [
@@ -53,6 +54,7 @@ $i18nRoutes = [
         'proposal' => 'proposta.php',
         'privacy-policy' => 'politica-de-privacidade.php',
         'success' => 'sucesso.php',
+        '404' => '404.php',
         'home' => 'index.php',
         'index' => 'index.php'
     ],
@@ -66,6 +68,7 @@ $i18nRoutes = [
         'propuesta' => 'proposta.php',
         'politica-de-privacidad' => 'politica-de-privacidade.php',
         'exito' => 'sucesso.php',
+        '404' => '404.php',
         'inicio' => 'index.php',
         'index' => 'index.php'
     ]
@@ -146,10 +149,14 @@ if (preg_match('/^(pt|en|es)(?:\/(.+))?$/', $requestPath, $matches)) {
         return true;
     }
 
-    // Se não encontrou a rota no mapeamento, retorna 404
+    // Se não encontrou a rota no mapeamento, serve a página 404
     http_response_code(404);
-    echo "404 - Página não encontrada: /$lang/$page (rota não mapeada)";
-    return false;
+    $_GET['lang'] = $lang;
+    $oldDir = getcwd();
+    chdir(__DIR__);
+    require '404.php';
+    chdir($oldDir);
+    return true;
 }
 
 // Redireciona URLs antigas sem prefixo para /pt/ (português padrão)
@@ -246,5 +253,10 @@ if (file_exists($filePath) && !is_dir($filePath)) {
     return false;
 }
 
-// Se não encontrou o arquivo, retorna false para o servidor lidar com 404
-return false;
+// Se não encontrou o arquivo, serve a página 404
+http_response_code(404);
+$oldDir = getcwd();
+chdir(__DIR__);
+require '404.php';
+chdir($oldDir);
+return true;
