@@ -1273,7 +1273,7 @@ body main form #privacyLabel input[type="checkbox"]:focus {
 }
 
 body main form #privacyLabel span {
-  line-height: 1.5;
+  line-height: 18px;
   flex: 1;
 }
 
@@ -1595,7 +1595,7 @@ body main form #buttonContainer button:not(:hover) {
    ============================================ */
 body main #contractDataExplanation {
   max-width: 1000px;
-  margin: 40px auto 0;
+  margin: 32px auto 40px;
   padding: 0 20px;
   font-family: "Source Sans 3", sans-serif;
 }

@@ -14,7 +14,7 @@ body main #projectsContainer {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 body main #projectsContainer article {
@@ -65,6 +65,20 @@ body main #projectsContainer article a span h4 {
   text-align: center;
 }
 
+body main #projectsContainer article a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  outline: none;
+}
+
+body main #projectsContainer article a:focus {
+  outline: 3px solid var(--color-vermelho-recife);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
 body main #projectsContainer article a img {
   border-radius: 10px;
   height: 360px;
@@ -110,6 +124,13 @@ body main #projectsContainer #projectsSentinel {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
   }
+
+  /* Efeito de foco para navegação por teclado */
+  body main #projectsContainer article a:focus-visible {
+    outline: 3px solid var(--color-vermelho-recife);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
 }
 
 @media screen and (min-width: 1366px) {
@@ -119,6 +140,16 @@ body main #projectsContainer #projectsSentinel {
 
   body main #projectsContainer article a img {
     height: 400px;
+  }
+
+  body main #projectsContainer {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  body main #projectsContainer {
+    margin-bottom: 32px;
   }
 }
 
@@ -172,7 +203,8 @@ body main #projectsSearchWrapper #projectsSearchInput {
 }
 
 body main #projectsSearchWrapper #projectsSearchInput:focus {
-  outline: none;
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
   border-bottom: 1px solid var(--color-vermelho-recife);
 }
 
@@ -241,7 +273,7 @@ body main #projectsSearchWrapper #projectsSearchInput:focus + #searchKeyboardHel
    NO RESULTS MESSAGE
    ============================================ */
 body main #noResultsMessage {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -250,20 +282,19 @@ body main #noResultsMessage {
   max-width: 600px;
   margin: 0 auto;
   opacity: 0;
-  visibility: hidden;
   transform: translateY(20px);
-  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 body main #noResultsMessage.no-results-visible {
+  display: flex;
   opacity: 1;
-  visibility: visible;
   transform: translateY(0);
 }
 
 body main #noResultsMessage.no-results-hidden {
+  display: none;
   opacity: 0;
-  visibility: hidden;
   transform: translateY(20px);
 }
 

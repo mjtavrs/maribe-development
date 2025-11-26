@@ -52,6 +52,14 @@ $currentPage = 'contrato';
             $pageTitle = t('contract.title');
             include 'includes/pageInfo.php';
             ?>
+            <div id="contractDataExplanation" class="policy-card">
+                <div class="contract-explanation-header">
+                    <h3><?php echo htmlspecialchars(t('contract.form.dataExplanation'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                </div>
+                <div class="contract-explanation-content">
+                    <p><?php echo htmlspecialchars(t('contract.form.dataExplanationText'), ENT_QUOTES, 'UTF-8'); ?></p>
+                </div>
+            </div>
             <form action="/src/php/contractForm.php" method="POST">
                 <?php
                 $csrfToken = generateCSRFToken();
@@ -60,44 +68,44 @@ $currentPage = 'contrato';
                 <input type="hidden" name="lang" value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="text" name="name" id="name" autocomplete="on" required aria-required="true" placeholder="<?php echo htmlspecialchars(t('contract.form.name'), ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="text" name="name" id="name" autocomplete="name" required aria-required="true" placeholder="<?php echo htmlspecialchars(t('contract.form.name'), ENT_QUOTES, 'UTF-8'); ?>" minlength="2">
                         <label for="name" class="floating-label"><?php echo htmlspecialchars(t('contract.form.name'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('contract.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('contract.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="email" aria-required="false">
                         <label for="email" class="floating-label"><?php echo htmlspecialchars(t('contract.form.email'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="text" name="cpf" id="cpf" placeholder="<?php echo htmlspecialchars(t('contract.form.cpfPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true" maxlength="14">
+                        <input type="text" name="cpf" id="cpf" placeholder="<?php echo htmlspecialchars(t('contract.form.cpfPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="off" required aria-required="true" maxlength="14" inputmode="numeric">
                         <label for="cpf" class="floating-label"><?php echo htmlspecialchars(t('contract.form.cpf'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="text" name="rg" id="rg" placeholder="<?php echo htmlspecialchars(t('contract.form.rgPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true" maxlength="12">
+                        <input type="text" name="rg" id="rg" placeholder="<?php echo htmlspecialchars(t('contract.form.rgPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="off" required aria-required="true" maxlength="13" inputmode="numeric">
                         <label for="rg" class="floating-label"><?php echo htmlspecialchars(t('contract.form.rg'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="text" name="projectAddress" id="projectAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.projectAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <input type="text" name="projectAddress" id="projectAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.projectAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="street-address" required aria-required="true">
                         <label for="projectAddress" class="floating-label"><?php echo htmlspecialchars(t('contract.form.projectAddress'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="text" name="clientAddress" id="clientAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.clientAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <input type="text" name="clientAddress" id="clientAddress" placeholder="<?php echo htmlspecialchars(t('contract.form.clientAddressPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="street-address" required aria-required="true">
                         <label for="clientAddress" class="floating-label"><?php echo htmlspecialchars(t('contract.form.clientAddress'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <label for="clientBirthDate">
                         <?php echo htmlspecialchars(t('contract.form.birthDate'), ENT_QUOTES, 'UTF-8'); ?>
-                        <input type="date" name="clientBirthDate" id="clientBirthDate" required aria-required="true">
+                        <input type="date" name="clientBirthDate" id="clientBirthDate" required aria-required="true" max="<?php echo date('Y-m-d', strtotime('-18 years')); ?>">
                     </label>
                 </div>
                 <div class="form-field">
@@ -116,14 +124,6 @@ $currentPage = 'contrato';
                     </button>
                 </div>
             </form>
-            <div id="contractDataExplanation" class="policy-card">
-                <div class="contract-explanation-header">
-                    <h3><?php echo htmlspecialchars(t('contract.form.dataExplanation'), ENT_QUOTES, 'UTF-8'); ?></h3>
-                </div>
-                <div class="contract-explanation-content">
-                    <p><?php echo htmlspecialchars(t('contract.form.dataExplanationText'), ENT_QUOTES, 'UTF-8'); ?></p>
-                </div>
-            </div>
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>

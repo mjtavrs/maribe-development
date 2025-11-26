@@ -65,19 +65,19 @@ $currentPage = 'orcamento';
                 <input type="hidden" name="lang" value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('budget.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('budget.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="name" required aria-required="true" minlength="2">
                         <label for="name" class="floating-label"><?php echo htmlspecialchars(t('budget.form.name'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('budget.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" required aria-required="true">
+                        <input type="email" name="email" id="email" placeholder="<?php echo htmlspecialchars(t('budget.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="email" required aria-required="true">
                         <label for="email" class="floating-label"><?php echo htmlspecialchars(t('budget.form.email'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                 </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
-                        <input type="tel" name="phone" id="phone" placeholder="<?php echo htmlspecialchars(t('budget.form.phonePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
+                        <input type="tel" name="phone" id="phone" placeholder="<?php echo htmlspecialchars(t('budget.form.phonePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="tel" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}" inputmode="numeric" required aria-required="true">
                         <label for="phone" class="floating-label"><?php echo htmlspecialchars(t('budget.form.phone'), ENT_QUOTES, 'UTF-8'); ?></label>
                     </div>
                     <div class="field-hint">
@@ -144,7 +144,7 @@ $currentPage = 'orcamento';
                     <div class="form-field">
                         <label for="objective">
                             <span><?php echo htmlspecialchars(t('budget.form.objective'), ENT_QUOTES, 'UTF-8'); ?></span>
-                            <textarea name="objective" id="objective" rows="5" placeholder="<?php echo htmlspecialchars(t('budget.form.objectivePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true"></textarea>
+                            <textarea name="objective" id="objective" rows="5" placeholder="<?php echo htmlspecialchars(t('budget.form.objectivePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true" minlength="10"></textarea>
                         </label>
                         <div class="field-hint">
                             <i class="ph-light ph-info hint-icon" aria-hidden="true"></i>

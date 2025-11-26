@@ -31,6 +31,16 @@ export function initFormValidation() {
                 if (input.name === 'rg') {
                     input.value = maskRG(input.value);
                 }
+                // Validação numérica para metros quadrados
+                if (input.name === 'tamanhoEmMetrosQuadrados') {
+                    // Permite apenas números, vírgula e ponto
+                    input.value = input.value.replace(/[^\d,.]/g, '');
+                    // Se houver múltiplas vírgulas ou pontos, mantém apenas o primeiro
+                    const parts = input.value.split(/[,.]/);
+                    if (parts.length > 2) {
+                        input.value = parts[0] + (parts.length > 1 ? '.' + parts.slice(1).join('') : '');
+                    }
+                }
                 clearFieldError(input);
                 // Para CPF, valida após 11 dígitos
                 if (input.name === 'cpf') {
@@ -204,6 +214,17 @@ function validateField(field) {
         const rgDigits = field.value.replace(/\D/g, '');
         if (rgDigits.length < 7) {
             showFieldError(field, 'RG inválido. Verifique os dígitos informados.');
+            return false;
+        }
+    }
+
+    // Validação de metros quadrados (número com ou sem decimais)
+    if (field.name === 'tamanhoEmMetrosQuadrados' && field.value) {
+        // Permite números com vírgula ou ponto como separador decimal
+        const cleanValue = field.value.replace(',', '.');
+        const numValue = parseFloat(cleanValue);
+        if (isNaN(numValue) || numValue <= 0) {
+            showFieldError(field, 'Por favor, insira um valor numérico válido maior que zero.');
             return false;
         }
     }

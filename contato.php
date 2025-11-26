@@ -72,7 +72,7 @@ $currentPage = 'contato';
                 <div class="floating-label-wrapper">
                     <input type="text" name="name" id="name"
                         placeholder="<?php echo htmlspecialchars(t('contact.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        autocomplete="on" required aria-required="true">
+                        autocomplete="name" required aria-required="true" minlength="2">
                     <label for="name"
                         class="floating-label"><?php echo htmlspecialchars(t('contact.form.name'), ENT_QUOTES, 'UTF-8'); ?></label>
                 </div>
@@ -81,7 +81,7 @@ $currentPage = 'contato';
                 <div class="floating-label-wrapper">
                     <input type="email" name="email" id="email"
                         placeholder="<?php echo htmlspecialchars(t('contact.form.emailPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        autocomplete="on" required aria-required="true">
+                        autocomplete="email" required aria-required="true">
                     <label for="email"
                         class="floating-label"><?php echo htmlspecialchars(t('contact.form.email'), ENT_QUOTES, 'UTF-8'); ?></label>
                 </div>
@@ -90,7 +90,7 @@ $currentPage = 'contato';
                 <div class="floating-label-wrapper">
                     <input type="tel" name="phone" id="phone"
                         placeholder="<?php echo htmlspecialchars(t('contact.form.phonePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        autocomplete="on" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}"
+                        autocomplete="tel" maxlength="15" pattern="\(?[0-9]{2}\)? ?[0-9]{4,5}-?[0-9]{4}"
                         inputmode="numeric" required aria-required="true">
                     <label for="phone"
                         class="floating-label"><?php echo htmlspecialchars(t('contact.form.phone'), ENT_QUOTES, 'UTF-8'); ?></label>
@@ -104,7 +104,7 @@ $currentPage = 'contato';
                 <div class="floating-label-wrapper">
                     <input type="text" name="subject" id="subject"
                         placeholder="<?php echo htmlspecialchars(t('contact.form.subjectPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        autocomplete="on" maxlength="20" required aria-required="true">
+                        autocomplete="off" maxlength="100" minlength="3" required aria-required="true">
                     <label for="subject"
                         class="floating-label"><?php echo htmlspecialchars(t('contact.form.subject'), ENT_QUOTES, 'UTF-8'); ?></label>
                 </div>
@@ -112,7 +112,7 @@ $currentPage = 'contato';
             <div class="form-field">
                 <label for="message">
                     <span><?php echo htmlspecialchars(t('contact.form.message'), ENT_QUOTES, 'UTF-8'); ?></span>
-                    <textarea name="message" id="message" rows="5" placeholder="<?php echo htmlspecialchars(t('contact.form.messagePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true"></textarea>
+                    <textarea name="message" id="message" rows="5" placeholder="<?php echo htmlspecialchars(t('contact.form.messagePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" required aria-required="true" minlength="10"></textarea>
                 </label>
             </div>
             <label for="privacy" id="privacyLabel">

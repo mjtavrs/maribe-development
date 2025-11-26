@@ -65,7 +65,8 @@ $currentPage = 'projetos';
                     <span id="searchKeyboardHelper" class="search-helper"></span>
                 </div>
             </div>
-            <div id="projectsContainer" role="list" aria-live="polite"></div>
+            <h2 id="projectsListHeading" class="visually-hidden"><?php echo htmlspecialchars(t('projects.listHeading', 'Lista de projetos'), ENT_QUOTES, 'UTF-8'); ?></h2>
+            <div id="projectsContainer" role="list" aria-labelledby="projectsListHeading" aria-live="polite"></div>
             <div id="noResultsMessage" class="no-results-hidden" aria-live="polite" aria-atomic="true">
                 <div class="no-results-icon-wrapper">
                     <i class="ph ph-regular ph-magnifying-glass" aria-hidden="true"></i>

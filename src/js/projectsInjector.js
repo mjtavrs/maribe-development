@@ -28,7 +28,7 @@ let sentinel = null; // Referência ao sentinela
  */
 function createProjectElement(project) {
     let projectBox = document.createElement("article");
-    projectBox.ariaLabel = `Saiba mais sobre o ${project.titulo}`;
+    projectBox.setAttribute("aria-label", `Projeto ${project.titulo}`);
     projectBox.role = "listitem";
     projectBox.classList.add("project-item"); // Classe para identificar projetos
     projectBox.classList.add("fade-in-ready"); // Classe inicial - elemento invisível
@@ -36,40 +36,41 @@ function createProjectElement(project) {
     let projectReferrer = document.createElement("a");
     const slug = slugify(project.titulo || project.id);
     projectReferrer.href = `projeto.php?name=${encodeURIComponent(slug)}`;
+    const cityInfo = project.cidade ? ` em ${project.cidade}` : '';
+    projectReferrer.setAttribute("aria-label", `Ver detalhes do projeto ${project.titulo}${cityInfo}`);
 
     let projectCover = document.createElement("img");
     projectCover.src = normalizeAssetPath(project.cover);
-    projectCover.alt = `Saiba mais sobre o ${project.titulo}`;
+    projectCover.alt = `${project.titulo}${project.cidade ? ` - ${project.cidade}` : ''}`;
     // Preload da imagem para melhor performance
     projectCover.loading = "lazy";
     projectCover.decoding = "async";
 
     let titleBox = document.createElement("span");
     titleBox.classList.add("visibilityOff");
+    titleBox.setAttribute("aria-hidden", "true");
     
     let projectTitle = document.createElement("h4");
     projectTitle.textContent = project.titulo;
 
-    // Event listeners para hover/touch
-    projectBox.addEventListener("mouseover", () => {
+    // Event listeners para hover/touch/focus
+    function showTitle() {
         titleBox.classList.remove("visibilityOff");
         projectCover.classList.add("brightnessFilter");
-    });
+    }
     
-    projectBox.addEventListener("mouseout", () => {
+    function hideTitle() {
         titleBox.classList.add("visibilityOff");
         projectCover.classList.remove("brightnessFilter");
-    });
+    }
+
+    projectBox.addEventListener("mouseover", showTitle);
+    projectBox.addEventListener("mouseout", hideTitle);
+    projectReferrer.addEventListener("focus", showTitle);
+    projectReferrer.addEventListener("blur", hideTitle);
     
-    projectBox.addEventListener("touchstart", () => {
-        titleBox.classList.remove("visibilityOff");
-        projectCover.classList.add("brightnessFilter");
-    });
-    
-    projectBox.addEventListener("touchend", () => {
-        titleBox.classList.add("visibilityOff");
-        projectCover.classList.remove("brightnessFilter");
-    });
+    projectBox.addEventListener("touchstart", showTitle);
+    projectBox.addEventListener("touchend", hideTitle);
 
     // Monta a estrutura
     titleBox.appendChild(projectTitle);
