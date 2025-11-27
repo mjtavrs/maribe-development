@@ -79,6 +79,60 @@ export function initFormValidation() {
                 }
             });
         }
+
+        // Controle do campo "Outros" no select de assunto (formulário de contato)
+        const subjectSelect = form.querySelector('select[name="subject"]');
+        const subjectOtherWrapper = form.querySelector('#subjectOtherWrapper');
+        const subjectOtherInput = form.querySelector('input[name="subjectOther"]');
+        
+        if (subjectSelect && subjectOtherWrapper && subjectOtherInput) {
+            // Função para mostrar/esconder campo "Outros"
+            const toggleSubjectOther = () => {
+                const currentLang = document.documentElement.lang || 'pt-br';
+                let outrosText = 'Outros';
+                
+                // Detecta o texto "Outros" baseado no idioma
+                if (currentLang.includes('en')) {
+                    outrosText = 'Other';
+                } else if (currentLang.includes('es')) {
+                    outrosText = 'Otros';
+                }
+                
+                if (subjectSelect.value === outrosText) {
+                    subjectOtherWrapper.style.display = 'block';
+                    subjectOtherInput.setAttribute('required', 'true');
+                    subjectOtherInput.setAttribute('aria-required', 'true');
+                } else {
+                    subjectOtherWrapper.style.display = 'none';
+                    subjectOtherInput.removeAttribute('required');
+                    subjectOtherInput.removeAttribute('aria-required');
+                    subjectOtherInput.value = '';
+                    clearFieldError(subjectOtherInput);
+                }
+            };
+
+            // Verifica estado inicial
+            toggleSubjectOther();
+
+            // Monitora mudanças no select
+            subjectSelect.addEventListener('change', () => {
+                clearFieldError(subjectSelect);
+                toggleSubjectOther();
+            });
+
+            // Validação em tempo real do campo "Outros"
+            subjectOtherInput.addEventListener('blur', () => validateField(subjectOtherInput));
+            subjectOtherInput.addEventListener('input', () => clearFieldError(subjectOtherInput));
+        }
+
+        // Validação em tempo real para selects
+        const selects = form.querySelectorAll('select[required]');
+        selects.forEach(select => {
+            select.addEventListener('change', () => {
+                clearFieldError(select);
+                validateField(select);
+            });
+        });
     });
 }
 
@@ -119,6 +173,26 @@ function validateForm(form) {
         isValid = false;
     }
     
+    // Validação específica para campo "Outros" do assunto (quando "Outros" está selecionado)
+    const subjectSelect = form.querySelector('select[name="subject"]');
+    const subjectOtherInput = form.querySelector('input[name="subjectOther"]');
+    if (subjectSelect && subjectOtherInput) {
+        const currentLang = document.documentElement.lang || 'pt-br';
+        let outrosText = 'Outros';
+        if (currentLang.includes('en')) {
+            outrosText = 'Other';
+        } else if (currentLang.includes('es')) {
+            outrosText = 'Otros';
+        }
+        
+        if (subjectSelect.value === outrosText) {
+            if (!subjectOtherInput.value || subjectOtherInput.value.trim().length < 3) {
+                showFieldError(subjectOtherInput, 'Por favor, descreva o assunto (mínimo 3 caracteres).');
+                isValid = false;
+            }
+        }
+    }
+
     // Validação específica por tipo de campo
     const emailInputs = form.querySelectorAll('input[type="email"]');
     emailInputs.forEach(input => {
@@ -225,6 +299,14 @@ function validateField(field) {
         const numValue = parseFloat(cleanValue);
         if (isNaN(numValue) || numValue <= 0) {
             showFieldError(field, 'Por favor, insira um valor numérico válido maior que zero.');
+            return false;
+        }
+    }
+
+    // Validação para select
+    if (field.tagName === 'SELECT' && field.hasAttribute('required')) {
+        if (!field.value || field.value.trim() === '') {
+            showFieldError(field, 'Por favor, selecione uma opção.');
             return false;
         }
     }

@@ -101,12 +101,24 @@ $currentPage = 'contato';
                 </div>
             </div>
             <div class="form-field">
-                <div class="floating-label-wrapper">
-                    <input type="text" name="subject" id="subject"
-                        placeholder="<?php echo htmlspecialchars(t('contact.form.subjectPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        autocomplete="off" maxlength="100" minlength="3" required aria-required="true">
-                    <label for="subject"
-                        class="floating-label"><?php echo htmlspecialchars(t('contact.form.subject'), ENT_QUOTES, 'UTF-8'); ?></label>
+                <label for="subject">
+                    <span><?php echo htmlspecialchars(t('contact.form.subject'), ENT_QUOTES, 'UTF-8'); ?></span>
+                    <select name="subject" id="subject" required aria-required="true">
+                        <option value=""><?php echo htmlspecialchars(t('contact.form.subjectPlaceholder'), ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="<?php echo htmlspecialchars(t('contact.form.subjectOptions.duvidasProjetos'), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars(t('contact.form.subjectOptions.duvidasProjetos'), ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="<?php echo htmlspecialchars(t('contact.form.subjectOptions.consultoria'), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars(t('contact.form.subjectOptions.consultoria'), ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="<?php echo htmlspecialchars(t('contact.form.subjectOptions.parcerias'), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars(t('contact.form.subjectOptions.parcerias'), ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="<?php echo htmlspecialchars(t('contact.form.subjectOptions.informacoes'), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars(t('contact.form.subjectOptions.informacoes'), ENT_QUOTES, 'UTF-8'); ?></option>
+                        <option value="<?php echo htmlspecialchars(t('contact.form.subjectOptions.outros'), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars(t('contact.form.subjectOptions.outros'), ENT_QUOTES, 'UTF-8'); ?></option>
+                    </select>
+                </label>
+                <div id="subjectOtherWrapper" class="form-field" style="display: none; margin-top: 10px;">
+                    <div class="floating-label-wrapper">
+                        <input type="text" name="subjectOther" id="subjectOther"
+                            placeholder="<?php echo htmlspecialchars(t('contact.form.subjectOtherPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                            autocomplete="off" maxlength="100" minlength="3">
+                        <label for="subjectOther" class="floating-label"><?php echo htmlspecialchars(t('contact.form.subjectOtherPlaceholder'), ENT_QUOTES, 'UTF-8'); ?></label>
+                    </div>
                 </div>
             </div>
             <div class="form-field">

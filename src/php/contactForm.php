@@ -49,13 +49,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validação e sanitização do assunto
     if (empty($_POST["subject"])) {
-        $errosPorCampo["subject"] = "Por favor, escreva o assunto.";
+        $errosPorCampo["subject"] = "Por favor, selecione o assunto.";
     } else {
         $assunto = sanitizeForEmail($_POST["subject"]);
 
-        // Validação adicional: assunto deve ter pelo menos 3 caracteres
-        if (strlen(trim($_POST["subject"])) < 3) {
-            $errosPorCampo["subject"] = "O assunto deve ter pelo menos 3 caracteres.";
+        // Se "Outros" foi selecionado, valida o campo subjectOther
+        $outrosTexts = ['Outros', 'Other', 'Otros'];
+        if (in_array($assunto, $outrosTexts)) {
+            if (empty($_POST["subjectOther"])) {
+                $errosPorCampo["subjectOther"] = "Por favor, descreva o assunto.";
+            } else {
+                $assuntoOther = sanitizeForEmail($_POST["subjectOther"]);
+                if (strlen(trim($_POST["subjectOther"])) < 3) {
+                    $errosPorCampo["subjectOther"] = "O assunto deve ter pelo menos 3 caracteres.";
+                } else {
+                    // Usa o valor de subjectOther como assunto final
+                    $assunto = $assuntoOther;
+                }
+            }
         }
     }
 
