@@ -39,6 +39,57 @@ $currentPage = 'sobre';
     <!-- Scripts -->
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/languageSelector.js"></script>
+    <script>
+        // Garante loop suave sem flash preto
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('logoHistoryVideo');
+            if (video) {
+                let isSeeking = false;
+                
+                // Previne flash preto no loop - reinicia ANTES de chegar ao fim
+                video.addEventListener('timeupdate', function() {
+                    // Se estiver muito próximo do fim (últimos 0.2 segundos), volta para o início
+                    if (!isSeeking && video.duration && video.currentTime >= video.duration - 0.2) {
+                        isSeeking = true;
+                        video.currentTime = 0;
+                        // Pequeno delay para garantir que o seek foi processado
+                        setTimeout(function() {
+                            isSeeking = false;
+                        }, 50);
+                    }
+                });
+                
+                // Garante que o vídeo sempre esteja pronto para loop
+                video.addEventListener('ended', function() {
+                    isSeeking = true;
+                    video.currentTime = 0;
+                    video.play().catch(function(error) {
+                        // Ignora erros de autoplay
+                        console.log('Autoplay bloqueado:', error);
+                    });
+                    setTimeout(function() {
+                        isSeeking = false;
+                    }, 50);
+                });
+                
+                // Força play se pausar (pode acontecer em alguns navegadores)
+                video.addEventListener('pause', function() {
+                    if (document.visibilityState === 'visible' && !isSeeking) {
+                        video.play().catch(function(error) {
+                            console.log('Play bloqueado:', error);
+                        });
+                    }
+                });
+                
+                // Garante que o vídeo carregue completamente antes de começar
+                video.addEventListener('loadeddata', function() {
+                    video.play().catch(function(error) {
+                        console.log('Autoplay inicial bloqueado:', error);
+                    });
+                });
+            }
+        });
+    </script>
 
 </head>
 
@@ -97,38 +148,18 @@ $currentPage = 'sobre';
                             </p>
                         </div>
                         <div id="logosContainer">
-                            <div id="logosGrid">
-                                <!-- Linha superior: 3 logos horizontais -->
-                                <div class="logo-item horizontal-top">
-                                    <img src="/assets/images/public/logos/logo_horizontal.webp" alt="Logo horizontal Maribe">
-                                </div>
-                                <div class="logo-item horizontal-top">
-                                    <img src="/assets/images/public/logos/logo_horizontal_com_assinatura.webp" alt="Logo horizontal com assinatura Maribe">
-                                </div>
-                                <div class="logo-item horizontal-top">
-                                    <img src="/assets/images/public/logos/logo_horizontal_estendida.webp" alt="Logo horizontal estendida Maribe">
-                                </div>
-                                
-                                <!-- Logo ao lado esquerdo -->
-                                <div class="logo-item around-logo around-left">
-                                    <img src="/assets/images/public/logos/simbolo.webp" alt="Símbolo Maribe">
-                                </div>
-                                
-                                <!-- Logo vertical centralizada -->
-                                <div class="logo-item vertical-center">
-                                    <img src="/assets/images/public/logos/logo_vertical.webp" alt="Logo vertical Maribe">
-                                </div>
-                                
-                                <!-- Logo ao lado direito -->
-                                <div class="logo-item around-logo around-right">
-                                    <img src="/assets/images/public/logos/simbolo_reduzido.webp" alt="Símbolo reduzido Maribe">
-                                </div>
-                                
-                                <!-- Logo embaixo -->
-                                <div class="logo-item around-logo around-bottom">
-                                    <img src="/assets/images/public/logos/submark.webp" alt="Submark Maribe">
-                                </div>
-                            </div>
+                            <video
+                                id="logoHistoryVideo"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                preload="auto"
+                                poster="/assets/images/public/logos/logo_vertical.webp"
+                                aria-label="História da evolução do logo Maribe Arquitetura"
+                            >
+                                <source src="/assets/videos/logoHistorySquared.webm" type="video/webm" />
+                            </video>
                         </div>
                     </div>
                 </section>

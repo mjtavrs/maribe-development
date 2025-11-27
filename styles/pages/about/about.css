@@ -93,68 +93,16 @@ body main #sectionsContainer section #symbolTextContent {
 
 body main #sectionsContainer section #logosContainer {
   width: 100%;
-}
-
-body main #sectionsContainer section #logosGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, auto);
-  gap: 20px;
-  align-items: center;
-  justify-items: center;
-}
-
-body main #sectionsContainer section #logosGrid .logo-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 100%;
 }
 
-body main #sectionsContainer section #logosGrid .logo-item img {
+body main #sectionsContainer section #logosContainer video {
   width: 100%;
   height: auto;
   object-fit: contain;
-}
-
-/* Logos horizontais na linha superior */
-body main #sectionsContainer section #logosGrid .logo-item.horizontal-top {
-  grid-row: 1;
-}
-
-body main #sectionsContainer section #logosGrid .logo-item.horizontal-top:nth-child(1) {
-  grid-column: 1;
-}
-
-body main #sectionsContainer section #logosGrid .logo-item.horizontal-top:nth-child(2) {
-  grid-column: 2;
-}
-
-body main #sectionsContainer section #logosGrid .logo-item.horizontal-top:nth-child(3) {
-  grid-column: 3;
-}
-
-/* Logo vertical centralizada */
-body main #sectionsContainer section #logosGrid .logo-item.vertical-center {
-  grid-row: 2;
-  grid-column: 2;
-}
-
-/* Logos ao redor */
-body main #sectionsContainer section #logosGrid .logo-item.around-logo.around-left {
-  grid-row: 2;
-  grid-column: 1;
-}
-
-body main #sectionsContainer section #logosGrid .logo-item.around-logo.around-right {
-  grid-row: 2;
-  grid-column: 3;
-}
-
-body main #sectionsContainer section #logosGrid .logo-item.around-logo.around-bottom {
-  grid-row: 3;
-  grid-column: 2;
+  border-radius: 8px;
 }
 
 @media screen and (min-width: 768px) {
@@ -172,10 +120,6 @@ body main #sectionsContainer section #logosGrid .logo-item.around-logo.around-bo
 
   body main #sectionsContainer section #symbolContentWrapper {
     gap: 40px;
-  }
-
-  body main #sectionsContainer section #logosGrid {
-    gap: 25px;
   }
 
   body main #sectionsContainer section #imageContainer {
@@ -253,10 +197,6 @@ body main #sectionsContainer section #logosGrid .logo-item.around-logo.around-bo
     width: 100%;
     max-width: 500px;
   }
-
-  body main #sectionsContainer section #logosGrid {
-    gap: 25px;
-  }
 }
 
 @media screen and (min-width: 1366px) {
@@ -286,9 +226,5 @@ body main #sectionsContainer section #logosGrid .logo-item.around-logo.around-bo
 
   body main #sectionsContainer section #logosContainer {
     max-width: 600px;
-  }
-
-  body main #sectionsContainer section #logosGrid {
-    gap: 30px;
   }
 }
