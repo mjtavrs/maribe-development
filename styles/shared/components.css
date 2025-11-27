@@ -858,13 +858,63 @@ body main form label select {
 }
 
 body main form label select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 5px center;
   padding-right: 25px;
+}
+
+/* Estilização do dropdown (lista de opções) */
+body main form label select:focus {
+  border-bottom: 1px solid var(--color-vermelho-recife);
+  outline: none;
+}
+
+/* Estilização das opções no dropdown */
+body main form label select option {
+  background-color: var(--color-bege-delicado);
+  color: var(--color-cinza-elegante);
+  padding: 12px 10px;
+  border: none;
+}
+
+body main form label select option:checked {
+  background-color: rgba(197, 110, 81, 0.15);
+  color: var(--color-vermelho-recife);
+  font-weight: 500;
+}
+
+body main form label select option:hover {
+  background-color: rgba(197, 110, 81, 0.1);
+}
+
+/* Estilização do dropdown no Chrome/Edge/Safari usando pseudo-elementos */
+body main form label select::-webkit-select-dropdown {
+  border: 1px solid var(--color-vermelho-recife) !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px !important;
+  background-color: var(--color-bege-delicado) !important;
+  box-shadow: 0 2px 8px rgba(197, 110, 81, 0.15) !important;
+  padding: 4px 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Estilização adicional para o dropdown no Chrome */
+body main form label select:focus::-webkit-select-dropdown {
+  border-color: var(--color-vermelho-recife) !important;
+}
+
+/* Para Firefox - limitações de estilização */
+@-moz-document url-prefix() {
+  body main form label select {
+    border-bottom: 1px solid var(--color-cinza-elegante);
+  }
+  
+  body main form label select:focus {
+    border-bottom: 1px solid var(--color-vermelho-recife);
+  }
+  
+  body main form label select option {
+    background-color: var(--color-bege-delicado);
+    color: var(--color-cinza-elegante);
+  }
 }
 
 body main form label input[type="date"]::-webkit-calendar-picker-indicator {
