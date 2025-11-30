@@ -394,6 +394,7 @@ body main #pageInfo p {
 
 body main #pageInfo p strong {
   font-weight: 600;
+  color: var(--color-vermelho-recife);
 }
 
 body main #pageInfo p a {
@@ -413,7 +414,7 @@ body main #pageInfo p a {
 
 @media screen and (min-width: 1024px) {
   body main #pageInfo {
-    gap: 30px;
+    gap: 15px;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -421,6 +422,7 @@ body main #pageInfo p a {
 
   body main #pageInfo h1 {
     font-size: 5.5rem;
+    margin-bottom: 20px;
   }
 
   body main #pageInfo p {
@@ -1722,6 +1724,76 @@ body main #contractDataExplanation .contract-explanation-content p {
 @media screen and (min-width: 1024px) {
   body main #contractDataExplanation.policy-card {
     padding: 30px;
+  }
+}
+
+/* ============================================
+   SCROLL TO TOP BUTTON
+   ============================================ */
+#scrollToTopButton {
+  position: fixed;
+  bottom: 30px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-verde-mosaico);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(80px);
+  transition: all 0.4s ease;
+  z-index: 998;
+  box-shadow: 0 2px 8px rgba(60, 60, 59, 0.2);
+}
+
+#scrollToTopButton.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+#scrollToTopButton:hover {
+  transform: translateX(0) translateY(-5px);
+  box-shadow: 0 4px 12px rgba(60, 60, 59, 0.25);
+}
+
+#scrollToTopButton:active {
+  transform: translateX(0) translateY(-2px);
+}
+
+#scrollToTopButton i {
+  color: var(--color-bege-delicado);
+  font-size: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  #scrollToTopButton {
+    width: 55px;
+    height: 55px;
+    bottom: 40px;
+    right: 20px;
+  }
+
+  #scrollToTopButton i {
+    font-size: 26px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #scrollToTopButton {
+    width: 60px;
+    height: 60px;
+    bottom: 50px;
+    right: 25px;
+  }
+
+  #scrollToTopButton i {
+    font-size: 28px;
   }
 }
 

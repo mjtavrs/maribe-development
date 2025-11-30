@@ -66,6 +66,7 @@ $currentPage = 'projeto';
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>
+    <?php include 'includes/scrollToTop.php'; ?>
 </body>
 
 </html>

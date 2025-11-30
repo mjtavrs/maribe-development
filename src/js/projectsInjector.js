@@ -13,15 +13,14 @@ function slugify(text) {
         .replace(/[^a-z0-9]+/g, "-")     // não alfanumérico -> hífen
         .replace(/^-+|-+$/g, "");        // trim hífens
 }
+
 /**
- * Configurações de lazy loading
+ * Configurações de paginação
  */
-const INITIAL_LOAD = 8; // Quantidade inicial de projetos (aumentado para melhor performance)
-const LOAD_MORE = 6; // Quantidade a carregar por vez
-let currentIndex = 0; // Índice atual dos projetos carregados
+const PROJECTS_PER_PAGE = 6;
 let currentProjects = projects; // Lista atual de projetos (pode ser filtrada)
-let sentinelObserver = null; // Observer do sentinela para poder desconectar
-let sentinel = null; // Referência ao sentinela
+let currentPage = 1; // Página atual
+let totalPages = 1; // Total de páginas
 
 /**
  * Cria um elemento de projeto
@@ -30,8 +29,8 @@ function createProjectElement(project) {
     let projectBox = document.createElement("article");
     projectBox.setAttribute("aria-label", `Projeto ${project.titulo}`);
     projectBox.role = "listitem";
-    projectBox.classList.add("project-item"); // Classe para identificar projetos
-    projectBox.classList.add("fade-in-ready"); // Classe inicial - elemento invisível
+    projectBox.classList.add("project-item");
+    projectBox.classList.add("fade-in-ready");
 
     let projectReferrer = document.createElement("a");
     const slug = slugify(project.titulo || project.id);
@@ -42,7 +41,6 @@ function createProjectElement(project) {
     let projectCover = document.createElement("img");
     projectCover.src = normalizeAssetPath(project.cover);
     projectCover.alt = `${project.titulo}${project.cidade ? ` - ${project.cidade}` : ''}`;
-    // Preload da imagem para melhor performance
     projectCover.loading = "lazy";
     projectCover.decoding = "async";
 
@@ -82,63 +80,18 @@ function createProjectElement(project) {
 }
 
 /**
- * Pré-carrega imagens dos próximos projetos para melhor performance
- */
-function preloadProjectImages(startIndex, count) {
-    const endIndex = Math.min(startIndex + count, currentProjects.length);
-    for (let i = startIndex; i < endIndex; i++) {
-        const img = new Image();
-        img.src = normalizeAssetPath(currentProjects[i].cover);
-    }
-}
-
-/**
- * Carrega projetos no container (sem animação ainda - será revelado no scroll)
- */
-function loadProjects(projectsContainer, projectsToLoad, preloadImages = true) {
-    const endIndex = Math.min(currentIndex + projectsToLoad, currentProjects.length);
-    const newElements = [];
-    
-    // Pré-carrega as imagens dos próximos projetos antes de criar os elementos
-    if (preloadImages) {
-        preloadProjectImages(currentIndex, projectsToLoad);
-    }
-    
-    for (let i = currentIndex; i < endIndex; i++) {
-        const project = currentProjects[i];
-        const projectElement = createProjectElement(project);
-        projectsContainer.appendChild(projectElement);
-        newElements.push(projectElement);
-    }
-    
-    currentIndex = endIndex;
-    
-    // Retorna os novos elementos para observação
-    return {
-        hasMore: currentIndex < currentProjects.length,
-        newElements: newElements
-    };
-}
-
-/**
  * Observa um projeto individual e aplica fade-in quando entra na viewport
  */
 function observeProject(projectElement) {
-    // Força o estado inicial antes de verificar visibilidade
-    // Isso garante que o CSS seja aplicado primeiro
     projectElement.classList.add("fade-in-ready");
     projectElement.classList.remove("fade-in-active");
     
-    // Usa requestAnimationFrame para garantir que o CSS seja aplicado antes da verificação
     requestAnimationFrame(() => {
-        // Verifica se o projeto já está visível (primeiros projetos)
         const rect = projectElement.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
         const isVisible = rect.top < viewportHeight && rect.bottom > 0;
         
         if (isVisible) {
-            // Se já está visível, anima após um pequeno delay para garantir que o CSS foi aplicado
-            // Adiciona delay escalonado para efeito cascata nos primeiros projetos
             const delay = Array.from(projectElement.parentElement.children).indexOf(projectElement) * 100;
             setTimeout(() => {
                 projectElement.classList.remove("fade-in-ready");
@@ -147,21 +100,17 @@ function observeProject(projectElement) {
             return;
         }
         
-        // Se não está visível, observa para quando entrar na viewport
-        // Espera o projeto estar mais próximo (threshold mais alto) antes de animar
         const observerOptions = {
-            root: null, // Viewport
-            rootMargin: "0px", // Não antecipa - espera estar na viewport
-            threshold: 0.4 // Precisa estar 40% visível para animar (mais próximo)
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.4
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Quando o projeto entra na viewport, remove a classe de "pronto" e aplica fade-in
                     projectElement.classList.remove("fade-in-ready");
                     projectElement.classList.add("fade-in-active");
-                    // Para de observar após animar
                     observer.unobserve(projectElement);
                 }
             });
@@ -172,47 +121,165 @@ function observeProject(projectElement) {
 }
 
 /**
- * Cria um elemento sentinela para detectar quando o usuário está próximo do final
+ * Atualiza a URL com o número da página atual
  */
-function createSentinel(projectsContainer) {
-    const sentinel = document.createElement("div");
-    sentinel.id = "projectsSentinel";
-    sentinel.setAttribute("aria-hidden", "true");
-    sentinel.style.height = "1px";
-    sentinel.style.width = "100%";
-    projectsContainer.appendChild(sentinel);
-    return sentinel;
-}
-
-
-/**
- * Limpa o container de projetos
- */
-function clearProjectsContainer(projectsContainer) {
-    // Remove o sentinela se existir
-    if (sentinel) {
-        if (sentinelObserver) {
-            sentinelObserver.unobserve(sentinel);
-        }
-        sentinel.remove();
-        sentinel = null;
+function updateURL(page) {
+    const url = new URL(window.location);
+    if (page === 1) {
+        url.searchParams.delete('page');
+    } else {
+        url.searchParams.set('page', page);
     }
-    
-    // Limpa todos os projetos
-    projectsContainer.innerHTML = "";
-    currentIndex = 0;
+    window.history.pushState({ page }, '', url);
 }
 
 /**
- * Renderiza projetos (usado tanto na inicialização quanto na busca)
+ * Lê a página atual da URL
+ */
+function getPageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = parseInt(urlParams.get('page') || '1', 10);
+    return isNaN(page) || page < 1 ? 1 : page;
+}
+
+/**
+ * Cria os controles de paginação
+ */
+function createPaginationControls(container) {
+    // Remove controles existentes
+    const existingControls = document.getElementById('projectsPagination');
+    if (existingControls) {
+        existingControls.remove();
+    }
+
+    if (totalPages <= 1) {
+        return; // Não mostra paginação se houver apenas 1 página
+    }
+
+    const paginationContainer = document.createElement('nav');
+    paginationContainer.id = 'projectsPagination';
+    paginationContainer.setAttribute('aria-label', 'Navegação de páginas');
+    paginationContainer.classList.add('projects-pagination');
+
+    const paginationList = document.createElement('ul');
+    paginationList.classList.add('pagination-list');
+
+    // Botão Anterior
+    const prevLi = document.createElement('li');
+    const prevButton = document.createElement('button');
+    prevButton.type = 'button';
+    prevButton.classList.add('pagination-button', 'pagination-prev');
+    prevButton.setAttribute('aria-label', 'Página anterior');
+    prevButton.disabled = currentPage === 1;
+    prevButton.innerHTML = '<i class="ph ph-regular ph-caret-left" aria-hidden="true"></i>';
+    prevButton.addEventListener('click', () => goToPage(currentPage - 1));
+    prevLi.appendChild(prevButton);
+    paginationList.appendChild(prevLi);
+
+    // Números das páginas
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    
+    // Ajusta se estiver no final
+    if (endPage - startPage < maxVisiblePages - 1) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    // Primeira página se não estiver visível
+    if (startPage > 1) {
+        const firstLi = document.createElement('li');
+        const firstButton = document.createElement('button');
+        firstButton.type = 'button';
+        firstButton.classList.add('pagination-button', 'pagination-number');
+        firstButton.textContent = '1';
+        firstButton.addEventListener('click', () => goToPage(1));
+        firstLi.appendChild(firstButton);
+        paginationList.appendChild(firstLi);
+
+        if (startPage > 2) {
+            const ellipsisLi = document.createElement('li');
+            ellipsisLi.classList.add('pagination-ellipsis');
+            ellipsisLi.textContent = '...';
+            ellipsisLi.setAttribute('aria-hidden', 'true');
+            paginationList.appendChild(ellipsisLi);
+        }
+    }
+
+    // Páginas visíveis
+    for (let i = startPage; i <= endPage; i++) {
+        const pageLi = document.createElement('li');
+        const pageButton = document.createElement('button');
+        pageButton.type = 'button';
+        pageButton.classList.add('pagination-button', 'pagination-number');
+        if (i === currentPage) {
+            pageButton.classList.add('active');
+            pageButton.setAttribute('aria-current', 'page');
+        }
+        pageButton.textContent = i.toString();
+        pageButton.setAttribute('aria-label', `Ir para página ${i}`);
+        pageButton.addEventListener('click', () => goToPage(i));
+        pageLi.appendChild(pageButton);
+        paginationList.appendChild(pageLi);
+    }
+
+    // Última página se não estiver visível
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            const ellipsisLi = document.createElement('li');
+            ellipsisLi.classList.add('pagination-ellipsis');
+            ellipsisLi.textContent = '...';
+            ellipsisLi.setAttribute('aria-hidden', 'true');
+            paginationList.appendChild(ellipsisLi);
+        }
+
+        const lastLi = document.createElement('li');
+        const lastButton = document.createElement('button');
+        lastButton.type = 'button';
+        lastButton.classList.add('pagination-button', 'pagination-number');
+        lastButton.textContent = totalPages.toString();
+        lastButton.addEventListener('click', () => goToPage(totalPages));
+        lastLi.appendChild(lastButton);
+        paginationList.appendChild(lastLi);
+    }
+
+    // Botão Próxima
+    const nextLi = document.createElement('li');
+    const nextButton = document.createElement('button');
+    nextButton.type = 'button';
+    nextButton.classList.add('pagination-button', 'pagination-next');
+    nextButton.setAttribute('aria-label', 'Próxima página');
+    nextButton.disabled = currentPage === totalPages;
+    nextButton.innerHTML = '<i class="ph ph-regular ph-caret-right" aria-hidden="true"></i>';
+    nextButton.addEventListener('click', () => goToPage(currentPage + 1));
+    nextLi.appendChild(nextButton);
+    paginationList.appendChild(nextLi);
+
+    paginationContainer.appendChild(paginationList);
+    container.appendChild(paginationContainer);
+}
+
+/**
+ * Renderiza os projetos da página atual
  */
 function renderProjects(projectsContainer, projectsToRender, searchTerm = "") {
-    clearProjectsContainer(projectsContainer);
+    // Calcula total de páginas
+    totalPages = Math.max(1, Math.ceil(projectsToRender.length / PROJECTS_PER_PAGE));
     
+    // Garante que a página atual seja válida
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+    if (currentPage < 1) {
+        currentPage = 1;
+    }
+
+    // Limpa o container
+    projectsContainer.innerHTML = "";
+
     // Mostra ou esconde a mensagem de "sem resultados"
     const noResultsMessage = document.getElementById("noResultsMessage");
     if (noResultsMessage) {
-        // Só mostra se houver termo de busca E não houver resultados
         if (searchTerm.trim() !== "" && projectsToRender.length === 0) {
             noResultsMessage.classList.remove("no-results-hidden");
             noResultsMessage.classList.add("no-results-visible");
@@ -221,66 +288,73 @@ function renderProjects(projectsContainer, projectsToRender, searchTerm = "") {
             noResultsMessage.classList.add("no-results-hidden");
         }
     }
-    
+
     if (projectsToRender.length === 0) {
+        // Remove paginação se não houver projetos
+        const existingControls = document.getElementById('projectsPagination');
+        if (existingControls) {
+            existingControls.remove();
+        }
         return;
     }
-    
-    // Carrega os primeiros projetos
-    const initialResult = loadProjects(projectsContainer, INITIAL_LOAD, true);
-    
-    // Aguarda um frame para garantir que o DOM foi atualizado
+
+    // Calcula índices da página atual
+    const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
+    const endIndex = Math.min(startIndex + PROJECTS_PER_PAGE, projectsToRender.length);
+    const projectsForPage = projectsToRender.slice(startIndex, endIndex);
+
+    // Cria e adiciona os elementos dos projetos
+    const newElements = [];
+    projectsForPage.forEach(project => {
+        const projectElement = createProjectElement(project);
+        projectsContainer.appendChild(projectElement);
+        newElements.push(projectElement);
+    });
+
+    // Observa os projetos para animação fade-in
     requestAnimationFrame(() => {
-        // Observa todos os projetos carregados para aplicar fade-in quando entrarem na viewport
-        initialResult.newElements.forEach(element => {
+        newElements.forEach(element => {
             observeProject(element);
         });
     });
-    
-    // Se não há mais projetos, não precisa do sentinela
-    if (!initialResult.hasMore) {
-        return;
+
+    // Cria controles de paginação
+    const main = projectsContainer.closest('main');
+    if (main) {
+        createPaginationControls(main);
     }
-    
-    // Cria o sentinela para detectar quando carregar mais projetos
-    sentinel = createSentinel(projectsContainer);
-    
-    // Configura o Intersection Observer para o sentinela
-    const observerOptions = {
-        root: null, // Viewport
-        rootMargin: "400px", // Carrega quando está a 400px do final (mais cedo para evitar lag)
-        threshold: 0.1
-    };
-    
-    sentinelObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && currentIndex < currentProjects.length) {
-                // Carrega mais projetos no DOM
-                const loadResult = loadProjects(projectsContainer, LOAD_MORE);
-                
-                // Aguarda um frame e observa os novos projetos
-                requestAnimationFrame(() => {
-                    loadResult.newElements.forEach(element => {
-                        observeProject(element);
-                    });
-                });
-                
-                // Se não há mais projetos, para de observar
-                if (!loadResult.hasMore) {
-                    sentinelObserver.unobserve(sentinel);
-                    sentinel.remove(); // Remove o sentinela quando não é mais necessário
-                    sentinel = null;
-                }
-            }
+
+    // Scroll suave até o input de busca com offset de 20px
+    const searchContainer = document.getElementById('projectsSearchContainer');
+    if (searchContainer) {
+        const elementPosition = searchContainer.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - 20;
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
         });
-    }, observerOptions);
-    
-    // Inicia a observação do sentinela
-    sentinelObserver.observe(sentinel);
+    }
 }
 
 /**
- * Inicializa o lazy loading com reveal on scroll
+ * Navega para uma página específica
+ */
+function goToPage(page) {
+    if (page < 1 || page > totalPages || page === currentPage) {
+        return;
+    }
+
+    currentPage = page;
+    updateURL(currentPage);
+    renderProjects(
+        document.getElementById("projectsContainer"),
+        currentProjects,
+        document.getElementById("projectsSearchInput")?.value || ""
+    );
+}
+
+/**
+ * Inicializa a paginação
  */
 document.addEventListener("DOMContentLoaded", () => {
     const projectsContainer = document.getElementById("projectsContainer");
@@ -290,13 +364,28 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    // Lê a página da URL
+    currentPage = getPageFromURL();
+
     // Renderiza os projetos iniciais
     renderProjects(projectsContainer, currentProjects, "");
-    
+
     // Escuta eventos de busca
     document.addEventListener("projectsSearch", (e) => {
         currentProjects = e.detail.projects;
         const searchTerm = e.detail.searchTerm || "";
+        currentPage = 1; // Reseta para primeira página na busca
+        updateURL(1);
         renderProjects(projectsContainer, currentProjects, searchTerm);
+    });
+
+    // Escuta mudanças no histórico do navegador (botão voltar/avançar)
+    window.addEventListener('popstate', (e) => {
+        currentPage = getPageFromURL();
+        renderProjects(
+            projectsContainer,
+            currentProjects,
+            document.getElementById("projectsSearchInput")?.value || ""
+        );
     });
 });

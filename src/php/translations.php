@@ -33,8 +33,8 @@ $allTranslations = [
             'title' => 'contato',
             'metaDescription' => 'Gostaria de conversar? Nos envie uma mensagem nessa página.',
             'description' => [
-                'Tem alguma assunto para tratar conosco? É por aqui que podemos conversar!',
-                'Caso precise de um orçamento, você pode enviar uma mensagem a partir <a href=":budgetUrl">dessa página</a>.'
+                'Quer conversar conosco? Estamos aqui para ouvir você!',
+                'Se você precisa de um orçamento, pode solicitar através <a href=":budgetUrl">desta página</a>.'
             ],
             'form' => [
                 'name' => 'Nome completo',
@@ -96,8 +96,9 @@ $allTranslations = [
             'title' => 'vamos começar o seu projeto juntos!',
             'metaDescription' => 'Nessa página você poderá solicitar o orçamento inicial do seu projeto com a Maribe Arquitetura.',
             'description' => [
-                '<strong>Bem-vindo(a) ao nosso mundo de possibilidades</strong>! Estamos ansiosas para criarmos juntos o seu projeto dos sonhos. Cada detalhe será pensado de acordo com a sua personalidade e memórias afetivas, <strong>transformando casas em lares únicos</strong>, cheios de significado e com muito aconchego.',
-                'Para que isso seja possível, precisamos de algumas informações para entender melhor suas necessidades, você pode preencher suas informações no formulário a seguir. Esperamos que você ame a jornada conosco! 🧡'
+                '<strong>Vamos começar o seu projeto com cuidado e atenção.</strong>',
+                'Na Maribe, cada espaço é pensado a partir da sua história, rotina e personalidade — <strong>porque acreditamos que um lar precisa refletir quem você é</strong>. Para preparar um orçamento alinhado às suas necessidades, pedimos que preencha o formulário abaixo com algumas informações importantes.',
+                'Estamos aqui para orientar cada etapa com carinho e profissionalismo. Será um prazer criar com você. 🧡'
             ],
             'form' => [
                 'name' => 'Nome completo',
@@ -160,10 +161,14 @@ $allTranslations = [
         'projects' => [
             'title' => 'nossos projetos',
             'metaDescription' => 'Confira os nossos projetos, temos certeza que você irá amar!',
-            'description' => 'Aqui você encontra alguns dos nossos projetos, esperamos que você goste e que possamos incluir um espaço aqui para o seu projeto no futuro! 🧡',
+            'description' => 'Aqui você encontra uma seleção dos nossos projetos, cada um pensado para transformar casas em lares cheios de significado e aconchego. Esperamos que se inspire e que possamos, em breve, incluir o seu espaço aqui também! 🧡',
             'searchPlaceholder' => 'Procurando um projeto ou cidade específicos?',
             'noResultsMessage' => 'Ainda não foram encontrados projetos com esses termos...<br>Mas, o que você pensa de incluirmos o seu aqui?',
-            'requestBudget' => 'Solicitar orçamento'
+            'requestBudget' => 'Solicitar orçamento',
+            'filtersLabel' => 'Filtros de projetos',
+            'filterAll' => 'todos',
+            'filterResidential' => 'residencial',
+            'filterCommercial' => 'comercial'
         ],
 
         // Footer
@@ -335,8 +340,8 @@ $allTranslations = [
         'contact' => [
             'title' => 'contact',
             'description' => [
-                'Do you have something to discuss with us? This is where we can talk!',
-                'If you need a quote, you can send a message from <a href=":budgetUrl">this page</a>.'
+                'Want to talk to us? We are here to listen to you!',
+                'If you need a quote, you can request it through <a href=":budgetUrl">this page</a>.'
             ],
             'form' => [
                 'name' => 'Full name',
@@ -398,8 +403,9 @@ $allTranslations = [
             'title' => "let's start your project together!",
             'metaDescription' => 'On this page you can request the initial quote for your project with Maribe Arquitetura.',
             'description' => [
-                '<strong>Welcome to our world of possibilities</strong>! We are excited to create your dream project together. Every detail will be thought according to your personality and affective memories, <strong>transforming houses into unique homes</strong>, full of meaning and coziness.',
-                'For this to be possible, we need some information to better understand your needs. You can fill in your information in the form below. We hope you love the journey with us! 🧡'
+                '<strong>Let\'s start your project with care and attention.</strong>',
+                'At Maribe, each space is designed based on your story, routine, and personality — <strong>because we believe a home needs to reflect who you are</strong>. To prepare a quote aligned with your needs, we ask that you fill out the form below with some important information.',
+                'We are here to guide each step with warmth and professionalism. It will be a pleasure to create with you. 🧡'
             ],
             'form' => [
                 'name' => 'Full name',
@@ -462,10 +468,14 @@ $allTranslations = [
         'projects' => [
             'title' => 'our projects',
             'metaDescription' => 'Check out our projects, we are sure you will love them!',
-            'description' => 'Here you can find some of our projects. We hope you like them and that we can include a space here for your project in the future! 🧡',
+            'description' => 'Here you will find a selection of our projects, each one designed to transform houses into homes full of meaning and warmth. We hope you find inspiration and that we can, soon, include your space here too! 🧡',
             'searchPlaceholder' => 'Looking for a specific project or city?',
             'noResultsMessage' => 'No projects found with these terms yet...<br>But, what do you think about including yours here?',
-            'requestBudget' => 'Request a quote'
+            'requestBudget' => 'Request a quote',
+            'filtersLabel' => 'Project filters',
+            'filterAll' => 'all',
+            'filterResidential' => 'residential',
+            'filterCommercial' => 'commercial'
         ],
 
         // Footer
@@ -642,8 +652,8 @@ $allTranslations = [
             'title' => 'contacto',
             'metaDescription' => '¿Te gustaría conversar? Envíanos un mensaje en esta página.',
             'description' => [
-                '¿Tienes algo que contarnos? ¡Por aquí podemos conversar!',
-                'Si necesitas un presupuesto, puedes enviarnos un mensaje desde <a href=":budgetUrl">esta página</a>.'
+                '¿Quieres conversar con nosotras? ¡Estamos aquí para escucharte!',
+                'Si necesitas un presupuesto, puedes solicitarlo a través de <a href=":budgetUrl">esta página</a>.'
             ],
             'form' => [
                 'name' => 'Nombre completo',
@@ -705,8 +715,9 @@ $allTranslations = [
             'title' => '¡vamos a empezar tu proyecto juntos!',
             'metaDescription' => 'En esta página podrás solicitar el presupuesto inicial de tu proyecto con Maribe Arquitetura.',
             'description' => [
-                '<strong>¡Bienvenido(a) a nuestro mundo de posibilidades</strong>! Estamos entusiasmadas por crear contigo el proyecto de tus sueños. Cada detalle será pensado según tu personalidad y recuerdos afectivos, <strong>transformando casas en hogares únicos</strong>, llenos de significado y calidez.',
-                'Para hacerlo posible, necesitamos algunas informaciones para entender mejor tus necesidades. Puedes completar tus datos en el formulario a continuación. ¡Esperamos que ames el camino con nosotras! 🧡'
+                '<strong>Vamos a empezar tu proyecto con cuidado y atención.</strong>',
+                'En Maribe, cada espacio se piensa a partir de tu historia, rutina y personalidad — <strong>porque creemos que un hogar necesita reflejar quién eres</strong>. Para preparar un presupuesto alineado con tus necesidades, te pedimos que completes el formulario a continuación con algunas informaciones importantes.',
+                'Estamos aquí para orientar cada etapa con cariño y profesionalismo. Será un placer crear contigo. 🧡'
             ],
             'form' => [
                 'name' => 'Nombre completo',
@@ -769,10 +780,14 @@ $allTranslations = [
         'projects' => [
             'title' => 'nuestros proyectos',
             'metaDescription' => '¡Consulta nuestros proyectos, estamos seguros de que te encantarán!',
-            'description' => 'Aquí encontrarás algunos de nuestros proyectos. ¡Esperamos que te gusten y que pronto podamos incluir aquí tu espacio! 🧡',
+            'description' => 'Aquí encontrarás una selección de nuestros proyectos, cada uno pensado para transformar casas en hogares llenos de significado y calidez. ¡Esperamos que te inspires y que pronto podamos incluir tu espacio aquí también! 🧡',
             'searchPlaceholder' => '¿Buscas un proyecto o ciudad específicos?',
             'noResultsMessage' => 'Aún no se encontraron proyectos con estos términos...<br>Pero, ¿qué piensas de incluir el tuyo aquí?',
-            'requestBudget' => 'Solicitar presupuesto'
+            'requestBudget' => 'Solicitar presupuesto',
+            'filtersLabel' => 'Filtros de proyectos',
+            'filterAll' => 'todos',
+            'filterResidential' => 'residencial',
+            'filterCommercial' => 'comercial'
         ],
 
         // Footer

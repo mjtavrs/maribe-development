@@ -15,6 +15,7 @@ $currentPage = 'orcamento';
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -51,10 +52,7 @@ $currentPage = 'orcamento';
         <main role="main">
             <?php
             $pageTitle = t('budget.title');
-            $pageDescription = [
-                t('budget.description.0'),
-                t('budget.description.1')
-            ];
+            $pageDescription = t('budget.description');
             include 'includes/pageInfo.php';
             ?>
             <form action="/src/php/budgetForm.php" method="POST">
@@ -168,6 +166,7 @@ $currentPage = 'orcamento';
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>
+    <?php include 'includes/scrollToTop.php'; ?>
 </body>
 
 </html>

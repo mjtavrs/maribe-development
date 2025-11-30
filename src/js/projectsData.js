@@ -7,6 +7,7 @@ const projects = [
             "O apê varandas é habitado por dois moradores, pai e filho, com gostos semelhantes, ambos curtem o contraste entre cores claras e escuras com estilo mais industrial, adoram receber amigos, fazer churrascos e ouvir músicas enquanto jogam cartas. Criamos um projeto com tons mais escuros, através da madeira e bastante cinza, o resultado foi um ambiente aconchegante para horas de descanso e simultaneamente funcional para receber amigos.",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: [
             "assets/images/projects/ape-varandas/images/1.webp",
             "assets/images/projects/ape-varandas/images/2.webp",
@@ -42,6 +43,7 @@ const projects = [
             "Os clientes do apê eron são um casal jovem bastante extrovertido, que gosta de reunir amigos e confraternizar, mantendo sempre uma energia alto astral. Inspiradas nessa personalidade, o projeto surgiu cheio de cores, vida e originalidade dentro de uma área de 50 m². Trouxemos ladrilho hidráulico, plantas e bastante marcenaria para otimizar todo espaço do apartamento.",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: [
             "assets/images/projects/ape-eron/images/1.webp",
             "assets/images/projects/ape-eron/images/2.webp",
@@ -69,6 +71,7 @@ const projects = [
             "No apê nina, nós integramos todos os ambientes das áreas sociais: sala de estar, jantar, varanda e cozinha de forma que houvesse equilíbrio, leveza e harmonia. Tudo isso sem quebrar nenhuma parede, porque são estruturais e não podem ser alteradas, então toda intervenção foi feita por marcenaria, revestimentos e pintura. Com pouco espaço projetamos bastante marcenaria criativa e otimizada para aproveitar os espaços.",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: [
             "assets/images/projects/ape-nina/images/1.webp",
             "assets/images/projects/ape-nina/images/2.webp",
@@ -96,6 +99,7 @@ const projects = [
             "O apê pilar é um apartamento localizado no centro do Recife, habitado por 5 pessoas, sendo 2 adultos, 2 crianças e 1 adolescente. É uma família alegre e espontânea, que tem a leitura como algo fundamental para eles, inclusive para as crianças. Apreciam cinema alternativo, aprender sobre diferentes culturas e amam uma boa arte e um bom design. Por conta disso, trouxemos bastante móveis com design diferenciado, cor e texturas!",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: [
             "assets/images/projects/ape-pilar/images/1.webp",
             "assets/images/projects/ape-pilar/images/2.webp",
@@ -130,6 +134,7 @@ const projects = [
             "O apê abraço é um flat à beira mar de 35m² que foi pensado para comportar toda uma família de dois adultos e três crianças, mas que possa ser utilizado também como Airbnb. Criamos um projeto neutro, trazendo amplitude para o ambiente, uma cama suspensa otimizando o espaço, tricama que serve como um sofá, closet com privacidade adaptável e bastante área social, em especial, a cozinha pois amam cozinhar!",
         ano: "2024",
         cidade: "Ipojuca",
+        tipo: "residencial",
         outrasFotos: [
             "assets/images/projects/ape-abraco/images/1.webp",
             "assets/images/projects/ape-abraco/images/2.webp",
@@ -149,6 +154,7 @@ const projects = [
             "Esse apê é de um casal jovem bem bairristas, minimalistas e gente boa! Para eles o significado do lar vem junto com palavras como conforto, refúgio, alegria e relaxamento. O projeto precisou trazer essa tranquilidade com bastante personalidade em um espaço de 50m², por isso trabalhamos com cores suaves, obras de arte coloridas e locais e marcenaria criativa para aproveitar todo espaço!",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: [
             "assets/images/projects/ape-girassol/images/1.webp",
             "assets/images/projects/ape-girassol/images/2.webp",
@@ -174,6 +180,7 @@ const projects = [
             "Os clientes do apê amazonita são bastante autênticos e criativos! Com bastante obras de arte e uma coleção de vinis, criamos um projeto com a personalidade deles. A parede neutra evidenciou a beleza de suas coleções artísticas, os metais pretos contrastam com as paredes, marcenarias e a pedra amazonita, como a protagonista, trazendo elegância e suavidade para o ambiente.",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: [
             "assets/images/projects/ape-amazonita/images/1.webp",
             "assets/images/projects/ape-amazonita/images/2.webp",
@@ -195,6 +202,7 @@ const projects = [
             "Esse quarto de criança foi pensado para dois irmãos cheios de personalidade e que amam a natureza! Idealizamos uma arte para o projeto que foi pintada pelos próprios clientes, permitindo criar memórias afetivas desse novo quarto. A família tem planos de mudar para um apê maior, pensando nisso, fizemos uma marcenaria solta, podendo gerar vários layouts que se adequem ao novo espaço.",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: ["assets/images/projects/quarto-selva/images/1.webp", "assets/images/projects/quarto-selva/images/2.webp", "assets/images/projects/quarto-selva/images/3.webp", "assets/images/projects/quarto-selva/images/4.webp", "assets/images/projects/quarto-selva/images/5.webp"],
     },
     {
@@ -205,6 +213,7 @@ const projects = [
             "Esse é um quartinho de bebê desenvolvido com base na filosofia Montessoriana. Buscamos trazer a sensação de refúgio para a bebê, com um projeto que acompanhasse seu crescimento e aumento de autonomia. Apostamos em tons suaves, mobiliário baixo e bastante revestimento natural. A arte na parede foi desenvolvida pela maribe e pintada pela cliente trazendo bastante memória afetiva para o espaço!",
         ano: "2023",
         cidade: "Recife",
+        tipo: "residencial",
         outrasFotos: ["assets/images/projects/quarto-tete/images/1.webp", "assets/images/projects/quarto-tete/images/2.webp", "assets/images/projects/quarto-tete/images/3.webp", "assets/images/projects/quarto-tete/images/4.webp", "assets/images/projects/quarto-tete/images/5.webp", "assets/images/projects/quarto-tete/images/6.webp", "assets/images/projects/quarto-tete/images/7.webp"],
     },
     {
@@ -215,6 +224,7 @@ const projects = [
             "O Espaço Otorrino é uma clínica de otorrinolaringologia com dois consultórios, uma recepção com área de espera e uma copa voltada para os funcionários. O projeto trouxe formas orgânicas, materiais naturais e iluminação indireta, buscando leveza e aconchego para os pacientes. Através da biofilia e dos conceitos de neuroarquitetura, o espaço visa promover saúde mental e acolhimento para os pacientes e funcionários.",
         ano: "2024",
         cidade: "Recife",
+        tipo: "comercial",
         outrasFotos: [
             "assets/images/projects/espaco-otorrino/images/1.webp",
             "assets/images/projects/espaco-otorrino/images/2.webp",
@@ -236,6 +246,7 @@ const projects = [
             "O projeto marias é um restaurante com comidas típicas do Nordeste, onde tivemos toda liberdade de criar um espaço temático com referências regionais que dialogam com a apresentação dos pratos. Abusamos de cores e texturas trazendo elementos típicos da nossa região, como a corda sisal com nó de carrasco, chitas, panelas de barro, e muitos quadros em xilogravuras. Com tons terrosos e estampas coloridas, transformamos uma garagem em um aconchegante restaurante.",
         ano: "2022",
         cidade: "Recife",
+        tipo: "comercial",
         outrasFotos: [
             "assets/images/projects/projeto-marias/images/1.webp",
             "assets/images/projects/projeto-marias/images/2.webp",
@@ -256,6 +267,7 @@ const projects = [
             "O projeto consiste na transformação de um escritório em uma sala corporativa. O espaço é localizado em um terreno de área residencial, mas possui acesso independente da área íntima dos moradores. O pedido dos clientes era que o espaço contasse com 6 estações de trabalho, uma mini copa e área de armazenamento. Tudo isso com inspirações em áreas de coworks contemporâneos.",
         ano: "2023",
         cidade: "Recife",
+        tipo: "comercial",
         outrasFotos: ["assets/images/projects/agencia-166/images/1.webp", "assets/images/projects/agencia-166/images/2.webp", "assets/images/projects/agencia-166/images/3.webp"],
     },
 ];

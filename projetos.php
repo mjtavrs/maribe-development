@@ -15,6 +15,7 @@ $currentPage = 'projetos';
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -38,6 +39,7 @@ $currentPage = 'projetos';
 
     <!-- Scripts -->
     <script src="/src/js/languageSelector.js"></script>
+    <script type="module" src="/src/js/projectsFilters.js" defer></script>
     <script type="module" src="/src/js/projectsSearch.js" defer></script>
     <script type="module" src="/src/js/projectsInjector.js" defer></script>
     <script src="/src/js/cookiePopup.js"></script>
@@ -64,6 +66,17 @@ $currentPage = 'projetos';
                     >
                     <span id="searchKeyboardHelper" class="search-helper"></span>
                 </div>
+                <div id="projectsFilters" role="group" aria-label="<?php echo htmlspecialchars(t('projects.filtersLabel', 'Filtros de projetos'), ENT_QUOTES, 'UTF-8'); ?>">
+                    <button type="button" class="filter-button active" data-filter="todos" aria-pressed="true">
+                        <?php echo htmlspecialchars(t('projects.filterAll', 'todos'), ENT_QUOTES, 'UTF-8'); ?>
+                    </button>
+                    <button type="button" class="filter-button" data-filter="residencial" aria-pressed="false">
+                        <?php echo htmlspecialchars(t('projects.filterResidential', 'residencial'), ENT_QUOTES, 'UTF-8'); ?>
+                    </button>
+                    <button type="button" class="filter-button" data-filter="comercial" aria-pressed="false">
+                        <?php echo htmlspecialchars(t('projects.filterCommercial', 'comercial'), ENT_QUOTES, 'UTF-8'); ?>
+                    </button>
+                </div>
             </div>
             <h2 id="projectsListHeading" class="visually-hidden"><?php echo htmlspecialchars(t('projects.listHeading', 'Lista de projetos'), ENT_QUOTES, 'UTF-8'); ?></h2>
             <div id="projectsContainer" role="list" aria-labelledby="projectsListHeading" aria-live="polite"></div>
@@ -83,6 +96,7 @@ $currentPage = 'projetos';
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>
+    <?php include 'includes/scrollToTop.php'; ?>
 </body>
 
 </html>

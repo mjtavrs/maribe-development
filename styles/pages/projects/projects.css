@@ -160,7 +160,11 @@ body main #projectsSearchContainer {
   margin-bottom: 32px;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
 }
 
 body main #projectsSearchWrapper {
@@ -168,7 +172,8 @@ body main #projectsSearchWrapper {
   display: flex;
   align-items: center;
   max-width: 600px;
-  width: 100%;
+  flex: 1;
+  min-width: 280px;
 }
 
 body main #projectsSearchWrapper #searchIcon {
@@ -261,7 +266,7 @@ body main #projectsSearchWrapper #projectsSearchInput:focus + #searchKeyboardHel
   }
 
   body main #projectsSearchContainer {
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 
   body main #projectsSearchWrapper {
@@ -417,5 +422,184 @@ body main #noResultsMessage .no-results-button:active {
 
   body main #noResultsMessage .no-results-text {
     font-size: 1.125rem;
+  }
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+body main #projectsPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 60px 0 40px;
+  width: 100%;
+}
+
+body main #projectsPagination .pagination-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+body main #projectsPagination .pagination-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(60, 60, 59, 0.3);
+  background-color: var(--color-bege-delicado);
+  color: var(--color-cinza-elegante);
+  border-radius: 6px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+}
+
+body main #projectsPagination .pagination-button:hover:not(:disabled) {
+  background-color: var(--color-vermelho-recife);
+  color: var(--color-bege-delicado);
+  border-color: var(--color-vermelho-recife);
+}
+
+body main #projectsPagination .pagination-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+body main #projectsPagination .pagination-button.active {
+  background-color: var(--color-vermelho-recife);
+  color: var(--color-bege-delicado);
+  border-color: var(--color-vermelho-recife);
+  font-weight: 600;
+}
+
+body main #projectsPagination .pagination-button i {
+  font-size: 1.125rem;
+}
+
+body main #projectsPagination .pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  color: var(--color-cinza-elegante);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1rem;
+  padding: 0 8px;
+}
+
+@media screen and (min-width: 768px) {
+  body main #projectsPagination {
+    margin: 80px 0 60px;
+  }
+
+  body main #projectsPagination .pagination-list {
+    gap: 12px;
+  }
+
+  body main #projectsPagination .pagination-button {
+    min-width: 44px;
+    height: 44px;
+    font-size: 1.0625rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body main #projectsPagination {
+    margin: 100px 0 80px;
+  }
+
+  body main #projectsPagination .pagination-list {
+    gap: 16px;
+  }
+
+  body main #projectsPagination .pagination-button {
+    min-width: 48px;
+    height: 48px;
+    font-size: 1.125rem;
+  }
+}
+
+/* ============================================
+   PROJECTS FILTERS
+   ============================================ */
+body main #projectsFilters {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+body main #projectsFilters .filter-button {
+  padding: 10px 20px;
+  border: none;
+  border-bottom: 1px solid rgba(60, 60, 59, 0.3);
+  background: transparent;
+  color: var(--color-cinza-elegante);
+  border-radius: 0;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  text-transform: lowercase;
+  padding: 8px 0;
+  min-height: 40px;
+}
+
+body main #projectsFilters .filter-button:hover {
+  color: var(--color-vermelho-recife);
+  border-bottom-color: var(--color-vermelho-recife);
+}
+
+body main #projectsFilters .filter-button.active {
+  color: var(--color-vermelho-recife);
+  border-bottom-color: var(--color-vermelho-recife);
+  font-weight: 600;
+}
+
+body main #projectsFilters .filter-button:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 767px) {
+  body main #projectsSearchContainer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  body main #projectsSearchWrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  body main #projectsFilters {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body main #projectsFilters {
+    gap: 40px;
+  }
+
+  body main #projectsFilters .filter-button {
+    font-size: 1rem;
+    padding: 10px 0;
   }
 }

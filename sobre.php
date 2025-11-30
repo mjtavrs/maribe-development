@@ -15,6 +15,7 @@ $currentPage = 'sobre';
 <head>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -167,6 +168,7 @@ $currentPage = 'sobre';
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>
+    <?php include 'includes/scrollToTop.php'; ?>
 </body>
 
 </html>

@@ -34,6 +34,7 @@ $currentPage = 'home';
     <link rel="stylesheet" href="/styles/pages/home/home.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
 
     <!-- Scripts -->
     <script src="/src/js/cookiePopup.js"></script>

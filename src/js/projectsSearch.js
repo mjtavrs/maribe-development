@@ -9,6 +9,7 @@ let searchInput = null;
 let searchHelper = null;
 let projectsContainer = null;
 let currentSearchTerm = "";
+let currentFilterType = "todos";
 let searchTimeout = null;
 
 /**
@@ -35,21 +36,27 @@ function updateKeyboardHelper() {
 }
 
 /**
- * Filtra projetos baseado no termo de busca
+ * Filtra projetos baseado no termo de busca e tipo
  */
-function filterProjects(searchTerm) {
-    if (!searchTerm || searchTerm.trim() === "") {
-        return projects;
+function filterProjects(searchTerm, filterType = "todos") {
+    let result = projects;
+    
+    // Aplica filtro por tipo primeiro
+    if (filterType !== "todos") {
+        result = result.filter(project => project.tipo === filterType);
     }
     
-    const normalizedTerm = searchTerm.toLowerCase().trim();
+    // Depois aplica busca
+    if (searchTerm && searchTerm.trim() !== "") {
+        const normalizedTerm = searchTerm.toLowerCase().trim();
+        result = result.filter(project => {
+            const title = (project.titulo || "").toLowerCase();
+            const city = (project.cidade || "").toLowerCase();
+            return title.includes(normalizedTerm) || city.includes(normalizedTerm);
+        });
+    }
     
-    return projects.filter(project => {
-        const title = (project.titulo || "").toLowerCase();
-        const city = (project.cidade || "").toLowerCase();
-        
-        return title.includes(normalizedTerm) || city.includes(normalizedTerm);
-    });
+    return result;
 }
 
 /**
@@ -113,7 +120,7 @@ function initSearch() {
         
         // Debounce: aguarda 1 segundo após o usuário parar de digitar
         searchTimeout = setTimeout(() => {
-            const filteredProjects = filterProjects(currentSearchTerm);
+            const filteredProjects = filterProjects(currentSearchTerm, currentFilterType);
             triggerProjectsUpdate(filteredProjects);
         }, 1000);
     });
@@ -164,6 +171,13 @@ function initSearch() {
         }
     });
 }
+
+// Escuta eventos de filtro para atualizar busca
+document.addEventListener("projectsFilter", (e) => {
+    currentFilterType = e.detail.filter || "todos";
+    // Não dispara evento aqui, pois o filtro já dispara o evento de busca
+    // Apenas atualiza o tipo de filtro atual para futuras buscas
+});
 
 // Inicializa quando o DOM estiver pronto
 if (document.readyState === "loading") {
