@@ -111,6 +111,31 @@ if (preg_match('/^(pt|en|es)(?:\/(.+))?$/', $requestPath, $matches)) {
     if (substr($page, -4) === '.php') {
         $page = substr($page, 0, -4);
     }
+    
+    // Normaliza nomes de página conhecidos para o formato correto do idioma
+    // Isso garante que projeto.php, project.php, proyecto.php sejam tratados corretamente
+    $pageNormalization = [
+        'pt' => [
+            'projeto' => 'projeto',
+            'projetos' => 'projetos'
+        ],
+        'en' => [
+            'projeto' => 'project',
+            'project' => 'project',
+            'projetos' => 'projects',
+            'projects' => 'projects'
+        ],
+        'es' => [
+            'projeto' => 'proyecto',
+            'proyecto' => 'proyecto',
+            'projetos' => 'proyectos',
+            'proyectos' => 'proyectos'
+        ]
+    ];
+    
+    if (isset($pageNormalization[$lang][$page])) {
+        $page = $pageNormalization[$lang][$page];
+    }
 
     // Normaliza nomes de página para index
     if ($page === 'home' || $page === 'inicio') {
@@ -128,8 +153,35 @@ if (preg_match('/^(pt|en|es)(?:\/(.+))?$/', $requestPath, $matches)) {
             return false;
         }
 
-        // Define lang no $_GET antes de incluir o arquivo
+        // Define lang no $_GET e na sessão ANTES de incluir o arquivo
+        // Isso garante que getCurrentLanguage() detecte o idioma correto
         $_GET['lang'] = $lang;
+        
+        // Inicia sessão se ainda não foi iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        // Define o idioma na sessão para garantir que getCurrentLanguage() funcione
+        // IMPORTANTE: Isso deve ser feito ANTES de incluir qualquer arquivo que use getCurrentLanguage()
+        $_SESSION['lang'] = $lang;
+        
+        // Salva também no cookie para persistência
+        // Carrega funções se necessário para usar setLanguageCookie
+        if (!function_exists('setLanguageCookie')) {
+            // Tenta carregar o arquivo de funções se ainda não foi carregado
+            $functionsPath = __DIR__ . '/src/php/functions.php';
+            if (file_exists($functionsPath)) {
+                require_once $functionsPath;
+            }
+        }
+        
+        if (function_exists('setLanguageCookie')) {
+            setLanguageCookie($lang);
+        } else {
+            // Fallback: define cookie diretamente
+            setcookie('preferred_language', $lang, time() + (7 * 24 * 60 * 60), '/');
+        }
 
         // Parse query string para $_GET se houver
         if (!empty($queryString)) {

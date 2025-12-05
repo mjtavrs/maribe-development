@@ -33,6 +33,7 @@ $pageRouteMap = [
     'home' => 'index',
     'sobre' => 'sobre',
     'projetos' => 'projetos',
+    'projeto' => 'projeto',
     'orcamento' => 'orcamento',
     'contato' => 'contato',
     'contrato' => 'contrato',
@@ -69,6 +70,25 @@ $menuItems = [
         <?php
         // Mapeia página atual para rota
         $currentRoute = $pageRouteMap[$currentPage] ?? 'index';
+        
+        // Se estiver na página de projeto, preserva os parâmetros da query string
+        $queryParams = [];
+        if ($currentPage === 'projeto' || (isset($_GET['name']) || isset($_GET['id']))) {
+            // Preserva parâmetros do projeto (name ou id)
+            if (isset($_GET['name'])) {
+                $queryParams['name'] = $_GET['name'];
+            }
+            if (isset($_GET['id'])) {
+                $queryParams['id'] = $_GET['id'];
+            }
+            // Garante que a rota seja 'projeto' se houver parâmetros
+            if (!empty($queryParams)) {
+                $currentRoute = 'projeto';
+            }
+        }
+        
+        // Constrói query string se houver parâmetros
+        $queryString = !empty($queryParams) ? '?' . http_build_query($queryParams) : '';
 
         // Nomes dos idiomas
         $languageNames = [
@@ -80,28 +100,28 @@ $menuItems = [
         <!-- Seletor de Idioma - Desktop (Topo Direito) -->
         <div id="languageSelectorContainer" class="language-selector-desktop">
             <div id="languageSelector" class="language-dropdown">
-                <button id="languageButton" class="language-button" aria-label="Selecionar idioma" aria-expanded="false">
+                <button id="languageButton" class="language-button" aria-label="<?php echo htmlspecialchars(function_exists('t') ? t('menu.selectLanguage') : 'Selecionar idioma', ENT_QUOTES, 'UTF-8'); ?>" aria-expanded="false">
                     <span class="language-current"><?php echo htmlspecialchars($languageNames[$currentLang], ENT_QUOTES, 'UTF-8'); ?></span>
                     <i class="ph ph-caret-down language-arrow"></i>
                 </button>
                 <ul id="languageDropdown" class="language-dropdown-menu" role="menu">
                     <?php if ($currentLang !== 'pt'): ?>
                         <li role="menuitem">
-                            <a href="<?php echo url($currentRoute, 'pt'); ?>" class="language-option">
+                            <a href="<?php echo url($currentRoute, 'pt') . $queryString; ?>" class="language-option">
                                 português
                             </a>
                         </li>
                     <?php endif; ?>
                     <?php if ($currentLang !== 'en'): ?>
                         <li role="menuitem">
-                            <a href="<?php echo url($currentRoute, 'en'); ?>" class="language-option">
+                            <a href="<?php echo url($currentRoute, 'en') . $queryString; ?>" class="language-option">
                                 english
                             </a>
                         </li>
                     <?php endif; ?>
                     <?php if ($currentLang !== 'es'): ?>
                         <li role="menuitem">
-                            <a href="<?php echo url($currentRoute, 'es'); ?>" class="language-option">
+                            <a href="<?php echo url($currentRoute, 'es') . $queryString; ?>" class="language-option">
                                 español
                             </a>
                         </li>
@@ -117,7 +137,7 @@ $menuItems = [
             <img src="/assets/images/public/logos/logo_horizontal_com_assinatura.webp" class="logo-mobile" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
             <img src="/assets/images/public/logo_menu.webp" class="logo-desktop" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
         </a>
-        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="<?php echo htmlspecialchars(function_exists('t') ? t('menu.openMenu') : 'Abrir menu de navegação', ENT_QUOTES, 'UTF-8'); ?>" aria-expanded="false">
             <i class="ph ph-bold ph-list"></i>
         </button>
     </div>
@@ -125,7 +145,7 @@ $menuItems = [
     <!-- Menu de Navegação -->
     <nav id="mainNav">
         <!-- Título de Navegação -->
-        <h3 class="menu-section-title">Navegação</h3>
+        <h3 class="menu-section-title"><?php echo htmlspecialchars(function_exists('t') ? t('menu.navigation') : 'Navegação', ENT_QUOTES, 'UTF-8'); ?></h3>
         
         <!-- Links de Navegação (primeiro) -->
         <ul>
@@ -143,33 +163,33 @@ $menuItems = [
             <div class="menu-separator"></div>
             
             <!-- Título do Seletor de Idioma -->
-            <h3 class="language-selector-title">Selecionar idioma</h3>
+            <h3 class="language-selector-title"><?php echo htmlspecialchars(function_exists('t') ? t('menu.selectLanguage') : 'Selecionar idioma', ENT_QUOTES, 'UTF-8'); ?></h3>
             
             <!-- Seletor de Idioma - Mobile (dentro do menu) -->
             <div id="languageSelectorContainer" class="language-selector-mobile">
                 <div class="language-dropdown">
-                    <button class="language-button language-button-mobile" aria-label="Selecionar idioma" aria-expanded="false">
+                    <button class="language-button language-button-mobile" aria-label="<?php echo htmlspecialchars(function_exists('t') ? t('menu.selectLanguage') : 'Selecionar idioma', ENT_QUOTES, 'UTF-8'); ?>" aria-expanded="false">
                         <span class="language-current"><?php echo htmlspecialchars($languageNames[$currentLang], ENT_QUOTES, 'UTF-8'); ?></span>
                         <i class="ph ph-caret-down language-arrow"></i>
                     </button>
                     <ul class="language-dropdown-menu language-dropdown-menu-mobile" role="menu">
                         <?php if ($currentLang !== 'pt'): ?>
                             <li role="menuitem">
-                                <a href="<?php echo url($currentRoute, 'pt'); ?>" class="language-option">
+                                <a href="<?php echo url($currentRoute, 'pt') . $queryString; ?>" class="language-option">
                                     português
                                 </a>
                             </li>
                         <?php endif; ?>
                         <?php if ($currentLang !== 'en'): ?>
                             <li role="menuitem">
-                                <a href="<?php echo url($currentRoute, 'en'); ?>" class="language-option">
+                                <a href="<?php echo url($currentRoute, 'en') . $queryString; ?>" class="language-option">
                                     english
                                 </a>
                             </li>
                         <?php endif; ?>
                         <?php if ($currentLang !== 'es'): ?>
                             <li role="menuitem">
-                                <a href="<?php echo url($currentRoute, 'es'); ?>" class="language-option">
+                                <a href="<?php echo url($currentRoute, 'es') . $queryString; ?>" class="language-option">
                                     español
                                 </a>
                             </li>

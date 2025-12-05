@@ -19,7 +19,10 @@ $allTranslations = [
             'about' => 'sobre',
             'projects' => 'projetos',
             'budget' => 'orçamento',
-            'contact' => 'contato'
+            'contact' => 'contato',
+            'navigation' => 'Navegação',
+            'selectLanguage' => 'Selecionar idioma',
+            'openMenu' => 'Abrir menu de navegação'
         ],
 
         // Página Home
@@ -168,7 +171,18 @@ $allTranslations = [
             'filtersLabel' => 'Filtros de projetos',
             'filterAll' => 'todos',
             'filterResidential' => 'residencial',
-            'filterCommercial' => 'comercial'
+            'filterCommercial' => 'comercial',
+            'detail' => [
+                'location' => 'Localização',
+                'year' => 'Ano',
+                'type' => 'Tipo',
+                'shareTitle' => 'Compartilhar projeto',
+                'shareWhatsApp' => 'Compartilhar no WhatsApp',
+                'shareEmail' => 'Compartilhar por e-mail',
+                'shareWhatsAppMessage' => 'Confira este projeto: :title - :url',
+                'shareEmailSubject' => 'Projeto: :title',
+                'shareEmailBody' => 'Confira este projeto da maribe arquitetura:\n\n:title\n:description\n\n:url'
+            ]
         ],
 
         // Footer
@@ -245,10 +259,6 @@ $allTranslations = [
                     'title' => 'Alterações nesta Política',
                     'description' => 'A Maribe Arquitetura pode atualizar esta Política de Privacidade periodicamente, de modo a refletir melhorias no nosso site ou mudanças nas regulamentações aplicáveis. Sempre que houver modificações significativas, você será informado através do nosso site ou de outros canais de comunicação.'
                 ]
-            ],
-            'contact' => [
-                'title' => 'Ficou alguma dúvida?',
-                'description' => 'Você sempre pode nos enviar um e-mail a partir da nossa <a href=":contactUrl">página de contato</a> e ficaremos felizes em responder o mais breve possível.'
             ]
         ],
 
@@ -332,7 +342,10 @@ $allTranslations = [
             'about' => 'about',
             'projects' => 'projects',
             'budget' => 'budget',
-            'contact' => 'contact'
+            'contact' => 'contact',
+            'navigation' => 'Navigation',
+            'selectLanguage' => 'Select language',
+            'openMenu' => 'Open navigation menu'
         ],
 
 
@@ -475,7 +488,18 @@ $allTranslations = [
             'filtersLabel' => 'Project filters',
             'filterAll' => 'all',
             'filterResidential' => 'residential',
-            'filterCommercial' => 'commercial'
+            'filterCommercial' => 'commercial',
+            'detail' => [
+                'location' => 'Location',
+                'year' => 'Year',
+                'type' => 'Type',
+                'shareTitle' => 'Share project',
+                'shareWhatsApp' => 'Share on WhatsApp',
+                'shareEmail' => 'Share by email',
+                'shareWhatsAppMessage' => 'Check out this project: :title - :url',
+                'shareEmailSubject' => 'Project: :title',
+                'shareEmailBody' => 'Check out this project from maribe arquitetura:\n\n:title\n:description\n\n:url'
+            ]
         ],
 
         // Footer
@@ -552,10 +576,6 @@ $allTranslations = [
                     'title' => 'Changes to this Policy',
                     'description' => 'Maribe Arquitetura may update this Privacy Policy periodically to reflect improvements on our website or changes in applicable regulations. Whenever there are significant modifications, you will be informed through our website or other communication channels.'
                 ]
-            ],
-            'contact' => [
-                'title' => 'Have any questions?',
-                'description' => 'You can always send us an email from our <a href=":contactUrl">contact page</a> and we will be happy to respond as soon as possible.'
             ]
         ],
 
@@ -638,7 +658,10 @@ $allTranslations = [
             'about' => 'sobre',
             'projects' => 'proyectos',
             'budget' => 'presupuesto',
-            'contact' => 'contacto'
+            'contact' => 'contacto',
+            'navigation' => 'Navegación',
+            'selectLanguage' => 'Seleccionar idioma',
+            'openMenu' => 'Abrir menú de navegación'
         ],
 
         // Página Home
@@ -787,7 +810,18 @@ $allTranslations = [
             'filtersLabel' => 'Filtros de proyectos',
             'filterAll' => 'todos',
             'filterResidential' => 'residencial',
-            'filterCommercial' => 'comercial'
+            'filterCommercial' => 'comercial',
+            'detail' => [
+                'location' => 'Ubicación',
+                'year' => 'Año',
+                'type' => 'Tipo',
+                'shareTitle' => 'Compartir proyecto',
+                'shareWhatsApp' => 'Compartir en WhatsApp',
+                'shareEmail' => 'Compartir por correo',
+                'shareWhatsAppMessage' => 'Mira este proyecto: :title - :url',
+                'shareEmailSubject' => 'Proyecto: :title',
+                'shareEmailBody' => 'Mira este proyecto de maribe arquitetura:\n\n:title\n:description\n\n:url'
+            ]
         ],
 
         // Footer
@@ -864,10 +898,6 @@ $allTranslations = [
                     'title' => 'Cambios en esta Política',
                     'description' => 'Maribe Arquitetura puede actualizar esta Política de Privacidad periódicamente para reflejar mejoras en nuestro sitio web o cambios en las regulaciones aplicables. Siempre que haya modificaciones significativas, serás informado a través de nuestro sitio web u otros canales de comunicación.'
                 ]
-            ],
-            'contact' => [
-                'title' => '¿Tienes alguna duda?',
-                'description' => 'Siempre puedes enviarnos un correo electrónico desde nuestra <a href=":contactUrl">página de contacto</a> y estaremos encantados de responder lo antes posible.'
             ]
         ],
 

@@ -2,63 +2,159 @@
  * Project Detail Page Styles
  */
 
-body header {
-  padding: 80px 0 20px;
-  position: relative;
+body main {
+  padding-top: 40px;
 }
 
-body header a i {
-  color: #b7b7b7;
-  font-size: 48px;
-  position: absolute;
-  top: 3%;
-  right: 3%;
-  transition: 150ms color;
+@media screen and (min-width: 768px) {
+  body main {
+    padding-top: 60px;
+  }
 }
 
-body header a i:hover {
-  color: #a9a9a9;
+body main .project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
 }
 
-body header #projectTitle {
+body main .project-info {
+  width: 100%;
+}
+
+body main .project-info-content {
+  padding: 0 20px 20px 20px;
+  background-color: var(--color-bege-delicado);
+  border-radius: 10px;
+}
+
+body main .project-info-title {
   color: var(--color-vermelho-recife);
   font-family: "All Round Gothic", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
-body header #projectLocationAndYear {
+body main .project-info-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body main .project-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body main .project-info-label {
+  font-family: "Kantumruy Pro SemiBold", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-cinza-elegante-sutil);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body main .project-info-value {
   font-family: "Kantumruy Pro Regular", sans-serif;
-  font-size: 1.25rem;
-  padding: 10px 0 20px;
-  text-transform: lowercase;
+  font-size: 1.125rem;
+  color: var(--color-cinza-elegante);
+  text-transform: capitalize;
 }
 
-body header #projectDescription {
-  font-size: 1.125rem;
-  padding: 0 28px;
+body main .project-info-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-cinza-elegante);
+  margin-bottom: 30px;
+}
+
+body main .project-share {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body main .project-share-title {
+  font-family: "Kantumruy Pro SemiBold", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-cinza-elegante-sutil);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+}
+
+body main .project-share-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+body main .share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 1px solid rgba(60, 60, 59, 0.3);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  width: 28px;
+  height: 28px;
+}
+
+body main .share-button:hover {
+  background-color: rgba(197, 110, 81, 0.1);
+}
+
+body main .share-button:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
+}
+
+body main .share-button i {
+  font-size: 22px;
+  color: var(--color-cinza-elegante-sutil);
+  display: block;
+  line-height: 1;
+}
+
+body main .share-button span {
+  font-size: 22px;
+  color: var(--color-cinza-elegante-sutil);
+  display: block;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  width: 22px;
+  height: 22px;
   text-align: center;
 }
 
-body main #projectImages {
-  display: flex;
-  flex-direction: column;
+body main .project-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 10px;
   width: 100%;
 }
 
-body main #projectImages div {
-  height: 250px;
+body main .project-gallery div {
+  aspect-ratio: 1;
   width: 100%;
   position: relative;
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
-  /* Sombra e transição similares aos cards da listagem */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
 }
 
-body main #projectImages div img {
+body main .project-gallery div img {
   border-radius: 0;
   object-fit: cover;
   height: 100%;
@@ -67,77 +163,67 @@ body main #projectImages div img {
 
 /* Hover sutil em desktops aplica-se no container */
 @media (hover: hover) and (pointer: fine) {
-  body main #projectImages div:hover {
+  body main .project-gallery div:hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
   }
 }
 
 @media screen and (min-width: 768px) {
-  body header a i {
-    font-size: 52px;
-  }
-
-  body header #projectTitle {
-    font-size: 3rem;
-  }
-
-  body header #projectLocationAndYear {
-    font-size: 1.375rem;
-    padding: 15px 0 20px;
-  }
-
-  body header #projectDescription {
-    padding: 0 40px;
-  }
-
-  body main #projectImages {
+  body main .project-gallery {
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-  }
-
-  body main #projectImages div {
-    height: 350px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  body header a i {
-    font-size: 60px;
-    top: 6%;
+  body main .project-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
   }
 
-  body header #projectTitle {
-    font-size: 3.5rem;
+  body main .project-info {
+    flex: 0 0 350px;
   }
 
-  body header #projectLocationAndYear {
-    font-size: 1.5rem;
-    padding: 15px 0 20px;
+  body main .project-info-content {
+    padding: 0 30px 30px 30px;
   }
 
-  body header #projectDescription {
-    padding: 0 50px;
+  body main .project-info-title {
+    font-size: 2.25rem;
   }
 
-  body main #projectImages {
+  body main .project-info-meta {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0;
-    row-gap: 20px;
-    width: 100%;
+    gap: 20px;
   }
 
-  body main #projectImages div {
-    height: 350px;
-    max-width: 49%;
-    /* Sombra um pouco mais pronunciada em telas maiores */
+  body main .project-info-item {
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+
+
+  body main .project-gallery {
+    flex: 1;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  body main .project-gallery div {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  body header #projectDescription {
-    padding: 0 80px;
+  body main .project-info {
+    flex: 0 0 400px;
+  }
+
+  body main .project-gallery {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

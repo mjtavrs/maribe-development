@@ -9,8 +9,12 @@ $langAttribute = $currentLang === 'pt' ? 'pt-br' : ($currentLang === 'en' ? 'en-
 // Define a página atual para o header (politica não aparece no menu, mas definimos para consistência)
 $currentPage = 'politica';
 
+// Data da última atualização da política (formato: Y-m-d)
+// Esta data deve ser atualizada manualmente sempre que a política for modificada
+$lastUpdateDate = '2025-01-15'; // Data fixa: 15 de janeiro de 2025
+
 // Formata data de atualização conforme idioma
-$updateDate = formatDate($currentLang);
+$updateDate = formatDate($currentLang, $lastUpdateDate);
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo htmlspecialchars($langAttribute, ENT_QUOTES, 'UTF-8'); ?>">
@@ -152,20 +156,6 @@ $updateDate = formatDate($currentLang);
                         <p><?php echo htmlspecialchars(t('privacy.sections.changes.description'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </section>
-            </div>
-
-            <div id="separatorBox">
-                <div id="separator"></div>
-            </div>
-
-            <div id="contactInformationIfDoubt">
-                <h2><?php echo htmlspecialchars(t('privacy.contact.title'), ENT_QUOTES, 'UTF-8'); ?></h2>
-                <p>
-                    <?php 
-                    $contactUrl = function_exists('url') ? url('contato', $currentLang) : '/pt/contato';
-                    echo t('privacy.contact.description', ['contactUrl' => $contactUrl]);
-                    ?>
-                </p>
             </div>
         </main>
         <?php include 'includes/footer.php'; ?>

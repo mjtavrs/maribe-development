@@ -24,14 +24,46 @@ define('DEFAULT_LANGUAGE', 'pt');
  */
 function detectLanguage()
 {
-    // 1. Verifica parâmetro na URL (prioridade máxima)
+    // 1. Verifica parâmetro na URL (PRIORIDADE MÁXIMA - sempre verifica primeiro)
+    // O router define $_GET['lang'] antes de incluir os arquivos, então isso deve ter prioridade
     if (isset($_GET['lang']) && in_array($_GET['lang'], SUPPORTED_LANGUAGES)) {
         $lang = $_GET['lang'];
+        // Garante que a sessão está iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         // Salva na sessão para próximas requisições
         $_SESSION['lang'] = $lang;
         // Salva em cookie por 1 semana
-        setLanguageCookie($lang);
+        if (function_exists('setLanguageCookie')) {
+            setLanguageCookie($lang);
+        }
         return $lang;
+    }
+    
+    // 0. Detecta idioma a partir do path da URL (ex: /pt/projeto, /en/project, /es/proyecto)
+    // Isso é útil quando o router define o idioma no path mas não no $_GET ainda
+    if (isset($_SERVER['REQUEST_URI'])) {
+        $requestUri = $_SERVER['REQUEST_URI'];
+        // Remove query string para verificar apenas o path
+        $pathOnly = parse_url($requestUri, PHP_URL_PATH);
+        if ($pathOnly && preg_match('/^\/(pt|en|es)(?:\/|$)/', $pathOnly, $matches)) {
+            $lang = $matches[1];
+            if (in_array($lang, SUPPORTED_LANGUAGES)) {
+                // Garante que a sessão está iniciada
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                // Salva na sessão e cookie
+                $_SESSION['lang'] = $lang;
+                if (function_exists('setLanguageCookie')) {
+                    setLanguageCookie($lang);
+                }
+                // Também define no $_GET para consistência
+                $_GET['lang'] = $lang;
+                return $lang;
+            }
+        }
     }
 
     // 2. Verifica cookie (persiste por 1 semana)
@@ -146,12 +178,14 @@ function getCurrentLanguage()
 function t($key, $params = [])
 {
     global $translations;
+    static $loadedLang = null;
 
     $lang = getCurrentLanguage();
 
-    // Carrega traduções se ainda não foram carregadas
-    if (!isset($translations)) {
+    // Carrega traduções se ainda não foram carregadas OU se o idioma mudou
+    if (!isset($translations) || $loadedLang !== $lang) {
         $translations = loadTranslations($lang);
+        $loadedLang = $lang;
     }
 
     // Busca a tradução

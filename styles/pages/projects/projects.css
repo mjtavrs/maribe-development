@@ -25,7 +25,7 @@ body main #projectsContainer article {
     box-shadow 0.3s ease-out;
   /* Sombra sutil e leve para dar profundidade */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -76,7 +76,7 @@ body main #projectsContainer article a {
 body main #projectsContainer article a:focus {
   outline: 3px solid var(--color-vermelho-recife);
   outline-offset: 3px;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 body main #projectsContainer article a img {
@@ -129,7 +129,7 @@ body main #projectsContainer #projectsSentinel {
   body main #projectsContainer article a:focus-visible {
     outline: 3px solid var(--color-vermelho-recife);
     outline-offset: 3px;
-    border-radius: 10px;
+    border-radius: 4px;
   }
 }
 

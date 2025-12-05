@@ -15,6 +15,32 @@ function slugify(text) {
 }
 
 /**
+ * Detecta o idioma atual baseado na URL
+ */
+function detectCurrentLanguage() {
+    const pathname = window.location.pathname;
+    const match = pathname.match(/^\/(pt|en|es)\//);
+    return match ? match[1] : 'pt';
+}
+
+/**
+ * Gera URL do projeto no formato correto do idioma atual
+ */
+function getProjectUrl(slug) {
+    const lang = detectCurrentLanguage();
+    
+    // Mapeia o nome da página "projeto" para o formato correto do idioma
+    const pathMap = {
+        'pt': 'projeto',
+        'en': 'project',
+        'es': 'proyecto'
+    };
+    
+    const projectPage = pathMap[lang] || 'projeto';
+    return `/${lang}/${projectPage}?name=${encodeURIComponent(slug)}`;
+}
+
+/**
  * Configurações de paginação
  */
 const PROJECTS_PER_PAGE = 6;
@@ -34,7 +60,7 @@ function createProjectElement(project) {
 
     let projectReferrer = document.createElement("a");
     const slug = slugify(project.titulo || project.id);
-    projectReferrer.href = `projeto.php?name=${encodeURIComponent(slug)}`;
+    projectReferrer.href = getProjectUrl(slug);
     const cityInfo = project.cidade ? ` em ${project.cidade}` : '';
     projectReferrer.setAttribute("aria-label", `Ver detalhes do projeto ${project.titulo}${cityInfo}`);
 

@@ -3,8 +3,11 @@ const projects = [
         id: 1,
         cover: "assets/images/projects/ape-varandas/ape-varandas-cover.webp",
         titulo: "apê varandas",
-        descricao:
-            "O apê varandas é habitado por dois moradores, pai e filho, com gostos semelhantes, ambos curtem o contraste entre cores claras e escuras com estilo mais industrial, adoram receber amigos, fazer churrascos e ouvir músicas enquanto jogam cartas. Criamos um projeto com tons mais escuros, através da madeira e bastante cinza, o resultado foi um ambiente aconchegante para horas de descanso e simultaneamente funcional para receber amigos.",
+        descricao: {
+            pt: "O apê varandas é habitado por dois moradores, pai e filho, com gostos semelhantes, ambos curtem o contraste entre cores claras e escuras com estilo mais industrial, adoram receber amigos, fazer churrascos e ouvir músicas enquanto jogam cartas. Criamos um projeto com tons mais escuros, através da madeira e bastante cinza, o resultado foi um ambiente aconchegante para horas de descanso e simultaneamente funcional para receber amigos.",
+            en: "The apê varandas is inhabited by two residents, father and son, with similar tastes. Both enjoy the contrast between light and dark colors with a more industrial style, love hosting friends, having barbecues, and listening to music while playing cards. We created a project with darker tones, through wood and plenty of gray, resulting in a cozy environment for rest hours and simultaneously functional for hosting friends.",
+            es: "El apê varandas está habitado por dos residentes, padre e hijo, con gustos similares. Ambos disfrutan del contraste entre colores claros y oscuros con un estilo más industrial, les encanta recibir amigos, hacer barbacoas y escuchar música mientras juegan cartas. Creamos un proyecto con tonos más oscuros, a través de la madera y bastante gris, el resultado fue un ambiente acogedor para horas de descanso y simultáneamente funcional para recibir amigos."
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -39,8 +42,11 @@ const projects = [
         id: 2,
         cover: "assets/images/projects/ape-eron/ape-eron-cover.webp",
         titulo: "apê eron",
-        descricao:
-            "Os clientes do apê eron são um casal jovem bastante extrovertido, que gosta de reunir amigos e confraternizar, mantendo sempre uma energia alto astral. Inspiradas nessa personalidade, o projeto surgiu cheio de cores, vida e originalidade dentro de uma área de 50 m². Trouxemos ladrilho hidráulico, plantas e bastante marcenaria para otimizar todo espaço do apartamento.",
+        descricao: {
+            pt: "Os clientes do apê eron são um casal jovem bastante extrovertido, que gosta de reunir amigos e confraternizar, mantendo sempre uma energia alto astral. Inspiradas nessa personalidade, o projeto surgiu cheio de cores, vida e originalidade dentro de uma área de 50 m². Trouxemos ladrilho hidráulico, plantas e bastante marcenaria para otimizar todo espaço do apartamento.",
+            en: "The clients of apê eron are a very extroverted young couple who like to gather friends and socialize, always maintaining a high-energy vibe. Inspired by this personality, the project emerged full of colors, life, and originality within a 50 m² area. We brought hydraulic tiles, plants, and plenty of custom woodwork to optimize every space in the apartment.",
+            es: "Los clientes del apê eron son una pareja joven bastante extrovertida, a la que le gusta reunir amigos y confraternizar, manteniendo siempre una energía muy positiva. Inspiradas en esta personalidad, el proyecto surgió lleno de colores, vida y originalidad dentro de un área de 50 m². Trajimos azulejo hidráulico, plantas y bastante carpintería para optimizar todo el espacio del apartamento."
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -67,8 +73,11 @@ const projects = [
         id: 3,
         cover: "assets/images/projects/ape-nina/ape-nina-cover.webp",
         titulo: "apê nina",
-        descricao:
-            "No apê nina, nós integramos todos os ambientes das áreas sociais: sala de estar, jantar, varanda e cozinha de forma que houvesse equilíbrio, leveza e harmonia. Tudo isso sem quebrar nenhuma parede, porque são estruturais e não podem ser alteradas, então toda intervenção foi feita por marcenaria, revestimentos e pintura. Com pouco espaço projetamos bastante marcenaria criativa e otimizada para aproveitar os espaços.",
+        descricao: {
+            pt: "No apê nina, nós integramos todos os ambientes das áreas sociais: sala de estar, jantar, varanda e cozinha de forma que houvesse equilíbrio, leveza e harmonia. Tudo isso sem quebrar nenhuma parede, porque são estruturais e não podem ser alteradas, então toda intervenção foi feita por marcenaria, revestimentos e pintura. Com pouco espaço projetamos bastante marcenaria criativa e otimizada para aproveitar os espaços.",
+            en: "In apê nina, we integrated all the social area environments: living room, dining, balcony, and kitchen in a way that created balance, lightness, and harmony. All of this without breaking any walls, because they are structural and cannot be altered, so every intervention was made through custom woodwork, finishes, and paint. With little space, we designed plenty of creative and optimized custom woodwork to make the most of the spaces.",
+            es: "En el apê nina, integramos todos los ambientes de las áreas sociales: sala de estar, comedor, balcón y cocina de forma que hubiera equilibrio, ligereza y armonía. Todo esto sin romper ninguna pared, porque son estructurales y no pueden ser alteradas, entonces toda intervención fue hecha por carpintería, revestimientos y pintura. Con poco espacio proyectamos bastante carpintería creativa y optimizada para aprovechar los espacios."
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -95,8 +104,11 @@ const projects = [
         id: 4,
         cover: "assets/images/projects/ape-pilar/ape-pilar-cover.webp",
         titulo: "apê pilar",
-        descricao:
-            "O apê pilar é um apartamento localizado no centro do Recife, habitado por 5 pessoas, sendo 2 adultos, 2 crianças e 1 adolescente. É uma família alegre e espontânea, que tem a leitura como algo fundamental para eles, inclusive para as crianças. Apreciam cinema alternativo, aprender sobre diferentes culturas e amam uma boa arte e um bom design. Por conta disso, trouxemos bastante móveis com design diferenciado, cor e texturas!",
+        descricao: {
+            pt: "O apê pilar é um apartamento localizado no centro do Recife, habitado por 5 pessoas, sendo 2 adultos, 2 crianças e 1 adolescente. É uma família alegre e espontânea, que tem a leitura como algo fundamental para eles, inclusive para as crianças. Apreciam cinema alternativo, aprender sobre diferentes culturas e amam uma boa arte e um bom design. Por conta disso, trouxemos bastante móveis com design diferenciado, cor e texturas!",
+            en: "The apê pilar is an apartment located in downtown Recife, inhabited by 5 people: 2 adults, 2 children, and 1 teenager. It's a joyful and spontaneous family, who consider reading fundamental for them, including for the children. They appreciate alternative cinema, learning about different cultures, and love good art and good design. Because of this, we brought plenty of furniture with distinctive design, color, and textures!",
+            es: "El apê pilar es un apartamento ubicado en el centro de Recife, habitado por 5 personas: 2 adultos, 2 niños y 1 adolescente. Es una familia alegre y espontánea, que tiene la lectura como algo fundamental para ellos, incluso para los niños. Aprecian el cine alternativo, aprender sobre diferentes culturas y aman un buen arte y un buen diseño. Por eso, trajimos bastante muebles con diseño diferenciado, color y texturas!"
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -130,8 +142,11 @@ const projects = [
         id: 5,
         cover: "assets/images/projects/ape-abraco/ape-abraco-cover.webp",
         titulo: "apê abraço",
-        descricao:
-            "O apê abraço é um flat à beira mar de 35m² que foi pensado para comportar toda uma família de dois adultos e três crianças, mas que possa ser utilizado também como Airbnb. Criamos um projeto neutro, trazendo amplitude para o ambiente, uma cama suspensa otimizando o espaço, tricama que serve como um sofá, closet com privacidade adaptável e bastante área social, em especial, a cozinha pois amam cozinhar!",
+        descricao: {
+            pt: "O apê abraço é um flat à beira mar de 35m² que foi pensado para comportar toda uma família de dois adultos e três crianças, mas que possa ser utilizado também como Airbnb. Criamos um projeto neutro, trazendo amplitude para o ambiente, uma cama suspensa otimizando o espaço, tricama que serve como um sofá, closet com privacidade adaptável e bastante área social, em especial, a cozinha pois amam cozinhar!",
+            en: "The apê abraço is a 35m² beachfront flat that was designed to accommodate an entire family of two adults and three children, but can also be used as an Airbnb. We created a neutral project, bringing spaciousness to the environment, a suspended bed optimizing space, a triple bed that serves as a sofa, a closet with adaptable privacy, and plenty of social area, especially the kitchen, as they love cooking!",
+            es: "El apê abraço es un flat a orillas del mar de 35m² que fue pensado para albergar toda una familia de dos adultos y tres niños, pero que también puede ser utilizado como Airbnb. Creamos un proyecto neutro, trayendo amplitud al ambiente, una cama suspendida optimizando el espacio, tricama que sirve como sofá, closet con privacidad adaptable y bastante área social, en especial, la cocina ¡porque aman cocinar!"
+        },
         ano: "2024",
         cidade: "Ipojuca",
         tipo: "residencial",
@@ -150,8 +165,11 @@ const projects = [
         id: 6,
         cover: "assets/images/projects/ape-girassol/ape-girassol-cover.webp",
         titulo: "apê girassol",
-        descricao:
-            "Esse apê é de um casal jovem bem bairristas, minimalistas e gente boa! Para eles o significado do lar vem junto com palavras como conforto, refúgio, alegria e relaxamento. O projeto precisou trazer essa tranquilidade com bastante personalidade em um espaço de 50m², por isso trabalhamos com cores suaves, obras de arte coloridas e locais e marcenaria criativa para aproveitar todo espaço!",
+        descricao: {
+            pt: "Esse apê é de um casal jovem bem bairristas, minimalistas e gente boa! Para eles o significado do lar vem junto com palavras como conforto, refúgio, alegria e relaxamento. O projeto precisou trazer essa tranquilidade com bastante personalidade em um espaço de 50m², por isso trabalhamos com cores suaves, obras de arte coloridas e locais e marcenaria criativa para aproveitar todo espaço!",
+            en: "This apartment belongs to a very neighborhood-oriented, minimalist, and good-natured young couple! For them, the meaning of home comes with words like comfort, refuge, joy, and relaxation. The project needed to bring this tranquility with plenty of personality in a 50m² space, so we worked with soft colors, colorful and local artworks, and creative custom woodwork to make the most of every space!",
+            es: "¡Este apartamento es de una pareja joven muy barrista, minimalista y buena gente! Para ellos el significado del hogar viene junto con palabras como confort, refugio, alegría y relajación. El proyecto necesitó traer esa tranquilidad con bastante personalidad en un espacio de 50m², por eso trabajamos con colores suaves, obras de arte coloridas y locales y carpintería creativa para aprovechar todo el espacio!"
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -176,8 +194,11 @@ const projects = [
         id: 7,
         cover: "assets/images/projects/ape-amazonita/ape-amazonita-cover.webp",
         titulo: "apê amazonita",
-        descricao:
-            "Os clientes do apê amazonita são bastante autênticos e criativos! Com bastante obras de arte e uma coleção de vinis, criamos um projeto com a personalidade deles. A parede neutra evidenciou a beleza de suas coleções artísticas, os metais pretos contrastam com as paredes, marcenarias e a pedra amazonita, como a protagonista, trazendo elegância e suavidade para o ambiente.",
+        descricao: {
+            pt: "Os clientes do apê amazonita são bastante autênticos e criativos! Com bastante obras de arte e uma coleção de vinis, criamos um projeto com a personalidade deles. A parede neutra evidenciou a beleza de suas coleções artísticas, os metais pretos contrastam com as paredes, marcenarias e a pedra amazonita, como a protagonista, trazendo elegância e suavidade para o ambiente.",
+            en: "The clients of apê amazonita are very authentic and creative! With plenty of artworks and a vinyl collection, we created a project with their personality. The neutral wall highlighted the beauty of their artistic collections, the black metals contrast with the walls, custom woodwork, and the amazonite stone, as the protagonist, bringing elegance and softness to the environment.",
+            es: "¡Los clientes del apê amazonita son bastante auténticos y creativos! Con bastante obras de arte y una colección de vinilos, creamos un proyecto con su personalidad. La pared neutra evidenció la belleza de sus colecciones artísticas, los metales negros contrastan con las paredes, carpinterías y la piedra amazonita, como la protagonista, trayendo elegancia y suavidad al ambiente."
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -198,8 +219,11 @@ const projects = [
         id: 8,
         cover: "assets/images/projects/quarto-selva/quarto-selva-cover.webp",
         titulo: "quarto selva",
-        descricao:
-            "Esse quarto de criança foi pensado para dois irmãos cheios de personalidade e que amam a natureza! Idealizamos uma arte para o projeto que foi pintada pelos próprios clientes, permitindo criar memórias afetivas desse novo quarto. A família tem planos de mudar para um apê maior, pensando nisso, fizemos uma marcenaria solta, podendo gerar vários layouts que se adequem ao novo espaço.",
+        descricao: {
+            pt: "Esse quarto de criança foi pensado para dois irmãos cheios de personalidade e que amam a natureza! Idealizamos uma arte para o projeto que foi pintada pelos próprios clientes, permitindo criar memórias afetivas desse novo quarto. A família tem planos de mudar para um apê maior, pensando nisso, fizemos uma marcenaria solta, podendo gerar vários layouts que se adequem ao novo espaço.",
+            en: "This children's room was designed for two siblings full of personality who love nature! We designed an artwork for the project that was painted by the clients themselves, allowing them to create emotional memories of this new room. The family plans to move to a larger apartment, so we made freestanding custom woodwork that can generate various layouts to fit the new space.",
+            es: "¡Este cuarto de niños fue pensado para dos hermanos llenos de personalidad y que aman la naturaleza! Idealizamos un arte para el proyecto que fue pintada por los propios clientes, permitiendo crear memorias afectivas de este nuevo cuarto. La familia tiene planes de mudarse a un apartamento más grande, pensando en eso, hicimos una carpintería suelta, pudiendo generar varios layouts que se adecuen al nuevo espacio."
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -209,8 +233,11 @@ const projects = [
         id: 9,
         cover: "assets/images/projects/quarto-tete/quarto-tete-cover.webp",
         titulo: "quarto tête",
-        descricao:
-            "Esse é um quartinho de bebê desenvolvido com base na filosofia Montessoriana. Buscamos trazer a sensação de refúgio para a bebê, com um projeto que acompanhasse seu crescimento e aumento de autonomia. Apostamos em tons suaves, mobiliário baixo e bastante revestimento natural. A arte na parede foi desenvolvida pela maribe e pintada pela cliente trazendo bastante memória afetiva para o espaço!",
+        descricao: {
+            pt: "Esse é um quartinho de bebê desenvolvido com base na filosofia Montessoriana. Buscamos trazer a sensação de refúgio para a bebê, com um projeto que acompanhasse seu crescimento e aumento de autonomia. Apostamos em tons suaves, mobiliário baixo e bastante revestimento natural. A arte na parede foi desenvolvida pela maribe e pintada pela cliente trazendo bastante memória afetiva para o espaço!",
+            en: "This is a baby room developed based on Montessori philosophy. We sought to bring a sense of refuge for the baby, with a project that would accompany her growth and increasing autonomy. We bet on soft tones, low furniture, and plenty of natural finishes. The wall art was developed by maribe and painted by the client, bringing plenty of emotional memory to the space!",
+            es: "Este es un cuartito de bebé desarrollado con base en la filosofía Montessori. Buscamos traer la sensación de refugio para la bebé, con un proyecto que acompañara su crecimiento y aumento de autonomía. Apostamos en tonos suaves, mobiliario bajo y bastante revestimiento natural. ¡El arte en la pared fue desarrollado por maribe y pintado por la cliente trayendo bastante memoria afectiva al espacio!"
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "residencial",
@@ -220,8 +247,11 @@ const projects = [
         id: 10,
         cover: "assets/images/projects/espaco-otorrino/espaco-otorrino-cover.webp",
         titulo: "espaço otorrino",
-        descricao:
-            "O Espaço Otorrino é uma clínica de otorrinolaringologia com dois consultórios, uma recepção com área de espera e uma copa voltada para os funcionários. O projeto trouxe formas orgânicas, materiais naturais e iluminação indireta, buscando leveza e aconchego para os pacientes. Através da biofilia e dos conceitos de neuroarquitetura, o espaço visa promover saúde mental e acolhimento para os pacientes e funcionários.",
+        descricao: {
+            pt: "O Espaço Otorrino é uma clínica de otorrinolaringologia com dois consultórios, uma recepção com área de espera e uma copa voltada para os funcionários. O projeto trouxe formas orgânicas, materiais naturais e iluminação indireta, buscando leveza e aconchego para os pacientes. Através da biofilia e dos conceitos de neuroarquitetura, o espaço visa promover saúde mental e acolhimento para os pacientes e funcionários.",
+            en: "The Espaço Otorrino is an otorhinolaryngology clinic with two consultation rooms, a reception with a waiting area, and a break room for employees. The project brought organic forms, natural materials, and indirect lighting, seeking lightness and comfort for patients. Through biophilia and neuroarchitecture concepts, the space aims to promote mental health and welcoming for patients and employees.",
+            es: "El Espaço Otorrino es una clínica de otorrinolaringología con dos consultorios, una recepción con área de espera y una cocina dirigida a los empleados. El proyecto trajo formas orgánicas, materiales naturales e iluminación indirecta, buscando ligereza y acogida para los pacientes. A través de la biofilia y los conceptos de neuroarquitectura, el espacio busca promover salud mental y acogida para pacientes y empleados."
+        },
         ano: "2024",
         cidade: "Recife",
         tipo: "comercial",
@@ -242,8 +272,11 @@ const projects = [
         id: 11,
         cover: "assets/images/projects/projeto-marias/projeto-marias-cover.webp",
         titulo: "projeto marias",
-        descricao:
-            "O projeto marias é um restaurante com comidas típicas do Nordeste, onde tivemos toda liberdade de criar um espaço temático com referências regionais que dialogam com a apresentação dos pratos. Abusamos de cores e texturas trazendo elementos típicos da nossa região, como a corda sisal com nó de carrasco, chitas, panelas de barro, e muitos quadros em xilogravuras. Com tons terrosos e estampas coloridas, transformamos uma garagem em um aconchegante restaurante.",
+        descricao: {
+            pt: "O projeto marias é um restaurante com comidas típicas do Nordeste, onde tivemos toda liberdade de criar um espaço temático com referências regionais que dialogam com a apresentação dos pratos. Abusamos de cores e texturas trazendo elementos típicos da nossa região, como a corda sisal com nó de carrasco, chitas, panelas de barro, e muitos quadros em xilogravuras. Com tons terrosos e estampas coloridas, transformamos uma garagem em um aconchegante restaurante.",
+            en: "The projeto marias is a restaurant with typical Northeastern Brazilian food, where we had complete freedom to create a thematic space with regional references that dialogue with the presentation of the dishes. We used colors and textures extensively, bringing typical elements from our region, such as sisal rope with hangman's knot, chitas, clay pots, and many woodcut prints. With earthy tones and colorful prints, we transformed a garage into a cozy restaurant.",
+            es: "El proyecto marias es un restaurante con comidas típicas del Nordeste, donde tuvimos toda la libertad de crear un espacio temático con referencias regionales que dialogan con la presentación de los platos. Abusamos de colores y texturas trayendo elementos típicos de nuestra región, como la cuerda de sisal con nudo de verdugo, chitas, ollas de barro, y muchos cuadros en xilografías. Con tonos terrosos y estampas coloridas, transformamos un garaje en un acogedor restaurante."
+        },
         ano: "2022",
         cidade: "Recife",
         tipo: "comercial",
@@ -263,8 +296,11 @@ const projects = [
         id: 12,
         cover: "assets/images/projects/agencia-166/agencia-166-cover.webp",
         titulo: "agência 166",
-        descricao:
-            "O projeto consiste na transformação de um escritório em uma sala corporativa. O espaço é localizado em um terreno de área residencial, mas possui acesso independente da área íntima dos moradores. O pedido dos clientes era que o espaço contasse com 6 estações de trabalho, uma mini copa e área de armazenamento. Tudo isso com inspirações em áreas de coworks contemporâneos.",
+        descricao: {
+            pt: "O projeto consiste na transformação de um escritório em uma sala corporativa. O espaço é localizado em um terreno de área residencial, mas possui acesso independente da área íntima dos moradores. O pedido dos clientes era que o espaço contasse com 6 estações de trabalho, uma mini copa e área de armazenamento. Tudo isso com inspirações em áreas de coworks contemporâneos.",
+            en: "The project consists of transforming an office into a corporate room. The space is located on a residential area lot but has independent access from the residents' private area. The clients' request was that the space have 6 workstations, a mini break room, and storage area. All of this with inspirations from contemporary coworking spaces.",
+            es: "El proyecto consiste en la transformación de una oficina en una sala corporativa. El espacio está ubicado en un terreno de área residencial, pero tiene acceso independiente del área íntima de los residentes. La solicitud de los clientes era que el espacio contara con 6 estaciones de trabajo, una mini cocina y área de almacenamiento. Todo esto con inspiraciones en áreas de coworkings contemporáneos."
+        },
         ano: "2023",
         cidade: "Recife",
         tipo: "comercial",
