@@ -1,0 +1,99 @@
+/**
+ * PageInfo Component Styles
+ */
+
+/* ============================================
+   PAGE INFO
+   ============================================ */
+@font-face {
+  font-family: "All Round Gothic";
+  src: url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("opentype"),
+    url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff"),
+    url("../../assets/fonts/title/AllRoundGothic-Lig.otf") format("woff2");
+}
+
+body main #pageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin: 10px 0 70px;
+}
+
+/* Aumenta espaçamento do topo em mobile */
+@media screen and (max-width: 767px) {
+  body main #pageInfo {
+    margin-top: 40px;
+  }
+}
+
+body main #pageInfo h1 {
+  color: var(--color-vermelho-recife);
+  font-family: "All Round Gothic", sans-serif;
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+body main #pageInfo p {
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+body main #pageInfo p strong {
+  font-weight: 600;
+  color: var(--color-vermelho-recife);
+}
+
+body main #pageInfo p a {
+  font-weight: 500;
+  color: var(--color-vermelho-recife);
+}
+
+@media screen and (min-width: 768px) {
+  body main #pageInfo h1 {
+    font-size: 5rem;
+  }
+
+  body main #pageInfo p {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body main #pageInfo {
+    gap: 15px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body main #pageInfo h1 {
+    font-size: 5.5rem;
+    margin-bottom: 20px;
+  }
+
+  body main #pageInfo p {
+    line-height: 26px;
+    padding: 0 70px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  body main #pageInfo h1 {
+    font-size: 4.5rem;
+    padding: 0 80px;
+  }
+
+  body main #pageInfo p {
+    line-height: 30px;
+    padding: 0 120px;
+  }
+}
+
+@media screen and (min-width: 1768px) {
+  body main #pageInfo p {
+    padding: 0 150px;
+  }
+}
+

@@ -21,13 +21,18 @@
             return;
         }
 
-        const scrollThreshold = 280;
+        // Threshold menor no mobile para aparecer mais cedo
+        const isMobile = window.innerWidth <= 767;
+        const scrollThreshold = isMobile ? 150 : 280;
         let ticking = false;
 
         function updateButtonVisibility() {
             const scrollY = window.scrollY;
+            // Atualiza o threshold caso a janela seja redimensionada
+            const currentIsMobile = window.innerWidth <= 767;
+            const currentThreshold = currentIsMobile ? 150 : 280;
 
-            if (scrollY >= scrollThreshold) {
+            if (scrollY >= currentThreshold) {
                 scrollToTopButton.classList.add('visible');
             } else {
                 scrollToTopButton.classList.remove('visible');

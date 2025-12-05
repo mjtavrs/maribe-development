@@ -1,0 +1,628 @@
+/**
+ * Header Component Styles
+ * Inclui: header, menu, logo, seletor de idioma
+ */
+
+/* ============================================
+   HEADER
+   ============================================ */
+body header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Header Top - Logo e Hambúrguer */
+body header #headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* Botão Hambúrguer - Mobile */
+body header .mobile-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1003;
+  position: relative;
+  margin-right: 20px;
+}
+
+body header .mobile-menu-toggle i {
+  font-size: 28px;
+  color: var(--color-vermelho-recife);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Esconde o botão de abrir quando o menu está aberto e só reaparece quando fechado */
+@media screen and (max-width: 767px) {
+  body.menu-mobile-open .mobile-menu-toggle {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.1s ease, visibility 0.1s ease !important;
+  }
+  
+  /* Quando o menu não está aberto, o botão aparece com delay para só mostrar quando fechado */
+  body:not(.menu-mobile-open) .mobile-menu-toggle {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transition: opacity 0.3s ease 0.4s, visibility 0.3s ease 0.4s !important;
+  }
+}
+
+body header .mobile-menu-toggle:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Overlay quando menu mobile está aberto - usando pseudo-elemento (sem background) */
+body.menu-mobile-open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  /* Não bloqueia cliques - apenas para estrutura */
+  pointer-events: none;
+}
+
+@media screen and (min-width: 768px) {
+  body.menu-mobile-open::before {
+    display: none;
+  }
+}
+
+/* Seletor de Idioma - Desktop (Topo Direito) */
+body header .language-selector-desktop {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Seletor de Idioma - Mobile (dentro do menu) */
+body header nav .language-selector-mobile {
+  display: none;
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  /* Esconde seletor desktop em mobile */
+  body header .language-selector-desktop {
+    display: none;
+  }
+  
+  /* Mostra seletor mobile dentro do menu */
+  body header nav .language-selector-mobile {
+    display: block;
+    width: auto;
+    padding: 0 20px;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 10;
+  }
+  
+  body header nav .language-selector-mobile .language-dropdown {
+    width: auto;
+    display: inline-block;
+    position: relative;
+  }
+  
+  body header nav .language-selector-mobile .language-button {
+    width: auto;
+    min-width: 140px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    justify-content: space-between;
+    border-bottom: none;
+    border-radius: 0;
+  }
+  
+  body header nav .language-selector-mobile .language-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 140px;
+    width: auto;
+    background-color: var(--color-bege-delicado);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(60, 60, 59, 0.1);
+    border-radius: 6px;
+    margin-top: 0;
+    padding: 4px 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
+  }
+  
+  body header nav .language-selector-mobile .language-dropdown.active .language-dropdown-menu {
+    max-height: 200px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  body header nav .language-selector-mobile .language-option {
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(60, 60, 59, 0.05);
+    white-space: nowrap;
+  }
+  
+  body header nav .language-selector-mobile .language-option:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Separator do menu mobile */
+body header nav .menu-separator {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  body header nav .menu-separator {
+    display: block;
+    height: 1px;
+    background-color: rgba(60, 60, 59, 0.3);
+    margin: 20px 0;
+    width: 100%;
+  }
+}
+
+/* Títulos das seções do menu mobile */
+body header nav .menu-section-title,
+body header nav .language-selector-title {
+  display: none;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-cinza-elegante-sutil);
+  margin: 0 0 12px 0;
+  padding: 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 767px) {
+  body header nav .menu-section-title,
+  body header nav .language-selector-title {
+    display: block;
+  }
+}
+
+/* Ajustes do seletor de idioma em mobile - move para dentro do menu */
+@media screen and (max-width: 767px) {
+  body header #languageSelectorContainer {
+    position: static;
+    top: auto;
+    right: auto;
+    padding: 0 20px;
+    margin-top: 0;
+  }
+
+  body header #languageSelectorContainer .language-dropdown {
+    width: 100%;
+  }
+
+  body header #languageSelectorContainer .language-button {
+    width: 100%;
+    min-width: auto;
+    padding: 12px 16px;
+    font-size: 1rem;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(60, 60, 59, 0.1);
+    border-radius: 0;
+  }
+
+  body header #languageSelectorContainer .language-dropdown-menu {
+    position: static;
+    min-width: 100%;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    margin-top: 4px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  body header #languageSelectorContainer .language-dropdown.active .language-dropdown-menu {
+    max-height: 200px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  body header #languageSelectorContainer .language-option {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(60, 60, 59, 0.05);
+  }
+
+  body header #languageSelectorContainer .language-option:last-child {
+    border-bottom: none;
+  }
+}
+
+body header .language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+body header .language-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-bege-delicado);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-cinza-elegante-sutil);
+  transition: all 0.2s ease;
+  min-width: 140px;
+  justify-content: space-between;
+}
+
+body header .language-button:hover {
+  color: var(--color-vermelho-recife);
+}
+
+body header .language-button[aria-expanded="true"] {
+  color: var(--color-vermelho-recife);
+}
+
+body header .language-button[aria-expanded="true"] .language-arrow {
+  transform: rotate(180deg);
+}
+
+body header .language-current {
+  font-weight: 500;
+}
+
+body header .language-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+  color: var(--color-cinza-elegante-sutil);
+}
+
+body header .language-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 140px;
+  background-color: var(--color-bege-delicado);
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 1001;
+}
+
+body header .language-dropdown.active .language-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body header .language-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--color-cinza-elegante-sutil);
+  font-size: 0.9375rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+body header .language-option:hover {
+  background-color: rgba(197, 110, 81, 0.1);
+  color: var(--color-vermelho-recife);
+}
+
+body header .language-option.active {
+  color: var(--color-vermelho-recife);
+  font-weight: 600;
+  background-color: rgba(197, 110, 81, 0.05);
+}
+
+body header .language-check {
+  color: var(--color-vermelho-recife);
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  body header #languageSelectorContainer {
+    top: 30px;
+    right: 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body header #languageSelectorContainer {
+    top: 40px;
+    right: 40px;
+  }
+}
+
+body header #indexReferrer {
+  display: block;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+body header #indexReferrer img {
+  width: 200px;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  transition: width 0.3s ease, max-height 0.3s ease;
+}
+
+@media screen and (min-width: 768px) {
+  body header #indexReferrer img {
+    max-height: 120px; /* Altura maior no desktop */
+  }
+}
+
+/* Logo mobile - visível apenas em mobile */
+body header #indexReferrer .logo-mobile {
+  display: block;
+}
+
+body header #indexReferrer .logo-desktop {
+  display: none;
+}
+
+/* Aumenta a altura da logo em mobile */
+@media screen and (max-width: 767px) {
+  body header #indexReferrer .logo-mobile {
+    max-height: 100px;
+  }
+}
+
+/* Logo desktop - visível apenas em desktop */
+@media screen and (min-width: 768px) {
+  body header #indexReferrer .logo-mobile {
+    display: none;
+  }
+  
+  body header #indexReferrer .logo-desktop {
+    display: block;
+  }
+}
+
+/* Menu de Navegação - Estrutura simplificada (sem wrapper) */
+
+body header nav {
+  margin-top: 30px;
+  background-color: var(--color-bege-delicado);
+  position: relative;
+  z-index: 1000;
+}
+
+/* Menu Mobile - Estrutura simplificada */
+@media screen and (max-width: 767px) {
+  body header nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    height: 100vh;
+    margin: 0;
+    padding: 20px 0 0 0;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: none;
+    background-color: var(--color-bege-delicado);
+    visibility: hidden;
+  }
+
+  body header nav.menu-open {
+    transform: translateX(0);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15), -2px 0 10px rgba(0, 0, 0, 0.1);
+    visibility: visible;
+  }
+  
+  body header nav:not(.menu-open) {
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, visibility 0s 0.4s;
+    visibility: hidden;
+  }
+
+  body header nav.menu-open,
+  body header nav.menu-open * {
+    pointer-events: auto;
+  }
+}
+
+body header nav ul {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.125rem;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+  opacity: 0;
+}
+
+@media screen and (max-width: 767px) {
+  body header nav ul {
+    flex-direction: column !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    padding-top: 0;
+    justify-content: flex-start !important;
+  }
+}
+
+/* Container do seletor de idioma - já tratado acima com classes .language-selector-desktop e .language-selector-mobile */
+
+/* Menu visível quando aberto */
+@media screen and (max-width: 767px) {
+  body header nav.menu-open ul {
+    flex-direction: column !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    transition: opacity 0.3s ease-in;
+    padding-top: 0;
+    margin-top: 0;
+    justify-content: flex-start !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body header nav.menu-open ul {
+    max-height: 500px;
+    opacity: 1;
+    transition: max-height 0.4s ease-in, opacity 0.3s ease-in;
+  }
+}
+
+body header nav ul li {
+  border-bottom: 1px solid rgba(60, 60, 59, 0.1);
+}
+
+body header nav ul li:last-child {
+  border-bottom: none;
+}
+
+body header nav ul li a {
+  display: block;
+  padding: 16px 20px;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body header nav ul li a:hover {
+  background-color: rgba(197, 110, 81, 0.05);
+}
+
+body header nav ul #selected a {
+  color: var(--color-vermelho-recife);
+  font-weight: 600;
+  background-color: rgba(197, 110, 81, 0.08);
+}
+
+body header nav ul li:not(#selected) a {
+  color: var(--color-cinza-elegante-sutil);
+}
+
+body header nav ul li:not(#selected) a:hover {
+  color: var(--color-vermelho-recife);
+}
+
+/* Desktop - Menu sempre visível e horizontal */
+@media screen and (min-width: 768px) {
+  body header #headerTop {
+    padding: 0;
+    justify-content: center;
+  }
+
+  body header .mobile-menu-toggle {
+    display: none !important;
+  }
+
+  body header #indexReferrer {
+    margin-top: 30px;
+  }
+
+  body header #indexReferrer .logo-desktop {
+    width: 300px;
+  }
+  
+  body header #indexReferrer .logo-mobile {
+    width: 200px;
+  }
+
+  body header #headerNavWrapper {
+    width: 100%;
+  }
+
+  body header nav {
+    margin-top: 60px;
+  }
+
+  body header nav ul {
+    flex-direction: row !important;
+    gap: 26px;
+    margin: 25px 0 20px;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible;
+    justify-content: center;
+  }
+
+  body header nav.menu-open ul {
+    max-height: none !important;
+  }
+
+  body header nav ul li {
+    border-bottom: none !important;
+  }
+
+  body header nav ul li a {
+    padding: 0 !important;
+    text-align: center;
+    display: inline;
+  }
+
+  body header nav ul li a:hover {
+    background-color: transparent;
+  }
+
+  body header nav ul #selected a {
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body header nav ul {
+    font-size: 1.15rem;
+    margin: 25px 0 40px;
+  }
+}
+

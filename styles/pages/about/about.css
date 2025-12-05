@@ -105,6 +105,37 @@ body main #sectionsContainer section #logosContainer video {
   border-radius: 8px;
 }
 
+/* Estilos Mobile (max-width: 767px) */
+@media screen and (max-width: 767px) {
+  body main #sectionsContainer {
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+
+  body main #sectionsContainer section #imageContainer {
+    width: 100%;
+    padding: 0;
+  }
+
+  body main #sectionsContainer section #imageContainer img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  body main #sectionsContainer section #imageContainer #orangeBox {
+    height: 150px;
+    width: calc(100% - 20px);
+    left: 10px;
+    right: 10px;
+  }
+
+  body main #sectionsContainer section #logosContainer video {
+    max-width: 100%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   body main #sectionsContainer section h2 {
     font-size: 2.5rem;

@@ -30,7 +30,16 @@ $currentPage = 'home';
     <link rel="stylesheet" href="/styles/shared/variables.css" />
     <link rel="stylesheet" href="/styles/shared/base.css" />
     <link rel="stylesheet" href="/styles/shared/animations.css" />
-    <link rel="stylesheet" href="/styles/shared/components.css" />
+    <link rel="stylesheet" href="/styles/shared/scrollbar.css" />
+    <link rel="stylesheet" href="/styles/shared/header.css" />
+    <link rel="stylesheet" href="/styles/shared/footer.css" />
+    <link rel="stylesheet" href="/styles/shared/pageInfo.css" />
+    <link rel="stylesheet" href="/styles/shared/separator.css" />
+    <link rel="stylesheet" href="/styles/shared/cookiePopup.css" />
+    <link rel="stylesheet" href="/styles/shared/forms.css" />
+    <link rel="stylesheet" href="/styles/shared/toast.css" />
+    <link rel="stylesheet" href="/styles/shared/scrollToTop.css" />
+    <link rel="stylesheet" href="/styles/shared/contractDataExplanation.css" />
     <link rel="stylesheet" href="/styles/pages/home/home.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />

@@ -1,0 +1,20 @@
+/**
+ * Separator Component Styles
+ */
+
+/* ============================================
+   SEPARATOR
+   ============================================ */
+body main #separatorBox {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 30px;
+  width: 100%;
+}
+
+body main #separatorBox #separator {
+  border-top: 1px solid var(--color-cinza-elegante);
+  opacity: 0.5;
+  width: 50%;
+}
+

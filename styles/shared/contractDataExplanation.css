@@ -1,0 +1,74 @@
+/**
+ * Contract Data Explanation Component Styles
+ */
+
+/* ============================================
+   CONTRACT DATA EXPLANATION
+   ============================================ */
+body main #contractDataExplanation {
+  max-width: 1000px;
+  margin: 32px auto 40px;
+  padding: 0 20px;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+body main #contractDataExplanation.policy-card {
+  background-color: rgba(197, 110, 81, 0.02);
+  border-left: 3px solid var(--color-vermelho-recife);
+  padding: 20px;
+  border-radius: 4px;
+  transition: 300ms all;
+}
+
+body main #contractDataExplanation.policy-card:hover {
+  background-color: rgba(197, 110, 81, 0.04);
+}
+
+body main #contractDataExplanation .contract-explanation-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+body main #contractDataExplanation .contract-explanation-header i {
+  font-size: 1.5rem;
+  color: var(--color-vermelho-recife);
+  flex-shrink: 0;
+}
+
+body main #contractDataExplanation .contract-explanation-header h3 {
+  font-family: "Kantumruy Pro SemiBold", sans-serif;
+  font-size: 1.5rem;
+  color: var(--color-vermelho-recife);
+  margin: 0;
+  font-weight: bold;
+}
+
+body main #contractDataExplanation .contract-explanation-content p {
+  font-size: 1rem;
+  color: var(--color-cinza-elegante);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  body main #contractDataExplanation {
+    padding: 0;
+  }
+
+  body main #contractDataExplanation.policy-card {
+    padding: 25px;
+  }
+
+  body main #contractDataExplanation .contract-explanation-header h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body main #contractDataExplanation.policy-card {
+    padding: 30px;
+  }
+}
+

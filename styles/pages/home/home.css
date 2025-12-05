@@ -28,16 +28,19 @@ body #smoothOpening.fade-out-up {
 /* Hero Section */
 body main #heroSection {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  width: calc(100% + 56px);
+  margin-left: -28px;
+  margin-right: -28px;
   height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--color-bege-delicado);
   background-image: url("../../../assets/images/svg/500x1080.svg");
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   overflow: hidden;
 }
 
@@ -126,7 +129,11 @@ body main {
 @media screen and (min-width: 768px) {
   body main #heroSection {
     background-image: url("../../../assets/images/svg/1024x1366.svg");
-    background-size: 100% auto;
+    background-size: cover;
+    background-position: center center;
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    margin-right: -40px;
   }
 
   body main #heroSection #maribeLogo {
@@ -145,7 +152,11 @@ body main {
 @media screen and (min-width: 1024px) {
   body main #heroSection {
     background-image: url("../../../assets/images/svg/1024x1366.svg");
-    background-size: 100% auto;
+    background-size: cover;
+    background-position: center center;
+    width: calc(100% + 100px);
+    margin-left: -50px;
+    margin-right: -50px;
   }
 
   body main #heroSection #maribeLogo {
@@ -164,6 +175,9 @@ body main {
 @media screen and (min-width: 1280px) {
   body main #heroSection {
     background-image: none;
+    width: calc(100% + 100px);
+    margin-left: -50px;
+    margin-right: -50px;
   }
 
   body main #heroSection #maribeDesktopBackground {
@@ -193,6 +207,12 @@ body main {
 }
 
 @media screen and (min-width: 1366px) {
+  body main #heroSection {
+    width: calc(100% + 200px);
+    margin-left: -100px;
+    margin-right: -100px;
+  }
+
   body main #heroSection #heroContent {
     gap: 60px;
   }

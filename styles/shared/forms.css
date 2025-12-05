@@ -1,0 +1,598 @@
+/**
+ * Forms Component Styles
+ * Inclui: formulários, inputs, validação, floating labels
+ */
+
+/* ============================================
+   FORMS
+   ============================================ */
+body main form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Container de campo: agrupa wrapper e mensagens (erro/hint) */
+body main form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* controla a distância entre input e erro/hint */
+}
+
+body main form .twoColumnsInForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+body main form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.125rem;
+  gap: 10px;
+}
+
+body main form label input,
+body main form label textarea,
+body main form label select {
+  background-color: var(--color-bege-delicado);
+  border: none;
+  border-bottom: 1px solid var(--color-cinza-elegante);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
+  padding: 5px;
+  resize: none;
+  cursor: pointer;
+}
+
+body main form label select {
+  padding-right: 25px;
+}
+
+/* Estilização do dropdown (lista de opções) */
+body main form label select:focus {
+  border-bottom: 1px solid var(--color-vermelho-recife);
+  outline: none;
+}
+
+/* Estilização das opções no dropdown */
+body main form label select option {
+  background-color: var(--color-bege-delicado);
+  color: var(--color-cinza-elegante);
+  padding: 12px 10px;
+  border: none;
+}
+
+body main form label select option:checked {
+  background-color: rgba(197, 110, 81, 0.15);
+  color: var(--color-vermelho-recife);
+  font-weight: 500;
+}
+
+body main form label select option:hover {
+  background-color: rgba(197, 110, 81, 0.1);
+}
+
+/* Estilização do dropdown no Chrome/Edge/Safari usando pseudo-elementos */
+body main form label select::-webkit-select-dropdown {
+  border: 1px solid var(--color-vermelho-recife) !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px !important;
+  background-color: var(--color-bege-delicado) !important;
+  box-shadow: 0 2px 8px rgba(197, 110, 81, 0.15) !important;
+  padding: 4px 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Estilização adicional para o dropdown no Chrome */
+body main form label select:focus::-webkit-select-dropdown {
+  border-color: var(--color-vermelho-recife) !important;
+}
+
+/* Para Firefox - limitações de estilização */
+@-moz-document url-prefix() {
+  body main form label select {
+    border-bottom: 1px solid var(--color-cinza-elegante);
+  }
+  
+  body main form label select:focus {
+    border-bottom: 1px solid var(--color-vermelho-recife);
+  }
+  
+  body main form label select option {
+    background-color: var(--color-bege-delicado);
+    color: var(--color-cinza-elegante);
+  }
+}
+
+body main form label input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.4;
+}
+
+body main form label .inputWithSmallText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body main form label .inputWithSmallText small,
+body main form label small {
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+body main form label input:focus,
+body main form label textarea:focus,
+body main form label select:focus {
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(197, 110, 81, 1);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(197, 110, 81, 1);
+  box-shadow: 0px 0px 5px 2px rgba(197, 110, 81, 1);
+  outline: none;
+}
+
+/* Estilos para campos com erro */
+body main form label input.error,
+body main form label textarea.error,
+body main form label select.error {
+  border-bottom: 2px solid #d32f2f;
+  background-color: rgba(211, 47, 47, 0.05);
+}
+
+body main form label input.error:focus,
+body main form label textarea.error:focus {
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(211, 47, 47, 0.5);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(211, 47, 47, 0.5);
+  box-shadow: 0px 0px 5px 2px rgba(211, 47, 47, 0.5);
+}
+
+/* Mensagens de erro */
+body main form label .field-error {
+  display: block;
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Mensagens de erro fora do wrapper/label (após floating-label-wrapper) */
+body main form .field-error {
+  display: block;
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Hint genérico fora do wrapper (ex.: telefone) */
+body main form .field-hint {
+  font-size: 0.875rem;
+  opacity: 0.75;
+  color: var(--color-cinza-elegante);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Ícone opcional dentro do hint */
+body main form .field-hint .hint-icon {
+  font-size: 0.9rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cinza-elegante);
+  opacity: 0.8;
+}
+
+/* Mensagens de erro em fieldsets */
+body main form fieldset .field-error {
+  display: block;
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Estilos para campos radio/checkbox com erro */
+body main form fieldset input[type="radio"].error,
+body main form fieldset input[type="checkbox"].error {
+  border: 2px solid #d32f2f;
+  outline: 2px solid rgba(211, 47, 47, 0.2);
+}
+
+body main form fieldset input[type="radio"].error:focus,
+body main form fieldset input[type="checkbox"].error:focus {
+  outline: 2px solid rgba(211, 47, 47, 0.5);
+}
+
+/* Mensagem de erro geral do formulário */
+body main form .form-error {
+  background-color: rgba(211, 47, 47, 0.1);
+  border: 1px solid #d32f2f;
+  border-radius: 5px;
+  color: #d32f2f;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+body main form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body main form fieldset legend {
+  font-size: 1.125rem;
+  padding-bottom: 10px;
+}
+
+body main form fieldset div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Estilos para inputs radio */
+body main form fieldset input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--color-vermelho-recife);
+  /* Para navegadores que não suportam accent-color */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  position: relative;
+  background-color: white;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body main form fieldset input[type="radio"]:checked {
+  background-color: white;
+  border-color: var(--color-vermelho-recife);
+}
+
+body main form fieldset input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-vermelho-recife);
+  transform: translate(-50%, -50%);
+}
+
+body main form fieldset input[type="radio"]:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
+}
+
+body main form fieldset label {
+  line-height: 1.5;
+  cursor: pointer;
+  font-size: 1rem; /* levemente menor que as labels gerais (1.125rem) */
+}
+
+body main form ::placeholder {
+  color: transparent;
+}
+
+/* ============================================
+   FLOATING LABEL COMPONENT
+   ============================================ */
+body main form .floating-label-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+body main form .floating-label-wrapper input,
+body main form .floating-label-wrapper textarea {
+  background-color: var(--color-bege-delicado);
+  border: none;
+  border-bottom: 1px solid var(--color-cinza-elegante);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
+  /* altura fixa para evitar saltos ao focar/preencher */
+  height: 56px;
+  padding: 16px 10px 10px 10px;
+  resize: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, border-width 0.2s ease;
+}
+
+body main form .floating-label-wrapper textarea {
+  /* textarea mantém altura confortável e não salta */
+  min-height: 160px;
+  height: auto;
+  padding-top: 22px;
+}
+
+/* Em telas maiores, reduz o padding-top do textarea para alinhar com fieldsets ao lado */
+@media screen and (min-width: 1024px) {
+  body main form .floating-label-wrapper textarea {
+    padding-top: 16px;
+  }
+}
+
+body main form .floating-label-wrapper .floating-label {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
+  color: var(--color-cinza-elegante);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  transform-origin: left top;
+  background-color: transparent;
+  padding: 0 6px;
+}
+
+/* Centraliza verticalmente a label quando o campo está inativo (inputs) */
+body main form .floating-label-wrapper input + .floating-label {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Garante centralização quando vazio e sem foco */
+body
+  main
+  form
+  .floating-label-wrapper
+  input:not(:focus):placeholder-shown
+  + .floating-label {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Mantém centralização também quando houver erro (inativo e vazio) */
+body main form .floating-label-wrapper input.error + .floating-label,
+body
+  main
+  form
+  .floating-label-wrapper
+  input.error:not(:focus):placeholder-shown
+  + .floating-label {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Para textarea, mantém posição confortável no topo (sem centralizar) */
+body main form .floating-label-wrapper textarea + .floating-label {
+  top: 14px;
+  transform: none;
+}
+
+/* Ao flutuar a label, aumenta o respiro entre label e texto */
+body main form .floating-label-wrapper input:focus,
+body main form .floating-label-wrapper input.has-value,
+body main form .floating-label-wrapper input:not(:placeholder-shown) {
+  padding-top: 28px;
+}
+
+body main form .floating-label-wrapper input:focus ~ .floating-label,
+body main form .floating-label-wrapper textarea:focus ~ .floating-label,
+body
+  main
+  form
+  .floating-label-wrapper
+  input:not(:placeholder-shown)
+  ~ .floating-label,
+body
+  main
+  form
+  .floating-label-wrapper
+  textarea:not(:placeholder-shown)
+  ~ .floating-label,
+body main form .floating-label-wrapper input.has-value ~ .floating-label,
+body main form .floating-label-wrapper textarea.has-value ~ .floating-label {
+  top: 4px;
+  font-size: 0.875rem;
+  color: var(--color-vermelho-recife);
+  transform: translateY(0);
+}
+
+body main form .floating-label-wrapper input:focus,
+body main form .floating-label-wrapper textarea:focus {
+  outline: none;
+  border-bottom: 2px solid var(--color-vermelho-recife);
+}
+
+/* Estilos específicos para input de data - sobrescreve estilos padrão do navegador */
+body main form .floating-label-wrapper input[type="date"] {
+  color: var(--color-cinza-elegante) !important;
+  background-color: var(--color-bege-delicado) !important;
+  border-bottom: 1px solid var(--color-cinza-elegante) !important;
+  -webkit-text-fill-color: var(--color-cinza-elegante) !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+body main form .floating-label-wrapper input[type="date"]:focus {
+  border-bottom: 2px solid var(--color-vermelho-recife) !important;
+  color: var(--color-cinza-elegante) !important;
+  -webkit-text-fill-color: var(--color-cinza-elegante) !important;
+  background-color: var(--color-bege-delicado) !important;
+}
+
+body main form .floating-label-wrapper input[type="date"]:not(:placeholder-shown),
+body main form .floating-label-wrapper input[type="date"]:valid,
+body main form .floating-label-wrapper input[type="date"]:invalid {
+  color: var(--color-cinza-elegante) !important;
+  -webkit-text-fill-color: var(--color-cinza-elegante) !important;
+  background-color: var(--color-bege-delicado) !important;
+}
+
+body main form .floating-label-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+  filter: grayscale(100%);
+}
+
+body main form .floating-label-wrapper input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+body main form .floating-label-wrapper input.error,
+body main form .floating-label-wrapper textarea.error {
+  border-bottom: 2px solid #d32f2f;
+  background-color: rgba(211, 47, 47, 0.05);
+}
+
+body main form .floating-label-wrapper input.error:focus,
+body main form .floating-label-wrapper textarea.error:focus {
+  border-bottom: 2px solid #d32f2f;
+}
+
+body main form .floating-label-wrapper input.error ~ .floating-label,
+body main form .floating-label-wrapper textarea.error ~ .floating-label {
+  color: #d32f2f;
+}
+
+/* Para campos com hint (small text) */
+body main form .floating-label-wrapper .floating-label-hint {
+  margin-top: 5px;
+  font-size: 0.875rem;
+  opacity: 0.75;
+  color: var(--color-cinza-elegante);
+}
+
+/* Mensagens de erro para floating wrapper (mantém padrão anterior) */
+body main form .floating-label-wrapper .field-error {
+  display: block;
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+body main form #privacyLabel {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  max-width: none;
+}
+
+body main form #privacyLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--color-vermelho-recife);
+  /* Para navegadores que não suportam accent-color */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  background-color: white;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body main form #privacyLabel input[type="checkbox"]:checked {
+  background-color: var(--color-vermelho-recife);
+  border-color: var(--color-vermelho-recife);
+}
+
+body main form #privacyLabel input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+body main form #privacyLabel input[type="checkbox"]:focus {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 2px;
+}
+
+body main form #privacyLabel span {
+  line-height: 18px;
+  flex: 1;
+  font-size: 1rem;
+}
+
+body main form #privacyLabel span a {
+  font-weight: 600;
+  color: var(--color-vermelho-recife);
+}
+
+body main form #buttonContainer button {
+  background-color: var(--color-vermelho-recife);
+  color: var(--color-bege-delicado);
+  cursor: pointer;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 0;
+  margin: 10px 0;
+  width: 100%;
+  z-index: 9999;
+
+  -webkit-box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  -moz-box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  transition: 300ms background-color;
+}
+
+body main form #buttonContainer button:hover {
+  background-color: var(--color-amarelo-tarsila);
+}
+
+body main form #buttonContainer button:not(:hover) {
+  background-color: var(--color-vermelho-recife);
+}
+
+@media screen and (min-width: 1024px) {
+  body main form {
+    gap: 35px;
+    max-width: 1000px;
+  }
+
+  body main form .twoColumnsInForm {
+    flex-direction: row;
+    gap: 80px;
+    row-gap: 35px;
+  }
+
+  body main form .twoColumnsInForm fieldset,
+  body main form .twoColumnsInForm label,
+  body main form .twoColumnsInForm .form-field {
+    flex: 1;
+  }
+
+  body main form #buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  body main form #buttonContainer button {
+    margin: 15px 0;
+    width: 75%;
+  }
+}
+

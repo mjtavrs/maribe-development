@@ -33,7 +33,16 @@ $currentPage = 'projeto';
     <link rel="stylesheet" href="/styles/shared/variables.css" />
     <link rel="stylesheet" href="/styles/shared/base.css" />
     <link rel="stylesheet" href="/styles/shared/animations.css" />
-    <link rel="stylesheet" href="/styles/shared/components.css" />
+    <link rel="stylesheet" href="/styles/shared/scrollbar.css" />
+    <link rel="stylesheet" href="/styles/shared/header.css" />
+    <link rel="stylesheet" href="/styles/shared/footer.css" />
+    <link rel="stylesheet" href="/styles/shared/pageInfo.css" />
+    <link rel="stylesheet" href="/styles/shared/separator.css" />
+    <link rel="stylesheet" href="/styles/shared/cookiePopup.css" />
+    <link rel="stylesheet" href="/styles/shared/forms.css" />
+    <link rel="stylesheet" href="/styles/shared/toast.css" />
+    <link rel="stylesheet" href="/styles/shared/scrollToTop.css" />
+    <link rel="stylesheet" href="/styles/shared/contractDataExplanation.css" />
     <link rel="stylesheet" href="/styles/shared/lightbox.css" />
     <link rel="stylesheet" href="/styles/pages/project/project.css" />
 

@@ -167,6 +167,7 @@ body {
   font-family: "Source Sans 3", sans-serif;
   gap: 2rem;
   min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 /* Classe para elementos visualmente ocultos, mas acessíveis a leitores de tela */

@@ -65,7 +65,6 @@ $menuItems = [
 
 <!-- Header -->
 <header<?php echo (isset($headerId) && !empty($headerId)) ? ' id="' . htmlspecialchars($headerId, ENT_QUOTES, 'UTF-8') . '"' : ''; ?>>
-    <!-- Seletor de Idioma (Topo Direito) -->
     <?php if (function_exists('getCurrentLanguage') && function_exists('url')): ?>
         <?php
         // Mapeia página atual para rota
@@ -78,7 +77,8 @@ $menuItems = [
             'es' => 'español'
         ];
         ?>
-        <div id="languageSelectorContainer">
+        <!-- Seletor de Idioma - Desktop (Topo Direito) -->
+        <div id="languageSelectorContainer" class="language-selector-desktop">
             <div id="languageSelector" class="language-dropdown">
                 <button id="languageButton" class="language-button" aria-label="Selecionar idioma" aria-expanded="false">
                     <span class="language-current"><?php echo htmlspecialchars($languageNames[$currentLang], ENT_QUOTES, 'UTF-8'); ?></span>
@@ -111,20 +111,73 @@ $menuItems = [
         </div>
     <?php endif; ?>
 
-    <a href="<?php echo function_exists('url') ? url('index', $currentLang) : '/'; ?>" id="indexReferrer">
-        <img src="/assets/images/public/logo_menu.webp" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
-    </a>
-    <div>
-        <nav>
-            <ul>
-                <?php foreach ($menuItems as $pageKey => $item): ?>
-                    <li <?php echo ($currentPage === $pageKey) ? 'id="selected"' : ''; ?>>
-                        <a href="<?php echo htmlspecialchars($item['url'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </nav>
+    <!-- Topo: Logo + Botão Hambúrguer -->
+    <div id="headerTop">
+        <a href="<?php echo function_exists('url') ? url('index', $currentLang) : '/'; ?>" id="indexReferrer">
+            <img src="/assets/images/public/logos/logo_horizontal_com_assinatura.webp" class="logo-mobile" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
+            <img src="/assets/images/public/logo_menu.webp" class="logo-desktop" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
+        </a>
+        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <i class="ph ph-bold ph-list"></i>
+        </button>
     </div>
+
+    <!-- Menu de Navegação -->
+    <nav id="mainNav">
+        <!-- Título de Navegação -->
+        <h3 class="menu-section-title">Navegação</h3>
+        
+        <!-- Links de Navegação (primeiro) -->
+        <ul>
+            <?php foreach ($menuItems as $pageKey => $item): ?>
+                <li <?php echo ($currentPage === $pageKey) ? 'id="selected"' : ''; ?>>
+                    <a href="<?php echo htmlspecialchars($item['url'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        
+        <?php if (function_exists('getCurrentLanguage') && function_exists('url')): ?>
+            <!-- Separator -->
+            <div class="menu-separator"></div>
+            
+            <!-- Título do Seletor de Idioma -->
+            <h3 class="language-selector-title">Selecionar idioma</h3>
+            
+            <!-- Seletor de Idioma - Mobile (dentro do menu) -->
+            <div id="languageSelectorContainer" class="language-selector-mobile">
+                <div class="language-dropdown">
+                    <button class="language-button language-button-mobile" aria-label="Selecionar idioma" aria-expanded="false">
+                        <span class="language-current"><?php echo htmlspecialchars($languageNames[$currentLang], ENT_QUOTES, 'UTF-8'); ?></span>
+                        <i class="ph ph-caret-down language-arrow"></i>
+                    </button>
+                    <ul class="language-dropdown-menu language-dropdown-menu-mobile" role="menu">
+                        <?php if ($currentLang !== 'pt'): ?>
+                            <li role="menuitem">
+                                <a href="<?php echo url($currentRoute, 'pt'); ?>" class="language-option">
+                                    português
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($currentLang !== 'en'): ?>
+                            <li role="menuitem">
+                                <a href="<?php echo url($currentRoute, 'en'); ?>" class="language-option">
+                                    english
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($currentLang !== 'es'): ?>
+                            <li role="menuitem">
+                                <a href="<?php echo url($currentRoute, 'es'); ?>" class="language-option">
+                                    español
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        <?php endif; ?>
+    </nav>
+    <script src="/src/js/mobileMenu.js"></script>
 </header>

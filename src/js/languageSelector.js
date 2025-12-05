@@ -6,54 +6,64 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const languageButton = document.getElementById('languageButton');
-    const languageDropdown = document.getElementById('languageDropdown');
-    const languageContainer = document.querySelector('.language-dropdown');
+    // Pega todos os seletores de idioma (pode haver um no topo e um no menu mobile)
+    const languageContainers = document.querySelectorAll('#languageSelectorContainer, #languageSelectorContainerMobile, .language-selector-mobile');
     
-    if (!languageButton || !languageDropdown || !languageContainer) {
+    if (languageContainers.length === 0) {
         return; // Se não existir, não faz nada
     }
     
-    // Abre/fecha o dropdown
-    languageButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isExpanded = languageButton.getAttribute('aria-expanded') === 'true';
-        languageButton.setAttribute('aria-expanded', !isExpanded);
-        languageContainer.classList.toggle('active', !isExpanded);
-    });
-    
-    // Fecha o dropdown ao clicar fora
-    document.addEventListener('click', (e) => {
-        if (!languageContainer.contains(e.target)) {
-            languageButton.setAttribute('aria-expanded', 'false');
-            languageContainer.classList.remove('active');
+    // Inicializa cada seletor de idioma
+    languageContainers.forEach(container => {
+        const languageButton = container.querySelector('.language-button, #languageButton');
+        const languageDropdown = container.querySelector('.language-dropdown-menu, #languageDropdown');
+        const languageContainer = container.querySelector('.language-dropdown');
+        
+        if (!languageButton || !languageDropdown || !languageContainer) {
+            return;
         }
-    });
-    
-    // Fecha o dropdown ao pressionar ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && languageButton.getAttribute('aria-expanded') === 'true') {
-            languageButton.setAttribute('aria-expanded', 'false');
-            languageContainer.classList.remove('active');
-            languageButton.focus();
-        }
-    });
-    
-    // Fecha o dropdown e salva preferência ao selecionar uma opção
-    const languageOptions = languageDropdown.querySelectorAll('.language-option');
-    languageOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
-            // Extrai o idioma da URL do link
-            const href = option.getAttribute('href');
-            const langMatch = href.match(/\/(pt|en|es)\//);
-            if (langMatch) {
-                const selectedLang = langMatch[1];
-                saveLanguagePreference(selectedLang);
+        
+        // Abre/fecha o dropdown
+        languageButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isExpanded = languageButton.getAttribute('aria-expanded') === 'true';
+            languageButton.setAttribute('aria-expanded', !isExpanded);
+            languageContainer.classList.toggle('active', !isExpanded);
+        });
+        
+        // Fecha o dropdown ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!languageContainer.contains(e.target)) {
+                languageButton.setAttribute('aria-expanded', 'false');
+                languageContainer.classList.remove('active');
             }
-            
-            // Fecha o dropdown imediatamente
-            languageButton.setAttribute('aria-expanded', 'false');
-            languageContainer.classList.remove('active');
+        });
+        
+        // Fecha o dropdown ao pressionar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && languageButton.getAttribute('aria-expanded') === 'true') {
+                languageButton.setAttribute('aria-expanded', 'false');
+                languageContainer.classList.remove('active');
+                languageButton.focus();
+            }
+        });
+        
+        // Fecha o dropdown e salva preferência ao selecionar uma opção
+        const languageOptions = languageDropdown.querySelectorAll('.language-option');
+        languageOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                // Extrai o idioma da URL do link
+                const href = option.getAttribute('href');
+                const langMatch = href.match(/\/(pt|en|es)\//);
+                if (langMatch) {
+                    const selectedLang = langMatch[1];
+                    saveLanguagePreference(selectedLang);
+                }
+                
+                // Fecha o dropdown imediatamente
+                languageButton.setAttribute('aria-expanded', 'false');
+                languageContainer.classList.remove('active');
+            });
         });
     });
 });
