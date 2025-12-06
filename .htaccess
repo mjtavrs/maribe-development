@@ -3,6 +3,9 @@
     RewriteEngine On
     RewriteBase /
     
+    # Redireciona URLs com /index para a raiz do idioma (remove /index)
+    RewriteRule ^(pt|en|es)/(index|home|inicio)$ /$1/ [R=301,L]
+    
     # Rotas de internacionalização: /pt/pagina, /en/pagina ou /es/pagina
     # Mapeia para pagina.php?lang=pt, pagina.php?lang=en ou pagina.php?lang=es
     RewriteRule ^(pt|en|es)/(contato|contact|contacto)$ contato.php?lang=$1 [L,QSA]
@@ -14,8 +17,11 @@
     RewriteRule ^(pt|en|es)/(proposta|proposal|propuesta)$ proposta.php?lang=$1 [L,QSA]
     RewriteRule ^(pt|en|es)/(politica-de-privacidade|privacy-policy|politica-de-privacidad)$ politica-de-privacidade.php?lang=$1 [L,QSA]
     RewriteRule ^(pt|en|es)/(sucesso|success|exito)$ sucesso.php?lang=$1 [L,QSA]
-    RewriteRule ^(pt|en|es)/(index|home|inicio)?$ index.php?lang=$1 [L,QSA]
+    RewriteRule ^(pt|en|es)/?$ index.php?lang=$1 [L,QSA]
     RewriteRule ^(pt|en|es)/404$ 404.php?lang=$1 [L,QSA]
+    
+    # Redireciona a raiz para /pt/ (português padrão)
+    RewriteRule ^$ /pt/ [R=301,L]
     
     # Redireciona URLs antigas sem prefixo para /pt/ (português padrão)
     RewriteRule ^contato\.php$ /pt/contato [R=301,L]
@@ -54,7 +60,17 @@ ErrorDocument 404 /404.php
 </FilesMatch>
 
 # Protege diretório src/php/ (endpoints não devem ser acessados diretamente)
+# Permite requisições POST para formulários e GET para endpoints AJAX
 <IfModule mod_rewrite.c>
+    # Permite POST para arquivos de formulário específicos
+    RewriteCond %{REQUEST_METHOD} ^POST$ [NC]
+    RewriteRule ^src/php/(contactForm|budgetForm|contractForm|finalBudgetForm)\.php$ - [L]
+    
+    # Permite GET para endpoints AJAX
+    RewriteCond %{REQUEST_METHOD} ^GET$ [NC]
+    RewriteRule ^src/php/(get-csrf-token|get-errors)\.php$ - [L]
+    
+    # Bloqueia acesso direto via GET ou outros métodos para o resto do diretório src/php/
     RewriteRule ^src/php/ - [F,L]
 </IfModule>
 

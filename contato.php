@@ -28,6 +28,13 @@ $currentPage = 'contato';
     <meta name="keywords"
         content="arquitetura, residencial, comercial, urbanismo, recife, pernambuco, maribe, escritório, consultoria, arquitetura residencial, arquitetura infantil, neuroarquitetura" />
 
+    <?php
+    // Open Graph Meta Tags
+    require_once __DIR__ . '/src/php/openGraph.php';
+    $pageTitle = t('contact.title') . ' • maribe arquitetura';
+    echo generateOpenGraphTags($pageTitle, t('contact.metaDescription'), 'assets/images/public/logo_home.webp');
+    ?>
+
     <title><?php echo htmlspecialchars(t('contact.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 

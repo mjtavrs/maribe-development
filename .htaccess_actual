@@ -1,0 +1,50 @@
+# Ativa o mod_rewrite necessário para reescritas de URL
+RewriteEngine On
+
+# Redireciona para a página de erro personalizada 404
+ErrorDocument 404 /404.shtml
+
+# Redireciona /404 para a página de erro personalizada
+RewriteRule ^404$ /404.shtml [L]
+
+# Configura uma página de sucesso de envio de formulário
+# Redireciona para "sucesso.html" quando /sucesso for acessado (evita necessidade de .html)
+RewriteRule ^sucesso$ /sucesso.html [L]
+
+# Remove o "www" da URL
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Redireciona URLs com .html para a versão sem .html
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Remove o .html das URLs
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# Redireciona HTTP para HTTPS (caso seu site tenha SSL)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Configuração de cache para arquivos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Bloqueio de acesso ao arquivo .htaccess
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Este domínio herda o pacote “PHP”.
+# php -- END cPanel-generated handler, do not edit

@@ -91,11 +91,29 @@ function validatePhone($phone)
         return false;
     }
 
+    // Verifica se começa com "+" (formato internacional do autocomplete)
+    $hasPlusSign = strpos(trim($phone), '+') === 0;
+
     // Remove caracteres não numéricos
-    $phone = preg_replace('/\D/', '', $phone);
+    $phoneDigits = preg_replace('/\D/', '', $phone);
+
+    // Remove código do país do Brasil (55) se presente no início
+    // Isso corrige o problema do autocomplete do navegador
+    // Regras:
+    // 1. Se começa com "+55" (formato internacional), remove "+55"
+    // 2. Se tem mais de 11 dígitos e começa com "55", remove "55"
+    // 3. Se tem exatamente 10-11 dígitos, mantém (pode ser DDD 55 válido)
+    if ($hasPlusSign && substr($phoneDigits, 0, 2) === '55') {
+        // Formato internacional: +55...
+        $phoneDigits = substr($phoneDigits, 2);
+    } else if (strlen($phoneDigits) > 11 && substr($phoneDigits, 0, 2) === '55') {
+        // Mais de 11 dígitos começando com 55 = código do país
+        $phoneDigits = substr($phoneDigits, 2);
+    }
+    // Se tem 10-11 dígitos e começa com 55, mantém (pode ser DDD 55)
 
     // Valida se tem 10 ou 11 dígitos (com DDD)
-    return preg_match('/^\d{10,11}$/', $phone);
+    return preg_match('/^\d{10,11}$/', $phoneDigits);
 }
 
 /**
@@ -331,7 +349,15 @@ function clearToast()
  */
 function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = [])
 {
+    // Garante que a sessão está iniciada
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     $baseUrl = getBaseUrl();
+    
+    // Detecta o idioma atual para preservar no redirect
+    $currentLang = function_exists('getCurrentLanguage') ? getCurrentLanguage() : 'pt';
 
     if ($status === 'success') {
         // Limpa qualquer erro anterior
@@ -345,21 +371,56 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
         $successMessage = function_exists('t') ? t('toast.success.message') : 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
         setToast('success', $successMessage, $successTitle);
 
-        // Redireciona de volta para a página do formulário (não para sucesso.php)
+        // Redireciona de volta para a página do formulário preservando o idioma
         $referer = $_SERVER['HTTP_REFERER'] ?? null;
+        
+        // Tenta extrair o idioma do referer ou usa o idioma atual
+        $lang = $currentLang;
+        if ($referer) {
+            // Remove parâmetros de erro da URL se existirem
+            $referer = preg_replace('/[?&]error=\d+/', '', $referer);
+            
+            // Tenta extrair o idioma do referer
+            if (preg_match('/\/(pt|en|es)\//', $referer, $matches)) {
+                $lang = $matches[1];
+            }
+        }
+        
         if (!$referer) {
             $scriptName = basename($_SERVER['PHP_SELF']);
             $pageMap = [
-                'contactForm.php' => 'contato.php',
-                'budgetForm.php' => 'orcamento.php',
-                'contractForm.php' => 'contrato.php',
-                'finalBudgetForm.php' => 'proposta.php'
+                'contactForm.php' => 'contato',
+                'budgetForm.php' => 'orcamento',
+                'contractForm.php' => 'contrato',
+                'finalBudgetForm.php' => 'proposta'
             ];
-            $page = $pageMap[$scriptName] ?? 'contato.php';
-            $referer = $baseUrl . '/' . $page;
+            $page = $pageMap[$scriptName] ?? 'contato';
+            
+            // Usa a função url() se disponível para preservar o idioma
+            if (function_exists('url')) {
+                $referer = url($page, $lang);
+            } else {
+                $referer = $baseUrl . '/' . $lang . '/' . $page;
+            }
         } else {
-            // Remove parâmetros de erro da URL se existirem
-            $referer = preg_replace('/[?&]error=\d+/', '', $referer);
+            // Garante que o referer tem o idioma correto na URL
+            if (!preg_match('/\/(pt|en|es)\//', $referer)) {
+                // Se não tem idioma no referer, usa a função url() para construir corretamente
+                $scriptName = basename($_SERVER['PHP_SELF']);
+                $pageMap = [
+                    'contactForm.php' => 'contato',
+                    'budgetForm.php' => 'orcamento',
+                    'contractForm.php' => 'contrato',
+                    'finalBudgetForm.php' => 'proposta'
+                ];
+                $page = $pageMap[$scriptName] ?? 'contato';
+                
+                if (function_exists('url')) {
+                    $referer = url($page, $lang);
+                } else {
+                    $referer = $baseUrl . '/' . $lang . '/' . $page;
+                }
+            }
         }
 
         header("Location: $referer");
@@ -425,12 +486,38 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
  */
 function sendEmail($to, $subject, $message, $fromEmail)
 {
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: $fromEmail\r\n";
-    $headers .= "Reply-To: $fromEmail\r\n";
+    // Valida o e-mail de destino
+    if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
+        error_log("Email inválido: $to");
+        return false;
+    }
 
-    return mail($to, $subject, $message, $headers);
+    // Valida o e-mail do remetente
+    if (!filter_var($fromEmail, FILTER_VALIDATE_EMAIL)) {
+        error_log("Email do remetente inválido: $fromEmail");
+        return false;
+    }
+
+    // Prepara o assunto com encoding correto para caracteres especiais
+    $subjectEncoded = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+
+    // Prepara headers otimizados
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: Maribe Arquitetura <noreply@maribe.arq.br>" . "\r\n";
+    $headers .= "Reply-To: $fromEmail" . "\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+
+    // Tenta enviar o email
+    $result = @mail($to, $subjectEncoded, $message, $headers);
+
+    // Log para debug (visível nos logs do servidor)
+    if (!$result) {
+        $error = error_get_last();
+        error_log("Erro ao enviar email para $to: " . ($error ? $error['message'] : 'Erro desconhecido'));
+    }
+
+    return $result;
 }
 
 /**

@@ -23,9 +23,25 @@ class ToastManager {
      * Inicializa toasts que já estão no DOM (vindos do PHP)
      */
     initExistingToasts() {
+        if (!this.container) return;
+        
         const existingToasts = this.container.querySelectorAll('.toast');
         existingToasts.forEach(toast => {
             this.activeToasts.push(toast);
+            
+            // Se já tem a classe toast-show, garante que está visível
+            if (toast.classList.contains('toast-show')) {
+                // Força visibilidade imediatamente
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+                toast.style.pointerEvents = 'auto';
+            } else {
+                // Se não tem, adiciona a classe
+                requestAnimationFrame(() => {
+                    toast.classList.add('toast-show');
+                });
+            }
+            
             // Configura com duração padrão de 6 segundos
             this.setupToast(toast, 6000);
         });

@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Página Principal - Raiz (redireciona para /pt/) -->
+  <url>
+    <loc>https://maribe.arq.br/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Página Principal - Português -->
+  <url>
+    <loc>https://maribe.arq.br/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Página Principal - Inglês -->
+  <url>
+    <loc>https://maribe.arq.br/en/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Página Principal - Espanhol -->
+  <url>
+    <loc>https://maribe.arq.br/es/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Página Sobre - Português -->
+  <url>
+    <loc>https://maribe.arq.br/pt/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/sobre" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Página Sobre - Inglês -->
+  <url>
+    <loc>https://maribe.arq.br/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/sobre" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Página Sobre - Espanhol -->
+  <url>
+    <loc>https://maribe.arq.br/es/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/sobre" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Página Projetos - Português -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projetos</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projetos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/projects" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyectos" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Página Projetos - Inglês -->
+  <url>
+    <loc>https://maribe.arq.br/en/projects</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projetos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/projects" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyectos" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Página Projetos - Espanhol -->
+  <url>
+    <loc>https://maribe.arq.br/es/proyectos</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projetos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/projects" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyectos" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Página Contato - Português -->
+  <url>
+    <loc>https://maribe.arq.br/pt/contato</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/contato" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/contacto" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página Contato - Inglês -->
+  <url>
+    <loc>https://maribe.arq.br/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/contato" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/contacto" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página Contato - Espanhol -->
+  <url>
+    <loc>https://maribe.arq.br/es/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/contato" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/contacto" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página Orçamento - Português -->
+  <url>
+    <loc>https://maribe.arq.br/pt/orcamento</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/orcamento" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/budget" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/presupuesto" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página Orçamento - Inglês -->
+  <url>
+    <loc>https://maribe.arq.br/en/budget</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/orcamento" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/budget" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/presupuesto" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página Orçamento - Espanhol -->
+  <url>
+    <loc>https://maribe.arq.br/es/presupuesto</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/orcamento" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/budget" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/presupuesto" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página Política de Privacidade - Português -->
+  <url>
+    <loc>https://maribe.arq.br/pt/politica-de-privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/politica-de-privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/politica-de-privacidad" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Página Política de Privacidade - Inglês -->
+  <url>
+    <loc>https://maribe.arq.br/en/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/politica-de-privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/politica-de-privacidad" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Página Política de Privacidade - Espanhol -->
+  <url>
+    <loc>https://maribe.arq.br/es/politica-de-privacidad</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/politica-de-privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/politica-de-privacidad" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Projetos Individuais -->
+  <!-- apê varandas -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=ape-varandas</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-varandas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-varandas" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-varandas" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=ape-varandas</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-varandas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-varandas" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-varandas" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=ape-varandas</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-varandas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-varandas" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-varandas" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- apê eron -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=ape-eron</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-eron" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-eron" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-eron" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=ape-eron</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-eron" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-eron" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-eron" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=ape-eron</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-eron" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-eron" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-eron" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- apê nina -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=ape-nina</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-nina" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-nina" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-nina" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=ape-nina</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-nina" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-nina" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-nina" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=ape-nina</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-nina" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-nina" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-nina" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- apê pilar -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=ape-pilar</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-pilar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-pilar" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-pilar" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=ape-pilar</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-pilar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-pilar" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-pilar" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=ape-pilar</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-pilar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-pilar" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-pilar" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- apê abraço -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=ape-abraco</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-abraco" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-abraco" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-abraco" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=ape-abraco</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-abraco" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-abraco" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-abraco" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=ape-abraco</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-abraco" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-abraco" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-abraco" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- apê girassol -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=ape-girassol</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-girassol" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-girassol" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-girassol" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=ape-girassol</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-girassol" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-girassol" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-girassol" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=ape-girassol</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-girassol" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-girassol" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-girassol" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- apê amazonita -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=ape-amazonita</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-amazonita" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-amazonita" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-amazonita" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=ape-amazonita</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-amazonita" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-amazonita" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-amazonita" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=ape-amazonita</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-amazonita" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-amazonita" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-amazonita" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- quarto selva -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=quarto-selva</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-selva" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-selva" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-selva" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=quarto-selva</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-selva" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-selva" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-selva" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=quarto-selva</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-selva" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-selva" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-selva" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- quarto tête -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=quarto-tete</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-tete" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-tete" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-tete" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=quarto-tete</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-tete" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-tete" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-tete" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=quarto-tete</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-tete" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-tete" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-tete" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- espaço otorrino -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=espaco-otorrino</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=espaco-otorrino" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=espaco-otorrino" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=espaco-otorrino" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=espaco-otorrino</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=espaco-otorrino" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=espaco-otorrino" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=espaco-otorrino" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=espaco-otorrino</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=espaco-otorrino" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=espaco-otorrino" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=espaco-otorrino" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- projeto marias -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=projeto-marias</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=projeto-marias" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=projeto-marias" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=projeto-marias" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=projeto-marias</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=projeto-marias" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=projeto-marias" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=projeto-marias" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=projeto-marias</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=projeto-marias" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=projeto-marias" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=projeto-marias" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- agência 166 -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=agencia-166</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=agencia-166" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=agencia-166" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=agencia-166" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=agencia-166</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=agencia-166" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=agencia-166" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=agencia-166" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=agencia-166</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=agencia-166" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=agencia-166" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=agencia-166" />
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>

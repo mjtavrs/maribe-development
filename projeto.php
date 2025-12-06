@@ -32,6 +32,39 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
     <!-- SEO Meta Tags -->
     <meta name="author" content="Marcos Tavares" />
 
+    <?php
+    // Carrega funções Open Graph
+    require_once __DIR__ . '/src/php/openGraph.php';
+    
+    // Tenta obter dados do projeto para meta tags Open Graph
+    $projectSlug = isset($_GET['name']) ? $_GET['name'] : null;
+    $projectId = isset($_GET['id']) ? (int)$_GET['id'] : null;
+    $project = null;
+    
+    if ($projectSlug || $projectId) {
+        $project = getProjectData($projectSlug, $projectId);
+    }
+    
+    // Se encontrou o projeto, gera meta tags específicas
+    if ($project) {
+        $projectTitle = $project['titulo'];
+        $projectDesc = isset($project['descricao'][$currentLang]) 
+            ? $project['descricao'][$currentLang] 
+            : $project['descricao']['pt'];
+        $projectImage = $project['cover'];
+        
+        // Constrói URL do projeto
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+        $host = $_SERVER['HTTP_HOST'] ?? 'maribe.arq.br';
+        $projectUrl = $protocol . $host . $_SERVER['REQUEST_URI'];
+        
+        echo generateOpenGraphTags($projectTitle . ' • maribe arquitetura', $projectDesc, $projectImage, $projectUrl, 'article');
+    } else {
+        // Meta tags genéricas para página de projetos
+        echo generateOpenGraphTags(t('projects.title') . ' • maribe arquitetura', t('projects.metaDescription'), '', '', 'website');
+    }
+    ?>
+
     <!-- Title will be dynamically inputed by the selectedProject.js script -->
     <title></title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">

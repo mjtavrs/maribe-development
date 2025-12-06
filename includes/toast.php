@@ -29,7 +29,7 @@ if (isset($_SESSION['toast'])) {
         // Usa título traduzido se disponível, senão usa padrão traduzido
         $title = $toast['title'] ?? (function_exists('t') ? ($toast['type'] === 'success' ? t('toast.success.title') : t('toast.error.title')) : ($toast['type'] === 'success' ? 'Sucesso!' : 'Erro!'));
         ?>
-        <div class="toast toast-<?php echo htmlspecialchars($toast['type'], ENT_QUOTES, 'UTF-8'); ?>" role="alert">
+        <div class="toast toast-<?php echo htmlspecialchars($toast['type'], ENT_QUOTES, 'UTF-8'); ?> toast-show" role="alert" draggable="true" style="opacity: 1 !important; transform: translateX(0) !important; pointer-events: auto !important;">
             <div class="toast-wrapper">
                 <div class="toast-content">
                     <span class="toast-icon-wrapper">

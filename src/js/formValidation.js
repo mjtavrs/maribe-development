@@ -15,7 +15,16 @@ export function initFormValidation() {
         // Validação em tempo real para campos de texto
         const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
         inputs.forEach(input => {
-            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('blur', () => {
+                // Corrige telefone no blur (para autocomplete)
+                if (input.type === 'tel') {
+                    const masked = maskPhone(input.value);
+                    if (input.value !== masked) {
+                        input.value = masked;
+                    }
+                }
+                validateField(input);
+            });
             // Limpa erro quando o usuário começa a digitar
             input.addEventListener('input', () => {
                 // Máscara dinâmica para telefone
@@ -52,10 +61,38 @@ export function initFormValidation() {
             });
             // Garante aplicação da máscara ao colar
             if (input.type === 'tel') {
+                // Função auxiliar para corrigir o telefone
+                const correctPhone = () => {
+                    const originalValue = input.value;
+                    const masked = maskPhone(originalValue);
+                    if (originalValue !== masked) {
+                        input.value = masked;
+                        // Dispara evento input para garantir que outros listeners sejam notificados
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                };
+                
                 input.addEventListener('paste', (e) => {
                     requestAnimationFrame(() => {
-                        input.value = maskPhone(input.value);
+                        correctPhone();
                     });
+                });
+                
+                // Corrige telefone quando o valor muda (para autocomplete)
+                input.addEventListener('change', correctPhone);
+                
+                // Verifica quando o campo recebe foco (autocomplete pode ter preenchido antes)
+                input.addEventListener('focus', () => {
+                    // Verifica imediatamente
+                    correctPhone();
+                    // Verifica novamente após um pequeno delay (autocomplete pode ser assíncrono)
+                    setTimeout(correctPhone, 100);
+                    setTimeout(correctPhone, 300);
+                });
+                
+                // Verifica quando o campo é clicado (autocomplete pode preencher ao clicar)
+                input.addEventListener('click', () => {
+                    setTimeout(correctPhone, 50);
                 });
             }
             if (input.name === 'cpf' || input.name === 'rg') {
@@ -142,6 +179,18 @@ export function initFormValidation() {
  */
 function handleFormSubmit(event) {
     const form = event.target;
+    
+    // Corrige telefones antes de validar (última linha de defesa contra autocomplete)
+    const phoneInputs = form.querySelectorAll('input[type="tel"]');
+    phoneInputs.forEach(input => {
+        if (input.value) {
+            const masked = maskPhone(input.value);
+            if (input.value !== masked) {
+                input.value = masked;
+            }
+        }
+    });
+    
     const isValid = validateForm(form);
     
     if (!isValid) {
@@ -330,8 +379,27 @@ function validateEmail(email) {
  * @returns {boolean} True se válido, False caso contrário
  */
 function validatePhone(phone) {
+    // Verifica se começa com "+" (formato internacional do autocomplete)
+    const hasPlusSign = phone.trim().startsWith('+');
+    
     // Remove caracteres não numéricos
-    const phoneNumbers = phone.replace(/\D/g, '');
+    let phoneNumbers = phone.replace(/\D/g, '');
+    
+    // Remove código do país do Brasil (55) se presente no início
+    // Isso corrige o problema do autocomplete do navegador
+    // Regras:
+    // 1. Se começa com "+55" (formato internacional), remove "+55"
+    // 2. Se tem mais de 11 dígitos e começa com "55", remove "55"
+    // 3. Se tem exatamente 10-11 dígitos, mantém (pode ser DDD 55 válido)
+    if (hasPlusSign && phoneNumbers.startsWith('55')) {
+        // Formato internacional: +55...
+        phoneNumbers = phoneNumbers.slice(2);
+    } else if (phoneNumbers.length > 11 && phoneNumbers.startsWith('55')) {
+        // Mais de 11 dígitos começando com 55 = código do país
+        phoneNumbers = phoneNumbers.slice(2);
+    }
+    // Se tem 10-11 dígitos e começa com 55, mantém (pode ser DDD 55)
+    
     // Valida se tem 10 ou 11 dígitos (com DDD)
     return phoneNumbers.length >= 10 && phoneNumbers.length <= 11;
 }
@@ -340,12 +408,35 @@ function validatePhone(phone) {
  * Aplica máscara brasileira de telefone
  * (DD) NNNN-NNNN para 10 dígitos
  * (DD) NNNNN-NNNN para 11 dígitos
+ * Remove código do país (55) se presente
  * @param {string} value
  * @returns {string}
  */
 function maskPhone(value) {
     if (!value) return '';
-    const digits = value.replace(/\D/g, '').slice(0, 11);
+    
+    // Verifica se começa com "+" (formato internacional do autocomplete)
+    const hasPlusSign = value.trim().startsWith('+');
+    
+    let digits = value.replace(/\D/g, '');
+    
+    // Remove código do país do Brasil (55) se presente no início
+    // Isso corrige o problema do autocomplete do navegador
+    // Regras:
+    // 1. Se começa com "+55" (formato internacional), remove "+55"
+    // 2. Se tem mais de 11 dígitos e começa com "55", remove "55"
+    // 3. Se tem exatamente 10-11 dígitos, mantém (pode ser DDD 55 válido)
+    if (hasPlusSign && digits.startsWith('55')) {
+        // Formato internacional: +55...
+        digits = digits.slice(2);
+    } else if (digits.length > 11 && digits.startsWith('55')) {
+        // Mais de 11 dígitos começando com 55 = código do país
+        digits = digits.slice(2);
+    }
+    // Se tem 10-11 dígitos e começa com 55, mantém (pode ser DDD 55)
+    
+    // Limita a 11 dígitos (DDD + número)
+    digits = digits.slice(0, 11);
 
     // Sem dígitos, não mostra nada (evita exibir "(" sozinho)
     if (digits.length === 0) {

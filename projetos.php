@@ -27,6 +27,13 @@ $currentPage = 'projetos';
     <meta name="description" content="<?php echo htmlspecialchars(t('projects.metaDescription'), ENT_QUOTES, 'UTF-8'); ?>" />
     <meta name="keywords" content="arquitetura, residencial, comercial, urbanismo, recife, pernambuco, maribe, escritório, consultoria, arquitetura residencial, arquitetura infantil, neuroarquitetura" />
 
+    <?php
+    // Open Graph Meta Tags
+    require_once __DIR__ . '/src/php/openGraph.php';
+    $pageTitle = t('projects.title') . ' • maribe arquitetura';
+    echo generateOpenGraphTags($pageTitle, t('projects.metaDescription'), 'assets/images/public/logo_home.webp');
+    ?>
+
     <title><?php echo htmlspecialchars(t('projects.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
@@ -70,6 +77,8 @@ $currentPage = 'projetos';
                     <input 
                         type="text" 
                         id="projectsSearchInput" 
+                        data-placeholder-desktop="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                        data-placeholder-mobile="<?php echo htmlspecialchars(t('projects.searchPlaceholderMobile'), ENT_QUOTES, 'UTF-8'); ?>"
                         placeholder="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
                         aria-label="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
                     >

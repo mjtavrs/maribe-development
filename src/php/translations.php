@@ -31,6 +31,24 @@ $allTranslations = [
             'metaDescription' => 'Maribe Arquitetura é um escritório de arquitetura e urbanismo baseado em Recife, Pernambuco, com foco em arquitetura residencial, comercial e consultorias.'
         ],
 
+        // Popup de Cookies
+        'cookiePopup' => [
+            'title' => 'Gerenciar Cookies 🍪',
+            'description' => 'Utilizamos cookies e tecnologias similares para melhorar sua experiência de navegação. Você pode escolher quais tipos de cookies deseja aceitar.',
+            'essential' => [
+                'title' => 'Cookies Essenciais',
+                'required' => '(Obrigatório)',
+                'description' => 'Necessários para o funcionamento básico do site. Incluem segurança (tokens CSRF) e sessões.'
+            ],
+            'functional' => [
+                'title' => 'Cookies de Funcionalidade',
+                'description' => 'Permitem que o site lembre suas preferências, como idioma escolhido, para melhorar sua experiência.'
+            ],
+            'privacyPolicy' => 'Política de Privacidade',
+            'acceptAll' => 'Aceitar todos',
+            'savePreferences' => 'Salvar preferências'
+        ],
+
         // Página de Contato
         'contact' => [
             'title' => 'contato',
@@ -166,6 +184,7 @@ $allTranslations = [
             'metaDescription' => 'Confira os nossos projetos, temos certeza que você irá amar!',
             'description' => 'Aqui você encontra uma seleção dos nossos projetos, cada um pensado para transformar casas em lares cheios de significado e aconchego. Esperamos que se inspire e que possamos, em breve, incluir o seu espaço aqui também! 🧡',
             'searchPlaceholder' => 'Procurando um projeto ou cidade específicos?',
+            'searchPlaceholderMobile' => 'Procure um projeto ou cidade...',
             'noResultsMessage' => 'Ainda não foram encontrados projetos com esses termos...<br>Mas, o que você pensa de incluirmos o seu aqui?',
             'requestBudget' => 'Solicitar orçamento',
             'filtersLabel' => 'Filtros de projetos',
@@ -348,6 +367,29 @@ $allTranslations = [
             'openMenu' => 'Open navigation menu'
         ],
 
+        // Página Home
+        'home' => [
+            'title' => 'home',
+            'metaDescription' => 'Maribe Arquitetura is an architecture and urban planning firm based in Recife, Pernambuco, focused on residential architecture, commercial architecture, and consulting.'
+        ],
+
+        // Cookie Popup
+        'cookiePopup' => [
+            'title' => 'Manage Cookies 🍪',
+            'description' => 'We use cookies and similar technologies to improve your browsing experience. You can choose which types of cookies you wish to accept.',
+            'essential' => [
+                'title' => 'Essential Cookies',
+                'required' => '(Required)',
+                'description' => 'Necessary for the basic functioning of the website. Include security (CSRF tokens) and sessions.'
+            ],
+            'functional' => [
+                'title' => 'Functionality Cookies',
+                'description' => 'Allow the website to remember your preferences, such as chosen language, to improve your experience.'
+            ],
+            'privacyPolicy' => 'Privacy Policy',
+            'acceptAll' => 'Accept all',
+            'savePreferences' => 'Save preferences'
+        ],
 
         // Página de Contato
         'contact' => [
@@ -483,6 +525,7 @@ $allTranslations = [
             'metaDescription' => 'Check out our projects, we are sure you will love them!',
             'description' => 'Here you will find a selection of our projects, each one designed to transform houses into homes full of meaning and warmth. We hope you find inspiration and that we can, soon, include your space here too! 🧡',
             'searchPlaceholder' => 'Looking for a specific project or city?',
+            'searchPlaceholderMobile' => 'Search a project or city...',
             'noResultsMessage' => 'No projects found with these terms yet...<br>But, what do you think about including yours here?',
             'requestBudget' => 'Request a quote',
             'filtersLabel' => 'Project filters',
@@ -670,6 +713,24 @@ $allTranslations = [
             'metaDescription' => 'Maribe Arquitetura es un estudio de arquitectura y urbanismo con sede en Recife, Pernambuco, enfocado en arquitectura residencial, arquitectura comercial y consultorías.'
         ],
 
+        // Popup de Cookies
+        'cookiePopup' => [
+            'title' => 'Gestionar Cookies 🍪',
+            'description' => 'Utilizamos cookies y tecnologías similares para mejorar tu experiencia de navegación. Puedes elegir qué tipos de cookies deseas aceptar.',
+            'essential' => [
+                'title' => 'Cookies Esenciales',
+                'required' => '(Obligatorio)',
+                'description' => 'Necesarios para el funcionamiento básico del sitio web. Incluyen seguridad (tokens CSRF) y sesiones.'
+            ],
+            'functional' => [
+                'title' => 'Cookies de Funcionalidad',
+                'description' => 'Permiten que el sitio web recuerde tus preferencias, como el idioma elegido, para mejorar tu experiencia.'
+            ],
+            'privacyPolicy' => 'Política de Privacidad',
+            'acceptAll' => 'Aceptar todos',
+            'savePreferences' => 'Guardar preferencias'
+        ],
+
         // Página de Contacto
         'contact' => [
             'title' => 'contacto',
@@ -805,6 +866,7 @@ $allTranslations = [
             'metaDescription' => '¡Consulta nuestros proyectos, estamos seguros de que te encantarán!',
             'description' => 'Aquí encontrarás una selección de nuestros proyectos, cada uno pensado para transformar casas en hogares llenos de significado y calidez. ¡Esperamos que te inspires y que pronto podamos incluir tu espacio aquí también! 🧡',
             'searchPlaceholder' => '¿Buscas un proyecto o ciudad específicos?',
+            'searchPlaceholderMobile' => 'Busca un proyecto o ciudad...',
             'noResultsMessage' => 'Aún no se encontraron proyectos con estos términos...<br>Pero, ¿qué piensas de incluir el tuyo aquí?',
             'requestBudget' => 'Solicitar presupuesto',
             'filtersLabel' => 'Filtros de proyectos',

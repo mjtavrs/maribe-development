@@ -36,6 +36,25 @@ function updateKeyboardHelper() {
 }
 
 /**
+ * Atualiza o placeholder do input baseado no tamanho da tela
+ */
+function updatePlaceholder() {
+    if (!searchInput) return;
+    
+    const isMobile = window.innerWidth < 768;
+    const desktopPlaceholder = searchInput.getAttribute('data-placeholder-desktop');
+    const mobilePlaceholder = searchInput.getAttribute('data-placeholder-mobile');
+    
+    if (isMobile && mobilePlaceholder) {
+        searchInput.placeholder = mobilePlaceholder;
+        searchInput.setAttribute('aria-label', mobilePlaceholder);
+    } else if (desktopPlaceholder) {
+        searchInput.placeholder = desktopPlaceholder;
+        searchInput.setAttribute('aria-label', desktopPlaceholder);
+    }
+}
+
+/**
  * Filtra projetos baseado no termo de busca e tipo
  */
 function filterProjects(searchTerm, filterType = "todos") {
@@ -81,6 +100,9 @@ function initSearch() {
         console.error("Elementos de busca não encontrados!");
         return;
     }
+    
+    // Atualiza o placeholder baseado no tamanho da tela
+    updatePlaceholder();
     
     // Atualiza o helper do teclado
     if (searchHelper) {
@@ -156,8 +178,10 @@ function initSearch() {
         }
     });
     
-    // Atualiza o helper quando a janela é redimensionada
+    // Atualiza o helper e placeholder quando a janela é redimensionada
     window.addEventListener("resize", () => {
+        updatePlaceholder();
+        
         if (searchHelper) {
             if (window.innerWidth >= 768 && 
                 currentSearchTerm.trim() === "" && 

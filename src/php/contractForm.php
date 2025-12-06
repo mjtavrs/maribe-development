@@ -103,23 +103,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_from = !empty($email) ? $email : 'noreply@maribe.arq.br';
 
     $mensagem_email = "
+    <!DOCTYPE html>
     <html>
     <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Novo contrato</title>
     </head>
-    <body>
-        <img src='https://i.ibb.co/MshF9WF/formulario-De-Contrato.png' alt='Formulário de Contrato'>
-        <br />
-        <p><strong>nome:</strong> $nome</p>
-        " . (!empty($email) ? "<p><strong>e-mail:</strong> $email</p>" : "") . "
-        <p><strong>cpf:</strong> $cpf</p>
-        <p><strong>rg:</strong> $rg</p>
-        <p><strong>endereço do projeto:</strong> $projectAddress</p>
-        <p><strong>endereço do cliente:</strong> $clientAddress</p>
-        <p><strong>data de nascimento:</strong> $clientBirthDate</p>
-        <p><strong>forma de pagamento escolhida:</strong> $paymentMethod</p>
-        <br />
-        <small><p id='data_envio'>este formulário foi enviado no dia $hora_envio</p></small>
+    <body style='margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f5f5f5;'>
+        <table role='presentation' cellspacing='0' cellpadding='0' border='0' width='100%' style='background-color: #f5f5f5; padding: 20px 0;'>
+            <tr>
+                <td align='center'>
+                    <table role='presentation' cellspacing='0' cellpadding='0' border='0' width='600' style='background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);'>
+                        <!-- Header Image -->
+                        <tr>
+                            <td align='center' style='padding: 20px 0;'>
+                                <img src='https://i.ibb.co/MshF9WF/formulario-De-Contrato.png' alt='Formulário de Contrato' style='max-width: 100%; height: auto; display: block;'>
+                            </td>
+                        </tr>
+                        <!-- Content -->
+                        <tr>
+                            <td style='padding: 0 30px 30px 30px;'>
+                                <table role='presentation' cellspacing='0' cellpadding='0' border='0' width='100%'>
+                                    <tr>
+                                        <td style='padding: 10px 0; border-bottom: 1px solid #e0e0e0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>nome:</strong> <span style='color: #3c3c3b;'>$nome</span></p>
+                                        </td>
+                                    </tr>
+                                    " . (!empty($email) ? "<tr>
+                                        <td style='padding: 10px 0; border-bottom: 1px solid #e0e0e0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>e-mail:</strong> <span style='color: #3c3c3b;'>$email</span></p>
+                                        </td>
+                                    </tr>" : "") . "
+                                    <tr>
+                                        <td style='padding: 10px 0; border-bottom: 1px solid #e0e0e0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>cpf:</strong> <span style='color: #3c3c3b;'>$cpf</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 10px 0; border-bottom: 1px solid #e0e0e0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>rg:</strong> <span style='color: #3c3c3b;'>$rg</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 10px 0; border-bottom: 1px solid #e0e0e0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>endereço do projeto:</strong> <span style='color: #3c3c3b;'>$projectAddress</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 10px 0; border-bottom: 1px solid #e0e0e0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>endereço do cliente:</strong> <span style='color: #3c3c3b;'>$clientAddress</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 10px 0; border-bottom: 1px solid #e0e0e0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>data de nascimento:</strong> <span style='color: #3c3c3b;'>$clientBirthDate</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 10px 0;'>
+                                            <p style='margin: 0; font-size: 14px; color: #3c3c3b;'><strong style='color: #c56e51; font-size: 14px;'>forma de pagamento escolhida:</strong> <span style='color: #3c3c3b;'>$paymentMethod</span></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- Footer -->
+                        <tr>
+                            <td style='padding: 20px 30px; background-color: #fcfcfa; border-top: 1px solid #e0e0e0; border-radius: 0 0 8px 8px;'>
+                                <p style='margin: 0; font-size: 12px; color: #9da882; text-align: center;'>este formulário foi enviado no dia $hora_envio</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
     </body>
     </html>
     ";

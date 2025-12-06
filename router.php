@@ -105,7 +105,24 @@ $redirectMap = [
 // Processa rotas de internacionalização: /pt/pagina, /en/pagina ou /es/pagina
 if (preg_match('/^(pt|en|es)(?:\/(.+))?$/', $requestPath, $matches)) {
     $lang = $matches[1];
-    $page = isset($matches[2]) && !empty($matches[2]) ? $matches[2] : 'index';
+    $page = isset($matches[2]) && !empty($matches[2]) ? $matches[2] : '';
+    
+    // Se a página for "index", "home" ou "inicio", redireciona para a raiz do idioma (sem /index)
+    if ($page === 'index' || $page === 'home' || $page === 'inicio') {
+        // Remove lang da query string se já existir
+        if (!empty($queryString)) {
+            parse_str($queryString, $queryParams);
+            unset($queryParams['lang']);
+            $queryString = !empty($queryParams) ? '?' . http_build_query($queryParams) : '';
+        }
+        header("Location: /$lang/$queryString", true, 301);
+        exit;
+    }
+    
+    // Se não há página especificada (apenas o idioma), usa index internamente
+    if (empty($page)) {
+        $page = 'index';
+    }
 
     // Normaliza páginas terminadas em .php para o nome sem extensão
     if (substr($page, -4) === '.php') {
@@ -246,7 +263,7 @@ if (empty($requestPath) || $requestPath === '/') {
         unset($queryParams['lang']);
         $queryString = !empty($queryParams) ? '?' . http_build_query($queryParams) : '';
     }
-    header("Location: /pt/index$queryString", true, 301);
+    header("Location: /pt/$queryString", true, 301);
     exit;
 }
 
