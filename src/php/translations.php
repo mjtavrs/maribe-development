@@ -201,6 +201,14 @@ $allTranslations = [
                 'shareWhatsAppMessage' => 'Confira este projeto: :title - :url',
                 'shareEmailSubject' => 'Projeto: :title',
                 'shareEmailBody' => 'Confira este projeto da maribe arquitetura:\n\n:title\n:description\n\n:url'
+            ],
+            'altText' => [
+                'projectCover' => 'Capa do projeto :title',
+                'projectCoverWithCity' => 'Capa do projeto :title em :city',
+                'projectImage' => 'Imagem do projeto :title',
+                'projectImageNumber' => 'Imagem :number de :total do projeto :title',
+                'logo' => 'Logo da Maribe Arquitetura',
+                'logoHome' => 'Logo da Maribe Arquitetura - Página inicial'
             ]
         ],
 
@@ -883,6 +891,14 @@ $allTranslations = [
                 'shareWhatsAppMessage' => 'Mira este proyecto: :title - :url',
                 'shareEmailSubject' => 'Proyecto: :title',
                 'shareEmailBody' => 'Mira este proyecto de maribe arquitetura:\n\n:title\n:description\n\n:url'
+            ],
+            'altText' => [
+                'projectCover' => 'Portada del proyecto :title',
+                'projectCoverWithCity' => 'Portada del proyecto :title en :city',
+                'projectImage' => 'Imagen del proyecto :title',
+                'projectImageNumber' => 'Imagen :number de :total del proyecto :title',
+                'logo' => 'Logo de Maribe Arquitetura',
+                'logoHome' => 'Logo de Maribe Arquitetura - Página de inicio'
             ]
         ],
 

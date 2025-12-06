@@ -57,6 +57,65 @@ $currentPage = 'projetos';
     <link rel="stylesheet" href="/styles/pages/projects/projects.css" />
 
     <!-- Scripts -->
+    <script>
+        // Passa as traduções de alt text para o JavaScript
+        window.altTextTranslations = {
+            pt: {
+                projectCover: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['altText']['projectCover'] ?? 'Capa do projeto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectCoverWithCity: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['altText']['projectCoverWithCity'] ?? 'Capa do projeto :title em :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectImage: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['altText']['projectImage'] ?? 'Imagem do projeto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectImageNumber: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['altText']['projectImageNumber'] ?? 'Imagem :number de :total do projeto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            en: {
+                projectCover: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['altText']['projectCover'] ?? 'Cover of project :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectCoverWithCity: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['altText']['projectCoverWithCity'] ?? 'Cover of project :title in :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectImage: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['altText']['projectImage'] ?? 'Image of project :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectImageNumber: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['altText']['projectImageNumber'] ?? 'Image :number of :total of project :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            es: {
+                projectCover: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['altText']['projectCover'] ?? 'Portada del proyecto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectCoverWithCity: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['altText']['projectCoverWithCity'] ?? 'Portada del proyecto :title en :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectImage: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['altText']['projectImage'] ?? 'Imagen del proyecto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectImageNumber: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['altText']['projectImageNumber'] ?? 'Imagen :number de :total del proyecto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            }
+        };
+    </script>
     <script src="/src/js/languageSelector.js"></script>
     <script type="module" src="/src/js/projectsFilters.js" defer></script>
     <script type="module" src="/src/js/projectsSearch.js" defer></script>

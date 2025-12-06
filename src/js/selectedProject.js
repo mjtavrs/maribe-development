@@ -33,6 +33,50 @@ function getProjectDescription(project, lang) {
     // Fallback para descrição antiga (string)
     return project.descricao || '';
 }
+
+/**
+ * Gera alt text dinâmico para imagens de projetos
+ * 
+ * @param {string} type Tipo de alt text ('projectCover', 'projectCoverWithCity', 'projectImage', 'projectImageNumber')
+ * @param {Object} project Dados do projeto
+ * @param {number} imageNumber Número da imagem (para projectImageNumber)
+ * @param {number} totalImages Total de imagens (para projectImageNumber)
+ * @returns {string} Alt text traduzido
+ */
+function generateImageAltText(type, project, imageNumber = null, totalImages = null) {
+    const lang = detectCurrentLanguage();
+    
+    // Verifica se as traduções estão disponíveis
+    if (!window.altTextTranslations || !window.altTextTranslations[lang]) {
+        // Fallback em português
+        if (type === 'projectImageNumber' && imageNumber !== null && totalImages !== null) {
+            return `Imagem ${imageNumber} de ${totalImages} do projeto ${project.titulo}`;
+        } else if (type === 'projectCoverWithCity' && project.cidade) {
+            return `Capa do projeto ${project.titulo} em ${project.cidade}`;
+        } else if (type === 'projectCover') {
+            return `Capa do projeto ${project.titulo}`;
+        } else {
+            return `Imagem do projeto ${project.titulo}`;
+        }
+    }
+    
+    const templates = window.altTextTranslations[lang];
+    let template = '';
+    
+    if (type === 'projectImageNumber' && imageNumber !== null && totalImages !== null) {
+        template = templates.projectImageNumber || 'Imagem :number de :total do projeto :title';
+        return template.replace(':number', imageNumber).replace(':total', totalImages).replace(':title', project.titulo);
+    } else if (type === 'projectCoverWithCity' && project.cidade) {
+        template = templates.projectCoverWithCity || 'Capa do projeto :title em :city';
+        return template.replace(':title', project.titulo).replace(':city', project.cidade);
+    } else if (type === 'projectCover') {
+        template = templates.projectCover || 'Capa do projeto :title';
+        return template.replace(':title', project.titulo);
+    } else {
+        template = templates.projectImage || 'Imagem do projeto :title';
+        return template.replace(':title', project.titulo);
+    }
+}
 document.addEventListener("DOMContentLoaded", () => {
     // Obtém o ID do projeto da URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -136,12 +180,15 @@ document.addEventListener("DOMContentLoaded", () => {
         imageLink.href = normalized;
         imageLink.setAttribute("data-lightbox", "fotos");
         imageLink.setAttribute("data-title", project.titulo);
-        imageLink.setAttribute("aria-label", `Imagem do ${project.titulo}. Imagem ${imageIndex} de ${totalImages}.`);
+        
+        // Gera alt text dinâmico
+        const altText = generateImageAltText('projectImageNumber', project, imageIndex, totalImages);
+        imageLink.setAttribute("aria-label", altText);
         
         // Cria o elemento da imagem
         const image = document.createElement("img");
         image.src = normalized;
-        image.alt = `Imagem do ${project.titulo}. Imagem ${imageIndex} de ${totalImages}.`;
+        image.alt = altText;
         image.title = project.titulo;
         
         // Adiciona lazy loading para melhor performance

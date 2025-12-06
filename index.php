@@ -80,7 +80,12 @@ $currentPage = 'home';
             <section id="heroSection">
                 <img src="/assets/images/svg/4k_without_logo.svg" aria-hidden="true" id="maribeDesktopBackground">
                 <div id="heroContent">
-                    <img src="/assets/images/public/logo_home.webp" alt="Logo da Maribe Arquitetura" id="maribeLogo">
+                    <?php 
+                    $logoHomeAlt = isset($translations['projects']['altText']['logoHome']) 
+                        ? $translations['projects']['altText']['logoHome'] 
+                        : 'Logo da Maribe Arquitetura - Página inicial';
+                    ?>
+                    <img src="/assets/images/public/logo_home.webp" alt="<?php echo htmlspecialchars($logoHomeAlt, ENT_QUOTES, 'UTF-8'); ?>" id="maribeLogo">
                     <a href="#" id="scrollIndicator" aria-label="Ir para a página Sobre" data-target-url="<?php echo htmlspecialchars(url('sobre', $currentLang), ENT_QUOTES, 'UTF-8'); ?>">
                         <i class="ph ph-regular ph-caret-down" aria-hidden="true"></i>
                     </a>

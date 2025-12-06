@@ -1,8 +1,18 @@
+<?php
+// Carrega traduções para usar no alt text
+$currentLang = function_exists('getCurrentLanguage') ? getCurrentLanguage() : 'pt';
+if (function_exists('loadTranslations')) {
+    $translations = loadTranslations($currentLang);
+}
+$logoAlt = isset($translations['projects']['altText']['logo']) 
+    ? $translations['projects']['altText']['logo'] 
+    : 'Logo da Maribe Arquitetura';
+?>
 <!-- Footer -->
 <footer>
     <div id="footerTop">
         <div id="footerLogo">
-            <img src="/assets/images/public/logo_horizontal_estendido.webp" alt="Logo Maribe Arquitetura">
+            <img src="/assets/images/public/logo_horizontal_estendido.webp" alt="<?php echo htmlspecialchars($logoAlt, ENT_QUOTES, 'UTF-8'); ?>">
         </div>
         <div id="socialLinks">
             <h3><?php echo function_exists('t') ? htmlspecialchars(t('footer.socialMedia'), ENT_QUOTES, 'UTF-8') : 'redes sociais'; ?></h3>

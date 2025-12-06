@@ -24,6 +24,45 @@ function detectCurrentLanguage() {
 }
 
 /**
+ * Gera alt text dinâmico para imagens de projetos
+ * 
+ * @param {string} type Tipo de alt text ('projectCover', 'projectCoverWithCity', 'projectImage', 'projectImageNumber')
+ * @param {Object} project Dados do projeto
+ * @param {number} imageNumber Número da imagem (para projectImageNumber)
+ * @param {number} totalImages Total de imagens (para projectImageNumber)
+ * @returns {string} Alt text traduzido
+ */
+function generateImageAltText(type, project, imageNumber = null, totalImages = null) {
+    const lang = detectCurrentLanguage();
+    
+    // Verifica se as traduções estão disponíveis
+    if (!window.altTextTranslations || !window.altTextTranslations[lang]) {
+        // Fallback em português
+        if (type === 'projectCoverWithCity' && project.cidade) {
+            return `Capa do projeto ${project.titulo} em ${project.cidade}`;
+        } else if (type === 'projectCover') {
+            return `Capa do projeto ${project.titulo}`;
+        } else {
+            return `${project.titulo}${project.cidade ? ` - ${project.cidade}` : ''}`;
+        }
+    }
+    
+    const templates = window.altTextTranslations[lang];
+    let template = '';
+    
+    if (type === 'projectCoverWithCity' && project.cidade) {
+        template = templates.projectCoverWithCity || 'Capa do projeto :title em :city';
+        return template.replace(':title', project.titulo).replace(':city', project.cidade);
+    } else if (type === 'projectCover') {
+        template = templates.projectCover || 'Capa do projeto :title';
+        return template.replace(':title', project.titulo);
+    } else {
+        // Fallback genérico
+        return `${project.titulo}${project.cidade ? ` - ${project.cidade}` : ''}`;
+    }
+}
+
+/**
  * Gera URL do projeto no formato correto do idioma atual
  */
 function getProjectUrl(slug) {
@@ -66,7 +105,7 @@ function createProjectElement(project) {
 
     let projectCover = document.createElement("img");
     projectCover.src = normalizeAssetPath(project.cover);
-    projectCover.alt = `${project.titulo}${project.cidade ? ` - ${project.cidade}` : ''}`;
+    projectCover.alt = generateImageAltText(project.cidade ? 'projectCoverWithCity' : 'projectCover', project);
     projectCover.loading = "lazy";
     projectCover.decoding = "async";
 

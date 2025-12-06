@@ -134,8 +134,13 @@ $menuItems = [
     <!-- Topo: Logo + Botão Hambúrguer -->
     <div id="headerTop">
         <a href="<?php echo function_exists('url') ? url('index', $currentLang) : '/'; ?>" id="indexReferrer">
-            <img src="/assets/images/public/logos/logo_horizontal_com_assinatura.webp" class="logo-mobile" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
-            <img src="/assets/images/public/logo_menu.webp" class="logo-desktop" title="Logo da Maribe Arquitetura" alt="Logo da Maribe Arquitetura">
+            <?php 
+            $logoAlt = isset($translations['projects']['altText']['logo']) 
+                ? $translations['projects']['altText']['logo'] 
+                : 'Logo da Maribe Arquitetura';
+            ?>
+            <img src="/assets/images/public/logos/logo_horizontal_com_assinatura.webp" class="logo-mobile" title="<?php echo htmlspecialchars($logoAlt, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($logoAlt, ENT_QUOTES, 'UTF-8'); ?>">
+            <img src="/assets/images/public/logo_menu.webp" class="logo-desktop" title="<?php echo htmlspecialchars($logoAlt, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($logoAlt, ENT_QUOTES, 'UTF-8'); ?>">
         </a>
         <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="<?php echo htmlspecialchars(function_exists('t') ? t('menu.openMenu') : 'Abrir menu de navegação', ENT_QUOTES, 'UTF-8'); ?>" aria-expanded="false">
             <i class="ph ph-bold ph-list"></i>
