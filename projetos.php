@@ -32,6 +32,9 @@ $currentPage = 'projetos';
     require_once __DIR__ . '/src/php/openGraph.php';
     $pageTitle = t('projects.title') . ' • maribe arquitetura';
     echo generateOpenGraphTags($pageTitle, t('projects.metaDescription'), 'assets/images/public/logo_home.webp');
+    
+    // Canonical URL
+    echo generateCanonicalTag();
     ?>
 
     <title><?php echo htmlspecialchars(t('projects.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
@@ -59,6 +62,19 @@ $currentPage = 'projetos';
     <script type="module" src="/src/js/projectsSearch.js" defer></script>
     <script type="module" src="/src/js/projectsInjector.js" defer></script>
     <script src="/src/js/cookiePopup.js"></script>
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    echo generateWebSiteSchema($currentLang);
+    
+    // Breadcrumb Schema
+    $breadcrumbs = [
+        ['name' => function_exists('t') ? t('menu.home') : 'início', 'url' => url('index', $currentLang)],
+        ['name' => function_exists('t') ? t('projects.title') : 'projetos', 'url' => url('projetos', $currentLang)]
+    ];
+    echo generateBreadcrumbSchema($breadcrumbs);
+    ?>
 </head>
 
 <body>

@@ -226,3 +226,235 @@ function slugify($text) {
     return $text;
 }
 
+/**
+ * Gera URL canônica para a página atual
+ * 
+ * @param string|null $lang Idioma (null = usa idioma atual)
+ * @param string|null $path Caminho da página (null = detecta automaticamente)
+ * @return string URL canônica
+ */
+function getCanonicalUrl($lang = null, $path = null) {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'] ?? 'maribe.arq.br';
+    
+    if ($path === null) {
+        // Detecta o path atual
+        $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+        $path = parse_url($requestUri, PHP_URL_PATH);
+    }
+    
+    if ($lang === null) {
+        $lang = function_exists('getCurrentLanguage') ? getCurrentLanguage() : 'pt';
+    }
+    
+    // Se o path já contém o idioma, usa como está
+    if (preg_match('/^\/(pt|en|es)\//', $path)) {
+        return $protocol . $host . $path;
+    }
+    
+    // Se não tem idioma no path, adiciona
+    $path = ltrim($path, '/');
+    if (empty($path)) {
+        return $protocol . $host . '/' . $lang . '/';
+    }
+    
+    return $protocol . $host . '/' . $lang . '/' . $path;
+}
+
+/**
+ * Gera meta tag canonical
+ * 
+ * @param string|null $url URL canônica (null = gera automaticamente)
+ * @return string HTML da meta tag canonical
+ */
+function generateCanonicalTag($url = null) {
+    if ($url === null) {
+        $url = getCanonicalUrl();
+    }
+    
+    return '<link rel="canonical" href="' . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . '">' . "\n";
+}
+
+/**
+ * Gera Schema.org JSON-LD para LocalBusiness
+ * 
+ * @param string $lang Idioma (pt, en, es)
+ * @return string JSON-LD script tag
+ */
+function generateLocalBusinessSchema($lang = 'pt') {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'] ?? 'maribe.arq.br';
+    $baseUrl = $protocol . $host;
+    
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'ArchitecturalService',
+        'name' => 'maribe arquitetura',
+        'alternateName' => 'Maribe Arquitetura',
+        'url' => $baseUrl,
+        'logo' => $baseUrl . '/assets/images/public/logo_horizontal_estendido.webp',
+        'image' => $baseUrl . '/assets/images/public/logo_home.webp',
+        'description' => $lang === 'pt' 
+            ? 'Escritório de arquitetura e urbanismo baseado em Recife, Pernambuco, com foco em arquitetura residencial, comercial e consultorias.'
+            : ($lang === 'en' 
+                ? 'Architecture and urban planning firm based in Recife, Pernambuco, focused on residential architecture, commercial architecture, and consulting.'
+                : 'Estudio de arquitectura y urbanismo con sede en Recife, Pernambuco, enfocado en arquitectura residencial, arquitectura comercial y consultorías.'),
+        'address' => [
+            '@type' => 'PostalAddress',
+            'addressLocality' => 'Recife',
+            'addressRegion' => 'PE',
+            'addressCountry' => 'BR'
+        ],
+        'areaServed' => [
+            '@type' => 'City',
+            'name' => 'Recife'
+        ],
+        'sameAs' => [
+            'https://www.instagram.com/maribe.arquitetura',
+            'https://web.facebook.com/people/Maribe-Arquitetura/100089975852864/',
+            'https://www.tiktok.com/@maribe.arquitetura',
+            'https://br.pinterest.com/maribearquitetura/',
+            'https://www.linkedin.com/company/maribearquitetura/'
+        ]
+    ];
+    
+    return '<script type="application/ld+json">' . "\n" . 
+           json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n" . 
+           '</script>' . "\n";
+}
+
+/**
+ * Gera Schema.org JSON-LD para WebSite
+ * 
+ * @param string $lang Idioma (pt, en, es)
+ * @return string JSON-LD script tag
+ */
+function generateWebSiteSchema($lang = 'pt') {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'] ?? 'maribe.arq.br';
+    $baseUrl = $protocol . $host;
+    
+    // Mapeia rotas de busca por idioma
+    $searchActionUrl = [
+        'pt' => $baseUrl . '/pt/projetos?search={search_term_string}',
+        'en' => $baseUrl . '/en/projects?search={search_term_string}',
+        'es' => $baseUrl . '/es/proyectos?search={search_term_string}'
+    ];
+    
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => 'maribe arquitetura',
+        'url' => $baseUrl,
+        'potentialAction' => [
+            '@type' => 'SearchAction',
+            'target' => [
+                '@type' => 'EntryPoint',
+                'urlTemplate' => $searchActionUrl[$lang] ?? $searchActionUrl['pt']
+            ],
+            'query-input' => 'required name=search_term_string'
+        ]
+    ];
+    
+    return '<script type="application/ld+json">' . "\n" . 
+           json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n" . 
+           '</script>' . "\n";
+}
+
+/**
+ * Gera Schema.org JSON-LD para BreadcrumbList
+ * 
+ * @param array $breadcrumbs Array de breadcrumbs [['name' => 'Nome', 'url' => 'url']]
+ * @return string JSON-LD script tag
+ */
+function generateBreadcrumbSchema($breadcrumbs) {
+    if (empty($breadcrumbs) || !is_array($breadcrumbs)) {
+        return '';
+    }
+    
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'] ?? 'maribe.arq.br';
+    $baseUrl = $protocol . $host;
+    
+    $items = [];
+    $position = 1;
+    
+    foreach ($breadcrumbs as $crumb) {
+        $url = $crumb['url'];
+        // Se a URL é relativa, torna absoluta
+        if (!preg_match('/^https?:\/\//', $url)) {
+            $url = $baseUrl . '/' . ltrim($url, '/');
+        }
+        
+        $items[] = [
+            '@type' => 'ListItem',
+            'position' => $position,
+            'name' => $crumb['name'],
+            'item' => $url
+        ];
+        $position++;
+    }
+    
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => $items
+    ];
+    
+    return '<script type="application/ld+json">' . "\n" . 
+           json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n" . 
+           '</script>' . "\n";
+}
+
+/**
+ * Gera Schema.org JSON-LD para Article (projetos)
+ * 
+ * @param array $project Dados do projeto
+ * @param string $lang Idioma (pt, en, es)
+ * @return string JSON-LD script tag
+ */
+function generateArticleSchema($project, $lang = 'pt') {
+    if (empty($project) || !is_array($project)) {
+        return '';
+    }
+    
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'] ?? 'maribe.arq.br';
+    $baseUrl = $protocol . $host;
+    
+    $projectTitle = $project['titulo'] ?? '';
+    $projectDesc = isset($project['descricao'][$lang]) 
+        ? $project['descricao'][$lang] 
+        : ($project['descricao']['pt'] ?? '');
+    $projectImage = getAbsoluteImageUrl($project['cover'] ?? '');
+    $projectUrl = $baseUrl . $_SERVER['REQUEST_URI'];
+    
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Article',
+        'headline' => $projectTitle,
+        'description' => $projectDesc,
+        'image' => $projectImage,
+        'url' => $projectUrl,
+        'author' => [
+            '@type' => 'Organization',
+            'name' => 'maribe arquitetura',
+            'url' => $baseUrl
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => 'maribe arquitetura',
+            'logo' => [
+                '@type' => 'ImageObject',
+                'url' => $baseUrl . '/assets/images/public/logo_horizontal_estendido.webp'
+            ]
+        ],
+        'datePublished' => isset($project['ano']) ? $project['ano'] . '-01-01' : date('Y-m-d'),
+        'inLanguage' => $lang === 'pt' ? 'pt-BR' : ($lang === 'en' ? 'en-US' : 'es-ES')
+    ];
+    
+    return '<script type="application/ld+json">' . "\n" . 
+           json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n" . 
+           '</script>' . "\n";
+}
+

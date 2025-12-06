@@ -32,6 +32,9 @@ $currentPage = 'sobre';
     require_once __DIR__ . '/src/php/openGraph.php';
     $pageTitle = t('about.title') . ' • maribe arquitetura';
     echo generateOpenGraphTags($pageTitle, t('about.metaDescription'), 'assets/images/public/logo_home.webp');
+    
+    // Canonical URL
+    echo generateCanonicalTag();
     ?>
 
     <title><?php echo htmlspecialchars(t('about.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
@@ -107,7 +110,18 @@ $currentPage = 'sobre';
             }
         });
     </script>
-
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    
+    // Breadcrumb Schema
+    $breadcrumbs = [
+        ['name' => function_exists('t') ? t('menu.home') : 'início', 'url' => url('index', $currentLang)],
+        ['name' => function_exists('t') ? t('menu.about') : 'sobre', 'url' => url('sobre', $currentLang)]
+    ];
+    echo generateBreadcrumbSchema($breadcrumbs);
+    ?>
 </head>
 
 <body>

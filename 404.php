@@ -22,6 +22,16 @@ $currentPage = '404';
     <meta name="author" content="Marcos Tavares" />
     <meta name="description" content="<?php echo htmlspecialchars(t('notFound.metaDescription'), ENT_QUOTES, 'UTF-8'); ?>" />
 
+    <?php
+    // Open Graph Meta Tags
+    require_once __DIR__ . '/src/php/openGraph.php';
+    $pageTitle = t('notFound.title') . ' • maribe arquitetura';
+    echo generateOpenGraphTags($pageTitle, t('notFound.metaDescription'), 'assets/images/public/logo_home.webp');
+    
+    // Canonical URL
+    echo generateCanonicalTag();
+    ?>
+
     <title><?php echo htmlspecialchars(t('notFound.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
@@ -44,6 +54,11 @@ $currentPage = '404';
     <!-- Scripts -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <script src="/src/js/languageSelector.js"></script>
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    ?>
 </head>
 <body>
     <div id="smoothOpening">

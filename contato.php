@@ -33,6 +33,9 @@ $currentPage = 'contato';
     require_once __DIR__ . '/src/php/openGraph.php';
     $pageTitle = t('contact.title') . ' • maribe arquitetura';
     echo generateOpenGraphTags($pageTitle, t('contact.metaDescription'), 'assets/images/public/logo_home.webp');
+    
+    // Canonical URL
+    echo generateCanonicalTag();
     ?>
 
     <title><?php echo htmlspecialchars(t('contact.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
@@ -60,6 +63,18 @@ $currentPage = 'contato';
     <script src="/src/js/floatingLabel.js"></script>
     <script src="/src/js/toast.js"></script>
     <script src="/src/js/languageSelector.js"></script>
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    
+    // Breadcrumb Schema
+    $breadcrumbs = [
+        ['name' => function_exists('t') ? t('menu.home') : 'início', 'url' => url('index', $currentLang)],
+        ['name' => function_exists('t') ? t('menu.contact') : 'contato', 'url' => url('contato', $currentLang)]
+    ];
+    echo generateBreadcrumbSchema($breadcrumbs);
+    ?>
 </head>
 
 <body>

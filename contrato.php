@@ -26,6 +26,16 @@ $currentPage = 'contrato';
     <meta name="author" content="Marcos Tavares" />
     <meta name="description" content="<?php echo htmlspecialchars(t('contract.metaDescription'), ENT_QUOTES, 'UTF-8'); ?>" />
 
+    <?php
+    // Open Graph Meta Tags
+    require_once __DIR__ . '/src/php/openGraph.php';
+    $pageTitle = t('contract.title') . ' • maribe arquitetura';
+    echo generateOpenGraphTags($pageTitle, t('contract.metaDescription'), 'assets/images/public/logo_home.webp');
+    
+    // Canonical URL
+    echo generateCanonicalTag();
+    ?>
+
     <title><?php echo htmlspecialchars(t('contract.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
@@ -50,6 +60,11 @@ $currentPage = 'contrato';
     <script src="/src/js/toast.js"></script>
     <script src="/src/js/floatingLabel.js"></script>
     <script src="/src/js/languageSelector.js"></script>
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    ?>
 </head>
 
 <body>

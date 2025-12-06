@@ -59,9 +59,15 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
         $projectUrl = $protocol . $host . $_SERVER['REQUEST_URI'];
         
         echo generateOpenGraphTags($projectTitle . ' • maribe arquitetura', $projectDesc, $projectImage, $projectUrl, 'article');
+        
+        // Canonical URL para projeto
+        echo generateCanonicalTag($projectUrl);
     } else {
         // Meta tags genéricas para página de projetos
         echo generateOpenGraphTags(t('projects.title') . ' • maribe arquitetura', t('projects.metaDescription'), '', '', 'website');
+        
+        // Canonical URL genérica
+        echo generateCanonicalTag();
     }
     ?>
 
@@ -165,6 +171,35 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
     <script type="module" src="/src/js/selectedProject.js" defer></script>
     <script src="/src/js/lightbox-plus-jquery.js" defer></script>
     <script src="/src/js/cookiePopup.js"></script>
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    
+    // Se encontrou o projeto, adiciona Article Schema e Breadcrumb
+    if (isset($project) && $project) {
+        echo generateArticleSchema($project, $currentLang);
+        
+        // Breadcrumb Schema para projeto
+        $projectTitle = $project['titulo'];
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+        $host = $_SERVER['HTTP_HOST'] ?? 'maribe.arq.br';
+        $currentProjectUrl = $protocol . $host . $_SERVER['REQUEST_URI'];
+        $breadcrumbs = [
+            ['name' => function_exists('t') ? t('menu.home') : 'início', 'url' => url('index', $currentLang)],
+            ['name' => function_exists('t') ? t('projects.title') : 'projetos', 'url' => url('projetos', $currentLang)],
+            ['name' => $projectTitle, 'url' => $currentProjectUrl]
+        ];
+        echo generateBreadcrumbSchema($breadcrumbs);
+    } else {
+        // Breadcrumb Schema genérico para página de projetos
+        $breadcrumbs = [
+            ['name' => function_exists('t') ? t('menu.home') : 'início', 'url' => url('index', $currentLang)],
+            ['name' => function_exists('t') ? t('projects.title') : 'projetos', 'url' => url('projetos', $currentLang)]
+        ];
+        echo generateBreadcrumbSchema($breadcrumbs);
+    }
+    ?>
 </head>
 
 <body>

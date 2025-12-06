@@ -27,6 +27,16 @@ $currentPage = 'sucesso';
     <meta name="author" content="Marcos Tavares" />
     <meta name="description" content="<?php echo htmlspecialchars(t('success.metaDescription'), ENT_QUOTES, 'UTF-8'); ?>" />
 
+    <?php
+    // Open Graph Meta Tags
+    require_once __DIR__ . '/src/php/openGraph.php';
+    $pageTitle = t('success.title') . ' • maribe arquitetura';
+    echo generateOpenGraphTags($pageTitle, t('success.metaDescription'), 'assets/images/public/logo_home.webp');
+    
+    // Canonical URL
+    echo generateCanonicalTag();
+    ?>
+
     <title><?php echo htmlspecialchars(t('success.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 
@@ -47,6 +57,11 @@ $currentPage = 'sucesso';
     <link rel="stylesheet" href="/styles/pages/404/404.css" />
 
     <!-- Scripts -->
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    ?>
 </head>
 
 <body>

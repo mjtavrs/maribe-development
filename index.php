@@ -33,6 +33,9 @@ $currentPage = 'home';
     require_once __DIR__ . '/src/php/openGraph.php';
     $pageTitle = t('home.title') . ' • maribe arquitetura';
     echo generateOpenGraphTags($pageTitle, t('home.metaDescription'), 'assets/images/public/logo_home.webp');
+    
+    // Canonical URL
+    echo generateCanonicalTag();
     ?>
 
     <title><?php echo htmlspecialchars(t('home.title'), ENT_QUOTES, 'UTF-8'); ?> • maribe arquitetura</title>
@@ -61,6 +64,12 @@ $currentPage = 'home';
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/languageSelector.js"></script>
     <script src="/src/js/homeScroll.js"></script>
+    
+    <?php
+    // Schema.org JSON-LD
+    echo generateLocalBusinessSchema($currentLang);
+    echo generateWebSiteSchema($currentLang);
+    ?>
 </head>
 
 <body>
