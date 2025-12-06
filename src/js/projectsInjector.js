@@ -100,8 +100,22 @@ function createProjectElement(project) {
     let projectReferrer = document.createElement("a");
     const slug = slugify(project.titulo || project.id);
     projectReferrer.href = getProjectUrl(slug);
-    const cityInfo = project.cidade ? ` em ${project.cidade}` : '';
-    projectReferrer.setAttribute("aria-label", `Ver detalhes do projeto ${project.titulo}${cityInfo}`);
+    // Gera aria-label dinâmico
+    const lang = detectCurrentLanguage();
+    let ariaLabel = '';
+    if (window.ariaLabelTranslations && window.ariaLabelTranslations[lang]) {
+        const templates = window.ariaLabelTranslations[lang];
+        if (project.cidade) {
+            ariaLabel = templates.viewProjectDetailsWithCity ? templates.viewProjectDetailsWithCity.replace(':title', project.titulo).replace(':city', project.cidade) : `Ver detalhes do projeto ${project.titulo} em ${project.cidade}`;
+        } else {
+            ariaLabel = templates.viewProjectDetails ? templates.viewProjectDetails.replace(':title', project.titulo) : `Ver detalhes do projeto ${project.titulo}`;
+        }
+    } else {
+        // Fallback
+        const cityInfo = project.cidade ? ` em ${project.cidade}` : '';
+        ariaLabel = `Ver detalhes do projeto ${project.titulo}${cityInfo}`;
+    }
+    projectReferrer.setAttribute("aria-label", ariaLabel);
 
     let projectCover = document.createElement("img");
     projectCover.src = normalizeAssetPath(project.cover);

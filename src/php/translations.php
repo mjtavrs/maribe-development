@@ -209,6 +209,15 @@ $allTranslations = [
                 'projectImageNumber' => 'Imagem :number de :total do projeto :title',
                 'logo' => 'Logo da Maribe Arquitetura',
                 'logoHome' => 'Logo da Maribe Arquitetura - Página inicial'
+            ],
+            'lightbox' => [
+                'imageCount' => 'Imagem %1 de %2',
+                'previousImage' => 'Imagem anterior',
+                'nextImage' => 'Próxima imagem'
+            ],
+            'ariaLabels' => [
+                'viewProjectDetails' => 'Ver detalhes do projeto :title',
+                'viewProjectDetailsWithCity' => 'Ver detalhes do projeto :title em :city'
             ]
         ],
 
@@ -899,6 +908,15 @@ $allTranslations = [
                 'projectImageNumber' => 'Imagen :number de :total del proyecto :title',
                 'logo' => 'Logo de Maribe Arquitetura',
                 'logoHome' => 'Logo de Maribe Arquitetura - Página de inicio'
+            ],
+            'lightbox' => [
+                'imageCount' => 'Imagen %1 de %2',
+                'previousImage' => 'Imagen anterior',
+                'nextImage' => 'Siguiente imagen'
+            ],
+            'ariaLabels' => [
+                'viewProjectDetails' => 'Ver detalles del proyecto :title',
+                'viewProjectDetailsWithCity' => 'Ver detalles del proyecto :title en :city'
             ]
         ],
 

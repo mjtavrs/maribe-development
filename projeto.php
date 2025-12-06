@@ -94,6 +94,52 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
 
     <!-- Scripts -->
     <script>
+        // Passa as traduções de lightbox para o JavaScript
+        window.lightboxTranslations = {
+            pt: {
+                imageCount: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['lightbox']['imageCount'] ?? 'Imagem %1 de %2', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                previousImage: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['lightbox']['previousImage'] ?? 'Imagem anterior', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nextImage: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['lightbox']['nextImage'] ?? 'Próxima imagem', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            en: {
+                imageCount: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['lightbox']['imageCount'] ?? 'Image %1 of %2', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                previousImage: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['lightbox']['previousImage'] ?? 'Previous image', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nextImage: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['lightbox']['nextImage'] ?? 'Next image', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            es: {
+                imageCount: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['lightbox']['imageCount'] ?? 'Imagen %1 de %2', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                previousImage: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['lightbox']['previousImage'] ?? 'Imagen anterior', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nextImage: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['lightbox']['nextImage'] ?? 'Siguiente imagen', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            }
+        };
+        
         // Passa as traduções de alt text para o JavaScript
         window.altTextTranslations = {
             pt: {
@@ -226,8 +272,33 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
         };
     </script>
     <script src="/src/js/languageSelector.js"></script>
+    <script src="/src/js/lightbox-plus-jquery.js"></script>
+    <script>
+        // Configura o lightbox com traduções dinâmicas
+        // Aguarda o lightbox estar disponível
+        function configureLightbox() {
+            const lang = window.location.pathname.match(/^\/(pt|en|es)\//)?.[1] || 'pt';
+            if (window.lightboxTranslations && window.lightboxTranslations[lang]) {
+                // Tenta configurar imediatamente se já estiver disponível
+                if (window.lightbox && window.lightbox.option) {
+                    window.lightbox.option({
+                        albumLabel: window.lightboxTranslations[lang].imageCount
+                    });
+                } else {
+                    // Se não estiver disponível, tenta novamente após um delay
+                    setTimeout(configureLightbox, 100);
+                }
+            }
+        }
+        
+        // Tenta configurar quando o DOM estiver pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', configureLightbox);
+        } else {
+            configureLightbox();
+        }
+    </script>
     <script type="module" src="/src/js/selectedProject.js" defer></script>
-    <script src="/src/js/lightbox-plus-jquery.js" defer></script>
     <script src="/src/js/cookiePopup.js"></script>
     
     <?php

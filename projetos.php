@@ -58,6 +58,40 @@ $currentPage = 'projetos';
 
     <!-- Scripts -->
     <script>
+        // Passa as traduções de aria labels para o JavaScript
+        window.ariaLabelTranslations = {
+            pt: {
+                viewProjectDetails: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['ariaLabels']['viewProjectDetails'] ?? 'Ver detalhes do projeto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                viewProjectDetailsWithCity: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['ariaLabels']['viewProjectDetailsWithCity'] ?? 'Ver detalhes do projeto :title em :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            en: {
+                viewProjectDetails: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['ariaLabels']['viewProjectDetails'] ?? 'View details of project :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                viewProjectDetailsWithCity: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['ariaLabels']['viewProjectDetailsWithCity'] ?? 'View details of project :title in :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            es: {
+                viewProjectDetails: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['ariaLabels']['viewProjectDetails'] ?? 'Ver detalles del proyecto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                viewProjectDetailsWithCity: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['ariaLabels']['viewProjectDetailsWithCity'] ?? 'Ver detalles del proyecto :title en :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            }
+        };
+        
         // Passa as traduções de alt text para o JavaScript
         window.altTextTranslations = {
             pt: {

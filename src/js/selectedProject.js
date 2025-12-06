@@ -161,6 +161,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Configura os botões de compartilhamento
     setupShareButtons(project);
     
+    // Configura o lightbox com traduções dinâmicas
+    const lang = detectCurrentLanguage();
+    if (window.lightboxTranslations && window.lightboxTranslations[lang] && window.lightbox) {
+        window.lightbox.option({
+            albumLabel: window.lightboxTranslations[lang].imageCount
+        });
+    }
+    
     // Valida se existem fotos do projeto
     if (!project.outrasFotos || project.outrasFotos.length === 0) {
         console.warn("Projeto não possui fotos", project);
@@ -179,10 +187,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Configura o link da imagem
         imageLink.href = normalized;
         imageLink.setAttribute("data-lightbox", "fotos");
-        imageLink.setAttribute("data-title", project.titulo);
         
-        // Gera alt text dinâmico
+        // Gera alt text dinâmico para usar como título no lightbox
         const altText = generateImageAltText('projectImageNumber', project, imageIndex, totalImages);
+        imageLink.setAttribute("data-title", altText);
         imageLink.setAttribute("aria-label", altText);
         
         // Cria o elemento da imagem
