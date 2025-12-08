@@ -92,7 +92,17 @@ let totalPages = 1; // Total de páginas
  */
 function createProjectElement(project) {
     let projectBox = document.createElement("article");
-    projectBox.setAttribute("aria-label", `Projeto ${project.titulo}`);
+    
+    // Gera aria-label dinâmico para o article
+    const lang = detectCurrentLanguage();
+    let articleAriaLabel = '';
+    if (window.ariaLabelTranslations && window.ariaLabelTranslations[lang] && window.ariaLabelTranslations[lang].projectArticle) {
+        articleAriaLabel = window.ariaLabelTranslations[lang].projectArticle.replace(':title', project.titulo);
+    } else {
+        // Fallback
+        articleAriaLabel = `Projeto ${project.titulo}`;
+    }
+    projectBox.setAttribute("aria-label", articleAriaLabel);
     projectBox.role = "listitem";
     projectBox.classList.add("project-item");
     projectBox.classList.add("fade-in-ready");
@@ -100,8 +110,7 @@ function createProjectElement(project) {
     let projectReferrer = document.createElement("a");
     const slug = slugify(project.titulo || project.id);
     projectReferrer.href = getProjectUrl(slug);
-    // Gera aria-label dinâmico
-    const lang = detectCurrentLanguage();
+    // Gera aria-label dinâmico (reutiliza lang já declarado acima)
     let ariaLabel = '';
     if (window.ariaLabelTranslations && window.ariaLabelTranslations[lang]) {
         const templates = window.ariaLabelTranslations[lang];
@@ -235,9 +244,17 @@ function createPaginationControls(container) {
         return; // Não mostra paginação se houver apenas 1 página
     }
 
+    // Detecta o idioma atual
+    const lang = detectCurrentLanguage();
+
     const paginationContainer = document.createElement('nav');
     paginationContainer.id = 'projectsPagination';
-    paginationContainer.setAttribute('aria-label', 'Navegação de páginas');
+    
+    // Gera aria-label dinâmico para paginação
+    const paginationLabel = window.paginationTranslations && window.paginationTranslations[lang] 
+        ? window.paginationTranslations[lang].navigation 
+        : 'Navegação de páginas';
+    paginationContainer.setAttribute('aria-label', paginationLabel);
     paginationContainer.classList.add('projects-pagination');
 
     const paginationList = document.createElement('ul');
@@ -248,7 +265,10 @@ function createPaginationControls(container) {
     const prevButton = document.createElement('button');
     prevButton.type = 'button';
     prevButton.classList.add('pagination-button', 'pagination-prev');
-    prevButton.setAttribute('aria-label', 'Página anterior');
+    const prevLabel = window.paginationTranslations && window.paginationTranslations[lang] 
+        ? window.paginationTranslations[lang].previousPage 
+        : 'Página anterior';
+    prevButton.setAttribute('aria-label', prevLabel);
     prevButton.disabled = currentPage === 1;
     prevButton.innerHTML = '<i class="ph ph-regular ph-caret-left" aria-hidden="true"></i>';
     prevButton.addEventListener('click', () => goToPage(currentPage - 1));
@@ -272,6 +292,10 @@ function createPaginationControls(container) {
         firstButton.type = 'button';
         firstButton.classList.add('pagination-button', 'pagination-number');
         firstButton.textContent = '1';
+        const firstPageLabel = window.paginationTranslations && window.paginationTranslations[lang] 
+            ? window.paginationTranslations[lang].goToPage.replace(':number', '1')
+            : 'Ir para página 1';
+        firstButton.setAttribute('aria-label', firstPageLabel);
         firstButton.addEventListener('click', () => goToPage(1));
         firstLi.appendChild(firstButton);
         paginationList.appendChild(firstLi);
@@ -296,7 +320,10 @@ function createPaginationControls(container) {
             pageButton.setAttribute('aria-current', 'page');
         }
         pageButton.textContent = i.toString();
-        pageButton.setAttribute('aria-label', `Ir para página ${i}`);
+        const goToPageLabel = window.paginationTranslations && window.paginationTranslations[lang] 
+            ? window.paginationTranslations[lang].goToPage.replace(':number', i.toString())
+            : `Ir para página ${i}`;
+        pageButton.setAttribute('aria-label', goToPageLabel);
         pageButton.addEventListener('click', () => goToPage(i));
         pageLi.appendChild(pageButton);
         paginationList.appendChild(pageLi);
@@ -317,6 +344,10 @@ function createPaginationControls(container) {
         lastButton.type = 'button';
         lastButton.classList.add('pagination-button', 'pagination-number');
         lastButton.textContent = totalPages.toString();
+        const lastPageLabel = window.paginationTranslations && window.paginationTranslations[lang] 
+            ? window.paginationTranslations[lang].goToPage.replace(':number', totalPages.toString())
+            : `Ir para página ${totalPages}`;
+        lastButton.setAttribute('aria-label', lastPageLabel);
         lastButton.addEventListener('click', () => goToPage(totalPages));
         lastLi.appendChild(lastButton);
         paginationList.appendChild(lastLi);
@@ -327,7 +358,10 @@ function createPaginationControls(container) {
     const nextButton = document.createElement('button');
     nextButton.type = 'button';
     nextButton.classList.add('pagination-button', 'pagination-next');
-    nextButton.setAttribute('aria-label', 'Próxima página');
+    const nextLabel = window.paginationTranslations && window.paginationTranslations[lang] 
+        ? window.paginationTranslations[lang].nextPage 
+        : 'Próxima página';
+    nextButton.setAttribute('aria-label', nextLabel);
     nextButton.disabled = currentPage === totalPages;
     nextButton.innerHTML = '<i class="ph ph-regular ph-caret-right" aria-hidden="true"></i>';
     nextButton.addEventListener('click', () => goToPage(currentPage + 1));
@@ -340,8 +374,12 @@ function createPaginationControls(container) {
 
 /**
  * Renderiza os projetos da página atual
+ * @param {HTMLElement} projectsContainer - Container onde os projetos serão renderizados
+ * @param {Array} projectsToRender - Array de projetos a serem renderizados
+ * @param {string} searchTerm - Termo de busca atual
+ * @param {boolean} shouldScroll - Se deve fazer scroll até o container de busca (padrão: false)
  */
-function renderProjects(projectsContainer, projectsToRender, searchTerm = "") {
+function renderProjects(projectsContainer, projectsToRender, searchTerm = "", shouldScroll = false) {
     // Calcula total de páginas
     totalPages = Math.max(1, Math.ceil(projectsToRender.length / PROJECTS_PER_PAGE));
     
@@ -403,15 +441,17 @@ function renderProjects(projectsContainer, projectsToRender, searchTerm = "") {
         createPaginationControls(main);
     }
 
-    // Scroll suave até o input de busca com offset de 20px
-    const searchContainer = document.getElementById('projectsSearchContainer');
-    if (searchContainer) {
-        const elementPosition = searchContainer.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - 20;
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
+    // Scroll suave até o input de busca com offset de 20px (apenas se shouldScroll for true)
+    if (shouldScroll) {
+        const searchContainer = document.getElementById('projectsSearchContainer');
+        if (searchContainer) {
+            const elementPosition = searchContainer.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 20;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     }
 }
 
@@ -428,7 +468,8 @@ function goToPage(page) {
     renderProjects(
         document.getElementById("projectsContainer"),
         currentProjects,
-        document.getElementById("projectsSearchInput")?.value || ""
+        document.getElementById("projectsSearchInput")?.value || "",
+        true // Faz scroll ao mudar de página
     );
 }
 
@@ -455,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const searchTerm = e.detail.searchTerm || "";
         currentPage = 1; // Reseta para primeira página na busca
         updateURL(1);
-        renderProjects(projectsContainer, currentProjects, searchTerm);
+        renderProjects(projectsContainer, currentProjects, searchTerm, true); // Faz scroll ao buscar
     });
 
     // Escuta mudanças no histórico do navegador (botão voltar/avançar)
@@ -464,7 +505,8 @@ document.addEventListener("DOMContentLoaded", () => {
         renderProjects(
             projectsContainer,
             currentProjects,
-            document.getElementById("projectsSearchInput")?.value || ""
+            document.getElementById("projectsSearchInput")?.value || "",
+            false // Não faz scroll ao usar botão voltar/avançar
         );
     });
 });

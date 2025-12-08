@@ -58,6 +58,64 @@ $currentPage = 'projetos';
 
     <!-- Scripts -->
     <script>
+        // Passa as traduções de paginação para o JavaScript
+        window.paginationTranslations = {
+            pt: {
+                navigation: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['pagination']['navigation'] ?? 'Navegação de páginas', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                previousPage: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['pagination']['previousPage'] ?? 'Página anterior', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nextPage: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['pagination']['nextPage'] ?? 'Próxima página', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                goToPage: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['pagination']['goToPage'] ?? 'Ir para página :number', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            en: {
+                navigation: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['pagination']['navigation'] ?? 'Page navigation', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                previousPage: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['pagination']['previousPage'] ?? 'Previous page', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nextPage: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['pagination']['nextPage'] ?? 'Next page', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                goToPage: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['pagination']['goToPage'] ?? 'Go to page :number', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            },
+            es: {
+                navigation: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['pagination']['navigation'] ?? 'Navegación de páginas', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                previousPage: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['pagination']['previousPage'] ?? 'Página anterior', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nextPage: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['pagination']['nextPage'] ?? 'Página siguiente', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                goToPage: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['pagination']['goToPage'] ?? 'Ir a la página :number', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>
+            }
+        };
+        
         // Passa as traduções de aria labels para o JavaScript
         window.ariaLabelTranslations = {
             pt: {
@@ -68,6 +126,10 @@ $currentPage = 'projetos';
                 viewProjectDetailsWithCity: <?php 
                     $translations = loadTranslations('pt');
                     echo json_encode($translations['projects']['ariaLabels']['viewProjectDetailsWithCity'] ?? 'Ver detalhes do projeto :title em :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectArticle: <?php 
+                    $translations = loadTranslations('pt');
+                    echo json_encode($translations['projects']['ariaLabels']['projectArticle'] ?? 'Projeto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 ?>
             },
             en: {
@@ -78,6 +140,10 @@ $currentPage = 'projetos';
                 viewProjectDetailsWithCity: <?php 
                     $translations = loadTranslations('en');
                     echo json_encode($translations['projects']['ariaLabels']['viewProjectDetailsWithCity'] ?? 'View details of project :title in :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectArticle: <?php 
+                    $translations = loadTranslations('en');
+                    echo json_encode($translations['projects']['ariaLabels']['projectArticle'] ?? 'Project :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 ?>
             },
             es: {
@@ -88,6 +154,10 @@ $currentPage = 'projetos';
                 viewProjectDetailsWithCity: <?php 
                     $translations = loadTranslations('es');
                     echo json_encode($translations['projects']['ariaLabels']['viewProjectDetailsWithCity'] ?? 'Ver detalles del proyecto :title en :city', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                projectArticle: <?php 
+                    $translations = loadTranslations('es');
+                    echo json_encode($translations['projects']['ariaLabels']['projectArticle'] ?? 'Proyecto :title', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 ?>
             }
         };

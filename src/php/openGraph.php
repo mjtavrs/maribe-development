@@ -6,6 +6,53 @@
  */
 
 /**
+ * Verifica se a extensão mbstring está disponível
+ */
+function hasMbstring() {
+    return extension_loaded('mbstring') && function_exists('mb_strlen');
+}
+
+/**
+ * Helper para mb_strlen com fallback para strlen
+ */
+function safe_strlen($str, $encoding = 'UTF-8') {
+    if (hasMbstring()) {
+        return mb_strlen($str, $encoding);
+    }
+    return strlen($str);
+}
+
+/**
+ * Helper para mb_substr com fallback para substr
+ */
+function safe_substr($str, $start, $length = null, $encoding = 'UTF-8') {
+    if (hasMbstring()) {
+        return $length !== null ? mb_substr($str, $start, $length, $encoding) : mb_substr($str, $start, null, $encoding);
+    }
+    return $length !== null ? substr($str, $start, $length) : substr($str, $start);
+}
+
+/**
+ * Helper para mb_strrpos com fallback para strrpos
+ */
+function safe_strrpos($haystack, $needle, $offset = 0, $encoding = 'UTF-8') {
+    if (hasMbstring()) {
+        return mb_strrpos($haystack, $needle, $offset, $encoding);
+    }
+    return strrpos($haystack, $needle, $offset);
+}
+
+/**
+ * Helper para mb_strtolower com fallback para strtolower
+ */
+function safe_strtolower($str, $encoding = 'UTF-8') {
+    if (hasMbstring()) {
+        return mb_strtolower($str, $encoding);
+    }
+    return strtolower($str);
+}
+
+/**
  * Normaliza um caminho de asset para URL absoluta
  */
 function getAbsoluteImageUrl($path) {
@@ -44,9 +91,14 @@ function cleanDescription($text, $maxLength = 200) {
     $text = trim($text);
     
     // Limita tamanho
-    if (mb_strlen($text) > $maxLength) {
-        $text = mb_substr($text, 0, $maxLength);
-        $text = mb_substr($text, 0, mb_strrpos($text, ' ')) . '...';
+    if (safe_strlen($text) > $maxLength) {
+        $text = safe_substr($text, 0, $maxLength);
+        $lastSpace = safe_strrpos($text, ' ');
+        if ($lastSpace !== false) {
+            $text = safe_substr($text, 0, $lastSpace) . '...';
+        } else {
+            $text = safe_substr($text, 0, $maxLength) . '...';
+        }
     }
     
     return $text;
@@ -212,10 +264,28 @@ function slugify($text) {
         return '';
     }
     
-    $text = mb_strtolower($text, 'UTF-8');
+    $text = safe_strtolower($text, 'UTF-8');
     
     // Remove acentos usando transliteração
-    $text = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $text);
+    if (function_exists('iconv')) {
+        $text = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $text);
+    } else {
+        // Fallback básico para remover acentos se iconv não estiver disponível
+        $text = strtr($text, [
+            'á' => 'a', 'à' => 'a', 'ã' => 'a', 'â' => 'a', 'ä' => 'a',
+            'é' => 'e', 'è' => 'e', 'ê' => 'e', 'ë' => 'e',
+            'í' => 'i', 'ì' => 'i', 'î' => 'i', 'ï' => 'i',
+            'ó' => 'o', 'ò' => 'o', 'õ' => 'o', 'ô' => 'o', 'ö' => 'o',
+            'ú' => 'u', 'ù' => 'u', 'û' => 'u', 'ü' => 'u',
+            'ç' => 'c', 'ñ' => 'n',
+            'Á' => 'A', 'À' => 'A', 'Ã' => 'A', 'Â' => 'A', 'Ä' => 'A',
+            'É' => 'E', 'È' => 'E', 'Ê' => 'E', 'Ë' => 'E',
+            'Í' => 'I', 'Ì' => 'I', 'Î' => 'I', 'Ï' => 'I',
+            'Ó' => 'O', 'Ò' => 'O', 'Õ' => 'O', 'Ô' => 'O', 'Ö' => 'O',
+            'Ú' => 'U', 'Ù' => 'U', 'Û' => 'U', 'Ü' => 'U',
+            'Ç' => 'C', 'Ñ' => 'N'
+        ]);
+    }
     
     // Substitui caracteres não alfanuméricos por hífen
     $text = preg_replace('/[^a-z0-9]+/', '-', $text);

@@ -10,12 +10,17 @@
  * - Permite que arquivos estáticos sejam servidos normalmente
  */
 
+// Inicia output buffering para evitar problemas com headers e cookies
+if (!ob_get_level()) {
+    ob_start();
+}
+
 $requestUri = $_SERVER['REQUEST_URI'];
 $requestPath = parse_url($requestUri, PHP_URL_PATH);
 $queryString = parse_url($requestUri, PHP_URL_QUERY);
 
-// Remove a barra inicial
-$requestPath = ltrim($requestPath, '/');
+// Remove barras iniciais e finais
+$requestPath = trim($requestPath, '/');
 
 // Se a query string já foi parseada pelo PHP (arquivos PHP diretos),
 // garante que está em $_GET
@@ -103,9 +108,10 @@ $redirectMap = [
 ];
 
 // Processa rotas de internacionalização: /pt/pagina, /en/pagina ou /es/pagina
-if (preg_match('/^(pt|en|es)(?:\/(.+))?$/', $requestPath, $matches)) {
+// Aceita tanto /pt quanto /pt/pagina
+if (preg_match('/^(pt|en|es)(?:\/(.*))?$/', $requestPath, $matches)) {
     $lang = $matches[1];
-    $page = isset($matches[2]) && !empty($matches[2]) ? $matches[2] : '';
+    $page = isset($matches[2]) && !empty(trim($matches[2])) ? trim($matches[2]) : '';
     
     // Se a página for "index", "home" ou "inicio", redireciona para a raiz do idioma (sem /index)
     if ($page === 'index' || $page === 'home' || $page === 'inicio') {
@@ -159,72 +165,85 @@ if (preg_match('/^(pt|en|es)(?:\/(.+))?$/', $requestPath, $matches)) {
         $page = 'index';
     }
 
-    if (isset($i18nRoutes[$lang][$page])) {
-        $phpFile = $i18nRoutes[$lang][$page];
-        $fullPath = __DIR__ . '/' . $phpFile;
-
-        // Verifica se o arquivo existe
-        if (!file_exists($fullPath)) {
-            http_response_code(404);
-            echo "404 - Arquivo não encontrado: $phpFile (caminho completo: $fullPath)";
-            return false;
-        }
-
-        // Define lang no $_GET e na sessão ANTES de incluir o arquivo
-        // Isso garante que getCurrentLanguage() detecte o idioma correto
+    // Garante que a página existe no mapeamento
+    if (!isset($i18nRoutes[$lang]) || !isset($i18nRoutes[$lang][$page])) {
+        // Se não encontrou a rota, serve a página 404
+        http_response_code(404);
         $_GET['lang'] = $lang;
-        
-        // Inicia sessão se ainda não foi iniciada
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        
-        // Define o idioma na sessão para garantir que getCurrentLanguage() funcione
-        // IMPORTANTE: Isso deve ser feito ANTES de incluir qualquer arquivo que use getCurrentLanguage()
-        $_SESSION['lang'] = $lang;
-        
-        // Salva também no cookie para persistência
-        // Carrega funções se necessário para usar setLanguageCookie
-        if (!function_exists('setLanguageCookie')) {
-            // Tenta carregar o arquivo de funções se ainda não foi carregado
-            $functionsPath = __DIR__ . '/src/php/functions.php';
-            if (file_exists($functionsPath)) {
-                require_once $functionsPath;
-            }
-        }
-        
-        if (function_exists('setLanguageCookie')) {
-            setLanguageCookie($lang);
-        } else {
-            // Fallback: define cookie diretamente
-            setcookie('preferred_language', $lang, time() + (7 * 24 * 60 * 60), '/');
-        }
-
-        // Parse query string para $_GET se houver
-        if (!empty($queryString)) {
-            parse_str($queryString, $parsedQuery);
-            // Remove lang duplicado se existir
-            unset($parsedQuery['lang']);
-            $parsedQuery['lang'] = $lang;
-            $_GET = array_merge($_GET, $parsedQuery);
-        }
-
-        // Não redireciona, apenas inclui o arquivo diretamente
-        // Usa chdir para garantir que includes relativos funcionem
         $oldDir = getcwd();
         chdir(__DIR__);
-        require $phpFile;
+        require '404.php';
         chdir($oldDir);
+        if (ob_get_level() > 0) {
+            ob_end_flush();
+        }
         return true;
     }
+    
+    $phpFile = $i18nRoutes[$lang][$page];
+    $fullPath = __DIR__ . '/' . $phpFile;
 
-    // Se não encontrou a rota no mapeamento, serve a página 404
-    http_response_code(404);
+    // Verifica se o arquivo existe
+    if (!file_exists($fullPath)) {
+        http_response_code(404);
+        echo "404 - Arquivo não encontrado: $phpFile (caminho completo: $fullPath)";
+        if (ob_get_level() > 0) {
+            ob_end_flush();
+        }
+        return false;
+    }
+
+    // Define lang no $_GET e na sessão ANTES de incluir o arquivo
+    // Isso garante que getCurrentLanguage() detecte o idioma correto
     $_GET['lang'] = $lang;
+    
+    // Inicia sessão se ainda não foi iniciada
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Define o idioma na sessão para garantir que getCurrentLanguage() funcione
+    // IMPORTANTE: Isso deve ser feito ANTES de incluir qualquer arquivo que use getCurrentLanguage()
+    $_SESSION['lang'] = $lang;
+    
+    // Salva também no cookie para persistência
+    // Carrega funções se necessário para usar setLanguageCookie
+    if (!function_exists('setLanguageCookie')) {
+        // Tenta carregar o arquivo de funções se ainda não foi carregado
+        $functionsPath = __DIR__ . '/src/php/functions.php';
+        if (file_exists($functionsPath)) {
+            require_once $functionsPath;
+        }
+    }
+    
+    if (function_exists('setLanguageCookie')) {
+        setLanguageCookie($lang);
+    } else {
+        // Fallback: define cookie diretamente (apenas se headers ainda não foram enviados)
+        if (!headers_sent()) {
+            setcookie('preferred_language', $lang, time() + (7 * 24 * 60 * 60), '/');
+        }
+    }
+
+    // Parse query string para $_GET se houver
+    if (!empty($queryString)) {
+        parse_str($queryString, $parsedQuery);
+        // Remove lang duplicado se existir
+        unset($parsedQuery['lang']);
+        $parsedQuery['lang'] = $lang;
+        $_GET = array_merge($_GET, $parsedQuery);
+    }
+
+    // Não redireciona, apenas inclui o arquivo diretamente
+    // Usa chdir para garantir que includes relativos funcionem
     $oldDir = getcwd();
     chdir(__DIR__);
-    require '404.php';
+    require $phpFile;
     chdir($oldDir);
+    // Limpa o buffer de saída se ainda estiver ativo
+    if (ob_get_level() > 0) {
+        ob_end_flush();
+    }
     return true;
 }
 
@@ -302,6 +321,10 @@ if (file_exists($filePath) && !is_dir($filePath)) {
                 $_GET = array_merge($_GET, $parsedQuery);
             }
             require $filePath;
+            // Limpa o buffer de saída se ainda estiver ativo
+            if (ob_get_level() > 0) {
+                ob_end_flush();
+            }
             return true;
         }
 
@@ -315,6 +338,10 @@ if (file_exists($filePath) && !is_dir($filePath)) {
             $_GET = array_merge($_GET, $parsedQuery);
         }
         require $filePath;
+        // Limpa o buffer de saída se ainda estiver ativo
+        if (ob_get_level() > 0) {
+            ob_end_flush();
+        }
         return true;
     }
 
@@ -328,4 +355,8 @@ $oldDir = getcwd();
 chdir(__DIR__);
 require '404.php';
 chdir($oldDir);
+// Limpa o buffer de saída se ainda estiver ativo
+if (ob_get_level() > 0) {
+    ob_end_flush();
+}
 return true;

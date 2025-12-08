@@ -221,6 +221,12 @@ $allTranslations = [
             ]
         ],
 
+        // Scroll to Top
+        'scrollToTop' => [
+            'label' => 'Voltar ao topo',
+            'title' => 'Voltar ao topo'
+        ],
+
         // Footer
         'footer' => [
             'socialMedia' => 'redes sociais',
@@ -916,8 +922,15 @@ $allTranslations = [
             ],
             'ariaLabels' => [
                 'viewProjectDetails' => 'Ver detalles del proyecto :title',
-                'viewProjectDetailsWithCity' => 'Ver detalles del proyecto :title en :city'
+                'viewProjectDetailsWithCity' => 'Ver detalles del proyecto :title en :city',
+                'projectArticle' => 'Proyecto :title'
             ]
+        ],
+
+        // Scroll to Top
+        'scrollToTop' => [
+            'label' => 'Volver arriba',
+            'title' => 'Volver arriba'
         ],
 
         // Footer

@@ -34,8 +34,8 @@ function detectLanguage()
         }
         // Salva na sessão para próximas requisições
         $_SESSION['lang'] = $lang;
-        // Salva em cookie por 1 semana
-        if (function_exists('setLanguageCookie')) {
+        // Salva em cookie por 1 semana (apenas se headers ainda não foram enviados)
+        if (function_exists('setLanguageCookie') && !headers_sent()) {
             setLanguageCookie($lang);
         }
         return $lang;
@@ -54,9 +54,9 @@ function detectLanguage()
                 if (session_status() === PHP_SESSION_NONE) {
                     session_start();
                 }
-                // Salva na sessão e cookie
+                // Salva na sessão e cookie (apenas se headers ainda não foram enviados)
                 $_SESSION['lang'] = $lang;
-                if (function_exists('setLanguageCookie')) {
+                if (function_exists('setLanguageCookie') && !headers_sent()) {
                     setLanguageCookie($lang);
                 }
                 // Também define no $_GET para consistência
@@ -142,6 +142,7 @@ function setLanguage($lang)
 {
     if (in_array($lang, SUPPORTED_LANGUAGES)) {
         $_SESSION['lang'] = $lang;
+        // A função setLanguageCookie já verifica se headers foram enviados
         setLanguageCookie($lang);
     }
 }
@@ -153,6 +154,11 @@ function setLanguage($lang)
  */
 function setLanguageCookie($lang)
 {
+    // Não tenta definir cookie se já houve output (headers já foram enviados)
+    if (headers_sent()) {
+        return;
+    }
+    
     // Cookie expira em 7 dias (1 semana)
     $expire = time() + (7 * 24 * 60 * 60);
     setcookie('preferred_language', $lang, $expire, '/', '', false, true);
