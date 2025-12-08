@@ -54,8 +54,8 @@ $allTranslations = [
             'title' => 'contato',
             'metaDescription' => 'Gostaria de conversar? Nos envie uma mensagem nessa página.',
             'description' => [
-                'Quer conversar conosco? Estamos aqui para ouvir você!',
-                'Se você precisa de um orçamento, pode solicitar através <a href=":budgetUrl">desta página</a>.'
+                'Estamos aqui para conversar com você.',
+                'Seja para dúvidas gerais, mensagens, parceria ou algum assunto específico, este canal é o mais adequado.<br><br>Se a sua intenção for solicitar um projeto, orçamento ou proposta, recomendamos acessar as páginas dedicadas — assim conseguimos te atender com ainda mais cuidado.'
             ],
             'form' => [
                 'name' => 'Nome completo',
@@ -417,9 +417,10 @@ $allTranslations = [
         // Página de Contato
         'contact' => [
             'title' => 'contact',
+            'metaDescription' => 'Would you like to chat? Send us a message on this page.',
             'description' => [
-                'Want to talk to us? We are here to listen to you!',
-                'If you need a quote, you can request it through <a href=":budgetUrl">this page</a>.'
+                'We are here to talk to you.',
+                'Whether for general questions, messages, partnerships, or any specific subject, this channel is the most appropriate.<br><br>If your intention is to request a project, budget, or proposal, we recommend accessing the dedicated pages — this way we can serve you with even more care.'
             ],
             'form' => [
                 'name' => 'Full name',
@@ -759,8 +760,8 @@ $allTranslations = [
             'title' => 'contacto',
             'metaDescription' => '¿Te gustaría conversar? Envíanos un mensaje en esta página.',
             'description' => [
-                '¿Quieres conversar con nosotras? ¡Estamos aquí para escucharte!',
-                'Si necesitas un presupuesto, puedes solicitarlo a través de <a href=":budgetUrl">esta página</a>.'
+                'Estamos aquí para conversar contigo.',
+                'Ya sea para dudas generales, mensajes, alianzas o algún asunto específico, este canal es el más adecuado.<br><br>Si tu intención es solicitar un proyecto, presupuesto o propuesta, recomendamos acceder a las páginas dedicadas — así podremos atenderte con aún más cuidado.'
             ],
             'form' => [
                 'name' => 'Nombre completo',

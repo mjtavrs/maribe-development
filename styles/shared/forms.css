@@ -36,7 +36,6 @@ body main form label {
 }
 
 body main form label input,
-body main form label textarea,
 body main form label select {
   background-color: var(--color-bege-delicado);
   border: none;
@@ -46,6 +45,17 @@ body main form label select {
   padding: 5px;
   resize: none;
   cursor: pointer;
+}
+
+body main form label textarea {
+  background-color: var(--color-bege-delicado);
+  border: none;
+  border-bottom: 1px solid var(--color-cinza-elegante);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
+  padding: 5px;
+  resize: none;
+  cursor: text;
 }
 
 body main form label select {
@@ -298,7 +308,21 @@ body main form .floating-label-wrapper {
   flex-direction: column;
 }
 
-body main form .floating-label-wrapper input,
+body main form .floating-label-wrapper input {
+  background-color: var(--color-bege-delicado);
+  border: none;
+  border-bottom: 1px solid var(--color-cinza-elegante);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
+  /* altura fixa para evitar saltos ao focar/preencher */
+  height: 56px;
+  padding: 16px 10px 10px 10px;
+  resize: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, border-width 0.2s ease;
+  cursor: text;
+}
+
 body main form .floating-label-wrapper textarea {
   background-color: var(--color-bege-delicado);
   border: none;
@@ -311,6 +335,7 @@ body main form .floating-label-wrapper textarea {
   resize: none;
   box-sizing: border-box;
   transition: border-color 0.2s ease, border-width 0.2s ease;
+  cursor: text;
 }
 
 body main form .floating-label-wrapper textarea {

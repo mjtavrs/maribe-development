@@ -85,10 +85,9 @@ $currentPage = 'contato';
         <main role="main">
             <?php
             $pageTitle = t('contact.title');
-            $budgetUrl = url('orcamento', $currentLang);
             $pageDescription = [
                 t('contact.description.0'),
-                t('contact.description.1', ['budgetUrl' => $budgetUrl])
+                t('contact.description.1')
             ];
             include 'includes/pageInfo.php';
             ?>

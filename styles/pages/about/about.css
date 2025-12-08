@@ -5,8 +5,8 @@
 body main #sectionsContainer {
   display: flex;
   flex-direction: column;
-  gap: 70px;
-  margin-bottom: 100px;
+  gap: 85px;
+  margin-bottom: 70px;
 }
 
 body main #sectionsContainer section {
@@ -18,7 +18,7 @@ body main #sectionsContainer section {
 body main #sectionsContainer section h2 {
   color: var(--color-vermelho-recife);
   font-family: "All Round Gothic", sans-serif;
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: bold;
   text-transform: lowercase;
 }
@@ -72,7 +72,7 @@ body main #sectionsContainer section #imageContainer {
 body main #sectionsContainer section #imageContainer #orangeBox {
   bottom: 0;
   background-color: var(--color-vermelho-recife);
-  border-radius: 16px;
+  border-radius: 8px;
   height: 200px;
   position: absolute;
   width: 100%;
@@ -108,7 +108,7 @@ body main #sectionsContainer section #logosContainer video {
 /* Estilos Mobile (max-width: 767px) */
 @media screen and (max-width: 767px) {
   body main #sectionsContainer {
-    gap: 50px;
+    gap: 60px;
     margin-bottom: 60px;
   }
 
@@ -170,8 +170,8 @@ body main #sectionsContainer section #logosContainer video {
 
 @media screen and (min-width: 1024px) {
   body main #sectionsContainer {
-    gap: 80px;
-    margin-bottom: 120px;
+    gap: 95px;
+    margin-bottom: 90px;
   }
 
   body main #sectionsContainer section h2 {
@@ -201,6 +201,7 @@ body main #sectionsContainer section #logosContainer video {
     flex: 0 0 auto;
     width: 100%;
     max-width: 500px;
+    align-self: flex-end;
   }
 
   body main #sectionsContainer section #imageContainer img {
@@ -232,7 +233,11 @@ body main #sectionsContainer section #logosContainer video {
 
 @media screen and (min-width: 1366px) {
   body main #sectionsContainer {
-    margin-bottom: 140px;
+    margin-bottom: 100px;
+  }
+
+  body main #sectionsContainer section h2 {
+    font-size: 3.25rem;
   }
 
   body main #sectionsContainer section #aboutContentWrapper {
