@@ -107,6 +107,30 @@ $redirectMap = [
     'sucesso.html' => 'sucesso.php',
 ];
 
+// Redireciona URLs antigas sem prefixo de idioma para /pt/pagina
+// Isso deve acontecer ANTES do processamento de rotas i18n
+// Verifica se a URL não começa com pt/, en/ ou es/ e se é uma página conhecida
+if (!preg_match('/^(pt|en|es)(?:\/|$)/', $requestPath)) {
+    // Remove extensão .php se existir para normalizar
+    $normalizedPath = $requestPath;
+    if (substr($normalizedPath, -4) === '.php') {
+        $normalizedPath = substr($normalizedPath, 0, -4);
+    }
+    
+    // Verifica se é uma página conhecida em português
+    if (isset($ptRoutes[$normalizedPath])) {
+        // Remove lang da query string se já existir
+        if (!empty($queryString)) {
+            parse_str($queryString, $queryParams);
+            unset($queryParams['lang']);
+            $queryString = !empty($queryParams) ? '?' . http_build_query($queryParams) : '';
+        }
+        // Redireciona para /pt/pagina
+        header("Location: /pt/$normalizedPath$queryString", true, 301);
+        exit;
+    }
+}
+
 // Processa rotas de internacionalização: /pt/pagina, /en/pagina ou /es/pagina
 // Aceita tanto /pt quanto /pt/pagina
 if (preg_match('/^(pt|en|es)(?:\/(.*))?$/', $requestPath, $matches)) {
@@ -247,20 +271,6 @@ if (preg_match('/^(pt|en|es)(?:\/(.*))?$/', $requestPath, $matches)) {
     return true;
 }
 
-// Redireciona URLs antigas sem prefixo para /pt/ (português padrão)
-if (isset($ptRoutes[$requestPath])) {
-    $phpFile = $ptRoutes[$requestPath];
-    $phpFileName = basename($phpFile, '.php');
-    // Remove lang da query string se já existir
-    if (!empty($queryString)) {
-        parse_str($queryString, $queryParams);
-        unset($queryParams['lang']);
-        $queryString = !empty($queryParams) ? '?' . http_build_query($queryParams) : '';
-    }
-    // Redireciona para /pt/pagina
-    header("Location: /pt/$phpFileName$queryString", true, 301);
-    exit;
-}
 
 // Se for uma requisição .html, redireciona para .php
 if (preg_match('/^(.+\.html)(\?.*)?$/', $requestPath, $matches)) {

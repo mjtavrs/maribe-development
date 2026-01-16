@@ -23,7 +23,28 @@
     # Redireciona a raiz para /pt/ (português padrão)
     RewriteRule ^$ /pt/ [R=301,L]
     
-    # Redireciona URLs antigas sem prefixo para /pt/ (português padrão)
+    # Redireciona URLs antigas sem prefixo de idioma para /pt/ (português padrão)
+    # URLs sem extensão (ex: /sobre, /contato)
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^contato$ /pt/contato [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^orcamento$ /pt/orcamento [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^sobre$ /pt/sobre [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^projetos$ /pt/projetos [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^projeto$ /pt/projeto [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^contrato$ /pt/contrato [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^proposta$ /pt/proposta [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^politica-de-privacidade$ /pt/politica-de-privacidade [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(pt|en|es)/
+    RewriteRule ^sucesso$ /pt/sucesso [R=301,L]
+    
+    # URLs com extensão .php (ex: /sobre.php, /contato.php)
     RewriteRule ^contato\.php$ /pt/contato [R=301,L]
     RewriteRule ^orcamento\.php$ /pt/orcamento [R=301,L]
     RewriteRule ^sobre\.php$ /pt/sobre [R=301,L]
