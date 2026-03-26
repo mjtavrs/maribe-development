@@ -3,6 +3,33 @@
  * Fornece feedback visual e validação antes do envio
  */
 
+const validationMessages = {
+    required: 'Este campo é obrigatório.',
+    email: 'Por favor, insira um e-mail válido.',
+    phone: 'Por favor, insira um telefone válido.',
+    cpf: 'CPF inválido. Por favor, verifique os dígitos informados.',
+    rg: 'RG inválido. Verifique os dígitos informados.',
+    privacy: 'Você deve concordar com a política de privacidade.',
+    formError: 'Por favor, corrija os erros no formulário antes de enviar.',
+    subjectOther: 'Por favor, descreva o assunto (mínimo 3 caracteres).',
+    minLength: 'Este campo deve ter pelo menos :min caracteres.',
+    maxLength: 'Este campo deve ter no máximo :max caracteres.',
+    numericGreaterThanZero: 'Por favor, insira um valor numérico válido maior que zero.',
+    selectOption: 'Por favor, selecione uma opção.',
+    submitGenericError: 'Houve um erro ao enviar o formulário. Por favor, tente novamente.'
+};
+
+function getValidationMessage(key, params = {}) {
+    const source = window.validationTranslations || {};
+    let message = source[key] || validationMessages[key] || '';
+
+    Object.entries(params).forEach(([paramKey, paramValue]) => {
+        message = message.replace(`:${paramKey}`, String(paramValue));
+    });
+
+    return message;
+}
+
 /**
  * Inicializa a validação de formulários na página
  */
@@ -195,7 +222,7 @@ function handleFormSubmit(event) {
     
     if (!isValid) {
         event.preventDefault();
-        showFormError(form, 'Por favor, corrija os erros no formulário antes de enviar.');
+        showFormError(form, getValidationMessage('formError'));
     }
 }
 
@@ -218,7 +245,7 @@ function validateForm(form) {
     // Validação específica para checkbox de privacidade
     const privacyCheckbox = form.querySelector('input[name="privacy"][type="checkbox"]');
     if (privacyCheckbox && !privacyCheckbox.checked) {
-        showFieldError(privacyCheckbox, 'Você deve concordar com a política de privacidade.');
+        showFieldError(privacyCheckbox, getValidationMessage('privacy'));
         isValid = false;
     }
     
@@ -236,7 +263,7 @@ function validateForm(form) {
         
         if (subjectSelect.value === outrosText) {
             if (!subjectOtherInput.value || subjectOtherInput.value.trim().length < 3) {
-                showFieldError(subjectOtherInput, 'Por favor, descreva o assunto (mínimo 3 caracteres).');
+                showFieldError(subjectOtherInput, getValidationMessage('subjectOther'));
                 isValid = false;
             }
         }
@@ -246,7 +273,7 @@ function validateForm(form) {
     const emailInputs = form.querySelectorAll('input[type="email"]');
     emailInputs.forEach(input => {
         if (input.value && !validateEmail(input.value)) {
-            showFieldError(input, 'Por favor, insira um e-mail válido.');
+            showFieldError(input, getValidationMessage('email'));
             isValid = false;
         }
     });
@@ -254,7 +281,7 @@ function validateForm(form) {
     const phoneInputs = form.querySelectorAll('input[type="tel"]');
     phoneInputs.forEach(input => {
         if (input.value && !validatePhone(input.value)) {
-            showFieldError(input, 'Por favor, insira um telefone válido.');
+            showFieldError(input, getValidationMessage('phone'));
             isValid = false;
         }
     });
@@ -263,7 +290,7 @@ function validateForm(form) {
     const cpfInputs = form.querySelectorAll('input[name="cpf"]');
     cpfInputs.forEach(input => {
         if (input.value && !validateCPF(input.value)) {
-            showFieldError(input, 'CPF inválido. Por favor, verifique os dígitos informados.');
+            showFieldError(input, getValidationMessage('cpf'));
             isValid = false;
         }
     });
@@ -285,13 +312,13 @@ function validateField(field) {
         // Para checkboxes, verifica se está marcado
         if (field.type === 'checkbox') {
             if (!field.checked) {
-                showFieldError(field, 'Você deve concordar com a política de privacidade.');
+                showFieldError(field, getValidationMessage('privacy'));
                 return false;
             }
         } 
         // Para outros campos, verifica se tem valor
         else if (!field.value.trim()) {
-            showFieldError(field, 'Este campo é obrigatório.');
+            showFieldError(field, getValidationMessage('required'));
             return false;
         }
     }
@@ -300,7 +327,7 @@ function validateField(field) {
     if (field.hasAttribute('minlength')) {
         const minLength = parseInt(field.getAttribute('minlength'));
         if (field.value.trim().length < minLength) {
-            showFieldError(field, `Este campo deve ter pelo menos ${minLength} caracteres.`);
+            showFieldError(field, getValidationMessage('minLength', { min: minLength }));
             return false;
         }
     }
@@ -309,26 +336,26 @@ function validateField(field) {
     if (field.hasAttribute('maxlength')) {
         const maxLength = parseInt(field.getAttribute('maxlength'));
         if (field.value.trim().length > maxLength) {
-            showFieldError(field, `Este campo deve ter no máximo ${maxLength} caracteres.`);
+            showFieldError(field, getValidationMessage('maxLength', { max: maxLength }));
             return false;
         }
     }
     
     // Validação de email
     if (field.type === 'email' && field.value && !validateEmail(field.value)) {
-        showFieldError(field, 'Por favor, insira um e-mail válido.');
+        showFieldError(field, getValidationMessage('email'));
         return false;
     }
     
     // Validação de telefone
     if (field.type === 'tel' && field.value && !validatePhone(field.value)) {
-        showFieldError(field, 'Por favor, insira um telefone válido.');
+        showFieldError(field, getValidationMessage('phone'));
         return false;
     }
     
     // Validação de CPF
     if (field.name === 'cpf' && field.value && !validateCPF(field.value)) {
-        showFieldError(field, 'CPF inválido. Por favor, verifique os dígitos informados.');
+        showFieldError(field, getValidationMessage('cpf'));
         return false;
     }
 
@@ -336,7 +363,7 @@ function validateField(field) {
     if (field.name === 'rg' && field.value) {
         const rgDigits = field.value.replace(/\D/g, '');
         if (rgDigits.length < 7) {
-            showFieldError(field, 'RG inválido. Verifique os dígitos informados.');
+            showFieldError(field, getValidationMessage('rg'));
             return false;
         }
     }
@@ -347,7 +374,7 @@ function validateField(field) {
         const cleanValue = field.value.replace(',', '.');
         const numValue = parseFloat(cleanValue);
         if (isNaN(numValue) || numValue <= 0) {
-            showFieldError(field, 'Por favor, insira um valor numérico válido maior que zero.');
+            showFieldError(field, getValidationMessage('numericGreaterThanZero'));
             return false;
         }
     }
@@ -355,7 +382,7 @@ function validateField(field) {
     // Validação para select
     if (field.tagName === 'SELECT' && field.hasAttribute('required')) {
         if (!field.value || field.value.trim() === '') {
-            showFieldError(field, 'Por favor, selecione uma opção.');
+            showFieldError(field, getValidationMessage('selectOption'));
             return false;
         }
     }
@@ -707,14 +734,14 @@ export async function checkUrlError() {
             // Se não houver erros específicos, exibe mensagem genérica
             if ((!errors.general || errors.general.length === 0) &&
                 (!errors.fields || Object.keys(errors.fields).length === 0)) {
-                showFormError(form, 'Houve um erro ao enviar o formulário. Por favor, tente novamente.');
+                showFormError(form, getValidationMessage('submitGenericError'));
             }
         } catch (error) {
             console.error('Erro ao buscar erros do backend:', error);
             // Em caso de erro, exibe mensagem genérica
             const form = document.querySelector('form[action*="php"]');
             if (form) {
-                showFormError(form, 'Houve um erro ao enviar o formulário. Por favor, tente novamente.');
+                showFormError(form, getValidationMessage('submitGenericError'));
             }
         }
     }

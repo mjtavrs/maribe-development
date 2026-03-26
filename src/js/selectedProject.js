@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectInfoLocationElement = document.getElementById("projectInfoLocation");
     const projectInfoYearElement = document.getElementById("projectInfoYear");
     const projectInfoTypeElement = document.getElementById("projectInfoType");
+    const projectInfoPhotosByItemElement = document.getElementById("projectInfoPhotosByItem");
+    const projectInfoPhotosByElement = document.getElementById("projectInfoPhotosBy");
     const projectInfoDescriptionElement = document.getElementById("projectInfoDescription");
     
     if (!projectImagesContainer) {
@@ -119,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
     
-    if (!projectInfoTitleElement || !projectInfoLocationElement || !projectInfoYearElement || !projectInfoTypeElement || !projectInfoDescriptionElement) {
+    if (!projectInfoTitleElement || !projectInfoLocationElement || !projectInfoYearElement || !projectInfoTypeElement || !projectInfoPhotosByItemElement || !projectInfoPhotosByElement || !projectInfoDescriptionElement) {
         console.error("Elementos da ficha do projeto não encontrados no DOM");
         return;
     }
@@ -156,6 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
     projectInfoLocationElement.textContent = project.cidade;
     projectInfoYearElement.textContent = project.ano;
     projectInfoTypeElement.textContent = translatedType;
+    if (typeof project.fotosPor === "string" && project.fotosPor.trim() !== "") {
+        projectInfoPhotosByElement.textContent = project.fotosPor.trim();
+        projectInfoPhotosByItemElement.hidden = false;
+        projectInfoPhotosByItemElement.style.display = "";
+    } else {
+        projectInfoPhotosByElement.textContent = "";
+        projectInfoPhotosByItemElement.hidden = true;
+        projectInfoPhotosByItemElement.style.display = "none";
+    }
     projectInfoDescriptionElement.textContent = projectDescription;
     
     // Configura os botões de compartilhamento

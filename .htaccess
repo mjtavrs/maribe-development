@@ -1,3 +1,13 @@
+# Variáveis de ambiente (Turnstile)
+<IfModule mod_env.c>
+    SetEnv TURNSTILE_ENABLED true
+    SetEnv TURNSTILE_SITE_KEY "0x4AAAAAACoypuNBxpT-fbVO"
+    SetEnv TURNSTILE_SECRET_KEY "0x4AAAAAACoypnmS2XETFbjCTAJ7Y2tEanY"
+    SetEnv RATE_LIMIT_ENABLED true
+    SetEnv RATE_LIMIT_MAX_REQUESTS 5
+    SetEnv RATE_LIMIT_WINDOW_SECONDS 300
+</IfModule>
+
 # Redireciona arquivos .html para .php (mantendo compatibilidade com links antigos)
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -98,6 +108,18 @@ ErrorDocument 404 /404.php
 # Habilita compressão GZIP
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Headers de segurança
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Resource-Policy "same-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self' https://unpkg.com data:; media-src 'self' data:; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
 </IfModule>
 
 # Cache de arquivos estáticos

@@ -8,6 +8,8 @@ $langAttribute = $currentLang === 'pt' ? 'pt-br' : ($currentLang === 'en' ? 'en-
 
 // Define a página atual para o header (proposta não aparece no menu, mas definimos para consistência)
 $currentPage = 'proposta';
+$turnstileEnabled = isTurnstileEnabled();
+$turnstileSiteKey = getTurnstileSiteKey();
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo htmlspecialchars($langAttribute, ENT_QUOTES, 'UTF-8'); ?>">
@@ -55,11 +57,31 @@ $currentPage = 'proposta';
     <link rel="stylesheet" href="/styles/shared/contractDataExplanation.css" />
 
     <!-- Scripts -->
+    <script>
+        window.validationTranslations = <?php echo json_encode([
+            'required' => t('validation.required'),
+            'email' => t('validation.email'),
+            'phone' => t('validation.phone'),
+            'cpf' => t('validation.cpf'),
+            'rg' => t('validation.rg'),
+            'privacy' => t('validation.privacy'),
+            'formError' => t('validation.formError'),
+            'subjectOther' => t('validation.subjectOther'),
+            'minLength' => t('validation.minLength'),
+            'maxLength' => t('validation.maxLength'),
+            'numericGreaterThanZero' => t('validation.numericGreaterThanZero'),
+            'selectOption' => t('validation.selectOption'),
+            'submitGenericError' => t('validation.submitGenericError')
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
+    </script>
     <script type="module" src="/src/js/formValidation.js"></script>
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/toast.js"></script>
     <script src="/src/js/floatingLabel.js"></script>
     <script src="/src/js/languageSelector.js"></script>
+    <?php if ($turnstileEnabled && !empty($turnstileSiteKey)): ?>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <?php endif; ?>
     
     <?php
     // Schema.org JSON-LD
@@ -87,6 +109,10 @@ $currentPage = 'proposta';
                 ?>
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="lang" value="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
+                <div class="visually-hidden" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                </div>
                 <div class="form-field">
                     <div class="floating-label-wrapper">
                         <input type="text" name="name" id="name" placeholder="<?php echo htmlspecialchars(t('proposal.form.namePlaceholder'), ENT_QUOTES, 'UTF-8'); ?>" autocomplete="name" required aria-required="true" minlength="2">
@@ -223,6 +249,11 @@ $currentPage = 'proposta';
                             echo t('proposal.form.privacy', ['privacyUrl' => $privacyUrl]);
                             ?></span>
                 </label>
+                <?php if ($turnstileEnabled && !empty($turnstileSiteKey)): ?>
+                <div class="cf-turnstile"
+                    data-sitekey="<?php echo htmlspecialchars($turnstileSiteKey, ENT_QUOTES, 'UTF-8'); ?>"
+                    data-theme="light"></div>
+                <?php endif; ?>
                 <div id="buttonContainer">
                     <button type="submit">
                         <?php echo htmlspecialchars(t('proposal.form.submit'), ENT_QUOTES, 'UTF-8'); ?>

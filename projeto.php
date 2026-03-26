@@ -353,6 +353,10 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
                                 <span class="project-info-label"><?php echo htmlspecialchars(t('projects.detail.type'), ENT_QUOTES, 'UTF-8'); ?></span>
                                 <span id="projectInfoType" class="project-info-value"></span>
                             </div>
+                            <div id="projectInfoPhotosByItem" class="project-info-item" hidden>
+                                <span class="project-info-label"><?php echo htmlspecialchars(t('projects.detail.photosBy'), ENT_QUOTES, 'UTF-8'); ?></span>
+                                <span id="projectInfoPhotosBy" class="project-info-value"></span>
+                            </div>
                         </div>
                         <p id="projectInfoDescription" class="project-info-description"></p>
                         <div class="project-share">

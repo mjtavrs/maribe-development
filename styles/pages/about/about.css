@@ -7,6 +7,9 @@ body main #sectionsContainer {
   flex-direction: column;
   gap: 85px;
   margin-bottom: 70px;
+  max-width: 1766px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body main #sectionsContainer section {

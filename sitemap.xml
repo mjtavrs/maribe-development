@@ -386,35 +386,6 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- apê amazonita -->
-  <url>
-    <loc>https://maribe.arq.br/pt/projeto?name=ape-amazonita</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-amazonita" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-amazonita" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-amazonita" />
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://maribe.arq.br/en/project?name=ape-amazonita</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-amazonita" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-amazonita" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-amazonita" />
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://maribe.arq.br/es/proyecto?name=ape-amazonita</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=ape-amazonita" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=ape-amazonita" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=ape-amazonita" />
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
   <!-- quarto selva -->
   <url>
     <loc>https://maribe.arq.br/pt/projeto?name=quarto-selva</loc>
@@ -531,33 +502,62 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- agência 166 -->
+  <!-- studio no mar -->
   <url>
-    <loc>https://maribe.arq.br/pt/projeto?name=agencia-166</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=agencia-166" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=agencia-166" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=agencia-166" />
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://maribe.arq.br/pt/projeto?name=studio-no-mar</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=studio-no-mar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=studio-no-mar" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=studio-no-mar" />
+    <lastmod>2026-03-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maribe.arq.br/en/project?name=agencia-166</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=agencia-166" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=agencia-166" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=agencia-166" />
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://maribe.arq.br/en/project?name=studio-no-mar</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=studio-no-mar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=studio-no-mar" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=studio-no-mar" />
+    <lastmod>2026-03-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maribe.arq.br/es/proyecto?name=agencia-166</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=agencia-166" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=agencia-166" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=agencia-166" />
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://maribe.arq.br/es/proyecto?name=studio-no-mar</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=studio-no-mar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=studio-no-mar" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=studio-no-mar" />
+    <lastmod>2026-03-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   
+  <!-- quarto toca -->
+  <url>
+    <loc>https://maribe.arq.br/pt/projeto?name=quarto-toca</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-toca" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-toca" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-toca" />
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/en/project?name=quarto-toca</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-toca" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-toca" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-toca" />
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maribe.arq.br/es/proyecto?name=quarto-toca</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://maribe.arq.br/pt/projeto?name=quarto-toca" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://maribe.arq.br/en/project?name=quarto-toca" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://maribe.arq.br/es/proyecto?name=quarto-toca" />
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

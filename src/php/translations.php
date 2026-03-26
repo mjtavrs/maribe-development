@@ -108,8 +108,15 @@ $allTranslations = [
             'email' => 'Por favor, insira um e-mail válido.',
             'phone' => 'Por favor, insira um telefone válido.',
             'cpf' => 'CPF inválido. Por favor, verifique os dígitos informados.',
+            'rg' => 'RG inválido. Verifique os dígitos informados.',
             'privacy' => 'Você deve concordar com a política de privacidade.',
-            'formError' => 'Por favor, corrija os erros no formulário antes de enviar.'
+            'formError' => 'Por favor, corrija os erros no formulário antes de enviar.',
+            'subjectOther' => 'Por favor, descreva o assunto (mínimo 3 caracteres).',
+            'minLength' => 'Este campo deve ter pelo menos :min caracteres.',
+            'maxLength' => 'Este campo deve ter no máximo :max caracteres.',
+            'numericGreaterThanZero' => 'Por favor, insira um valor numérico válido maior que zero.',
+            'selectOption' => 'Por favor, selecione uma opção.',
+            'submitGenericError' => 'Houve um erro ao enviar o formulário. Por favor, tente novamente.'
         ],
 
         // Página de Orçamento
@@ -195,6 +202,7 @@ $allTranslations = [
                 'location' => 'Localização',
                 'year' => 'Ano',
                 'type' => 'Tipo',
+                'photosBy' => 'Fotos por',
                 'shareTitle' => 'Compartilhar projeto',
                 'shareWhatsApp' => 'Compartilhar no WhatsApp',
                 'shareEmail' => 'Compartilhar por e-mail',
@@ -473,8 +481,15 @@ $allTranslations = [
             'email' => 'Please enter a valid email address.',
             'phone' => 'Please enter a valid phone number.',
             'cpf' => 'Invalid CPF. Please check the digits provided.',
+            'rg' => 'Invalid RG. Please check the digits provided.',
             'privacy' => 'You must agree to the privacy policy.',
-            'formError' => 'Please correct the errors in the form before submitting.'
+            'formError' => 'Please correct the errors in the form before submitting.',
+            'subjectOther' => 'Please describe the subject (minimum 3 characters).',
+            'minLength' => 'This field must have at least :min characters.',
+            'maxLength' => 'This field must have at most :max characters.',
+            'numericGreaterThanZero' => 'Please enter a valid numeric value greater than zero.',
+            'selectOption' => 'Please select an option.',
+            'submitGenericError' => 'There was an error submitting the form. Please try again.'
         ],
 
         // Página de Orçamento
@@ -560,6 +575,7 @@ $allTranslations = [
                 'location' => 'Location',
                 'year' => 'Year',
                 'type' => 'Type',
+                'photosBy' => 'Photos by',
                 'shareTitle' => 'Share project',
                 'shareWhatsApp' => 'Share on WhatsApp',
                 'shareEmail' => 'Share by email',
@@ -814,8 +830,15 @@ $allTranslations = [
             'email' => 'Por favor, introduce un e-mail válido.',
             'phone' => 'Por favor, introduce un número de teléfono válido.',
             'cpf' => 'CPF inválido. Por favor, revisa los dígitos informados.',
+            'rg' => 'RG inválido. Revisa los dígitos informados.',
             'privacy' => 'Debes aceptar la política de privacidad.',
-            'formError' => 'Por favor, corrige los errores del formulario antes de enviar.'
+            'formError' => 'Por favor, corrige los errores del formulario antes de enviar.',
+            'subjectOther' => 'Por favor, describe el asunto (mínimo 3 caracteres).',
+            'minLength' => 'Este campo debe tener al menos :min caracteres.',
+            'maxLength' => 'Este campo debe tener como máximo :max caracteres.',
+            'numericGreaterThanZero' => 'Por favor, introduce un valor numérico válido mayor que cero.',
+            'selectOption' => 'Por favor, selecciona una opción.',
+            'submitGenericError' => 'Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.'
         ],
 
         // Página de Presupuesto
@@ -901,6 +924,7 @@ $allTranslations = [
                 'location' => 'Ubicación',
                 'year' => 'Año',
                 'type' => 'Tipo',
+                'photosBy' => 'Fotos por',
                 'shareTitle' => 'Compartir proyecto',
                 'shareWhatsApp' => 'Compartir en WhatsApp',
                 'shareEmail' => 'Compartir por correo',

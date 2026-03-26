@@ -161,7 +161,15 @@ function setLanguageCookie($lang)
     
     // Cookie expira em 7 dias (1 semana)
     $expire = time() + (7 * 24 * 60 * 60);
-    setcookie('preferred_language', $lang, $expire, '/', '', false, true);
+    $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+
+    setcookie('preferred_language', $lang, [
+        'expires' => $expire,
+        'path' => '/',
+        'secure' => $isHttps,
+        'httponly' => true,
+        'samesite' => 'Lax'
+    ]);
 }
 
 /**

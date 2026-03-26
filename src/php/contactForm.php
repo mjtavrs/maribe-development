@@ -13,6 +13,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         redirectWithStatus('error', $erros);
     }
 
+    // Honeypot anti-bot
+    if (!validateHoneypot('website')) {
+        $erros[] = 'Não foi possível processar sua solicitação.';
+        redirectWithStatus('error', $erros);
+    }
+
+    // Validação Cloudflare Turnstile
+    if (isTurnstileEnabled()) {
+        $turnstileToken = $_POST['cf-turnstile-response'] ?? '';
+        $clientIp = getClientIpAddress();
+        if (!verifyTurnstileToken($turnstileToken, $clientIp)) {
+            $erros[] = 'Verificação de segurança falhou. Tente novamente.';
+            redirectWithStatus('error', $erros);
+        }
+    }
+
+    // Rate limit por IP
+    $rateLimit = checkRateLimit('contact_form', getClientIpAddress());
+    if (!$rateLimit['allowed']) {
+        $waitSeconds = (int)$rateLimit['retry_after'];
+        $erros[] = "Muitas tentativas em pouco tempo. Aguarde {$waitSeconds} segundos e tente novamente.";
+        redirectWithStatus('error', $erros);
+    }
+
     // Validação e sanitização do nome
     if (empty($_POST["name"])) {
         $errosPorCampo["name"] = "Por favor, digite seu nome.";

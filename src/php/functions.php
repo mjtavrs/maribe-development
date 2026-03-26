@@ -14,6 +14,13 @@ if (!ob_get_level()) {
 // IMPORTANTE: Este arquivo deve ser incluído ANTES de qualquer output HTML
 // Se você ver um warning de "headers already sent", verifique se há espaços ou caracteres antes do <?php
 if (session_status() === PHP_SESSION_NONE) {
+    // Endurece configurações do cookie de sessão no runtime
+    $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+    ini_set('session.cookie_httponly', '1');
+    ini_set('session.cookie_samesite', 'Lax');
+    if ($isHttps) {
+        ini_set('session.cookie_secure', '1');
+    }
     session_start();
 }
 
@@ -214,6 +221,352 @@ function regenerateCSRFToken()
 }
 
 /**
+ * Obtém variável de ambiente com fallback.
+ *
+ * @param string $key Nome da variável
+ * @param string $default Valor padrão
+ * @return string
+ */
+function getEnvValue($key, $default = '')
+{
+    $value = getenv($key);
+    if ($value === false || $value === null) {
+        return $default;
+    }
+
+    return trim((string)$value);
+}
+
+/**
+ * Indica se o Turnstile está habilitado.
+ * Habilita por padrão quando as chaves estão presentes.
+ *
+ * @return bool
+ */
+function isTurnstileEnabled()
+{
+    $enabled = strtolower(getEnvValue('TURNSTILE_ENABLED', 'auto'));
+    $siteKey = getTurnstileSiteKey();
+    $secretKey = getTurnstileSecretKey();
+
+    if ($enabled === '0' || $enabled === 'false' || $enabled === 'off') {
+        return false;
+    }
+
+    if ($enabled === '1' || $enabled === 'true' || $enabled === 'on') {
+        return !empty($siteKey) && !empty($secretKey);
+    }
+
+    // auto
+    return !empty($siteKey) && !empty($secretKey);
+}
+
+/**
+ * Retorna a site key do Turnstile.
+ *
+ * @return string
+ */
+function getTurnstileSiteKey()
+{
+    return getEnvValue('TURNSTILE_SITE_KEY', '');
+}
+
+/**
+ * Retorna a secret key do Turnstile.
+ *
+ * @return string
+ */
+function getTurnstileSecretKey()
+{
+    return getEnvValue('TURNSTILE_SECRET_KEY', '');
+}
+
+/**
+ * Verifica token do Cloudflare Turnstile.
+ *
+ * @param string $token Token recebido do frontend
+ * @param string $remoteIp IP do cliente (opcional)
+ * @return bool
+ */
+function verifyTurnstileToken($token, $remoteIp = '')
+{
+    if (!isTurnstileEnabled()) {
+        return true;
+    }
+
+    $secret = getTurnstileSecretKey();
+    if (empty($secret) || empty($token)) {
+        return false;
+    }
+
+    $postData = [
+        'secret' => $secret,
+        'response' => $token
+    ];
+
+    if (!empty($remoteIp)) {
+        $postData['remoteip'] = $remoteIp;
+    }
+
+    $responseBody = '';
+
+    if (function_exists('curl_init')) {
+        $ch = curl_init('https://challenges.cloudflare.com/turnstile/v0/siteverify');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-urlencoded']);
+        $responseBody = curl_exec($ch);
+        $httpCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($responseBody === false || $httpCode < 200 || $httpCode >= 300) {
+            return false;
+        }
+    } else {
+        $context = stream_context_create([
+            'http' => [
+                'method' => 'POST',
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'content' => http_build_query($postData),
+                'timeout' => 10
+            ]
+        ]);
+        $responseBody = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, $context);
+        if ($responseBody === false) {
+            return false;
+        }
+    }
+
+    $decoded = json_decode($responseBody, true);
+    if (!is_array($decoded) || empty($decoded['success'])) {
+        return false;
+    }
+
+    // Validação adicional de hostname (defesa extra).
+    $expectedHost = strtolower($_SERVER['HTTP_HOST'] ?? '');
+    $tokenHost = strtolower($decoded['hostname'] ?? '');
+    if (!empty($expectedHost) && !empty($tokenHost) && $tokenHost !== $expectedHost) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Valida campo honeypot anti-bot.
+ * O campo deve permanecer vazio.
+ *
+ * @param string $fieldName Nome do campo honeypot
+ * @return bool True se válido, false se suspeito
+ */
+function validateHoneypot($fieldName = 'website')
+{
+    if (!isset($_POST[$fieldName])) {
+        return true;
+    }
+
+    return trim((string)$_POST[$fieldName]) === '';
+}
+
+/**
+ * Obtém o IP do cliente com fallback seguro.
+ *
+ * @return string
+ */
+function getClientIpAddress()
+{
+    $candidates = [
+        $_SERVER['HTTP_CF_CONNECTING_IP'] ?? '',
+        $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '',
+        $_SERVER['REMOTE_ADDR'] ?? ''
+    ];
+
+    foreach ($candidates as $candidate) {
+        if (empty($candidate)) {
+            continue;
+        }
+
+        // X-Forwarded-For pode ter múltiplos IPs separados por vírgula.
+        $parts = array_map('trim', explode(',', $candidate));
+        foreach ($parts as $ip) {
+            if (filter_var($ip, FILTER_VALIDATE_IP)) {
+                return $ip;
+            }
+        }
+    }
+
+    return '';
+}
+
+/**
+ * Verifica se o rate limit está habilitado.
+ *
+ * @return bool
+ */
+function isRateLimitEnabled()
+{
+    $enabled = strtolower(getEnvValue('RATE_LIMIT_ENABLED', 'true'));
+    return !in_array($enabled, ['0', 'false', 'off'], true);
+}
+
+/**
+ * Retorna quantidade máxima de requisições por janela.
+ *
+ * @return int
+ */
+function getRateLimitMaxRequests()
+{
+    $value = (int)getEnvValue('RATE_LIMIT_MAX_REQUESTS', '5');
+    return $value > 0 ? $value : 5;
+}
+
+/**
+ * Retorna tamanho da janela de rate limit em segundos.
+ *
+ * @return int
+ */
+function getRateLimitWindowSeconds()
+{
+    $value = (int)getEnvValue('RATE_LIMIT_WINDOW_SECONDS', '300');
+    return $value > 0 ? $value : 300;
+}
+
+/**
+ * Verifica e atualiza rate limit para um endpoint de formulário.
+ *
+ * @param string $action Nome da ação (ex.: contact_form)
+ * @param string $ip IP do cliente
+ * @param int|null $maxRequests Máximo de requisições por janela
+ * @param int|null $windowSeconds Janela em segundos
+ * @return array {allowed: bool, retry_after: int}
+ */
+function checkRateLimit($action, $ip = '', $maxRequests = null, $windowSeconds = null)
+{
+    if (!isRateLimitEnabled()) {
+        return ['allowed' => true, 'retry_after' => 0];
+    }
+
+    $max = $maxRequests !== null ? (int)$maxRequests : getRateLimitMaxRequests();
+    $window = $windowSeconds !== null ? (int)$windowSeconds : getRateLimitWindowSeconds();
+
+    if ($max <= 0 || $window <= 0) {
+        return ['allowed' => true, 'retry_after' => 0];
+    }
+
+    $clientIp = !empty($ip) ? $ip : getClientIpAddress();
+    if (empty($clientIp)) {
+        // Sem IP confiável: não bloqueia para evitar falso positivo.
+        return ['allowed' => true, 'retry_after' => 0];
+    }
+
+    $bucketKey = hash('sha256', $action . '|' . $clientIp);
+    $dir = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'maribe_rate_limit';
+    if (!is_dir($dir) && !@mkdir($dir, 0775, true) && !is_dir($dir)) {
+        return ['allowed' => true, 'retry_after' => 0];
+    }
+
+    $filePath = $dir . DIRECTORY_SEPARATOR . $bucketKey . '.json';
+    $fp = @fopen($filePath, 'c+');
+    if ($fp === false) {
+        return ['allowed' => true, 'retry_after' => 0];
+    }
+
+    $result = ['allowed' => true, 'retry_after' => 0];
+    $now = time();
+
+    if (!flock($fp, LOCK_EX)) {
+        fclose($fp);
+        return ['allowed' => true, 'retry_after' => 0];
+    }
+
+    rewind($fp);
+    $raw = stream_get_contents($fp);
+    $data = [];
+    if (!empty($raw)) {
+        $decoded = json_decode($raw, true);
+        if (is_array($decoded)) {
+            $data = $decoded;
+        }
+    }
+
+    $timestamps = isset($data['timestamps']) && is_array($data['timestamps']) ? $data['timestamps'] : [];
+    $timestamps = array_values(array_filter($timestamps, function ($ts) use ($now, $window) {
+        return is_int($ts) && ($now - $ts) < $window;
+    }));
+
+    if (count($timestamps) >= $max) {
+        $oldest = min($timestamps);
+        $retryAfter = max(1, $window - ($now - $oldest));
+        $result = ['allowed' => false, 'retry_after' => $retryAfter];
+    } else {
+        $timestamps[] = $now;
+        $dataToWrite = json_encode(['timestamps' => $timestamps], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        if ($dataToWrite !== false) {
+            ftruncate($fp, 0);
+            rewind($fp);
+            fwrite($fp, $dataToWrite);
+            fflush($fp);
+        }
+    }
+
+    flock($fp, LOCK_UN);
+    fclose($fp);
+
+    return $result;
+}
+
+/**
+ * Constrói URL segura para redirecionamento.
+ * Aceita apenas URLs do mesmo host da aplicação.
+ *
+ * @param string|null $candidateUrl URL candidata (ex.: HTTP_REFERER)
+ * @param string $fallbackPage Página de fallback sem extensão
+ * @param string $lang Idioma atual
+ * @return string URL segura para redirect
+ */
+function getSafeRedirectUrl($candidateUrl, $fallbackPage, $lang)
+{
+    $baseUrl = getBaseUrl();
+    $fallbackUrl = function_exists('url')
+        ? url($fallbackPage, $lang)
+        : $baseUrl . '/' . $lang . '/' . $fallbackPage;
+
+    if (empty($candidateUrl)) {
+        return $fallbackUrl;
+    }
+
+    $candidateUrl = str_replace(["\r", "\n"], '', (string)$candidateUrl);
+
+    // Resolve URL relativa para absoluta
+    if (strpos($candidateUrl, '/') === 0) {
+        $candidateUrl = rtrim($baseUrl, '/') . $candidateUrl;
+    }
+
+    $candidateParts = parse_url($candidateUrl);
+    $baseParts = parse_url($baseUrl);
+
+    if (!$candidateParts || !$baseParts) {
+        return $fallbackUrl;
+    }
+
+    $candidateHost = strtolower($candidateParts['host'] ?? '');
+    $baseHost = strtolower($baseParts['host'] ?? '');
+
+    if ($candidateHost !== $baseHost) {
+        return $fallbackUrl;
+    }
+
+    $candidateScheme = strtolower($candidateParts['scheme'] ?? '');
+    if ($candidateScheme !== 'http' && $candidateScheme !== 'https') {
+        return $fallbackUrl;
+    }
+
+    return $candidateUrl;
+}
+
+/**
  * Retorna a URL base do site
  * 
  * @return string URL base
@@ -354,8 +707,6 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
         session_start();
     }
 
-    $baseUrl = getBaseUrl();
-    
     // Detecta o idioma atual para preservar no redirect
     $currentLang = function_exists('getCurrentLanguage') ? getCurrentLanguage() : 'pt';
 
@@ -386,44 +737,22 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
             }
         }
         
-        if (!$referer) {
-            $scriptName = basename($_SERVER['PHP_SELF']);
-            $pageMap = [
-                'contactForm.php' => 'contato',
-                'budgetForm.php' => 'orcamento',
-                'contractForm.php' => 'contrato',
-                'finalBudgetForm.php' => 'proposta'
-            ];
-            $page = $pageMap[$scriptName] ?? 'contato';
-            
-            // Usa a função url() se disponível para preservar o idioma
-            if (function_exists('url')) {
-                $referer = url($page, $lang);
-            } else {
-                $referer = $baseUrl . '/' . $lang . '/' . $page;
-            }
-        } else {
-            // Garante que o referer tem o idioma correto na URL
-            if (!preg_match('/\/(pt|en|es)\//', $referer)) {
-                // Se não tem idioma no referer, usa a função url() para construir corretamente
-                $scriptName = basename($_SERVER['PHP_SELF']);
-                $pageMap = [
-                    'contactForm.php' => 'contato',
-                    'budgetForm.php' => 'orcamento',
-                    'contractForm.php' => 'contrato',
-                    'finalBudgetForm.php' => 'proposta'
-                ];
-                $page = $pageMap[$scriptName] ?? 'contato';
-                
-                if (function_exists('url')) {
-                    $referer = url($page, $lang);
-                } else {
-                    $referer = $baseUrl . '/' . $lang . '/' . $page;
-                }
-            }
+        $scriptName = basename($_SERVER['PHP_SELF']);
+        $pageMap = [
+            'contactForm.php' => 'contato',
+            'budgetForm.php' => 'orcamento',
+            'contractForm.php' => 'contrato',
+            'finalBudgetForm.php' => 'proposta'
+        ];
+        $page = $pageMap[$scriptName] ?? 'contato';
+
+        // Se o referer não tem idioma na URL, força fallback seguro por página/idioma
+        if ($referer && !preg_match('/\/(pt|en|es)\//', $referer)) {
+            $referer = null;
         }
 
-        header("Location: $referer");
+        $safeRedirect = getSafeRedirectUrl($referer, $page, $lang);
+        header("Location: $safeRedirect");
         exit;
     } else {
         // Em caso de erro, armazena erros na sessão
@@ -447,19 +776,7 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
         // Tenta identificar a página de origem baseado no script atual
         $referer = $_SERVER['HTTP_REFERER'] ?? null;
 
-        // Se não houver referer, tenta identificar a página baseado no script
-        if (!$referer) {
-            $scriptName = basename($_SERVER['PHP_SELF']);
-            $pageMap = [
-                'contactForm.php' => 'contato.php',
-                'budgetForm.php' => 'orcamento.php',
-                'contractForm.php' => 'contrato.php',
-                'finalBudgetForm.php' => 'proposta.php'
-            ];
-
-            $page = $pageMap[$scriptName] ?? 'contato.php';
-            $referer = $baseUrl . '/' . $page;
-        } else {
+        if ($referer) {
             // Remove query string de erro anterior se existir
             $referer = preg_replace('/[?&]error=\d+/', '', $referer);
         }
@@ -469,8 +786,18 @@ function redirectWithStatus($status = 'success', $errors = [], $fieldErrors = []
         $errorMessage = !empty($errors) ? $errors[0] : (function_exists('t') ? t('toast.error.message') : 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.');
         setToast('error', $errorMessage, $errorTitle);
 
-        $separator = strpos($referer, '?') !== false ? '&' : '?';
-        header("Location: $referer{$separator}error=1");
+        $scriptName = basename($_SERVER['PHP_SELF']);
+        $pageMap = [
+            'contactForm.php' => 'contato',
+            'budgetForm.php' => 'orcamento',
+            'contractForm.php' => 'contrato',
+            'finalBudgetForm.php' => 'proposta'
+        ];
+        $page = $pageMap[$scriptName] ?? 'contato';
+
+        $safeRedirect = getSafeRedirectUrl($referer, $page, $currentLang);
+        $separator = strpos($safeRedirect, '?') !== false ? '&' : '?';
+        header("Location: {$safeRedirect}{$separator}error=1");
         exit;
     }
 }
