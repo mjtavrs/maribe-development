@@ -53,7 +53,6 @@ $currentPage = 'home';
     <link rel="stylesheet" href="/styles/shared/cookiePopup.css" />
     <link rel="stylesheet" href="/styles/shared/forms.css" />
     <link rel="stylesheet" href="/styles/shared/toast.css" />
-    <link rel="stylesheet" href="/styles/shared/scrollToTop.css" />
     <link rel="stylesheet" href="/styles/shared/contractDataExplanation.css" />
     <link rel="stylesheet" href="/styles/pages/home/home.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />

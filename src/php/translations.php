@@ -235,6 +235,99 @@ $allTranslations = [
             'title' => 'Voltar ao topo'
         ],
 
+        // Accessibility Widget
+        'accessibilityWidget' => [
+            'dialogLabel' => 'Configurações de acessibilidade',
+            'title' => 'Acessibilidade',
+            'description' => 'Ajuste a página em tempo real do jeito que ficar mais confortável para você.',
+            'openLabel' => 'Abrir menu de acessibilidade',
+            'openTitle' => 'Acessibilidade',
+            'close' => 'Fechar menu de acessibilidade',
+            'reset' => 'Restaurar configuração original',
+            'helpOpen' => 'Entender opções de acessibilidade',
+            'helpDialogLabel' => 'Ajuda de acessibilidade',
+            'helpTitle' => 'Como cada opção funciona',
+            'helpDescription' => 'Veja o que cada recurso muda na página.',
+            'helpClose' => 'Fechar ajuda',
+            'sections' => [
+                'textSize' => 'Tamanho do texto',
+                'contrast' => 'Contraste',
+                'links' => 'Links',
+                'focus' => 'Foco por teclado',
+                'motion' => 'Reduzir animações',
+                'letterSpacing' => 'Espaçamento das letras',
+                'lineHeight' => 'Espaçamento das linhas'
+            ],
+            'options' => [
+                'textSizeLarge' => 'Maior',
+                'textSizeLarger' => 'Ainda maior',
+                'contrastHigh' => 'Alto',
+                'contrastSoft' => 'Suave',
+                'linksHighlighted' => 'Destacados',
+                'focusStrong' => 'Reforçado',
+                'motionReduced' => 'Reduzidas',
+                'letterSpacingWide' => 'Maior',
+                'letterSpacingWider' => 'Ainda maior',
+                'lineHeightRelaxed' => 'Maior',
+                'lineHeightSpacious' => 'Ainda maior'
+            ],
+            'help' => [
+                'helpClose' => 'Fechar ajuda',
+                'items' => [
+                    'textSize' => [
+                        'description' => 'Aumenta o tamanho do texto para deixar a leitura mais confortável.',
+                        'levels' => [
+                            'large' => 'Aplica o primeiro nível de aumento no texto.',
+                            'larger' => 'Aplica um segundo nível, deixando o texto ainda maior.'
+                        ]
+                    ],
+                    'contrast' => [
+                        'description' => 'Muda o contraste da página para melhorar o conforto visual.',
+                        'levels' => [
+                            'high' => 'Deixa a separação entre fundo e conteúdo mais forte.',
+                            'soft' => 'Cria um contraste mais suave, com leitura mais leve.'
+                        ]
+                    ],
+                    'links' => [
+                        'description' => 'Destaca os links para ajudar a identificar pontos clicáveis.',
+                        'levels' => [
+                            'highlighted' => 'Sublinha e reforça visualmente os links da página.'
+                        ]
+                    ],
+                    'focus' => [
+                        'description' => 'Deixa o foco do teclado mais visível durante a navegação.',
+                        'levels' => [
+                            'strong' => 'Mostra um contorno mais forte no elemento selecionado.'
+                        ]
+                    ],
+                    'motion' => [
+                        'description' => 'Reduz transições e animações da interface.',
+                        'levels' => [
+                            'reduced' => 'Diminui movimentos que possam causar desconforto.'
+                        ]
+                    ],
+                    'letterSpacing' => [
+                        'description' => 'Aumenta o espaço entre as letras para facilitar a leitura.',
+                        'levels' => [
+                            'wide' => 'Aplica um aumento moderado no espaçamento entre letras.',
+                            'wider' => 'Aplica um aumento mais forte no espaçamento entre letras.'
+                        ]
+                    ],
+                    'lineHeight' => [
+                        'description' => 'Aumenta o espaço entre as linhas do texto.',
+                        'levels' => [
+                            'relaxed' => 'Aplica um aumento moderado no espaçamento entre linhas.',
+                            'spacious' => 'Aplica um aumento mais forte no espaçamento entre linhas.'
+                        ]
+                    ]
+                ]
+            ],
+            'announcements' => [
+                'preferencesUpdated' => 'As preferências de acessibilidade foram atualizadas.',
+                'preferencesReset' => 'As preferências de acessibilidade voltaram ao padrão.'
+            ]
+        ],
+
         // Footer
         'footer' => [
             'socialMedia' => 'redes sociais',
@@ -582,6 +675,99 @@ $allTranslations = [
                 'shareWhatsAppMessage' => 'Check out this project: :title - :url',
                 'shareEmailSubject' => 'Project: :title',
                 'shareEmailBody' => 'Check out this project from maribe arquitetura:\n\n:title\n:description\n\n:url'
+            ]
+        ],
+
+        // Accessibility Widget
+        'accessibilityWidget' => [
+            'dialogLabel' => 'Accessibility settings',
+            'title' => 'Accessibility',
+            'description' => 'Adjust the page in real time so it feels more comfortable for you.',
+            'openLabel' => 'Open accessibility menu',
+            'openTitle' => 'Accessibility',
+            'close' => 'Close accessibility menu',
+            'reset' => 'Restore default settings',
+            'helpOpen' => 'Understand accessibility options',
+            'helpDialogLabel' => 'Accessibility help',
+            'helpTitle' => 'How each option works',
+            'helpDescription' => 'See what each feature changes on the page.',
+            'helpClose' => 'Close help',
+            'sections' => [
+                'textSize' => 'Text size',
+                'contrast' => 'Contrast',
+                'links' => 'Links',
+                'focus' => 'Keyboard focus',
+                'motion' => 'Reduce animations',
+                'letterSpacing' => 'Letter spacing',
+                'lineHeight' => 'Line spacing'
+            ],
+            'options' => [
+                'textSizeLarge' => 'Larger',
+                'textSizeLarger' => 'Largest',
+                'contrastHigh' => 'High',
+                'contrastSoft' => 'Soft',
+                'linksHighlighted' => 'Highlighted',
+                'focusStrong' => 'Strong',
+                'motionReduced' => 'Reduced',
+                'letterSpacingWide' => 'Wider',
+                'letterSpacingWider' => 'Widest',
+                'lineHeightRelaxed' => 'Relaxed',
+                'lineHeightSpacious' => 'Spacious'
+            ],
+            'help' => [
+                'helpClose' => 'Close help',
+                'items' => [
+                    'textSize' => [
+                        'description' => 'Increases text size to make reading more comfortable.',
+                        'levels' => [
+                            'large' => 'Applies the first level of text increase.',
+                            'larger' => 'Applies a second level with even larger text.'
+                        ]
+                    ],
+                    'contrast' => [
+                        'description' => 'Changes page contrast to improve visual comfort.',
+                        'levels' => [
+                            'high' => 'Creates stronger separation between background and content.',
+                            'soft' => 'Creates a softer contrast for a lighter visual effect.'
+                        ]
+                    ],
+                    'links' => [
+                        'description' => 'Highlights links so clickable points are easier to notice.',
+                        'levels' => [
+                            'highlighted' => 'Underlines and visually reinforces links on the page.'
+                        ]
+                    ],
+                    'focus' => [
+                        'description' => 'Makes keyboard focus more visible during navigation.',
+                        'levels' => [
+                            'strong' => 'Shows a stronger outline on the selected element.'
+                        ]
+                    ],
+                    'motion' => [
+                        'description' => 'Reduces transitions and interface animations.',
+                        'levels' => [
+                            'reduced' => 'Decreases movement effects that may cause discomfort.'
+                        ]
+                    ],
+                    'letterSpacing' => [
+                        'description' => 'Adds more space between letters to improve reading.',
+                        'levels' => [
+                            'wide' => 'Applies a moderate increase in letter spacing.',
+                            'wider' => 'Applies a stronger increase in letter spacing.'
+                        ]
+                    ],
+                    'lineHeight' => [
+                        'description' => 'Adds more space between lines of text.',
+                        'levels' => [
+                            'relaxed' => 'Applies a moderate increase in line spacing.',
+                            'spacious' => 'Applies a stronger increase in line spacing.'
+                        ]
+                    ]
+                ]
+            ],
+            'announcements' => [
+                'preferencesUpdated' => 'Accessibility preferences were updated.',
+                'preferencesReset' => 'Accessibility preferences were restored.'
             ]
         ],
 
@@ -956,6 +1142,99 @@ $allTranslations = [
         'scrollToTop' => [
             'label' => 'Volver arriba',
             'title' => 'Volver arriba'
+        ],
+
+        // Accessibility Widget
+        'accessibilityWidget' => [
+            'dialogLabel' => 'Configuraciones de accesibilidad',
+            'title' => 'Accesibilidad',
+            'description' => 'Ajusta la página en tiempo real para que te resulte más cómoda.',
+            'openLabel' => 'Abrir menú de accesibilidad',
+            'openTitle' => 'Accesibilidad',
+            'close' => 'Cerrar menú de accesibilidad',
+            'reset' => 'Restaurar configuración original',
+            'helpOpen' => 'Entender las opciones de accesibilidad',
+            'helpDialogLabel' => 'Ayuda de accesibilidad',
+            'helpTitle' => 'Cómo funciona cada opción',
+            'helpDescription' => 'Mira qué cambia cada recurso en la página.',
+            'helpClose' => 'Cerrar ayuda',
+            'sections' => [
+                'textSize' => 'Tamaño del texto',
+                'contrast' => 'Contraste',
+                'links' => 'Enlaces',
+                'focus' => 'Foco con teclado',
+                'motion' => 'Reducir animaciones',
+                'letterSpacing' => 'Espaciado de letras',
+                'lineHeight' => 'Espaciado de líneas'
+            ],
+            'options' => [
+                'textSizeLarge' => 'Mayor',
+                'textSizeLarger' => 'Aún mayor',
+                'contrastHigh' => 'Alto',
+                'contrastSoft' => 'Suave',
+                'linksHighlighted' => 'Destacados',
+                'focusStrong' => 'Reforzado',
+                'motionReduced' => 'Reducidas',
+                'letterSpacingWide' => 'Mayor',
+                'letterSpacingWider' => 'Aún mayor',
+                'lineHeightRelaxed' => 'Mayor',
+                'lineHeightSpacious' => 'Aún mayor'
+            ],
+            'help' => [
+                'helpClose' => 'Cerrar ayuda',
+                'items' => [
+                    'textSize' => [
+                        'description' => 'Aumenta el tamaño del texto para que la lectura sea más cómoda.',
+                        'levels' => [
+                            'large' => 'Aplica el primer nivel de aumento del texto.',
+                            'larger' => 'Aplica un segundo nivel con texto aún mayor.'
+                        ]
+                    ],
+                    'contrast' => [
+                        'description' => 'Cambia el contraste de la página para mejorar la comodidad visual.',
+                        'levels' => [
+                            'high' => 'Crea una separación más fuerte entre el fondo y el contenido.',
+                            'soft' => 'Crea un contraste más suave y liviano.'
+                        ]
+                    ],
+                    'links' => [
+                        'description' => 'Destaca los enlaces para identificar mejor los puntos clicables.',
+                        'levels' => [
+                            'highlighted' => 'Subraya y refuerza visualmente los enlaces de la página.'
+                        ]
+                    ],
+                    'focus' => [
+                        'description' => 'Hace más visible el foco del teclado durante la navegación.',
+                        'levels' => [
+                            'strong' => 'Muestra un contorno más fuerte en el elemento seleccionado.'
+                        ]
+                    ],
+                    'motion' => [
+                        'description' => 'Reduce transiciones y animaciones de la interfaz.',
+                        'levels' => [
+                            'reduced' => 'Disminuye movimientos que puedan causar incomodidad.'
+                        ]
+                    ],
+                    'letterSpacing' => [
+                        'description' => 'Añade más espacio entre letras para facilitar la lectura.',
+                        'levels' => [
+                            'wide' => 'Aplica un aumento moderado del espaciado entre letras.',
+                            'wider' => 'Aplica un aumento más fuerte del espaciado entre letras.'
+                        ]
+                    ],
+                    'lineHeight' => [
+                        'description' => 'Añade más espacio entre las líneas del texto.',
+                        'levels' => [
+                            'relaxed' => 'Aplica un aumento moderado del espaciado entre líneas.',
+                            'spacious' => 'Aplica un aumento más fuerte del espaciado entre líneas.'
+                        ]
+                    ]
+                ]
+            ],
+            'announcements' => [
+                'preferencesUpdated' => 'Las preferencias de accesibilidad fueron actualizadas.',
+                'preferencesReset' => 'Las preferencias de accesibilidad volvieron al valor original.'
+            ]
         ],
 
         // Footer

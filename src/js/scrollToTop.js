@@ -1,67 +1,56 @@
-/**
- * Botão Scroll to Top
- * 
- * Aparece após 280px de scroll (altura do header) e leva o usuário de volta ao topo
- */
-
-(function() {
+(function () {
     'use strict';
 
-    // Aguarda o DOM estar pronto
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+        document.addEventListener('DOMContentLoaded', initializeFloatingActionWidget);
+        return;
     }
 
-    function init() {
+    initializeFloatingActionWidget();
+
+    function initializeFloatingActionWidget() {
+        const floatingActionWidget = document.getElementById('floatingActionWidget');
         const scrollToTopButton = document.getElementById('scrollToTopButton');
-        
-        if (!scrollToTopButton) {
+
+        if (!floatingActionWidget || !scrollToTopButton) {
             return;
         }
 
-        // Threshold menor no mobile para aparecer mais cedo
-        const isMobile = window.innerWidth <= 767;
-        const scrollThreshold = isMobile ? 150 : 280;
-        let ticking = false;
+        let isTicking = false;
 
-        function updateButtonVisibility() {
-            const scrollY = window.scrollY;
-            // Atualiza o threshold caso a janela seja redimensionada
-            const currentIsMobile = window.innerWidth <= 767;
-            const currentThreshold = currentIsMobile ? 150 : 280;
+        function getScrollThreshold() {
+            return window.innerWidth <= 767 ? 150 : 280;
+        }
 
-            if (scrollY >= currentThreshold) {
-                scrollToTopButton.classList.add('visible');
+        function updateWidgetVisibility() {
+            if (window.scrollY >= getScrollThreshold()) {
+                floatingActionWidget.classList.add('visible');
             } else {
-                scrollToTopButton.classList.remove('visible');
+                floatingActionWidget.classList.remove('visible');
             }
 
-            ticking = false;
+            isTicking = false;
         }
 
-        function onScroll() {
-            if (!ticking) {
-                window.requestAnimationFrame(updateButtonVisibility);
-                ticking = true;
+        function handleScroll() {
+            if (isTicking) {
+                return;
             }
+
+            window.requestAnimationFrame(updateWidgetVisibility);
+            isTicking = true;
         }
 
-        // Adiciona o listener de scroll
-        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
-        // Handler para o clique no botão
-        scrollToTopButton.addEventListener('click', function(e) {
-            e.preventDefault();
+        scrollToTopButton.addEventListener('click', function (event) {
+            event.preventDefault();
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
 
-        // Verifica o estado inicial
-        updateButtonVisibility();
+        updateWidgetVisibility();
     }
 })();
-

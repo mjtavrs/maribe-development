@@ -56,6 +56,7 @@ $turnstileSiteKey = getTurnstileSiteKey();
     <link rel="stylesheet" href="/styles/shared/forms.css" />
     <link rel="stylesheet" href="/styles/shared/toast.css" />
     <link rel="stylesheet" href="/styles/shared/scrollToTop.css" />
+    <link rel="stylesheet" href="/styles/shared/accessibilityWidget.css" />
     <link rel="stylesheet" href="/styles/shared/contractDataExplanation.css" />
     <link rel="stylesheet" href="/styles/pages/contact/contact.css" />
 
@@ -205,6 +206,7 @@ $turnstileSiteKey = getTurnstileSiteKey();
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>
+    <?php include 'includes/accessibilityWidget.php'; ?>
     <?php include 'includes/scrollToTop.php'; ?>
 </body>
 

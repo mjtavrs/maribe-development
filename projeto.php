@@ -88,6 +88,7 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
     <link rel="stylesheet" href="/styles/shared/forms.css" />
     <link rel="stylesheet" href="/styles/shared/toast.css" />
     <link rel="stylesheet" href="/styles/shared/scrollToTop.css" />
+    <link rel="stylesheet" href="/styles/shared/accessibilityWidget.css" />
     <link rel="stylesheet" href="/styles/shared/contractDataExplanation.css" />
     <link rel="stylesheet" href="/styles/shared/lightbox.css" />
     <link rel="stylesheet" href="/styles/pages/project/project.css" />
@@ -378,6 +379,7 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
         </main>
         <?php include 'includes/footer.php'; ?>
     </div>
+    <?php include 'includes/accessibilityWidget.php'; ?>
     <?php include 'includes/scrollToTop.php'; ?>
 </body>
 

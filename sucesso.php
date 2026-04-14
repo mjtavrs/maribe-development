@@ -52,7 +52,6 @@ $currentPage = 'sucesso';
     <link rel="stylesheet" href="/styles/shared/cookiePopup.css" />
     <link rel="stylesheet" href="/styles/shared/forms.css" />
     <link rel="stylesheet" href="/styles/shared/toast.css" />
-    <link rel="stylesheet" href="/styles/shared/scrollToTop.css" />
     <link rel="stylesheet" href="/styles/shared/contractDataExplanation.css" />
     <link rel="stylesheet" href="/styles/pages/404/404.css" />
 
