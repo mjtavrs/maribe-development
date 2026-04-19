@@ -208,36 +208,105 @@ body #cookiePopupContainer .cookieButtons {
 }
 
 body #cookiePopupContainer .cookieButton {
+  --cookie-button-base-bg: transparent;
+  --cookie-button-fill-bg: var(--color-amarelo-tarsila);
+  --cookie-button-text-color: var(--color-bege-delicado);
+  --cookie-button-text-hover-color: var(--color-bege-delicado);
+  --cookie-button-border-color: transparent;
+  --cookie-button-border-hover-color: var(--cookie-button-border-color);
+  --cookie-button-focus-ring: rgba(197, 110, 81, 0.25);
+  --cookie-button-fill-width: 130%;
+  --cookie-button-fill-height: 320%;
+  --cookie-button-fill-offset-y: 80%;
+  --cookie-button-fill-active-y: -24%;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 8px 16px;
-  border: none;
+  border: 2px solid var(--cookie-button-border-color);
   border-radius: 5px;
+  background-color: var(--cookie-button-base-bg);
+  color: var(--cookie-button-text-color);
   font-family: "Kantumruy Pro SemiBold", sans-serif;
   font-size: 0.8rem;
   font-weight: 300;
   cursor: pointer;
-  transition: 300ms all;
   flex: 1;
   min-width: 120px;
+  transition:
+    color 1s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 1s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s ease;
+}
+
+body #cookiePopupContainer .cookieButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--cookie-button-fill-width);
+  height: var(--cookie-button-fill-height);
+  border-radius: 50%;
+  background-color: var(--cookie-button-fill-bg);
+  transform: translate(-50%, var(--cookie-button-fill-offset-y));
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+body #cookiePopupContainer .cookieButton:hover,
+body #cookiePopupContainer .cookieButton:focus-visible {
+  color: var(--cookie-button-text-hover-color);
+  border-color: var(--cookie-button-border-hover-color);
+}
+
+body #cookiePopupContainer .cookieButton:hover::before,
+body #cookiePopupContainer .cookieButton:focus-visible::before {
+  transform: translate(-50%, var(--cookie-button-fill-active-y));
+}
+
+body #cookiePopupContainer .cookieButton:focus-visible {
+  outline: none;
+  -webkit-box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 5px var(--cookie-button-focus-ring);
+  -moz-box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 5px var(--cookie-button-focus-ring);
+  box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 5px var(--cookie-button-focus-ring);
 }
 
 body #cookiePopupContainer .cookieButtonPrimary {
-  background-color: var(--color-vermelho-recife);
-  color: var(--color-bege-delicado);
-}
-
-body #cookiePopupContainer .cookieButtonPrimary:hover {
-  background-color: var(--color-amarelo-tarsila);
+  --cookie-button-base-bg: var(--color-vermelho-recife);
+  --cookie-button-fill-bg: var(--color-amarelo-tarsila);
+  --cookie-button-text-color: var(--color-bege-delicado);
+  --cookie-button-text-hover-color: var(--color-bege-delicado);
+  --cookie-button-border-color: var(--color-vermelho-recife);
+  --cookie-button-border-hover-color: var(--color-amarelo-tarsila);
 }
 
 body #cookiePopupContainer .cookieButtonSecondary {
-  background-color: transparent;
-  color: var(--color-vermelho-recife);
-  border: 2px solid var(--color-vermelho-recife);
+  --cookie-button-base-bg: transparent;
+  --cookie-button-fill-bg: var(--color-vermelho-recife);
+  --cookie-button-text-color: var(--color-vermelho-recife);
+  --cookie-button-text-hover-color: var(--color-bege-delicado);
+  --cookie-button-border-color: var(--color-vermelho-recife);
+  --cookie-button-border-hover-color: var(--color-vermelho-recife);
 }
 
-body #cookiePopupContainer .cookieButtonSecondary:hover {
-  background-color: var(--color-vermelho-recife);
-  color: var(--color-bege-delicado);
+body[data-a11y-motion="reduced"] #cookiePopupContainer .cookieButton,
+body[data-a11y-motion="reduced"] #cookiePopupContainer .cookieButton::before {
+  transition-duration: 0.01ms;
+}
+
+body[data-a11y-motion="reduced"] #cookiePopupContainer .cookieButton::before {
+  transform: translate(-50%, var(--cookie-button-fill-offset-y));
+}
+
+body[data-a11y-motion="reduced"] #cookiePopupContainer .cookieButton:hover::before,
+body[data-a11y-motion="reduced"] #cookiePopupContainer .cookieButton:focus-visible::before {
+  transform: translate(-50%, var(--cookie-button-fill-active-y));
 }
 
 @media screen and (min-width: 768px) {
