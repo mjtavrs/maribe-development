@@ -176,7 +176,7 @@ $turnstileSiteKey = getTurnstileSiteKey();
                     data-theme="light"></div>
                 <?php endif; ?>
                 <div id="buttonContainer">
-                    <button type="submit">
+                    <button type="submit" class="primary-action-button">
                         <?php echo htmlspecialchars(t('contract.form.submit'), ENT_QUOTES, 'UTF-8'); ?>
                     </button>
                 </div>

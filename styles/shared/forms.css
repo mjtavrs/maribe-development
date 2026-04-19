@@ -564,32 +564,98 @@ body main form #privacyLabel span a {
   color: var(--color-vermelho-recife);
 }
 
-body main form #buttonContainer button {
-  background-color: var(--color-vermelho-recife);
-  color: var(--color-bege-delicado);
+body main form #buttonContainer .primary-action-button {
+  --button-base-bg: var(--color-vermelho-recife);
+  --button-fill-bg: var(--color-amarelo-tarsila);
+  --button-text-color: var(--color-bege-delicado);
+  --button-text-hover-color: var(--color-bege-delicado);
+  --button-focus-ring: rgba(226, 175, 88, 0.35);
+  --button-fill-width: 120%;
+  --button-fill-height: 320%;
+  --button-fill-offset-y: 78%;
+  --button-fill-active-y: -24%;
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   cursor: pointer;
-  font-family: "Source Sans 3", sans-serif;
-  font-weight: 500;
-  font-size: 1.25rem;
+  width: 100%;
+  margin: 10px 0;
   border: none;
   border-radius: 5px;
   padding: 15px 0;
-  margin: 10px 0;
-  width: 100%;
-  z-index: 9999;
+  background-color: var(--button-base-bg);
+  color: var(--button-text-color);
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
 
   -webkit-box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
   -moz-box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
   box-shadow: 0px 0px 17px 2px rgba(226, 183, 159, 0.6);
-  transition: 300ms background-color;
+  transition:
+    color 1.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
-body main form #buttonContainer button:hover {
-  background-color: var(--color-amarelo-tarsila);
+body main form #buttonContainer .primary-action-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--button-fill-width);
+  height: var(--button-fill-height);
+  border-radius: 50%;
+  background-color: var(--button-fill-bg);
+  transform: translate(-50%, var(--button-fill-offset-y));
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
-body main form #buttonContainer button:not(:hover) {
-  background-color: var(--color-vermelho-recife);
+body main form #buttonContainer .primary-action-button:hover,
+body main form #buttonContainer .primary-action-button:focus-visible {
+  color: var(--button-text-hover-color);
+}
+
+body main form #buttonContainer .primary-action-button:hover::before,
+body main form #buttonContainer .primary-action-button:focus-visible::before {
+  transform: translate(-50%, var(--button-fill-active-y));
+}
+
+body main form #buttonContainer .primary-action-button:focus-visible {
+  outline: none;
+  -webkit-box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 6px var(--button-focus-ring),
+    0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  -moz-box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 6px var(--button-focus-ring),
+    0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+  box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 6px var(--button-focus-ring),
+    0px 0px 17px 2px rgba(226, 183, 159, 0.6);
+}
+
+body[data-a11y-motion="reduced"] main form #buttonContainer .primary-action-button,
+body[data-a11y-motion="reduced"] main form #buttonContainer .primary-action-button::before {
+  transition-duration: 0.01ms;
+}
+
+body[data-a11y-motion="reduced"] main form #buttonContainer .primary-action-button::before {
+  transform: translate(-50%, var(--button-fill-offset-y));
+}
+
+body[data-a11y-motion="reduced"] main form #buttonContainer .primary-action-button:hover::before,
+body[data-a11y-motion="reduced"] main form #buttonContainer .primary-action-button:focus-visible::before {
+  transform: translate(-50%, var(--button-fill-active-y));
 }
 
 @media screen and (min-width: 1024px) {
@@ -615,7 +681,7 @@ body main form #buttonContainer button:not(:hover) {
     justify-content: center;
   }
 
-  body main form #buttonContainer button {
+  body main form #buttonContainer .primary-action-button {
     margin: 15px 0;
     width: 75%;
   }
