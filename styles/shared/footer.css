@@ -74,26 +74,73 @@ body footer #socialLinks ul {
 }
 
 body footer #socialLinks ul li a {
+  --social-button-fill-bg: var(--color-cinza-elegante);
+  --social-button-icon-color: var(--color-cinza-elegante-sutil);
+  --social-button-icon-hover-color: var(--color-bege-delicado);
+  --social-button-focus-ring: rgba(60, 60, 59, 0.2);
+  --social-button-fill-width: 200%;
+  --social-button-fill-height: 260%;
+  --social-button-fill-offset-y: 82%;
+  --social-button-fill-active-y: -22%;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-block;
   padding: 5px;
   border: 1px solid var(--color-cinza-elegante);
   border-radius: 6px;
-  transition: all 0.2s ease;
+  background-color: transparent;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-body footer #socialLinks ul li a:hover {
-  background-color: rgba(197, 110, 81, 0.1);
+body footer #socialLinks ul li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--social-button-fill-width);
+  height: var(--social-button-fill-height);
+  border-radius: 50%;
+  background-color: var(--social-button-fill-bg);
+  transform: translate(-50%, var(--social-button-fill-offset-y));
+  transition: transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
-body footer #socialLinks ul li a:focus {
-  outline: 2px solid var(--color-vermelho-recife);
-  outline-offset: 2px;
+body footer #socialLinks ul li a:hover::before,
+body footer #socialLinks ul li a:focus-visible::before {
+  transform: translate(-50%, var(--social-button-fill-active-y));
+}
+
+body footer #socialLinks ul li a:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 5px var(--social-button-focus-ring);
 }
 
 body footer #socialLinks ul li a i {
   font-size: 28px;
-  color: var(--color-cinza-elegante-sutil);
+  color: var(--social-button-icon-color);
   display: block;
+  transition: color 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body footer #socialLinks ul li a:hover i,
+body footer #socialLinks ul li a:focus-visible i {
+  color: var(--social-button-icon-hover-color);
+}
+
+body[data-a11y-motion="reduced"] footer #socialLinks ul li a::before,
+body[data-a11y-motion="reduced"] footer #socialLinks ul li a i {
+  transition-duration: 0.01ms;
+}
+
+body[data-a11y-motion="reduced"] footer #socialLinks ul li a:hover::before,
+body[data-a11y-motion="reduced"] footer #socialLinks ul li a:focus-visible::before {
+  transform: translate(-50%, var(--social-button-fill-active-y));
 }
 
 body footer #legalInformation {
