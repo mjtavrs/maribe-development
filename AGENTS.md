@@ -5,6 +5,111 @@ Ensure all code follows high standards of security, clarity, maintainability, an
 
 ---
 
+## 🧠 Execution Pipeline (MANDATORY)
+
+All non-trivial tasks MUST follow this flow:
+
+1. Brainstorming → understand the problem deeply
+2. Planning → define the best approach
+3. Execution → implement with quality
+
+### 🚫 Do NOT jump directly to coding
+
+- If the task involves:
+  - new features
+  - architecture decisions
+  - refactors
+  - complex UI
+  - backend logic
+
+👉 You MUST start with `brainstorming-preflight`
+
+---
+
+## ⚡ Fast Path (Trivial Tasks Exception)
+
+If the task is trivial, you MAY skip the Brainstorming and Planning phases.
+
+### Trivial tasks include:
+- small bug fixes
+- typos
+- minor UI tweaks
+- simple refactors with no architectural impact
+- renaming variables or files
+- small isolated changes
+
+### Rules for Fast Path
+
+- The change MUST be low risk
+- The change MUST NOT affect architecture
+- The change MUST NOT introduce new patterns
+- The change MUST be fully understood without additional context
+
+If there is ANY doubt → fallback to Brainstorming.
+
+### Fast Path behavior
+
+- proceed directly to execution
+- still follow all clean code, security, and explanation rules
+- still use appropriate execution skills
+
+---
+
+## 🧠 Phase 1 — Brainstorming
+
+Use:
+- `brainstorming-preflight`
+
+### Purpose
+- clarify the real problem
+- explore multiple approaches
+- avoid premature decisions
+
+### Rules
+- no code allowed
+- ask questions if context is missing
+- generate multiple approaches
+- analyze trade-offs
+- recommend ONE approach
+
+---
+
+## 🧠 Phase 2 — Planning
+
+Use:
+- `planning-architect`
+
+### Purpose
+Transform the chosen idea into a clear implementation plan.
+
+### Rules
+- still NO code
+- define:
+  - architecture decisions
+  - file structure
+  - responsibilities per file
+  - data flow
+  - integration points
+- align with project standards (clean architecture, small files, etc.)
+
+---
+
+## 🧠 Phase 3 — Execution
+
+Only after planning is approved:
+
+Use appropriate skills:
+- `secure-backend-review`
+- `domain-data-modeler`
+- `component-split-enforcer`
+- `clean-code-editor`
+- `ux-flow-critic`
+
+And ALWAYS:
+- `plain-language-explainer` after meaningful changes
+
+---
+
 ## 🧠 General Principles
 
 - Always prioritize **clarity over cleverness**
@@ -29,22 +134,13 @@ Ensure all code follows high standards of security, clarity, maintainability, an
 ## 🏷️ Naming Conventions
 
 - All code elements MUST be named in **English**
-  - variables
-  - functions
-  - components
-  - classes
-  - files
 - Use **clear and descriptive names**
-  - ❌ `data`, `handleThing`
-  - ✅ `userList`, `createUserHandler`
 
 ---
 
 ## 🧹 Clean Code Rules
 
-- Avoid unnecessary comments:
-  - Code should be self-explanatory
-  - Comments should only exist when they add real value
+- Avoid unnecessary comments
 - Remove:
   - commented-out code
   - debug logs
@@ -60,8 +156,7 @@ Ensure all code follows high standards of security, clarity, maintainability, an
 - Always validate and sanitize inputs
 - Always enforce proper authorization checks
 - Avoid exposing sensitive data unnecessarily
-- Handle errors without leaking internal details
-- Be proactive: think about **possible vulnerabilities and abuse scenarios**
+- Handle errors safely
 
 ---
 
@@ -69,55 +164,42 @@ Ensure all code follows high standards of security, clarity, maintainability, an
 
 - Use consistent naming across database and code
 - Clearly define relationships and constraints
-- Avoid redundant or duplicated data
-- Consider scalability and future evolution
-- Always think about **data integrity**
+- Avoid redundant data
+- Ensure data integrity
 
 ---
 
 ## 🌐 API Design
 
-- Keep contracts consistent and predictable
-- Use clear request/response structures
+- Keep contracts consistent
 - Standardize error handling
-- Avoid breaking changes whenever possible
+- Avoid breaking changes
 
 ---
 
 ## 🎨 UX & Product Thinking
 
-- Always consider the **user experience**
+- Always consider user experience
 - Reduce friction and cognitive load
-- Ensure clear feedback:
-  - success
-  - error
-  - loading states
-- Avoid unnecessary steps in flows
-- Prioritize usability over visual complexity
+- Ensure feedback states exist
+- Prioritize usability over complexity
 
 ---
 
 ## 🧪 Refactoring Mindset
 
-- Always leave the code better than you found it
+- Leave code better than you found it
 - Reduce duplication
-- Improve readability
-- Simplify logic when possible
+- Simplify logic
 
 ---
 
 ## 🧠 Explanation Rule (VERY IMPORTANT)
 
-Whenever a change is made:
+After any meaningful change:
 
-- Provide a **simple explanation in plain language**
-- Explain as if speaking to:
-  - a non-technical person OR
-  - a child
-- Focus on:
-  - what changed
-  - why it changed
-  - what problem it solves
+Use:
+- `plain-language-explainer`
 
 ---
 
@@ -125,27 +207,33 @@ Whenever a change is made:
 
 - Overengineering
 - Premature optimization
+- Skipping brainstorming or planning phases (when required)
 - Large unstructured files
 - Mixing responsibilities
-- Ignoring edge cases or error scenarios
 
 ---
 
 ## ✅ Expected Outcome
 
-- Clean, secure, and maintainable code
-- Consistent structure across the project
-- Thoughtful user experience
-- Clear and simple explanations of changes
+- Clean, secure, maintainable code
+- Strong architectural decisions
+- Thoughtful UX
+- Clear explanations
 
 ---
 
-## Preferred Skills Routing
+## 🔀 Skills Routing
 
-Use these skills whenever applicable:
-- `secure-backend-review` for endpoints, auth, permissions, queries, uploads, and external integrations
-- `domain-data-modeler` for entities, schema design, relationships, and status modeling
-- `component-split-enforcer` for large UI files, pages, and refactors involving oversized components
-- `clean-code-editor` for refactors, cleanup, readability, and naming improvements
-- `ux-flow-critic` for pages, forms, tables, filters, modals, dashboards, and user-facing flows
-- `plain-language-explainer` after meaningful changes so the result is explained in very simple language
+### Mandatory flow control
+- `brainstorming-preflight` → ALWAYS before creative work (unless Fast Path applies)
+- `planning-architect` → ALWAYS before implementation (unless Fast Path applies)
+
+### Execution skills
+- `secure-backend-review`
+- `domain-data-modeler`
+- `component-split-enforcer`
+- `clean-code-editor`
+- `ux-flow-critic`
+
+### Final step
+- `plain-language-explainer`

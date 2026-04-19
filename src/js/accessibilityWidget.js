@@ -44,6 +44,7 @@
         const featureCards = root.querySelectorAll('[data-accessibility-card]');
         const openTriggers = document.querySelectorAll('[data-accessibility-open]');
         const liveRegion = document.getElementById('accessibilityWidgetLiveRegion');
+        const floatingActionWidget = document.getElementById('floatingActionWidget');
 
         const storageKey = root.dataset.storageKey || 'maribeAccessibilityPreferences';
         const announcements = {
@@ -51,6 +52,7 @@
             reset: root.dataset.preferencesReset || 'Accessibility preferences restored.'
         };
 
+        initializeViewportLayout(floatingActionWidget);
         applyPreferences(getStoredPreferences(storageKey));
         refreshInterface();
 
@@ -453,5 +455,91 @@
 
         bodyElement.style.overflow = state.previousBodyOverflow;
         delete bodyElement.dataset.accessibilityScrollLock;
+    }
+
+    function initializeViewportLayout(floatingActionWidget) {
+        updateViewportLayout(floatingActionWidget);
+
+        window.addEventListener('resize', function () {
+            updateViewportLayout(floatingActionWidget);
+        }, { passive: true });
+
+        window.addEventListener('orientationchange', function () {
+            updateViewportLayout(floatingActionWidget);
+        }, { passive: true });
+
+        if (!window.visualViewport) {
+            return;
+        }
+
+        window.visualViewport.addEventListener('resize', function () {
+            updateViewportLayout(floatingActionWidget);
+        });
+
+        window.visualViewport.addEventListener('scroll', function () {
+            updateViewportLayout(floatingActionWidget);
+        });
+    }
+
+    function updateViewportLayout(floatingActionWidget) {
+        const viewport = getViewportMetrics();
+        const rootStyle = document.documentElement.style;
+        const isMobile = viewport.width <= 767;
+        const panelWidth = isMobile
+            ? Math.max(Math.min(viewport.width - 20, 430), 280)
+            : Math.max(Math.min(viewport.width - 32, 760), 320);
+        const panelHeight = isMobile
+            ? Math.max(viewport.height - 20, 320)
+            : Math.max(Math.min(viewport.height - 32, 800), 360);
+        const panelLeft = isMobile
+            ? viewport.left + Math.max((viewport.width - panelWidth) / 2, 10)
+            : viewport.left + (viewport.width / 2);
+        const panelTop = isMobile
+            ? viewport.top + 10
+            : viewport.top + (viewport.height / 2);
+
+        rootStyle.setProperty('--a11y-viewport-left', formatPixelValue(viewport.left));
+        rootStyle.setProperty('--a11y-viewport-top', formatPixelValue(viewport.top));
+        rootStyle.setProperty('--a11y-viewport-width', formatPixelValue(viewport.width));
+        rootStyle.setProperty('--a11y-viewport-height', formatPixelValue(viewport.height));
+        rootStyle.setProperty('--a11y-panel-left', formatPixelValue(panelLeft));
+        rootStyle.setProperty('--a11y-panel-top', formatPixelValue(panelTop));
+        rootStyle.setProperty('--a11y-panel-width', formatPixelValue(panelWidth));
+        rootStyle.setProperty('--a11y-panel-max-height', formatPixelValue(panelHeight));
+
+        if (!floatingActionWidget) {
+            return;
+        }
+
+        const widgetWidth = floatingActionWidget.offsetWidth || (isMobile ? 105 : 109);
+        const widgetHeight = floatingActionWidget.offsetHeight || (isMobile ? 52 : 54);
+        const widgetBottomOffset = isMobile ? 20 : (viewport.width >= 1024 ? 50 : 40);
+        const widgetLeft = viewport.left + Math.max(viewport.width - widgetWidth, 0);
+        const widgetTop = viewport.top + Math.max(viewport.height - widgetHeight - widgetBottomOffset, 0);
+
+        rootStyle.setProperty('--a11y-widget-left', formatPixelValue(widgetLeft));
+        rootStyle.setProperty('--a11y-widget-top', formatPixelValue(widgetTop));
+    }
+
+    function getViewportMetrics() {
+        if (window.visualViewport) {
+            return {
+                left: window.visualViewport.offsetLeft,
+                top: window.visualViewport.offsetTop,
+                width: window.visualViewport.width,
+                height: window.visualViewport.height
+            };
+        }
+
+        return {
+            left: 0,
+            top: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+    }
+
+    function formatPixelValue(value) {
+        return Math.round(value) + 'px';
     }
 })();

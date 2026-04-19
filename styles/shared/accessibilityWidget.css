@@ -1,6 +1,20 @@
+:root {
+  --a11y-viewport-left: 0px;
+  --a11y-viewport-top: 0px;
+  --a11y-viewport-width: 100vw;
+  --a11y-viewport-height: 100dvh;
+  --a11y-panel-left: 50%;
+  --a11y-panel-top: 50%;
+  --a11y-panel-width: min(calc(100vw - 32px), 760px);
+  --a11y-panel-max-height: min(96dvh, 800px);
+}
+
 .accessibility-widget__backdrop {
   position: fixed;
-  inset: 0;
+  top: var(--a11y-viewport-top);
+  left: var(--a11y-viewport-left);
+  width: var(--a11y-viewport-width);
+  height: var(--a11y-viewport-height);
   background-color: rgba(60, 60, 59, 0.36);
   opacity: 0;
   pointer-events: none;
@@ -15,10 +29,10 @@
 
 .accessibility-widget__panel {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: min(calc(100vw - 32px), 760px);
-  max-height: min(96dvh, 800px);
+  top: var(--a11y-panel-top);
+  left: var(--a11y-panel-left);
+  width: var(--a11y-panel-width);
+  max-height: var(--a11y-panel-max-height);
   height: auto;
   background-color: var(--color-bege-delicado);
   color: var(--color-cinza-elegante);
@@ -467,18 +481,12 @@ body[data-a11y-contrast="soft"] a {
 
 @media screen and (max-width: 767px) {
   .accessibility-widget__panel {
-    top: 10px;
-    left: 10px;
-    width: min(calc(100vw - 20px), 430px);
-    max-width: calc(100vw - 20px);
-    max-height: calc(100dvh - 20px);
-    height: auto;
     border-radius: 20px;
-    transform: translateX(-10px) translateY(16px);
+    transform: translateY(16px);
   }
 
   .accessibility-widget__panel.is-open {
-    transform: translateX(0) translateY(0);
+    transform: translateY(0);
   }
 
   .accessibility-widget__header {

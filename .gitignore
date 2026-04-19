@@ -56,3 +56,6 @@ yarn.lock
 # Composer (se adicionar no futuro)
 vendor/
 composer.lock
+
+# Codex
+AGENTS.md

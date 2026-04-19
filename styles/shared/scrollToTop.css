@@ -82,7 +82,10 @@
 
 @media screen and (max-width: 767px) {
   .floating-action-widget {
-    bottom: 20px;
+    left: var(--a11y-widget-left, calc(100vw - 105px));
+    top: var(--a11y-widget-top, calc(100dvh - 72px));
+    right: auto;
+    bottom: auto;
   }
 
   .floating-action-widget.visible {

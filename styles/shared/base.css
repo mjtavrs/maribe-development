@@ -159,6 +159,19 @@ a {
   text-decoration: none;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
 body {
   background-color: var(--color-bege-delicado);
   color: var(--color-cinza-elegante);

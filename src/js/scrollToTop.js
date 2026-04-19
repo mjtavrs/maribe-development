@@ -19,7 +19,9 @@
         let isTicking = false;
 
         function getScrollThreshold() {
-            return window.innerWidth <= 767 ? 150 : 280;
+            const viewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+
+            return viewportWidth <= 767 ? 150 : 280;
         }
 
         function updateWidgetVisibility() {
