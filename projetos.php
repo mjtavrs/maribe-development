@@ -224,6 +224,7 @@ $currentPage = 'projetos';
     <script src="/src/js/languageSelector.js"></script>
     <script type="module" src="/src/js/projectsFilters.js" defer></script>
     <script type="module" src="/src/js/projectsSearch.js" defer></script>
+    <script type="module" src="/src/js/projectsLayoutToggle.js" defer></script>
     <script type="module" src="/src/js/projectsInjector.js" defer></script>
     <script src="/src/js/cookiePopup.js"></script>
     
@@ -252,17 +253,27 @@ $currentPage = 'projetos';
             include 'includes/pageInfo.php';
             ?>
             <div id="projectsSearchContainer">
-                <div id="projectsSearchWrapper">
-                    <i class="ph ph-regular ph-magnifying-glass" id="searchIcon"></i>
-                    <input 
-                        type="text" 
-                        id="projectsSearchInput" 
-                        data-placeholder-desktop="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        data-placeholder-mobile="<?php echo htmlspecialchars(t('projects.searchPlaceholderMobile'), ENT_QUOTES, 'UTF-8'); ?>"
-                        placeholder="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                        aria-label="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
-                    >
-                    <span id="searchKeyboardHelper" class="search-helper"></span>
+                <div id="projectsSearchControls">
+                    <div id="projectsSearchWrapper">
+                        <i class="ph ph-regular ph-magnifying-glass" id="searchIcon"></i>
+                        <input 
+                            type="text" 
+                            id="projectsSearchInput" 
+                            data-placeholder-desktop="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                            data-placeholder-mobile="<?php echo htmlspecialchars(t('projects.searchPlaceholderMobile'), ENT_QUOTES, 'UTF-8'); ?>"
+                            placeholder="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                            aria-label="<?php echo htmlspecialchars(t('projects.searchPlaceholder'), ENT_QUOTES, 'UTF-8'); ?>"
+                        >
+                        <span id="searchKeyboardHelper" class="search-helper"></span>
+                    </div>
+                    <div id="projectsLayoutToggle" role="group" aria-label="<?php echo htmlspecialchars(t('projects.layoutLabel', 'Visualização dos projetos'), ENT_QUOTES, 'UTF-8'); ?>">
+                        <button type="button" class="layout-toggle-button active" data-projects-layout="2" aria-pressed="true" aria-label="<?php echo htmlspecialchars(t('projects.layoutTwoColumns', 'Visualização em duas colunas'), ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars(t('projects.layoutTwoColumns', 'Visualização em duas colunas'), ENT_QUOTES, 'UTF-8'); ?>">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"></path></svg>
+                        </button>
+                        <button type="button" class="layout-toggle-button" data-projects-layout="3" aria-pressed="false" aria-label="<?php echo htmlspecialchars(t('projects.layoutThreeColumns', 'Visualização em três colunas'), ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars(t('projects.layoutThreeColumns', 'Visualização em três colunas'), ENT_QUOTES, 'UTF-8'); ?>">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M88,40H40A16,16,0,0,0,24,56v48a16,16,0,0,0,16,16H88a16,16,0,0,0,16-16V56A16,16,0,0,0,88,40Zm0,64H40V56H88v48Zm96-64H136a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,184,40Zm0,64H136V56h48v48Zm96-64H232a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,280,40Zm0,64H232V56h48v48ZM88,136H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88a16,16,0,0,0,16-16V152A16,16,0,0,0,88,136Zm0,64H40V152H88v48Zm96-64H136a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,184,136Zm0,64H136V152h48v48Zm96-64H232a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,280,136Zm0,64H232V152h48v48Z"></path></svg>
+                        </button>
+                    </div>
                 </div>
                 <div id="projectsFilters" role="group" aria-label="<?php echo htmlspecialchars(t('projects.filtersLabel', 'Filtros de projetos'), ENT_QUOTES, 'UTF-8'); ?>">
                     <button type="button" class="filter-button active" data-filter="todos" aria-pressed="true">
@@ -277,7 +288,7 @@ $currentPage = 'projetos';
                 </div>
             </div>
             <h2 id="projectsListHeading" class="visually-hidden"><?php echo htmlspecialchars(t('projects.listHeading', 'Lista de projetos'), ENT_QUOTES, 'UTF-8'); ?></h2>
-            <div id="projectsContainer" role="list" aria-labelledby="projectsListHeading" aria-live="polite"></div>
+            <div id="projectsContainer" class="projects-layout-2" role="list" aria-labelledby="projectsListHeading" aria-live="polite"></div>
             <div id="noResultsMessage" class="no-results-hidden" aria-live="polite" aria-atomic="true">
                 <div class="no-results-icon-wrapper">
                     <i class="ph ph-regular ph-magnifying-glass" aria-hidden="true"></i>
