@@ -2,14 +2,6 @@
  * Projects Page Styles
  */
 
-.visibilityOff {
-  visibility: hidden;
-}
-
-.brightnessFilter {
-  filter: brightness(0.5);
-}
-
 body main #projectsContainer {
   display: flex;
   flex-direction: column;
@@ -19,6 +11,7 @@ body main #projectsContainer {
 
 body main #projectsContainer article {
   height: 360px;
+  isolation: isolate;
   position: relative;
   /* Transição aplicada sempre - mais lenta e perceptível */
   transition: opacity 1s ease-out, transform 1s ease-out,
@@ -42,23 +35,29 @@ body main #projectsContainer article.fade-in-active {
   transform: translateY(0);
 }
 
-body main #projectsContainer article a span {
-  background-color: var(--color-bege-delicado);
-  border-radius: 16px;
+body main #projectsContainer article .project-card-title {
+  background-color: rgba(252, 252, 250, 0.96);
+  border-radius: 6px;
   color: var(--color-cinza-elegante);
-  filter: opacity(0.9);
   font-family: "All Round Gothic", sans-serif;
   left: 50%;
   margin: 0;
+  max-width: calc(100% - 48px);
+  opacity: 0;
   padding: 20px 16px;
+  pointer-events: none;
   position: absolute;
   text-transform: lowercase;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -48%);
+  transition: opacity 0.28s ease, transform 0.28s ease,
+    visibility 0.28s ease;
+  user-select: none;
+  visibility: hidden;
   z-index: 2;
 }
 
-body main #projectsContainer article a span h4 {
+body main #projectsContainer article .project-card-title h4 {
   border-top: 1px solid var(--color-cinza-elegante);
   border-bottom: 1px solid var(--color-cinza-elegante);
   padding: 16px 0;
@@ -69,8 +68,33 @@ body main #projectsContainer article a {
   display: block;
   width: 100%;
   height: 100%;
+  isolation: isolate;
   position: relative;
   outline: none;
+}
+
+body main #projectsContainer article a::before,
+body main #projectsContainer article a::after {
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+body main #projectsContainer article a::before {
+  background: rgba(17, 17, 17, 0.70);
+  z-index: 1;
+}
+
+body main #projectsContainer article a::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 14 14'%3E%3Cpath d='M7 0.8v2.8M5.6 2.2h2.8M2.4 4.8v2.8M1 6.2h2.8M11.6 4.8v2.8M10.2 6.2H13M7 9.4v2.8M5.6 10.8h2.8' stroke='%23111111' stroke-opacity='.4' stroke-width='.95' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 12px 12px;
+  z-index: 1;
 }
 
 body main #projectsContainer article a:focus {
@@ -84,14 +108,30 @@ body main #projectsContainer article a img {
   height: 360px;
   object-fit: cover;
   position: absolute;
-  transition: 300ms;
+  transition: transform 0.3s ease, filter 0.3s ease;
   width: 100%;
-  z-index: 1;
+  z-index: 0;
   /* Remove border-radius do img já que o article tem overflow hidden */
   border-radius: 0;
 }
 
-/* Sentinela para lazy loading (invisível) */
+/* Keyboard focus states */
+body main #projectsContainer article:focus-within a::before,
+body main #projectsContainer article:focus-within a::after {
+  opacity: 1;
+}
+
+body main #projectsContainer article:focus-within .project-card-title {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  visibility: visible;
+}
+
+body main #projectsContainer article:focus-within a img {
+  transform: scale(1.02);
+}
+
+/* Lazy loading sentinel */
 body main #projectsContainer #projectsSentinel {
   height: 1px;
   width: 100%;
@@ -125,6 +165,21 @@ body main #projectsContainer #projectsSentinel {
 
   body main #projectsContainer article a img {
     border-radius: 0;
+  }
+
+  body main #projectsContainer article:hover a::before,
+  body main #projectsContainer article:hover a::after {
+    opacity: 1;
+  }
+
+  body main #projectsContainer article:hover .project-card-title {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+  }
+
+  body main #projectsContainer article:hover a img {
+    transform: scale(1.02);
   }
 
   /* Efeito hover sutil - sombra um pouco mais forte */

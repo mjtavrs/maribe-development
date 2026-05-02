@@ -133,30 +133,11 @@ function createProjectElement(project) {
     projectCover.decoding = "async";
 
     let titleBox = document.createElement("span");
-    titleBox.classList.add("visibilityOff");
+    titleBox.classList.add("project-card-title");
     titleBox.setAttribute("aria-hidden", "true");
     
     let projectTitle = document.createElement("h4");
     projectTitle.textContent = project.titulo;
-
-    // Event listeners para hover/touch/focus
-    function showTitle() {
-        titleBox.classList.remove("visibilityOff");
-        projectCover.classList.add("brightnessFilter");
-    }
-    
-    function hideTitle() {
-        titleBox.classList.add("visibilityOff");
-        projectCover.classList.remove("brightnessFilter");
-    }
-
-    projectBox.addEventListener("mouseover", showTitle);
-    projectBox.addEventListener("mouseout", hideTitle);
-    projectReferrer.addEventListener("focus", showTitle);
-    projectReferrer.addEventListener("blur", hideTitle);
-    
-    projectBox.addEventListener("touchstart", showTitle);
-    projectBox.addEventListener("touchend", hideTitle);
 
     // Monta a estrutura
     titleBox.appendChild(projectTitle);

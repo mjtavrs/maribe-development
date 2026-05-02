@@ -15,8 +15,42 @@ body main {
 body main .project-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 24px;
   width: 100%;
+}
+
+body main .project-back-row {
+  margin-bottom: 30px;
+  padding-left: 32px;
+  width: 100%;
+}
+
+body main .project-back-link {
+  align-items: center;
+  color: var(--color-vermelho-recife);
+  display: inline-flex;
+  font-family: "Kantumruy Pro SemiBold", sans-serif;
+  font-size: 1.15rem;
+  gap: 10px;
+  line-height: 1.2;
+  opacity: 0.94;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+body main .project-back-link:hover {
+  opacity: 0.88;
+}
+
+body main .project-back-link:focus-visible {
+  outline: 2px solid var(--color-vermelho-recife);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+body main .project-back-link i {
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 body main .project-info {
@@ -102,45 +136,107 @@ body main .project-share-buttons {
 }
 
 body main .share-button {
+  --share-button-fill-bg: var(--color-cinza-elegante);
+  --share-button-icon-color: var(--color-cinza-elegante-sutil);
+  --share-button-icon-hover-color: var(--color-bege-delicado);
+  --share-button-focus-ring: rgba(60, 60, 59, 0.2);
+  --share-button-fill-width: 200%;
+  --share-button-fill-height: 260%;
+  --share-button-fill-offset-y: 82%;
+  --share-button-fill-active-y: -22%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
+  overflow: hidden;
   padding: 2px;
-  border: 1px solid rgba(60, 60, 59, 0.3);
+  position: relative;
+  border: 1px solid var(--color-cinza-elegante);
   border-radius: 6px;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   background-color: transparent;
   width: 28px;
   height: 28px;
 }
 
-body main .share-button:hover {
-  background-color: rgba(197, 110, 81, 0.1);
+body main .share-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--share-button-fill-width);
+  height: var(--share-button-fill-height);
+  border-radius: 50%;
+  background-color: var(--share-button-fill-bg);
+  transform: translate(-50%, var(--share-button-fill-offset-y));
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
-body main .share-button:focus {
-  outline: 2px solid var(--color-vermelho-recife);
-  outline-offset: 2px;
+body main .share-button:hover::before,
+body main .share-button:focus-visible::before {
+  transform: translate(-50%, var(--share-button-fill-active-y));
+}
+
+body main .share-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px var(--color-bege-delicado),
+    0 0 0 5px var(--share-button-focus-ring);
 }
 
 body main .share-button i {
   font-size: 22px;
-  color: var(--color-cinza-elegante-sutil);
+  color: var(--share-button-icon-color);
   display: block;
   line-height: 1;
+  transition: color 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body main .share-button svg {
+  color: var(--share-button-icon-color);
+  display: block;
+  flex-shrink: 0;
+  height: 18px;
+  transition: color 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 18px;
 }
 
 body main .share-button span {
   font-size: 22px;
-  color: var(--color-cinza-elegante-sutil);
+  color: var(--share-button-icon-color);
   display: block;
   font-family: "Source Sans 3", sans-serif;
   font-weight: 400;
   line-height: 1;
+  transition: color 0.85s cubic-bezier(0.4, 0, 0.2, 1);
   width: 22px;
   height: 22px;
   text-align: center;
+}
+
+body main .share-button:hover i,
+body main .share-button:focus-visible i,
+body main .share-button:hover svg,
+body main .share-button:focus-visible svg,
+body main .share-button:hover span,
+body main .share-button:focus-visible span {
+  color: var(--share-button-icon-hover-color);
+}
+
+body[data-a11y-motion="reduced"] main .share-button::before,
+body[data-a11y-motion="reduced"] main .share-button i,
+body[data-a11y-motion="reduced"] main .share-button svg,
+body[data-a11y-motion="reduced"] main .share-button span {
+  transition-duration: 0.01ms;
+}
+
+body[data-a11y-motion="reduced"] main .share-button:hover::before,
+body[data-a11y-motion="reduced"] main .share-button:focus-visible::before {
+  transform: translate(-50%, var(--share-button-fill-active-y));
 }
 
 body main .project-gallery {
@@ -184,13 +280,24 @@ body main .project-gallery div img {
 
 @media screen and (min-width: 1024px) {
   body main .project-container {
-    flex-direction: row;
     align-items: flex-start;
-    gap: 40px;
+    column-gap: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+
+  body main .project-back-row {
+    flex: 0 0 100%;
   }
 
   body main .project-info {
     flex: 0 0 350px;
+  }
+
+  body main .project-gallery {
+    flex: 1;
+    min-width: 0;
   }
 
   body main .project-info-content {
@@ -213,7 +320,6 @@ body main .project-gallery div img {
 
 
   body main .project-gallery {
-    flex: 1;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }

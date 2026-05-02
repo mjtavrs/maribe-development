@@ -1,5 +1,44 @@
 import projects from "./projectsData.js";
 
+const localizedPageMap = {
+    pt: {
+        projeto: "projeto",
+        projetos: "projetos",
+        contato: "contato",
+        orcamento: "orcamento",
+        sobre: "sobre",
+        contrato: "contrato",
+        proposta: "proposta",
+        "politica-de-privacidade": "politica-de-privacidade",
+        sucesso: "sucesso",
+        index: "index"
+    },
+    en: {
+        projeto: "project",
+        projetos: "projects",
+        contato: "contact",
+        orcamento: "budget",
+        sobre: "about",
+        contrato: "contract",
+        proposta: "proposal",
+        "politica-de-privacidade": "privacy-policy",
+        sucesso: "success",
+        index: "home"
+    },
+    es: {
+        projeto: "proyecto",
+        projetos: "proyectos",
+        contato: "contacto",
+        orcamento: "presupuesto",
+        sobre: "sobre",
+        contrato: "contrato",
+        proposta: "propuesta",
+        "politica-de-privacidade": "politica-de-privacidad",
+        sucesso: "exito",
+        index: "inicio"
+    }
+};
+
 function normalizeAssetPath(path) {
     if (!path) return path;
     return path.startsWith("/") ? path : `/${path}`;
@@ -21,6 +60,38 @@ function detectCurrentLanguage() {
     const pathname = window.location.pathname;
     const langMatch = pathname.match(/^\/(pt|en|es)\//);
     return langMatch ? langMatch[1] : 'pt';
+}
+
+function getLocalizedPagePath(page, lang = detectCurrentLanguage()) {
+    return localizedPageMap[lang]?.[page] || page;
+}
+
+function getLocalizedUrl(page, lang = detectCurrentLanguage()) {
+    return `${window.location.origin}/${lang}/${getLocalizedPagePath(page, lang)}`;
+}
+
+function normalizePathname(pathname) {
+    return pathname.replace(/\/+$/, "") || "/";
+}
+
+function isPlainLeftClick(event) {
+    return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+}
+
+function cameFromProjectsListing(referrerUrl, fallbackUrl) {
+    if (referrerUrl.origin !== fallbackUrl.origin) {
+        return false;
+    }
+
+    const lang = detectCurrentLanguage();
+    const referrerPath = normalizePathname(referrerUrl.pathname);
+    const cleanProjectsPath = normalizePathname(fallbackUrl.pathname);
+    const localizedLegacyPath = normalizePathname(`/${lang}/${getLocalizedPagePath("projetos", lang)}.php`);
+    const rootLegacyPath = normalizePathname("/projetos.php");
+
+    return referrerPath === cleanProjectsPath
+        || referrerPath === localizedLegacyPath
+        || referrerPath === rootLegacyPath;
 }
 
 /**
@@ -170,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
     projectInfoDescriptionElement.textContent = projectDescription;
     
     // Configura os botões de compartilhamento
+    setupBackToProjectsLink();
     setupShareButtons(project);
     
     // Configura o lightbox com traduções dinâmicas
@@ -232,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * Redireciona para a página de projetos quando o projeto não é encontrado
  */
 function redirectToProjects() {
-    window.location.href = "projetos.php";
+    window.location.href = getLocalizedUrl("projetos");
 }
 
 /**
@@ -299,6 +371,40 @@ function getCleanUrl() {
     const cleanUrl = `${url.origin}${cleanPath}${queryString ? '?' + queryString : ''}`;
     
     return cleanUrl;
+}
+
+/**
+ * Configura o retorno contextual para a listagem de projetos
+ */
+function setupBackToProjectsLink() {
+    const backToProjectsLink = document.getElementById("backToProjects");
+
+    if (!backToProjectsLink || !document.referrer) {
+        return;
+    }
+
+    let fallbackUrl;
+    let referrerUrl;
+
+    try {
+        fallbackUrl = new URL(backToProjectsLink.href, window.location.origin);
+        referrerUrl = new URL(document.referrer);
+    } catch {
+        return;
+    }
+
+    if (!cameFromProjectsListing(referrerUrl, fallbackUrl)) {
+        return;
+    }
+
+    backToProjectsLink.addEventListener("click", (event) => {
+        if (!isPlainLeftClick(event) || window.history.length <= 1) {
+            return;
+        }
+
+        event.preventDefault();
+        window.history.back();
+    });
 }
 
 /**

@@ -133,7 +133,7 @@ $menuItems = [
 
     <!-- Topo: Logo + Botão Hambúrguer -->
     <div id="headerTop">
-        <a href="<?php echo function_exists('url') ? url('index', $currentLang) : '/'; ?>" id="indexReferrer">
+        <a href="<?php echo function_exists('url') ? url('sobre', $currentLang) : '/sobre.php'; ?>" id="indexReferrer">
             <?php 
             $logoAlt = isset($translations['projects']['altText']['logo']) 
                 ? $translations['projects']['altText']['logo'] 
