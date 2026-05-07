@@ -32,7 +32,7 @@ $currentPage = 'sobre';
     require_once __DIR__ . '/src/php/openGraph.php';
     $pageTitle = t('about.title') . ' • maribe arquitetura';
     echo generateOpenGraphTags($pageTitle, t('about.metaDescription'), 'assets/images/public/logo_home.webp');
-    
+
     // Canonical URL
     echo generateCanonicalTag();
     ?>
@@ -60,62 +60,11 @@ $currentPage = 'sobre';
     <!-- Scripts -->
     <script src="/src/js/cookiePopup.js"></script>
     <script src="/src/js/languageSelector.js"></script>
-    <script>
-        // Garante loop suave sem flash preto
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.getElementById('logoHistoryVideo');
-            if (video) {
-                let isSeeking = false;
-                
-                // Previne flash preto no loop - reinicia ANTES de chegar ao fim
-                video.addEventListener('timeupdate', function() {
-                    // Se estiver muito próximo do fim (últimos 0.2 segundos), volta para o início
-                    if (!isSeeking && video.duration && video.currentTime >= video.duration - 0.2) {
-                        isSeeking = true;
-                        video.currentTime = 0;
-                        // Pequeno delay para garantir que o seek foi processado
-                        setTimeout(function() {
-                            isSeeking = false;
-                        }, 50);
-                    }
-                });
-                
-                // Garante que o vídeo sempre esteja pronto para loop
-                video.addEventListener('ended', function() {
-                    isSeeking = true;
-                    video.currentTime = 0;
-                    video.play().catch(function(error) {
-                        // Ignora erros de autoplay
-                        console.log('Autoplay bloqueado:', error);
-                    });
-                    setTimeout(function() {
-                        isSeeking = false;
-                    }, 50);
-                });
-                
-                // Força play se pausar (pode acontecer em alguns navegadores)
-                video.addEventListener('pause', function() {
-                    if (document.visibilityState === 'visible' && !isSeeking) {
-                        video.play().catch(function(error) {
-                            console.log('Play bloqueado:', error);
-                        });
-                    }
-                });
-                
-                // Garante que o vídeo carregue completamente antes de começar
-                video.addEventListener('loadeddata', function() {
-                    video.play().catch(function(error) {
-                        console.log('Autoplay inicial bloqueado:', error);
-                    });
-                });
-            }
-        });
-    </script>
-    
+
     <?php
     // Schema.org JSON-LD
     echo generateLocalBusinessSchema($currentLang);
-    
+
     // Breadcrumb Schema
     $breadcrumbs = [
         ['name' => function_exists('t') ? t('menu.home') : 'início', 'url' => url('index', $currentLang)],
@@ -201,6 +150,7 @@ $currentPage = 'sobre';
     </div>
     <?php include 'includes/accessibilityWidget.php'; ?>
     <?php include 'includes/scrollToTop.php'; ?>
+    <script src="/src/js/aboutVideoVisibility.js"></script>
 </body>
 
 </html>

@@ -413,6 +413,7 @@ function setupBackToProjectsLink() {
 function setupShareButtons(project) {
     const shareWhatsAppButton = document.getElementById("shareWhatsApp");
     const shareEmailButton = document.getElementById("shareEmail");
+    const shareNativeButton = document.getElementById("shareNative");
     
     if (!shareWhatsAppButton || !shareEmailButton) {
         return;
@@ -452,6 +453,14 @@ function setupShareButtons(project) {
         (window.shareTranslations && window.shareTranslations.pt && window.shareTranslations.pt.emailBody) ||
         'Confira este projeto da maribe arquitetura:\n\n:title\n:description\n\n:url';
     
+    const nativeLabel = translations.nativeLabel ||
+        (window.shareTranslations && window.shareTranslations.pt && window.shareTranslations.pt.nativeLabel) ||
+        'Compartilhar no dispositivo';
+
+    const nativeText = translations.nativeText ||
+        (window.shareTranslations && window.shareTranslations.pt && window.shareTranslations.pt.nativeText) ||
+        'Confira este projeto da maribe arquitetura.';
+    
     // Substitui os placeholders nos templates de tradução
     const whatsappMessage = whatsAppTemplate
         .replace(':title', project.titulo || '')
@@ -470,4 +479,47 @@ function setupShareButtons(project) {
     
     // Link de e-mail
     shareEmailButton.href = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    if (!shareNativeButton) {
+        return;
+    }
+
+    const mobileShareBreakpoint = window.matchMedia("(max-width: 1023px)");
+    const nativeShareData = {
+        title: project.titulo || '',
+        text: nativeText,
+        url: currentUrl
+    };
+
+    function updateNativeShareAvailability() {
+        const canUseNativeShare = typeof navigator.share === "function" && mobileShareBreakpoint.matches;
+
+        shareNativeButton.hidden = !canUseNativeShare;
+        shareNativeButton.classList.toggle("is-share-native-visible", canUseNativeShare);
+        shareNativeButton.setAttribute("aria-hidden", String(!canUseNativeShare));
+        shareNativeButton.setAttribute("aria-label", nativeLabel);
+        shareNativeButton.setAttribute("title", nativeLabel);
+    }
+
+    shareNativeButton.onclick = async function () {
+        if (shareNativeButton.hidden || typeof navigator.share !== "function") {
+            return;
+        }
+
+        try {
+            await navigator.share(nativeShareData);
+        } catch (error) {
+            if (error && error.name === "AbortError") {
+                return;
+            }
+        }
+    };
+
+    if (typeof mobileShareBreakpoint.addEventListener === "function") {
+        mobileShareBreakpoint.addEventListener("change", updateNativeShareAvailability);
+    } else if (typeof mobileShareBreakpoint.addListener === "function") {
+        mobileShareBreakpoint.addListener(updateNativeShareAvailability);
+    }
+
+    updateNativeShareAvailability();
 }

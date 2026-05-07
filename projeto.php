@@ -222,6 +222,20 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
                         ? $translations['projects']['detail']['shareEmailBody'] 
                         : 'Confira este projeto da maribe arquitetura:\n\n:title\n:description\n\n:url';
                     echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nativeLabel: <?php
+                    $translations = loadTranslations('pt');
+                    $template = isset($translations['projects']['detail']['shareNative'])
+                        ? $translations['projects']['detail']['shareNative']
+                        : 'Compartilhar no dispositivo';
+                    echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nativeText: <?php
+                    $translations = loadTranslations('pt');
+                    $template = isset($translations['projects']['detail']['shareNativeText'])
+                        ? $translations['projects']['detail']['shareNativeText']
+                        : 'Confira este projeto da maribe arquitetura.';
+                    echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 ?>
             },
             en: {
@@ -245,6 +259,20 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
                         ? $translations['projects']['detail']['shareEmailBody'] 
                         : 'Check out this project from maribe arquitetura:\n\n:title\n:description\n\n:url';
                     echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nativeLabel: <?php
+                    $translations = loadTranslations('en');
+                    $template = isset($translations['projects']['detail']['shareNative'])
+                        ? $translations['projects']['detail']['shareNative']
+                        : 'Share on device';
+                    echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nativeText: <?php
+                    $translations = loadTranslations('en');
+                    $template = isset($translations['projects']['detail']['shareNativeText'])
+                        ? $translations['projects']['detail']['shareNativeText']
+                        : 'Check out this project from maribe arquitetura.';
+                    echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 ?>
             },
             es: {
@@ -267,6 +295,20 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
                     $template = isset($translations['projects']['detail']['shareEmailBody']) 
                         ? $translations['projects']['detail']['shareEmailBody'] 
                         : 'Mira este proyecto de maribe arquitetura:\n\n:title\n:description\n\n:url';
+                    echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nativeLabel: <?php
+                    $translations = loadTranslations('es');
+                    $template = isset($translations['projects']['detail']['shareNative'])
+                        ? $translations['projects']['detail']['shareNative']
+                        : 'Compartir en el dispositivo';
+                    echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                ?>,
+                nativeText: <?php
+                    $translations = loadTranslations('es');
+                    $template = isset($translations['projects']['detail']['shareNativeText'])
+                        ? $translations['projects']['detail']['shareNativeText']
+                        : 'Mira este proyecto de maribe arquitetura.';
                     echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 ?>
             }
@@ -381,6 +423,9 @@ $currentPage = $hasProjectParams ? 'projeto' : 'projetos';
                                 <a href="#" id="shareEmail" class="share-button share-email" aria-label="<?php echo htmlspecialchars(t('projects.detail.shareEmail'), ENT_QUOTES, 'UTF-8'); ?>">
                                     <span>@</span>
                                 </a>
+                                <button type="button" id="shareNative" class="share-button share-native" aria-label="<?php echo htmlspecialchars(t('projects.detail.shareNative'), ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars(t('projects.detail.shareNative'), ENT_QUOTES, 'UTF-8'); ?>" hidden>
+                                    <i class="ph-bold ph-share-network" aria-hidden="true"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

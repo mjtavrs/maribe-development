@@ -160,6 +160,13 @@ body main .share-button {
   background-color: transparent;
   width: 28px;
   height: 28px;
+  box-sizing: content-box;
+  cursor: pointer;
+  appearance: none;
+}
+
+body main .share-native {
+  display: none;
 }
 
 body main .share-button::before {
@@ -237,6 +244,12 @@ body[data-a11y-motion="reduced"] main .share-button span {
 body[data-a11y-motion="reduced"] main .share-button:hover::before,
 body[data-a11y-motion="reduced"] main .share-button:focus-visible::before {
   transform: translate(-50%, var(--share-button-fill-active-y));
+}
+
+@media screen and (max-width: 1023px) {
+  body main .share-native.is-share-native-visible {
+    display: inline-flex;
+  }
 }
 
 body main .project-gallery {
