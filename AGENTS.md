@@ -1,239 +1,54 @@
-# AGENTS.md
+# 🤖 AGENTS.md v2.0 - Framework Multi-Ambiente
 
-## 🎯 Objective
-Ensure all code follows high standards of security, clarity, maintainability, and real-world usability, prioritizing clean architecture and user experience.
-
----
-
-## 🧠 Execution Pipeline (MANDATORY)
-
-All non-trivial tasks MUST follow this flow:
-
-1. Brainstorming → understand the problem deeply
-2. Planning → define the best approach
-3. Execution → implement with quality
-
-### 🚫 Do NOT jump directly to coding
-
-- If the task involves:
-  - new features
-  - architecture decisions
-  - refactors
-  - complex UI
-  - backend logic
-
-👉 You MUST start with `brainstorming-preflight`
+## 🎯 Objetivo
+Garantir que o código siga padrões de segurança, resiliência e performance ajustados para as três infraestruturas do Marcos (ATI, AWS e Hostinger).
 
 ---
 
-## ⚡ Fast Path (Trivial Tasks Exception)
-
-If the task is trivial, you MAY skip the Brainstorming and Planning phases.
-
-### Trivial tasks include:
-- small bug fixes
-- typos
-- minor UI tweaks
-- simple refactors with no architectural impact
-- renaming variables or files
-- small isolated changes
-
-### Rules for Fast Path
-
-- The change MUST be low risk
-- The change MUST NOT affect architecture
-- The change MUST NOT introduce new patterns
-- The change MUST be fully understood without additional context
-
-If there is ANY doubt → fallback to Brainstorming.
-
-### Fast Path behavior
-
-- proceed directly to execution
-- still follow all clean code, security, and explanation rules
-- still use appropriate execution skills
+## 🌍 Consciência de Ambiente (Obrigatório)
+Antes de cada tarefa, a IA deve identificar o contexto:
+- **NORONHA (ATI):** Foco em Resiliência e Latência. O usuário está em conexão instável.
+- **CADENCE (AWS):** Foco em Escalabilidade e Custo. É um SaaS que precisa crescer.
+- **MARIBE (Hostinger):** Foco em PHP e Recursos Limitados. Estabilidade é chave.
 
 ---
 
-## 🧠 Phase 1 — Brainstorming
+## 🧠 Fluxo de Execução (PIPELINE)
 
-Use:
-- `brainstorming-preflight`
-
-### Purpose
-- clarify the real problem
-- explore multiple approaches
-- avoid premature decisions
-
-### Rules
-- no code allowed
-- ask questions if context is missing
-- generate multiple approaches
-- analyze trade-offs
-- recommend ONE approach
+1. **Brainstorming** (`brainstorming-preflight`) → Identificar o Ambiente + Criar a Solução.
+2. **Planejamento** (`planning-architect`) → Definir arquivos e fluxo de dados.
+3. **Execução** → Implementar usando as skills abaixo.
 
 ---
 
-## 🧠 Phase 2 — Planning
-
-Use:
-- `planning-architect`
-
-### Purpose
-Transform the chosen idea into a clear implementation plan.
-
-### Rules
-- still NO code
-- define:
-  - architecture decisions
-  - file structure
-  - responsibilities per file
-  - data flow
-  - integration points
-- align with project standards (clean architecture, small files, etc.)
+## ⚡ Fast Path (Tarefas Triviais)
+Pode pular Brainstorming/Planning apenas para:
+- Pequenos bug fixes, erros de digitação ou ajustes visuais mínimos.
+- **PROIBIDO:** Se tocar em Autenticação, Pagamentos ou Segurança de Dados, use o fluxo completo.
 
 ---
 
-## 🧠 Phase 3 — Execution
-
-Only after planning is approved:
-
-Use appropriate skills:
-- `secure-backend-review`
-- `domain-data-modeler`
-- `component-split-enforcer`
-- `clean-code-editor`
-- `ux-flow-critic`
-
-And ALWAYS:
-- `plain-language-explainer` after meaningful changes
+## 🛠️ Skills de Execução
+Use conforme o contexto da tarefa:
+- `secure-compliance-reviewer`: Obrigatório para mudanças em dados ou backend.
+- `resilience-performance-master`: Obrigatório para novas telas ou fluxos de dados.
+- `component-split-enforcer`: Para manter arquivos Next.js/React < 500 linhas.
+- `clean-code-editor`: Para refatoração e limpeza.
 
 ---
 
-## 🧠 General Principles
+## 🧹 Disciplina de Saída (Regra de Ouro)
+Toda entrega de código **DEVE** conter uma seção final chamada `🗣️ Explicação Simples`. 
+*(Substitui a necessidade de chamar a skill plain-language-explainer separadamente)*.
 
-- Always prioritize **clarity over cleverness**
-- Code must be **easy to read, understand, and maintain**
-- Avoid unnecessary abstractions
-- Prefer **simple and explicit solutions**
-- Every decision should consider **real-world usage and impact**
-
----
-
-## 🧱 Code Structure & Organization
-
-- Avoid large files:
-  - Components, services, or modules should ideally stay below **500 lines**
-- Break down complex logic into **smaller, reusable pieces**
-- Each file should have **a single clear responsibility**
-- Extract reusable logic even if reuse is only **potential for now**
-- Avoid monolithic components or "God files"
+**Estrutura da Saída:**
+1. 💻 **Código Implementado**
+2. 🛡️ **Nota de Segurança/Performance** (O que foi feito para proteger o ambiente alvo).
+3. 🗣️ **Explicação Simples:** O que mudou, por que mudou e qual o benefício real para quem usa.
 
 ---
 
-## 🏷️ Naming Conventions
-
-- All code elements MUST be named in **English**
-- Use **clear and descriptive names**
-
----
-
-## 🧹 Clean Code Rules
-
-- Avoid unnecessary comments
-- Remove:
-  - commented-out code
-  - debug logs
-  - unused variables
-- Keep functions small and focused
-- Avoid deep nesting and complex conditionals
-
----
-
-## 🔐 Security (MANDATORY)
-
-- Never trust client-side data
-- Always validate and sanitize inputs
-- Always enforce proper authorization checks
-- Avoid exposing sensitive data unnecessarily
-- Handle errors safely
-
----
-
-## 🗄️ Data & Modeling
-
-- Use consistent naming across database and code
-- Clearly define relationships and constraints
-- Avoid redundant data
-- Ensure data integrity
-
----
-
-## 🌐 API Design
-
-- Keep contracts consistent
-- Standardize error handling
-- Avoid breaking changes
-
----
-
-## 🎨 UX & Product Thinking
-
-- Always consider user experience
-- Reduce friction and cognitive load
-- Ensure feedback states exist
-- Prioritize usability over complexity
-
----
-
-## 🧪 Refactoring Mindset
-
-- Leave code better than you found it
-- Reduce duplication
-- Simplify logic
-
----
-
-## 🧠 Explanation Rule (VERY IMPORTANT)
-
-After any meaningful change:
-
-Use:
-- `plain-language-explainer`
-
----
-
-## 🚫 What to Avoid
-
-- Overengineering
-- Premature optimization
-- Skipping brainstorming or planning phases (when required)
-- Large unstructured files
-- Mixing responsibilities
-
----
-
-## ✅ Expected Outcome
-
-- Clean, secure, maintainable code
-- Strong architectural decisions
-- Thoughtful UX
-- Clear explanations
-
----
-
-## 🔀 Skills Routing
-
-### Mandatory flow control
-- `brainstorming-preflight` → ALWAYS before creative work (unless Fast Path applies)
-- `planning-architect` → ALWAYS before implementation (unless Fast Path applies)
-
-### Execution skills
-- `secure-backend-review`
-- `domain-data-modeler`
-- `component-split-enforcer`
-- `clean-code-editor`
-- `ux-flow-critic`
-
-### Final step
-- `plain-language-explainer`
+## 🏷️ Convenções
+- Nomes em **Inglês**.
+- Uma responsabilidade por arquivo.
+- Evitar "God Files" (arquivos que fazem tudo).
