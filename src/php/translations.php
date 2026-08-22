@@ -167,22 +167,48 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'quem somos',
-            'metaDescription' => 'Maribe Arquitetura é um escritório de arquitetura e urbanismo baseado em Recife, Pernambuco, com foco em arquitetura residencial, comercial e consultorias.',
-            'description' => 'A Maribe nasceu da união dos caminhos de <span>Heloísa Marletti</span> e <span>Nathalia Ribeiro</span>, arquitetas que compartilham a mesma vontade de criar espaços que acolhem, inspiram e contam histórias reais. O nome surge da junção dos sobrenomes — Marletti + Ribeiro — e simboliza exatamente isso: <span>duas visões que se encontram para formar algo único</span>.<br><br><span>Acreditamos que arquitetura vai além de projetar ambientes</span>. É sobre escutar, compreender e transformar o cotidiano de quem vive cada espaço. Nosso trabalho une funcionalidade e beleza, tradição e novidade, sempre com atenção aos detalhes que tornam um lar verdadeiramente seu.',
-            'aboutUs' => 'sobre nós',
-            'heloisa' => [
-                'name' => 'Heloísa Marletti',
-                'description' => 'Arquiteta e urbanista formada pela UNICAP, pós-graduanda em Neuroarquitetura. Tem experiência em arquitetura de interiores, pesquisa acadêmica e representação visual, criando projetos que valorizam conforto, estética e presença. É movida por arte, viagens e novas experiências que enriquecem seu olhar.'
+            'metaDescription' => 'Conheça a Maribe Arquitetura, sua história, seu olhar e Nathalia Ribeiro, arquiteta à frente do escritório.',
+            'about' => [
+                'title' => 'sobre a Maribe',
+                'paragraphs' => [
+                    'A Maribe é um escritório de arquitetura que <span>acredita que bons espaços começam pela escuta</span>.',
+                    'Cada projeto nasce da compreensão de quem vai vivê-lo: sua rotina, suas necessidades, suas referências e a forma particular como deseja se sentir naquele lugar.',
+                    'A Maribe nasceu em Recife e, ao longo de sua trajetória, construiu uma forma sensível e próxima de enxergar a arquitetura.',
+                    'Hoje, a Maribe inicia um novo capítulo sob a direção de Nathalia Ribeiro, preservando sua essência enquanto constrói novos caminhos, referências e possibilidades.',
+                    'Mais do que um nome, <span>Maribe tornou-se uma identidade</span>.'
+                ]
             ],
-            'nathalia' => [
+            'leadership' => [
+                'title' => 'à frente da Maribe',
                 'name' => 'Nathalia Ribeiro',
-                'description' => 'Arquiteta e urbanista pela UNICAP, com trajetória em interiores, projetos comerciais e design gráfico. Apaixonada por marcenaria e por soluções práticas e bem detalhadas, leva precisão e cuidado a cada projeto. Encontra inspiração em movimentos ao ar livre, yoga e pequenos rituais de bem-estar.'
+                'paragraphs' => [
+                    'Arquiteta e urbanista pela UNICAP, Nathalia possui trajetória em arquitetura de interiores, projetos comerciais e design gráfico.',
+                    'Apaixonada por marcenaria e por soluções práticas e bem detalhadas, <span>enxerga o projeto como um exercício de equilíbrio entre estética, funcionalidade e a maneira como cada pessoa vive seus espaços</span>.',
+                    'À frente da Maribe, acompanha de perto todas as etapas do processo, transformando necessidades, referências e histórias em ambientes com personalidade e propósito.'
+                ],
+                'imageAlt' => 'Nathalia Ribeiro, arquiteta à frente da Maribe'
             ],
-            'together' => 'Juntas, conduzimos cada projeto da Maribe do início ao fim. Nosso propósito é simples: <span>criar ambientes onde as pessoas se sintam bem, vistas e acolhidas</span>. Cada espaço carrega a personalidade de quem vai habitá-lo — e é uma honra fazer parte dessa construção.',
-            'ourSymbol' => 'nossa marca',
-            'symbolDescription1' => 'A identidade visual da Maribe reflete o que acreditamos: arquitetura que acolhe, valoriza histórias e se conecta ao lugar onde nasce. Nosso símbolo une a força cultural de Recife, a sensibilidade das artes brasileiras e a forma como entendemos o encontro entre passado e presente.',
-            'symbolDescription2' => 'A marca utiliza <span>recortes do desenho do Marco Zero</span>, formando a paisagem da <span>Rua do Bom Jesus</span>, uma das ruas mais emblemáticas da cidade. As formas azuis representam os paralelepípedos; as formas coloridas, os prédios históricos. O <span>círculo vermelho</span> simboliza o próprio Marco, de onde as ruas se expandem — referência ao urbanismo de Recife e ao ponto de partida do nosso conceito.<br><br>Dois tons de azul fazem alusão ao <span>encontro das águas</span> do Capibaribe e do Beberibe antes de chegar ao mar. Essa união também representa a essência da Maribe: a mistura de influências, olhares e histórias — do mar com o rio, do salgado com o doce, do <span>Marletti com Ribeiro</span>.',
-            'symbolDescription3' => 'A composição em mosaico traz inspiração em <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span>, artistas que admiramos e que traduzem a riqueza da cor, da forma e da brasilidade. A paleta de cores nasce de Recife, enquanto a tipografia arredondada e orgânica reforça suavidade, proximidade e modernidade.<br><br>O resultado é uma marca que carrega o que buscamos em nossos projetos: <span>leveza, personalidade e uma beleza que acolhe</span>.'
+            'perspective' => [
+                'title' => 'nosso olhar',
+                'paragraphs' => [
+                    'Para nós, arquitetura não é apenas sobre criar ambientes bonitos.',
+                    'É entender rotinas, perceber detalhes e encontrar soluções que façam sentido para quem vive cada espaço.',
+                    'Gostamos de projetos que tenham identidade sem perder funcionalidade; que sejam contemporâneos sem se tornarem impessoais; e que possam ser vividos de verdade.',
+                    'Cada projeto da Maribe nasce de uma história diferente — <span>e é justamente isso que faz cada resultado ser único</span>.'
+                ]
+            ],
+            'brand' => [
+                'title' => 'nossa marca',
+                'paragraphs' => [
+                    'A identidade visual da Maribe reflete aquilo em que acreditamos: uma arquitetura que acolhe, valoriza histórias e se conecta ao lugar onde nasce.',
+                    'Nosso símbolo reúne referências da força cultural de Recife, da sensibilidade das artes brasileiras e do encontro entre passado e presente.',
+                    'A marca utiliza <span>recortes do desenho do Marco Zero</span> para formar a paisagem da <span>Rua do Bom Jesus</span>, uma das ruas mais emblemáticas da cidade. As formas azuis representam os paralelepípedos; as formas coloridas, os prédios históricos. O <span>círculo vermelho</span> simboliza o próprio Marco, ponto de onde as ruas se expandem e referência ao urbanismo do Recife.',
+                    'Os dois tons de azul fazem alusão ao <span>encontro das águas</span> do Capibaribe e do Beberibe antes de chegarem ao mar. Essa união representa também a essência da Maribe: o encontro entre diferentes referências, histórias e formas de viver — do mar com o rio, do salgado com o doce, da memória com o novo.',
+                    'A composição em mosaico encontra inspiração em artistas como <span>Hélio Oiticica</span> e <span>Tarsila do Amaral</span> e na riqueza das cores, formas e referências brasileiras. A paleta nasce de Recife, enquanto a tipografia arredondada e orgânica reforça suavidade, proximidade e contemporaneidade.',
+                    'O resultado é uma marca que carrega aquilo que também buscamos em nossos projetos: <span>leveza, personalidade e uma beleza que acolhe</span>.'
+                ],
+                'videoLabel' => 'História da evolução do logo Maribe Arquitetura'
+            ]
         ],
 
         // Página Projetos
@@ -639,22 +665,48 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'who we are',
-            'metaDescription' => 'Maribe Arquitetura is an architecture and urban planning firm based in Recife, Pernambuco, focused on residential architecture, commercial architecture, and consulting.',
-            'description' => 'Maribe was born from the union of the paths of <span>Heloísa Marletti</span> and <span>Nathalia Ribeiro</span>, architects who share the same desire to create spaces that welcome, inspire, and tell real stories. The name comes from the combination of the surnames — Marletti + Ribeiro — and symbolizes exactly that: <span>two visions that meet to form something unique</span>.<br><br><span>We believe that architecture goes beyond designing environments</span>. It\'s about listening, understanding, and transforming the daily life of those who live in each space. Our work unites functionality and beauty, tradition and novelty, always with attention to the details that make a home truly yours.',
-            'aboutUs' => 'about us',
-            'heloisa' => [
-                'name' => 'Heloísa Marletti',
-                'description' => 'Architect and urban planner graduated from UNICAP, postgraduate student in Neuroarchitecture. Has experience in interior architecture, academic research, and visual representation, creating projects that value comfort, aesthetics, and presence. Driven by art, travel, and new experiences that enrich her perspective.'
+            'metaDescription' => 'Discover Maribe Arquitetura, its story, its perspective, and Nathalia Ribeiro, the architect leading the studio.',
+            'about' => [
+                'title' => 'about Maribe',
+                'paragraphs' => [
+                    'Maribe is an architecture studio that <span>believes good spaces begin with listening</span>.',
+                    'Every project begins with understanding the people who will live in it: their routines, needs, references, and the particular way they want to feel in that place.',
+                    'Maribe was founded in Recife and, throughout its journey, has developed a sensitive and approachable way of seeing architecture.',
+                    'Today, Maribe begins a new chapter under the direction of Nathalia Ribeiro, preserving its essence while building new paths, references, and possibilities.',
+                    'More than a name, <span>Maribe has become an identity</span>.'
+                ]
             ],
-            'nathalia' => [
+            'leadership' => [
+                'title' => 'leading Maribe',
                 'name' => 'Nathalia Ribeiro',
-                'description' => 'Architect and urban planner from UNICAP, with a background in interiors, commercial projects, and graphic design. Passionate about woodworking and practical, well-detailed solutions, brings precision and care to each project. Finds inspiration in outdoor activities, yoga, and small wellness rituals.'
+                'paragraphs' => [
+                    'An architect and urban planner from UNICAP, Nathalia has a background in interior architecture, commercial projects, and graphic design.',
+                    'Passionate about woodworking and practical, carefully detailed solutions, she <span>sees design as an exercise in balancing aesthetics, functionality, and the way each person lives in their spaces</span>.',
+                    'Leading Maribe, she closely follows every stage of the process, transforming needs, references, and stories into spaces with personality and purpose.'
+                ],
+                'imageAlt' => 'Nathalia Ribeiro, the architect leading Maribe'
             ],
-            'together' => 'Together, we guide each Maribe project from start to finish. Our purpose is simple: <span>to create environments where people feel good, seen, and welcomed</span>. Each space carries the personality of those who will inhabit it — and it\'s an honor to be part of this construction.',
-            'ourSymbol' => 'our brand',
-            'symbolDescription1' => 'Maribe\'s visual identity reflects what we believe: architecture that welcomes, values stories, and connects to the place where it\'s born. Our symbol unites the cultural strength of Recife, the sensitivity of Brazilian arts, and how we understand the meeting between past and present.',
-            'symbolDescription2' => 'The brand uses <span>cutouts from the Marco Zero drawing</span>, forming the landscape of <span>Rua do Bom Jesus</span>, one of the city\'s most emblematic streets. The blue shapes represent the cobblestones; the colored shapes, the historic buildings. The <span>red circle</span> symbolizes the Marco itself, from where the streets expand — a reference to Recife\'s urbanism and the starting point of our concept.<br><br>Two shades of blue allude to the <span>meeting of the waters</span> of Capibaribe and Beberibe before reaching the sea. This union also represents the essence of Maribe: the mix of influences, perspectives, and stories — from sea to river, from salt to fresh, from <span>Marletti to Ribeiro</span>.',
-            'symbolDescription3' => 'The mosaic composition draws inspiration from <span>Hélio Oiticica</span> and <span>Tarsila do Amaral</span>, artists we admire and who translate the richness of color, form, and Brazilianness. The color palette is born from Recife, while the rounded and organic typography reinforces softness, proximity, and modernity.<br><br>The result is a brand that carries what we seek in our projects: <span>lightness, personality, and a beauty that welcomes</span>.'
+            'perspective' => [
+                'title' => 'our perspective',
+                'paragraphs' => [
+                    'For us, architecture is not only about creating beautiful spaces.',
+                    'It is about understanding routines, noticing details, and finding solutions that make sense for the people who live in each space.',
+                    'We value projects with identity that do not sacrifice functionality; that are contemporary without becoming impersonal; and that can truly be lived in.',
+                    'Every Maribe project begins with a different story — <span>and that is precisely what makes each result unique</span>.'
+                ]
+            ],
+            'brand' => [
+                'title' => 'our brand',
+                'paragraphs' => [
+                    'Maribe\'s visual identity reflects what we believe in: architecture that welcomes, values stories, and connects with the place where it is born.',
+                    'Our symbol brings together references to Recife\'s cultural strength, the sensitivity of Brazilian art, and the meeting of past and present.',
+                    'The brand uses <span>fragments of the Marco Zero design</span> to form the landscape of <span>Rua do Bom Jesus</span>, one of the city\'s most emblematic streets. The blue shapes represent the cobblestones, while the colorful shapes represent the historic buildings. The <span>red circle</span> symbolizes Marco Zero itself, the point from which the streets expand and a reference to Recife\'s urban design.',
+                    'The two shades of blue refer to the <span>meeting of the Capibaribe and Beberibe rivers</span> before they reach the sea. This union also represents Maribe\'s essence: the meeting of different references, stories, and ways of living — sea and river, saltwater and freshwater, memory and the new.',
+                    'The mosaic composition draws inspiration from artists such as <span>Hélio Oiticica</span> and <span>Tarsila do Amaral</span>, and from the richness of Brazilian colors, forms, and references. The palette comes from Recife, while the rounded, organic typography reinforces softness, closeness, and a contemporary character.',
+                    'The result is a brand that carries what we also seek in our projects: <span>lightness, personality, and a beauty that welcomes</span>.'
+                ],
+                'videoLabel' => 'The evolution of the Maribe Arquitetura logo'
+            ]
         ],
 
         // Página Projetos
@@ -1087,22 +1139,48 @@ $allTranslations = [
         // Página Sobre
         'about' => [
             'title' => 'quiénes somos',
-            'metaDescription' => 'Maribe Arquitetura es un estudio de arquitectura y urbanismo con sede en Recife, Pernambuco, enfocado en arquitectura residencial, arquitectura comercial y consultorías.',
-            'description' => 'Maribe nació de la unión de los caminos de <span>Heloísa Marletti</span> y <span>Nathalia Ribeiro</span>, arquitectas que comparten el mismo deseo de crear espacios que acogen, inspiran y cuentan historias reales. El nombre surge de la unión de los apellidos — Marletti + Ribeiro — y simboliza exactamente eso: <span>dos visiones que se encuentran para formar algo único</span>.<br><br><span>Creemos que la arquitectura va más allá de proyectar ambientes</span>. Se trata de escuchar, comprender y transformar el cotidiano de quienes viven cada espacio. Nuestro trabajo une funcionalidad y belleza, tradición y novedad, siempre con atención a los detalles que hacen de un hogar algo verdaderamente propio.',
-            'aboutUs' => 'sobre nosotras',
-            'heloisa' => [
-                'name' => 'Heloísa Marletti',
-                'description' => 'Arquitecta y urbanista graduada por la UNICAP, posgraduanda en Neuroarquitectura. Tiene experiencia en arquitectura de interiores, investigación académica y representación visual, creando proyectos que valoran confort, estética y presencia. Se mueve por el arte, los viajes y nuevas experiencias que enriquecen su mirada.'
+            'metaDescription' => 'Conoce Maribe Arquitetura, su historia, su mirada y a Nathalia Ribeiro, la arquitecta al frente del estudio.',
+            'about' => [
+                'title' => 'sobre Maribe',
+                'paragraphs' => [
+                    'Maribe es un estudio de arquitectura que <span>cree que los buenos espacios comienzan con la escucha</span>.',
+                    'Cada proyecto nace de comprender a quienes lo vivirán: su rutina, sus necesidades, sus referencias y la manera particular en que desean sentirse en ese lugar.',
+                    'Maribe nació en Recife y, a lo largo de su trayectoria, construyó una forma sensible y cercana de entender la arquitectura.',
+                    'Hoy, Maribe inicia un nuevo capítulo bajo la dirección de Nathalia Ribeiro, preservando su esencia mientras construye nuevos caminos, referencias y posibilidades.',
+                    'Más que un nombre, <span>Maribe se convirtió en una identidad</span>.'
+                ]
             ],
-            'nathalia' => [
+            'leadership' => [
+                'title' => 'al frente de Maribe',
                 'name' => 'Nathalia Ribeiro',
-                'description' => 'Arquitecta y urbanista por la UNICAP, con trayectoria en interiores, proyectos comerciales y diseño gráfico. Apasionada por la carpintería y por soluciones prácticas y bien detalladas, lleva precisión y cuidado a cada proyecto. Encuentra inspiración en movimientos al aire libre, yoga y pequeños rituales de bienestar.'
+                'paragraphs' => [
+                    'Arquitecta y urbanista por la UNICAP, Nathalia cuenta con experiencia en arquitectura de interiores, proyectos comerciales y diseño gráfico.',
+                    'Apasionada por la carpintería y por las soluciones prácticas y bien detalladas, <span>entiende el proyecto como un ejercicio de equilibrio entre estética, funcionalidad y la manera en que cada persona vive sus espacios</span>.',
+                    'Al frente de Maribe, acompaña de cerca todas las etapas del proceso, transformando necesidades, referencias e historias en ambientes con personalidad y propósito.'
+                ],
+                'imageAlt' => 'Nathalia Ribeiro, arquitecta al frente de Maribe'
             ],
-            'together' => 'Juntas, conducimos cada proyecto de Maribe de principio a fin. Nuestro propósito es simple: <span>crear ambientes donde las personas se sientan bien, vistas y acogidas</span>. Cada espacio lleva la personalidad de quienes lo habitarán — y es un honor ser parte de esa construcción.',
-            'ourSymbol' => 'nuestra marca',
-            'symbolDescription1' => 'La identidad visual de Maribe refleja lo que creemos: arquitectura que acoge, valora historias y se conecta al lugar donde nace. Nuestro símbolo une la fuerza cultural de Recife, la sensibilidad de las artes brasileñas y la forma en que entendemos el encuentro entre pasado y presente.',
-            'symbolDescription2' => 'La marca utiliza <span>recortes del dibujo del Marco Zero</span>, formando el paisaje de la <span>Rua do Bom Jesus</span>, una de las calles más emblemáticas de la ciudad. Las formas azules representan los adoquines; las formas coloridas, los edificios históricos. El <span>círculo rojo</span> simboliza el propio Marco, de donde se expanden las calles — referencia al urbanismo de Recife y al punto de partida de nuestro concepto.<br><br>Dos tonos de azul hacen alusión al <span>encuentro de las aguas</span> del Capibaribe y del Beberibe antes de llegar al mar. Esta unión también representa la esencia de Maribe: la mezcla de influencias, miradas e historias — del mar con el río, de lo salado con lo dulce, de <span>Marletti con Ribeiro</span>.',
-            'symbolDescription3' => 'La composición en mosaico trae inspiración en <span>Hélio Oiticica</span> y <span>Tarsila do Amaral</span>, artistas que admiramos y que traducen la riqueza del color, de la forma y de la brasilidad. La paleta de colores nace de Recife, mientras la tipografía redondeada y orgánica refuerza suavidad, proximidad y modernidad.<br><br>El resultado es una marca que lleva lo que buscamos en nuestros proyectos: <span>ligereza, personalidad y una belleza que acoge</span>.'
+            'perspective' => [
+                'title' => 'nuestra mirada',
+                'paragraphs' => [
+                    'Para nosotras, la arquitectura no consiste únicamente en crear ambientes bonitos.',
+                    'Es comprender rutinas, percibir detalles y encontrar soluciones que tengan sentido para quienes viven cada espacio.',
+                    'Nos gustan los proyectos con identidad sin perder funcionalidad; contemporáneos sin volverse impersonales; y pensados para ser vividos de verdad.',
+                    'Cada proyecto de Maribe nace de una historia diferente — <span>y es precisamente eso lo que hace único cada resultado</span>.'
+                ]
+            ],
+            'brand' => [
+                'title' => 'nuestra marca',
+                'paragraphs' => [
+                    'La identidad visual de Maribe refleja aquello en lo que creemos: una arquitectura que acoge, valora historias y se conecta con el lugar donde nace.',
+                    'Nuestro símbolo reúne referencias de la fuerza cultural de Recife, la sensibilidad de las artes brasileñas y el encuentro entre pasado y presente.',
+                    'La marca utiliza <span>recortes del diseño del Marco Zero</span> para formar el paisaje de la <span>Rua do Bom Jesus</span>, una de las calles más emblemáticas de la ciudad. Las formas azules representan los adoquines; las formas coloridas, los edificios históricos. El <span>círculo rojo</span> simboliza el propio Marco, punto desde el que se expanden las calles y referencia al urbanismo de Recife.',
+                    'Los dos tonos de azul aluden al <span>encuentro de las aguas del Capibaribe y el Beberibe</span> antes de llegar al mar. Esta unión también representa la esencia de Maribe: el encuentro entre diferentes referencias, historias y formas de vivir — del mar con el río, de lo salado con lo dulce, de la memoria con lo nuevo.',
+                    'La composición en mosaico encuentra inspiración en artistas como <span>Hélio Oiticica</span> y <span>Tarsila do Amaral</span> y en la riqueza de los colores, formas y referencias brasileñas. La paleta nace de Recife, mientras que la tipografía redondeada y orgánica refuerza suavidad, cercanía y contemporaneidad.',
+                    'El resultado es una marca que lleva aquello que también buscamos en nuestros proyectos: <span>ligereza, personalidad y una belleza que acoge</span>.'
+                ],
+                'videoLabel' => 'Historia de la evolución del logo de Maribe Arquitetura'
+            ]
         ],
 
         // Página Proyectos

@@ -1,24 +1,23 @@
-/**
- * About Page Styles
- */
-
-body main #sectionsContainer {
+.about-sections {
   display: flex;
   flex-direction: column;
-  gap: 85px;
-  margin-bottom: 70px;
+  gap: 70px;
   max-width: 1766px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 70px;
 }
 
-body main #sectionsContainer section {
+.about-clip-definitions {
+  position: absolute;
+  pointer-events: none;
+}
+
+.about-section {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
 
-body main #sectionsContainer section h2 {
+.about-section h2 {
   color: var(--color-vermelho-recife);
   font-family: "All Round Gothic", sans-serif;
   font-size: 2.25rem;
@@ -26,244 +25,136 @@ body main #sectionsContainer section h2 {
   text-transform: lowercase;
 }
 
-body main #sectionsContainer section div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-body main #sectionsContainer section h3 {
+.about-section h3 {
   font-family: "Kantumruy Pro SemiBold", sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
 }
 
-body main #sectionsContainer section p {
-  font-size: 1.125rem;
+.about-subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
-body main #sectionsContainer section p span {
+.about-copy,
+.about-profile-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-section p {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.about-section p span {
+  color: var(--color-vermelho-recife);
   font-weight: 600;
-  color: var(--color-vermelho-recife);
 }
 
-body main #sectionsContainer section p strong {
-  color: var(--color-vermelho-recife);
-}
-
-body main #sectionsContainer section #aboutContentWrapper {
-  display: flex;
-  flex-direction: column;
+.about-profile,
+.about-brand {
+  display: grid;
   gap: 30px;
 }
 
-body main #sectionsContainer section #aboutTextContent {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-body main #sectionsContainer section #aboutTextContent #aboutIntroText {
-  font-size: 1.125rem;
-  margin-bottom: 8px;
-}
-
-body main #sectionsContainer section #imageContainer {
-  position: relative;
-}
-
-body main #sectionsContainer section #imageContainer #orangeBox {
-  bottom: 0;
-  background-color: var(--color-vermelho-recife);
-  border-radius: 8px;
-  height: 200px;
-  position: absolute;
+.about-portrait {
   width: 100%;
-  z-index: -9999;
+  max-width: 600px;
+  background: var(--color-bege-delicado);
+  justify-self: center;
+  margin-inline: auto;
 }
 
-body main #sectionsContainer section #symbolContentWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-body main #sectionsContainer section #symbolTextContent {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-body main #sectionsContainer section #logosContainer {
+.about-portrait img {
+  display: block;
   width: 100%;
+  height: auto;
+  clip-path: polygon(29% 0, 100% 0, 100% 100%, 4.5% 100%, 19% 12%);
+  clip-path: url(#aboutPortraitClip);
+}
+
+.about-brand-media {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
-body main #sectionsContainer section #logosContainer video {
+.about-brand-media video {
   width: 100%;
   height: auto;
-  object-fit: contain;
   border-radius: 8px;
-}
-
-/* Estilos Mobile (max-width: 767px) */
-@media screen and (max-width: 767px) {
-  body main #sectionsContainer {
-    gap: 60px;
-    margin-bottom: 60px;
-  }
-
-  body main #sectionsContainer section #imageContainer {
-    width: 100%;
-    padding: 0;
-  }
-
-  body main #sectionsContainer section #imageContainer img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  body main #sectionsContainer section #imageContainer #orangeBox {
-    height: 150px;
-    width: calc(100% - 20px);
-    left: 10px;
-    right: 10px;
-  }
-
-  body main #sectionsContainer section #logosContainer video {
-    max-width: 100%;
-  }
+  object-fit: contain;
 }
 
 @media screen and (min-width: 768px) {
-  body main #sectionsContainer section h2 {
+  .about-sections {
+    gap: 85px;
+    margin-bottom: 90px;
+  }
+
+  .about-section h2 {
     font-size: 2.5rem;
-  }
-
-  body main #sectionsContainer section div {
-    gap: 10px;
-  }
-
-  body main #sectionsContainer section #aboutContentWrapper {
-    gap: 40px;
-  }
-
-  body main #sectionsContainer section #symbolContentWrapper {
-    gap: 40px;
-  }
-
-  body main #sectionsContainer section #imageContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  body main #sectionsContainer section #imageContainer img {
-    width: 600px;
-  }
-
-  body main #sectionsContainer section #imageContainer #orangeBox {
-    height: 250px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  body main #sectionsContainer {
+  .about-sections {
     gap: 95px;
-    margin-bottom: 90px;
   }
 
-  body main #sectionsContainer section h2 {
+  .about-section h2 {
     font-size: 3rem;
   }
 
-  body main #sectionsContainer section h3 {
+  .about-section h3 {
     font-size: 1.375rem;
   }
 
-  body main #sectionsContainer section div {
-    gap: 15px;
-  }
-
-  body main #sectionsContainer section #aboutContentWrapper {
-    flex-direction: row;
-    align-items: flex-start;
+  .about-brand {
+    grid-template-columns: minmax(0, 1fr) minmax(400px, 0.8fr);
+    align-items: start;
     gap: 50px;
   }
 
-  body main #sectionsContainer section #aboutTextContent {
-    flex: 1;
-    gap: 22px;
-  }
-
-  body main #sectionsContainer section #imageContainer {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 500px;
-    align-self: flex-end;
-  }
-
-  body main #sectionsContainer section #imageContainer img {
-    width: 100%;
-    max-width: 500px;
-  }
-
-  body main #sectionsContainer section #imageContainer #orangeBox {
-    height: 300px;
-  }
-
-  body main #sectionsContainer section #symbolContentWrapper {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 50px;
-  }
-
-  body main #sectionsContainer section #symbolTextContent {
-    flex: 1;
-    gap: 22px;
-  }
-
-  body main #sectionsContainer section #logosContainer {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 500px;
+  .about-brand-media {
+    position: sticky;
+    top: 30px;
   }
 }
 
 @media screen and (min-width: 1366px) {
-  body main #sectionsContainer {
+  .about-sections {
     margin-bottom: 100px;
   }
 
-  body main #sectionsContainer section h2 {
+  .about-section h2 {
     font-size: 3.25rem;
   }
+}
 
-  body main #sectionsContainer section #aboutContentWrapper {
-    gap: 60px;
+@media screen and (min-width: 1368px) {
+  .about-profile {
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 600px);
+    grid-template-areas:
+      "introduction portrait"
+      "perspective portrait";
+    align-items: start;
+    gap: 50px;
+    row-gap: 60px;
   }
 
-  body main #sectionsContainer section #imageContainer {
-    max-width: 600px;
+  .about-profile-introduction {
+    grid-area: introduction;
   }
 
-  body main #sectionsContainer section #imageContainer img {
-    max-width: 600px;
+  .about-portrait {
+    grid-area: portrait;
   }
 
-  body main #sectionsContainer section #imageContainer #orangeBox {
-    height: 350px;
-  }
-
-  body main #sectionsContainer section #symbolContentWrapper {
-    gap: 60px;
-  }
-
-  body main #sectionsContainer section #logosContainer {
-    max-width: 600px;
+  .about-perspective {
+    grid-area: perspective;
   }
 }
